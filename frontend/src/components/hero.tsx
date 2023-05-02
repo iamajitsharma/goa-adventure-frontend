@@ -1,6 +1,8 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
+import Slider from "react-slick";
+import CarouselNextArrow from "./CarouselNextArrow";
 import {
   ChatBubbleBottomCenterIcon,
   InboxIcon,
@@ -9,6 +11,43 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import Heading from "../components/Heading";
+
+const settings1 = {
+  infinite: true,
+  autoplay: true,
+  autoplaySpeed: 4000,
+  speed: 1000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  initialSlide: 0,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 1,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
 
 const solutions = [
   {
@@ -46,7 +85,44 @@ const navigation = [
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
 }
-
+const settings = {
+  infinite: true,
+  autoplay: true,
+  autoplaySpeed: 1000,
+  speed: 1700,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  initialSlide: 0,
+  nextArrow: <CarouselNextArrow />,
+  prevArrow: <CarouselNextArrow />,
+  pauseOnHover: true,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
 export default function Hero() {
   return (
     <div className="bg-white">
@@ -295,6 +371,54 @@ export default function Hero() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col p-8">
+            <div className="text-center pb-8">
+              <p className="text-4xl titleFont">
+                <Heading heading={"Heaven on the earth"} />
+              </p>
+            </div>
+            <div className="p-8 py-0">
+              <div className="companyBanner-slider w-full  ">
+                <Slider {...settings1}>
+                  <img src="assets/banner.png" alt="Expedia logo" />
+                  <img src="assets/banner.png" alt="Expedia logo" />
+                  <img src="assets/banner.png" alt="Expedia logo" />
+                  <img src="assets/banner.png" alt="Expedia logo" />
+                  <img src="assets/banner.png" alt="Expedia logo" />
+                </Slider>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col p-8">
+            <div className="text-center pb-8">
+              <p className="text-4xl titleFont">
+                <Heading heading={"Heaven on the earth"} />
+              </p>
+            </div>
+            <div className="p-8 py-0">
+              <div className="company-slider px-8 md-px-0 ">
+                <Slider {...settings}>
+                  <img src="assets/Rectangle_20.png" alt="Expedia logo" />
+                  <img src="assets/Rectangle_21.png" alt="Expedia logo" />
+                  <img src="assets/Rectangle_22.png" alt="Expedia logo" />
+                  <img src="assets/Rectangle_20.png" alt="Expedia logo" />
+                  <img src="assets/Rectangle_23.png" alt="Expedia logo" />
+                </Slider>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col">
+            <Heading heading={"Our Partners"} />
+            <div className="flex flex-row m-20 justify-between">
+              <img src="expedia.png" alt="Expedia logo" />
+              <img src="tripadvisor.png" alt="Expedia logo" />
+              <img src="airbnb.png" alt="Expedia logo" />
+              <img src="airasia.png" alt="Expedia logo" />
             </div>
           </div>
 
