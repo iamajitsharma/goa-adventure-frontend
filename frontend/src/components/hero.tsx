@@ -242,46 +242,55 @@ export default function Hero() {
       <main>
         <div>
           {/* Hero card */}
-          <div className="relative">
-            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100" />
-            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-              <div className="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">
+
+          <div className="relative ">
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100 " />
+            <div className="w-screen">
+              <div className="relative sm:overflow-hidden ">
                 <div className="absolute inset-0">
                   <img
-                    className="h-full w-full object-cover"
-                    src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100"
-                    alt="People working on laptops"
+                    className="h-full w-screen object-cover"
+                    src="assets/hero.png"
+                    alt="Hero Pic"
                   />
-                  <div className="absolute inset-0 bg-indigo-700 mix-blend-multiply" />
                 </div>
-                <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
-                  <h1 className="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+
+                <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8 flex flex-col items-center">
+                  <h1 className="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl m-7">
                     <span className="block text-white">
-                      Visit the best place
-                    </span>
-                    <span className="block text-indigo-200">
-                      in Goa
+                      Where will you find yourself
                     </span>
                   </h1>
-                  <p className="mt-6 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-3xl">
-                    Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-                    qui lorem cupidatat commodo. Elit sunt amet fugiat veniam
-                    occaecat fugiat aliqua.
-                  </p>
-                  <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
-                    <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
-                      <a
-                        href="#"
-                        className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8"
-                      >
-                        Get started
-                      </a>
-                      <a
-                        href="#"
-                        className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-500 bg-opacity-60 hover:bg-opacity-70 sm:px-8"
-                      >
-                        Live demo
-                      </a>
+
+                  <div className="w-fit ">
+                    <div className="flex flex-row items-center justify-center text-black text-sm  rounded-full  overflow-hidden">
+                      <div className="flex flex-row justify-center items-center bg-white w-100 h-100 ">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          className="w-6 h-6 ml-5"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                          />
+                        </svg>
+                        <span className="text-sm py-2.5 pl-2 pr-40">
+                          <input
+                            className="border-none w-auto"
+                            name="Location"
+                            type="text"
+                            placeholder=" Search Destination"
+                          />
+                        </span>
+                      </div>
+                      <div className="bg-orange-600 text-white py-5 pr-10 pl-4 w-100 h-200 overflow-hidden">
+                        <span>Search</span>
+                      </div>
                     </div>
                   </div>
                 </div>
