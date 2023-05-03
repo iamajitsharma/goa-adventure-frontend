@@ -364,7 +364,7 @@ export default function Hero() {
                         </svg>
                         <span className="text-sm py-2.5 pl-2 pr-40">
                           <input
-                            className="border-none w-auto"
+                            className="border-none w-auto border-transparent focus:border-transparent focus:ring-0"
                             name="Location"
                             type="text"
                             placeholder=" Search Destination"
@@ -456,7 +456,7 @@ export default function Hero() {
           </div>
 
           {/* Logo cloud */}
-          <div className="bg-gray-100">
+          {/* <div className="bg-gray-100">
             <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
               <p className="text-center text-sm font-semibold uppercase text-gray-500 tracking-wide">
                 Trusted by over 5 very average small businesses
@@ -499,7 +499,7 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* More main page content here... */}
