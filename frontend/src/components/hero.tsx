@@ -383,8 +383,14 @@ export default function Hero() {
 
           <div className="flex flex-col">
             <Heading heading={"Popular Thrilling Activities"} />
-            <div className="flex flex-row m-20 justify-between">
-              <Activity />
+            <div className="flex flex-row m-20 items-between justify-center">
+              <div className="grid grid-cols-4 gap-4">
+                {[0, 1, 2, 3, 4, 5, 6, 7].map((num) => (
+                  <div>
+                    <Activity />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -403,6 +409,19 @@ export default function Hero() {
                   <img src="assets/banner.png" alt="Expedia logo" />
                   <img src="assets/banner.png" alt="Expedia logo" />
                 </Slider>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col">
+            <Heading heading={"Top Tour Packages"} />
+            <div className="flex flex-row m-20 items-between justify-center">
+              <div className="grid grid-cols-4 gap-4">
+                {[0, 1, 2, 3].map((num) => (
+                  <div>
+                    <Activity />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
