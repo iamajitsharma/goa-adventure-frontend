@@ -11,7 +11,14 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
-import Heading from "../components/Heading";
+
+import dynamic from "next/dynamic";
+const Activity = dynamic(() => import("../components/Activity"), {
+  ssr: false,
+});
+const Heading = dynamic(() => import("../components/Heading"), {
+  ssr: false,
+});
 
 const settings1 = {
   infinite: true,
@@ -364,13 +371,20 @@ export default function Hero() {
                           />
                         </span>
                       </div>
-                      <div className="bg-orange-600 text-white py-5 pr-10 pl-4 w-100 h-200 overflow-hidden">
+                      <div className="bg-orange-500 text-white py-5 pr-10 pl-4 w-100 h-200 overflow-hidden">
                         <span>Search</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col">
+            <Heading heading={"Popular Thrilling Activities"} />
+            <div className="flex flex-row m-20 justify-between">
+              <Activity />
             </div>
           </div>
 
