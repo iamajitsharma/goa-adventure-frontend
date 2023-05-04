@@ -1,17 +1,17 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { Nunito_Sans } from "next/font/google";
+import { Poppins } from "next/font/google";
 
-const nunito = Nunito_Sans({
-  weight: ["200", "300", "400", "600", "700", "800"],
-  style: ["normal", "italic"],
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-nunito",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-poppins",
 });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${nunito.variable} font-sans`}>
+    <main className={`${poppins.variable} font-sans`}>
       <Component {...pageProps} />
     </main>
   );

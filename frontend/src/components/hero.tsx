@@ -16,6 +16,9 @@ import dynamic from "next/dynamic";
 const Activity = dynamic(() => import("../components/Activity"), {
   ssr: false,
 });
+const TourCard = dynamic(() => import("../components/TourCard"), {
+  ssr: false,
+});
 const Heading = dynamic(() => import("../components/Heading"), {
   ssr: false,
 });
@@ -415,14 +418,8 @@ export default function Hero() {
 
           <div className="flex flex-col">
             <Heading heading={"Top Tour Packages"} />
-            <div className="flex flex-row m-20 items-between justify-center">
-              <div className="grid grid-cols-4 gap-4">
-                {[0, 1, 2, 3].map((num) => (
-                  <div>
-                    <Activity />
-                  </div>
-                ))}
-              </div>
+            <div className="">
+              <TourCard />
             </div>
           </div>
 
