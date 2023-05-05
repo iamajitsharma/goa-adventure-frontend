@@ -416,11 +416,11 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="flex flex-col">
-            <Heading heading={"Top Tour Packages"} />
-            <div className="">
-              <TourCard />
-            </div>
+          <div className="flex flex-row justify-between items-center gap-4 px-10">
+            <TourCard />
+            <TourCard />
+            <TourCard />
+            <TourCard />
           </div>
 
           <div className="flex flex-col p-8">

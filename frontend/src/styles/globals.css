@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .card {
+    @apply relative bg-white text-gray-700 max-w-xs h-fit shadow-lg rounded-md overflow-hidden font-poppins;
+  }
+  .card-content {
+    @apply px-2 py-2;
+  }
+  .card-title {
+    @apply font-semibold text-base
+    overflow-ellipsis overflow-hidden whitespace-pre-wrap;
+  }
+  .discount-percent {
+    @apply bg-green-400 px-1.5 py-0.5 rounded-md text-xs text-white;
+  }
+  .button-primary {
+    @apply bg-orange-500 w-full hover:bg-orange-500/80
+    px-4 py-1 rounded-sm text-white tracking-wider transition;
+  }
+  .button-icon {
+    @apply bg-gray-300/60 hover:bg-gray-300/80 transition rounded-sm px-4 py-1;
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -34,8 +57,6 @@ body {
   width: 280px;
   margin: auto;
   padding: 1rem;
-  
-
 }
 .company-slider .slick-track .slick-slide div img {
   width: 80% !important;
@@ -93,16 +114,16 @@ body {
 }
 
 .companyBanner-slider .slick-slider .slick-track > div,
-  .companyBanner-slider .slick-slider .slick-track > div + div {
-    height: 500px;
-    position: relative;
-  }
-  .companyBanner-slider .slick-next {
-    right: -30px;
-  }
-  .companyBanner-slider .slick-prev {
-    left: -30px;
-  }
-  .companyBanner-slider .slick-slider .slick-track > div + div img {
-    width: 70%;
-  }
+.companyBanner-slider .slick-slider .slick-track > div + div {
+  height: 500px;
+  position: relative;
+}
+.companyBanner-slider .slick-next {
+  right: -30px;
+}
+.companyBanner-slider .slick-prev {
+  left: -30px;
+}
+.companyBanner-slider .slick-slider .slick-track > div + div img {
+  width: 70%;
+}

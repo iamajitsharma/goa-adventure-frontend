@@ -3,53 +3,56 @@ import Image from "next/image";
 import TourCardImg from "../../public/assets/tourcard.jpeg";
 import { MdLocationPin } from "react-icons/md";
 import { BiRupee } from "react-icons/bi";
-import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
+import { AiFillStar, AiFillHeart, AiFillEye } from "react-icons/ai";
 import { BsClock } from "react-icons/bs";
 
 const TourCard = () => {
   return (
-    <div className="relative max-w-sm rounded-3xl overflow-hidden shadow-lg">
+    <div className="card">
       <Image
         src={TourCardImg}
-        alt="Tour Card"
-        className="relative w-full h-full"
+        alt="Tour"
+        className="w-full h-full object-cover"
       />
-      <div className="absolute top-0 right-0 px-4 py-2 flex flex-row justify-end text-white">
-        <AiOutlineHeart fontSize={30} />
+      <div className="flex flex-row justify-between items-center absolute top-0 w-full px-4 pt-2 text-white">
+        <span className="flex items-center gap-1 text-base font-medium">
+          <MdLocationPin />
+          Goa
+        </span>
+        <span className="flex items-center gap-1 text-base font-medium">
+          <BsClock />
+          3N/4D
+        </span>
       </div>
-      <div className="flex justify-between items-center px-4 absolute w-full -mt-8 text-white text-lg font-medium">
-        <div className="flex flex-row justify-between items-center w-full">
-          <span className="flex flex-row gap-1 items-center">
-            <MdLocationPin fontSize={20} className="text-white" /> Goa
-          </span>
-          <span className="flex flex-row gap-1 items-center">
-            <BsClock fontSize={20} /> 3N/4D
-          </span>
+      <div className="card-content">
+        <h2 className="card-title">Honeymoon Tour Packages</h2>
+
+        <div className="flex flex-row items-center text-sm pt-2">
+          <AiFillStar className="text-yellow-400" fontSize={15} />
+          <span className="font-medium">4.5</span>
+          <span className="text-gray-500 font-normal pl-2">(450 reviews)</span>
         </div>
-      </div>
-      <div className="px-2 py-2">
-        <div className="font-medium text-md mb-2 leading-tight">
-          Goa Tour Package 3 Night 4 Days
-        </div>
-        <div className="flex justify-between items-center pt-8 px-2">
-          <div className="flex flex-col justify-center items-start">
-            <div className="flex flex-row items-center gap-2">
-              <span className="flex flew-row items-center text-lg font-medium">
-                <BiRupee fontSize={20} />
-                9000
-              </span>
-              <span className="text-base font-medium text-gray-600">
-                Per pax
-              </span>
-            </div>
-            <span className=" px-4 text-sm font-medium line-through text-gray-500">
-              10500
+
+        <div className="flex gap-1 pt-2">
+          <span className="flex flex-row items-center text-lg font-semibold">
+            <BiRupee fontSize={20} /> 2500
+          </span>
+          <div className="flex flex-row gap-2 items-center">
+            <span className="flex flex-row items-center line-through text-sm font-medium opacity-50">
+              3750
             </span>
+            <span className="discount-percent">save 20%</span>
           </div>
-          <div className="flex flex-row items-center gap-1">
-            <AiFillStar fontSize={20} className="text-yellow-500" />
-            <span className="text-base font-medium">4.5</span>
-          </div>
+        </div>
+
+        <div className="mt-5 flex w-full justify-center items-center gap-2">
+          <button className="button-primary">Book Now</button>
+          <button className="button-icon">
+            <AiFillHeart fontSize={25} className="opacity-75" />
+          </button>
+          <button className="button-icon">
+            <AiFillEye fontSize={25} className="opacity-75" />
+          </button>
         </div>
       </div>
     </div>
