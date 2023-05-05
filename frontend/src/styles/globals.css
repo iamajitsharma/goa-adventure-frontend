@@ -54,24 +54,31 @@ body {
 }
 
 .company-slider .slick-track .slick-slide div {
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   display: flex;
 
   width: 280px;
-  margin: auto;
-  padding: 1rem;
+  
+ 
 }
 .company-slider .slick-track .slick-slide div img {
-  width: 80% !important;
+  width: 90% !important;
   height: 100%;
   margin: auto;
+  
 }
 .company-slider .slick-prev {
-  left: -55px;
+  left: -45px;
+  z-index: 10;
+  
+transform: scale(3);
 }
 .company-slider .slick-next {
-  right: -24px;
+  right: 10px;
+  
+  z-index: 10;
+transform: scale(3);
 }
 .company-slider .slick-track .slick-slide div {
   width: auto;
@@ -115,6 +122,12 @@ body {
 .slick-prev:before,
 .slick-next:before {
   color: #d66e0d !important;
+  
+
+}
+
+.slick-prev{
+
 }
 
 .companyBanner-slider .slick-slider .slick-track > div,

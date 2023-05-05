@@ -19,7 +19,7 @@ const settings = {
   speed: 1700,
   slidesToShow: 4,
   slidesToScroll: 1,
-  initialSlide: 0,
+  initialSlide: 0.5,
   nextArrow: <CarouselNextArrow />,
   prevArrow: <CarouselNextArrow />,
   pauseOnHover: true,
@@ -51,7 +51,7 @@ const settings = {
   ],
 };
 
-export default function Partners() {
+export default function HeavenEarth() {
   return (
     <>
       <div className="text-center pb-8">
