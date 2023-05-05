@@ -416,7 +416,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="flex flex-row justify-between items-center gap-4 px-10">
+          <div className="grid grid-cols-2 gap-4 px-5 md:grid-cols-4">
             <TourCard />
             <TourCard />
             <TourCard />

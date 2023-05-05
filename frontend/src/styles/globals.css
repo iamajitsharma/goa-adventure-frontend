@@ -17,11 +17,15 @@
     @apply bg-green-400 px-1.5 py-0.5 rounded-md text-xs text-white;
   }
   .button-primary {
-    @apply bg-orange-500 w-full hover:bg-orange-500/80
-    px-4 py-1 rounded-sm text-white tracking-wider transition;
+    @apply text-xs bg-orange-500 w-full hover:bg-orange-500/80
+    px-3 py-1 rounded-sm text-white tracking-wider transition
+    md:text-sm
+    md:py-2;
   }
   .button-icon {
-    @apply bg-gray-300/60 hover:bg-gray-300/80 transition rounded-sm px-4 py-1;
+    @apply bg-gray-300/60 hover:bg-gray-300/80 transition rounded-sm px-3 py-1
+    md:text-sm
+    md:py-2;
   }
 }
 

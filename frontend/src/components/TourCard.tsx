@@ -15,11 +15,11 @@ const TourCard = () => {
         className="w-full h-full object-cover"
       />
       <div className="flex flex-row justify-between items-center absolute top-0 w-full px-4 pt-2 text-white">
-        <span className="flex items-center gap-1 text-base font-medium">
+        <span className="flex items-center gap-1 text-sm font-medium">
           <MdLocationPin />
           Goa
         </span>
-        <span className="flex items-center gap-1 text-base font-medium">
+        <span className="flex items-center gap-1 text-sm font-medium">
           <BsClock />
           3N/4D
         </span>
@@ -48,10 +48,10 @@ const TourCard = () => {
         <div className="mt-5 flex w-full justify-center items-center gap-2">
           <button className="button-primary">Book Now</button>
           <button className="button-icon">
-            <AiFillHeart fontSize={25} className="opacity-75" />
+            <AiFillHeart className="text-sm md:text-lg" />
           </button>
           <button className="button-icon">
-            <AiFillEye fontSize={25} className="opacity-75" />
+            <AiFillEye className="text-sm md:text-lg" />
           </button>
         </div>
       </div>
