@@ -13,51 +13,24 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 import dynamic from "next/dynamic";
-const Activity = dynamic(() => import("../components/Activity"), {
-  ssr: false,
-});
+import HeavenEarth from "../components/HeavenEarth";
+import BannerSlider from "./BannerSlider";
+const ThrillingActivity = dynamic(
+  () => import("../components/ThrillingActivity"),
+  {
+    ssr: false,
+  }
+);
+
 const TourCard = dynamic(() => import("../components/TourCard"), {
   ssr: false,
 });
 const Heading = dynamic(() => import("../components/Heading"), {
   ssr: false,
 });
-
-const settings1 = {
-  infinite: true,
-  autoplay: true,
-  autoplaySpeed: 4000,
-  speed: 1000,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  initialSlide: 0,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: false,
-      },
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 1,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-};
+const Partners = dynamic(() => import("../components/Partners"), {
+  ssr: false,
+});
 
 const solutions = [
   {
@@ -385,35 +358,11 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col">
-            <Heading heading={"Popular Thrilling Activities"} />
-            <div className="flex flex-row m-20 items-between justify-center">
-              <div className="grid grid-cols-4 gap-4">
-                {[0, 1, 2, 3, 4, 5, 6, 7].map((num) => (
-                  <div>
-                    <Activity />
-                  </div>
-                ))}
-              </div>
-            </div>
+            <ThrillingActivity />
           </div>
 
           <div className="flex flex-col p-8">
-            <div className="text-center pb-8">
-              <p className="text-4xl titleFont">
-                <Heading heading={"Heaven on the earth"} />
-              </p>
-            </div>
-            <div className="p-8 py-0">
-              <div className="companyBanner-slider w-full  ">
-                <Slider {...settings1}>
-                  <img src="assets/banner.png" alt="Expedia logo" />
-                  <img src="assets/banner.png" alt="Expedia logo" />
-                  <img src="assets/banner.png" alt="Expedia logo" />
-                  <img src="assets/banner.png" alt="Expedia logo" />
-                  <img src="assets/banner.png" alt="Expedia logo" />
-                </Slider>
-              </div>
-            </div>
+            <BannerSlider />
           </div>
 
           <div className="grid grid-cols-2 gap-4 px-5 md:grid-cols-4">
@@ -424,32 +373,11 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col p-8">
-            <div className="text-center pb-8">
-              <p className="text-4xl titleFont">
-                <Heading heading={"Heaven on the earth"} />
-              </p>
-            </div>
-            <div className="p-8 py-0">
-              <div className="company-slider px-8 md-px-0 ">
-                <Slider {...settings}>
-                  <img src="assets/Rectangle_20.png" alt="Expedia logo" />
-                  <img src="assets/Rectangle_21.png" alt="Expedia logo" />
-                  <img src="assets/Rectangle_22.png" alt="Expedia logo" />
-                  <img src="assets/Rectangle_20.png" alt="Expedia logo" />
-                  <img src="assets/Rectangle_23.png" alt="Expedia logo" />
-                </Slider>
-              </div>
-            </div>
+            <HeavenEarth />
           </div>
 
           <div className="flex flex-col">
-            <Heading heading={"Our Partners"} />
-            <div className="flex flex-row m-20 justify-between">
-              <img src="expedia.png" alt="Expedia logo" />
-              <img src="tripadvisor.png" alt="Expedia logo" />
-              <img src="airbnb.png" alt="Expedia logo" />
-              <img src="airasia.png" alt="Expedia logo" />
-            </div>
+            <Partners />
           </div>
 
           {/* Logo cloud */}
