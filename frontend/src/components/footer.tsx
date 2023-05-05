@@ -177,8 +177,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-gray-200 pt-8 bg-orange-500 px-20 pb-10">
-          <p className="text-base text-white ">
+        <div className="mt-10  border-gray-200 pt-8 bg-orange-500 px-20 py-8">
+          <p className=" text-white ">
             &copy; Copyrights 2023 Safar Travel Express. All rights reserved
           </p>
         </div>
