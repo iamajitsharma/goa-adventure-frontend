@@ -4,7 +4,8 @@
   "info": {
     "singularName": "activity",
     "pluralName": "activities",
-    "displayName": "Activity"
+    "displayName": "Activity",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -14,11 +15,63 @@
     "title": {
       "type": "string"
     },
-    "category": {
+    "categories": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category",
-      "mappedBy": "activity"
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "video": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "richtext"
+    },
+    "regular_price": {
+      "type": "decimal",
+      "default": 0
+    },
+    "discount_percent": {
+      "type": "decimal",
+      "default": 0
+    },
+    "activity_highlight": {
+      "type": "richtext"
+    },
+    "activity_exclusion": {
+      "type": "richtext"
+    },
+    "activity_inclusion": {
+      "type": "richtext"
+    },
+    "min_people": {
+      "type": "integer",
+      "default": 0
+    },
+    "max_people": {
+      "type": "integer",
+      "default": 0
+    },
+    "start_time": {
+      "type": "datetime"
+    },
+    "duration": {
+      "type": "decimal",
+      "default": 0
+    },
+    "featured_image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
