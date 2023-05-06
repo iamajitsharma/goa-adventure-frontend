@@ -1,5 +1,5 @@
 import PartnerLogo from "@/components/featured/PartnerLogo";
-import Footer from "@/components/footer";
+import Footer from "@/components/footer/Footer";
 import Hero from "@/components/hero";
 import ActivityListing from "@/components/listings/ActivityListing";
 import TourListing from "@/components/listings/TourListing";

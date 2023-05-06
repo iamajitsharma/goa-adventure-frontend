@@ -120,9 +120,6 @@ body {
   color: #d66e0d !important;
 }
 
-.slick-prev {
-}
-
 .companyBanner-slider .slick-slider .slick-track > div,
 .companyBanner-slider .slick-slider .slick-track > div + div {
   height: 500px;
@@ -145,4 +142,8 @@ body {
 /*Image Gray Filter*/
 .img-filter {
   filter: grayscale(100%);
+}
+.img-filter:hover {
+  transition: ease-in-out 0.3s;
+  filter: grayscale(0%);
 }
