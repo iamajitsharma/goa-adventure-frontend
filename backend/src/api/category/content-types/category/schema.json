@@ -4,7 +4,7 @@
   "info": {
     "singularName": "category",
     "pluralName": "categories",
-    "displayName": "Category",
+    "displayName": "Activity Category",
     "description": ""
   },
   "options": {
@@ -12,12 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "activity": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::activity.activity",
-      "inversedBy": "category"
-    },
     "name": {
       "type": "string"
     }
