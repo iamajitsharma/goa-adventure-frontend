@@ -58,26 +58,23 @@ body {
   display: flex;
 
   width: 280px;
-  
- 
 }
 .company-slider .slick-track .slick-slide div img {
   width: 90% !important;
   height: 100%;
   margin: auto;
-  
 }
 .company-slider .slick-prev {
   left: -45px;
   z-index: 10;
-  
-transform: scale(3);
+
+  transform: scale(3);
 }
 .company-slider .slick-next {
   right: 10px;
-  
+
   z-index: 10;
-transform: scale(3);
+  transform: scale(3);
 }
 .company-slider .slick-track .slick-slide div {
   width: auto;
@@ -121,12 +118,9 @@ transform: scale(3);
 .slick-prev:before,
 .slick-next:before {
   color: #d66e0d !important;
-  
-
 }
 
-.slick-prev{
-
+.slick-prev {
 }
 
 .companyBanner-slider .slick-slider .slick-track > div,
@@ -142,4 +136,13 @@ transform: scale(3);
 }
 .companyBanner-slider .slick-slider .slick-track > div + div img {
   width: 70%;
+}
+
+.slick-slide {
+  padding: 0 10px;
+}
+
+/*Image Gray Filter*/
+.img-filter {
+  filter: grayscale(100%);
 }

@@ -15,7 +15,7 @@ import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 import dynamic from "next/dynamic";
 import HeavenEarth from "../components/HeavenEarth";
-import BannerSlider from "./BannerSlider";
+import BannerSlider from "./featured/BannerSlider";
 
 const ThrillingActivity = dynamic(
   () => import("../components/ThrillingActivity"),
@@ -30,7 +30,7 @@ const ListingCard = dynamic(() => import("./listings/ListingCard"), {
 const Heading = dynamic(() => import("../components/Heading"), {
   ssr: false,
 });
-const Partners = dynamic(() => import("../components/Partners"), {
+const Partners = dynamic(() => import("./featured/PartnerLogo"), {
   ssr: false,
 });
 

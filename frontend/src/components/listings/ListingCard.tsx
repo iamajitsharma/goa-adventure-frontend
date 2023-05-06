@@ -9,7 +9,7 @@ import { BsClock } from "react-icons/bs";
 interface CardProps {
   id?: string | number;
   title?: string;
-  image?: string | HTMLImageElement | StaticImageData;
+  image?: any;
   location?: string;
   duration?: string;
   review?: number;
