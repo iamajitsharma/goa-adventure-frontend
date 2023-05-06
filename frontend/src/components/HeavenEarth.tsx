@@ -17,9 +17,9 @@ const settings = {
   autoplay: true,
   autoplaySpeed: 1000,
   speed: 1700,
-  slidesToShow: 4,
-  slidesToScroll: 1,
-  initialSlide: 0.5,
+  slidesToShow: 3,
+  slidesToScroll: 0.5,
+  initialSlide: 2,
   nextArrow: <CarouselNextArrow />,
   prevArrow: <CarouselNextArrow />,
   pauseOnHover: true,
@@ -62,14 +62,48 @@ export default function HeavenEarth() {
       <div className="p-8 py-0">
         <div className="company-slider px-8 md-px-0 ">
           <Slider {...settings}>
-            <img src="assets/Rectangle_20.png" alt="Expedia logo" />
-            <img src="assets/Rectangle_21.png" alt="Expedia logo" />
-            <img src="assets/Rectangle_22.png" alt="Expedia logo" />
-            <img src="assets/Rectangle_20.png" alt="Expedia logo" />
-            <img src="assets/Rectangle_23.png" alt="Expedia logo" />
+            <img
+              src="assets/Rectangle_20.png"
+              alt="Expedia logo"
+              className="slick-image"
+            />
+            <img
+              src="assets/Rectangle_21.png"
+              alt="Expedia logo"
+              className="slick-image"
+            />
+            <img
+              src="assets/Rectangle_22.png"
+              alt="Expedia logo"
+              className="slick-image"
+            />
+            <img
+              src="assets/Rectangle_20.png"
+              alt="Expedia logo"
+              className="slick-image"
+            />
+            <img
+              src="assets/Rectangle_23.png"
+              alt="Expedia logo"
+              className="slick-image"
+            />
           </Slider>
         </div>
       </div>
+      <style jsx>{`
+        .slick-image {
+          border: 4px solid #fff;
+          border-radius: 5px;
+          margin: 0 10px;
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+        }
+        .slick-image:first-child,
+        .slick-image:last-child {
+          width: 50%;
+        }
+      `}</style>
     </>
   );
 }
