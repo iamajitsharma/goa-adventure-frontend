@@ -17,7 +17,7 @@ const settings = {
   autoplay: true,
   autoplaySpeed: 1000,
   speed: 1700,
-  slidesToShow: 3,
+  slidesToShow: 3.5,
   slidesToScroll: 0.5,
   initialSlide: 2,
   nextArrow: <CarouselNextArrow />,
