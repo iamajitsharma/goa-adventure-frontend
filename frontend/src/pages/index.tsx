@@ -15,8 +15,8 @@ export default function Index() {
       <ActivityListing />
       <WhyChoose />
       <TourListing />
-      <PartnerLogo />
       <BannerSlider />
+      <PartnerLogo />
       <Footer />
     </div>
   );

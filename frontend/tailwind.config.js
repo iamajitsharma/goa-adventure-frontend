@@ -18,6 +18,18 @@ module.exports = {
       backgroundColor: {
         blackOverlay: "rgba(0, 0 ,0 ,0.4)",
       },
+      backgroundImage: {
+        worldPattern: "url('../../public/assets/worldmap.svg')",
+      },
+      backgroundSize: ({ theme }) => ({
+        auto: "auto",
+        cover: "cover",
+        contain: "contain",
+        ...theme("spacing"),
+      }),
+      colors: {
+        mainColor: "#FF6100",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],
