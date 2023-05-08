@@ -1,7 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useState } from "react";
 import { Popover, Transition, Dialog } from "@headlessui/react";
-import Slider from "react-slick";
+
 import CarouselNextArrow from "./CarouselNextArrow";
 import TourCardImg from "../../public/assets/tourcard.jpeg";
 import {
@@ -96,7 +96,7 @@ export default function Hero() {
           {/* Hero card */}
           <LogIn setIsOpen={setIsOpen} isOpen={isOpen} />
 
-          <Transition appear show={isOpen} as={Fragment}>
+          {/* <Transition appear show={isOpen} as={Fragment}>
             <Dialog
               as="div"
               className="relative z-10"
@@ -292,7 +292,7 @@ export default function Hero() {
                 </div>
               </div>
             </Dialog>
-          </Transition>
+          </Transition> */}
 
           <div className="relative ">
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100 " />

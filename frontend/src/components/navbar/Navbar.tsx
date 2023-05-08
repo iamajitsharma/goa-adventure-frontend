@@ -32,7 +32,7 @@ export default function Navbar({ setIsOpen }: INavbar) {
             </a>
           </div>
 
-          <div className="hidden md:flex items-center justify-between md:flex-1 lg:w-0 hover:rounded-full hover:bg-gray-300 p-3 pr-6 py-2 ">
+          <div className="hidden md:flex items-center justify-between md:flex-1 lg:w-0 rounded-full :bg-gray-300 p-3 pr-6 py-2 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

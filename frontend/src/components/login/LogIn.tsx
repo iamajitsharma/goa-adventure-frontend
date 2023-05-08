@@ -1,5 +1,6 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Popover, Transition, Dialog } from "@headlessui/react";
+import { FaGoogle } from "react-icons/fa";
 interface ILogIn {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -9,6 +10,30 @@ export default function LogIn({ setIsOpen, isOpen }: ILogIn) {
   function closeModal() {
     setIsOpen(false);
   }
+  const [mouseX, setMouseX] = useState<number>(50);
+  const [mouseY, setMouseY] = useState<number>(50);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) * 100) / e.currentTarget.clientWidth;
+    const y = ((e.clientY - rect.top) * 100) / e.currentTarget.clientHeight;
+    setMouseX(x);
+    setMouseY(y);
+  };
+
+  const buttonStyle = {
+    "--mouse-x": mouseX,
+    "--mouse-y": mouseY,
+
+    backgroundSize: "200% 200%",
+    backgroundPosition: `calc((100% - ${mouseX}%) * 1%) calc((100% - ${mouseY}%) * 1%)`,
+    backgroundImage:
+      "radial-gradient(circle, rgba(252,141,47,1) 0%, rgba(255,49,91,1) 100%)",
+    cursor: "pointer",
+    border: "none",
+
+    fontFamily: `'Raleway', sans-serif`,
+  };
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -29,7 +54,7 @@ export default function LogIn({ setIsOpen, isOpen }: ILogIn) {
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             <Transition.Child
               as={Fragment}
-              enter="ease-out duration-400"
+              enter="ease-out duration-800"
               enterFrom="opacity-100 scale-100 -bottom-32"
               enterTo="opacity-100 scale-100 bottom-32"
               leave="ease-in duration-400 bottom-32"
@@ -83,7 +108,9 @@ export default function LogIn({ setIsOpen, isOpen }: ILogIn) {
                     </div>
                     <button
                       type="submit"
-                      className="bg-red-500 w-full p-4 rounded-xl"
+                      className="bg-red-500 w-full p-4 rounded-xl login-btn"
+                      style={buttonStyle}
+                      onMouseMove={handleMouseMove}
                     >
                       Continue
                     </button>
@@ -98,19 +125,13 @@ export default function LogIn({ setIsOpen, isOpen }: ILogIn) {
                       className=" w-full p-4 rounded-xl border-e border-s border-t border-b border-black my-2"
                     >
                       <div className="flex flex-row justify-between ">
-                        <div>
+                        <div className="">
                           {" "}
-                          <svg
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                            className="w-6 h-6 text-sky-500 scale-125 "
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
+                          <img
+                            src="google.svg"
+                            alt="Google Icon"
+                            className="w-6 h-6"
+                          />
                         </div>
                         <div className="text-black">Continue with Google</div>
                         <div></div>
@@ -125,38 +146,17 @@ export default function LogIn({ setIsOpen, isOpen }: ILogIn) {
                         <div>
                           {" "}
                           <svg
-                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
                             viewBox="0 0 24 24"
-                            className="w-6 h-6 text-sky-500 scale-125 "
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            className="w-6 h-6 text-black"
                           >
                             <path
-                              fillRule="evenodd"
-                              d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        </div>
-                        <div className="text-black">Continue with Apple</div>
-                        <div></div>
-                      </div>
-                    </button>
-
-                    <button
-                      type="submit"
-                      className=" w-full p-4 rounded-xl border-e border-s border-t border-b border-black my-2"
-                    >
-                      <div className="flex flex-row justify-between ">
-                        <div>
-                          {" "}
-                          <svg
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                            className="w-6 h-6 text-sky-500 scale-125 "
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                              clipRule="evenodd"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
                             />
                           </svg>
                         </div>
