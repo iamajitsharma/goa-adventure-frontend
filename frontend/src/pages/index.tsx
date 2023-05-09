@@ -17,7 +17,7 @@ export default function Index() {
       <TourListing />
       <BannerSlider />
       <PartnerLogo />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
