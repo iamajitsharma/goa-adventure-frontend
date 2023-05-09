@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Popover, Transition, Dialog } from "@headlessui/react";
 import { FaGoogle } from "react-icons/fa";
+import DropDown from "./DropDown";
 interface ILogIn {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -92,20 +93,35 @@ export default function LogIn({ setIsOpen, isOpen }: ILogIn) {
                     Welcome to Goa Adventures
                   </div>
                   <div>
-                    <div>
-                      <input
-                        className="rounded-t-md w-full focus:border-black focus:border-md mt-6 p-4"
+                    <div className="mt-4 h-10">
+                      {/* <input
+                        className="rounded-t-md w-full focus:border-black focus:border-md focus:border-b-0 mt-6 p-4"
                         type="text"
                         placeholder="Country/Region"
-                      />
+                      /> */}
+                      <DropDown />
                     </div>
-                    <div>
-                      <input
+
+                    {/* <input
                         type="text"
                         className="rounded-b-md w-full mb-2 p-4"
                         placeholder="Mobile Number"
+                      /> */}
+                    <div className="relative mb-4">
+                      <input
+                        type="text"
+                        id="floating_filled"
+                        className="block rounded-b-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-400  dark:bg-white  border-2 border-gray-400 appearance-none dark:text-gray-400 dark:border-gray-400 dark:border dark:focus:border-black  dark:focus:border-2 dark:focus:rounded-md focus:outline-none focus:ring-0  peer"
+                        placeholder=" "
                       />
+                      <label
+                        htmlFor="floating_filled"
+                        className="absolute text-sm text-black dark:text-black duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-black peer-focus:dark:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
+                      >
+                        Phone number
+                      </label>
                     </div>
+
                     <button
                       type="submit"
                       className="bg-red-500 w-full p-4 rounded-xl login-btn"
