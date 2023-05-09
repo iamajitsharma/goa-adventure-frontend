@@ -16,76 +16,80 @@ export default function Navbar({ setIsOpen }: INavbar) {
 
   return (
     <header>
-      <Popover className="relative bg-white left-28">
-        <div className="flex justify-between items-center max-w-7xl mx-4 px-4 py-3 sm:px-6 md:justify-start md:space-x-10 lg:px-2">
+      <Popover className="relative xl:bg-white bg-transparent ">
+        <div className="flex justify-between items-center mx-8 ml-4 px-4 py-3">
           {/* <div className="flex justify-start lg:w-0 lg:flex-1">
              
             </div> */}
-          <div className="hidden md:flex items-center justify-start md:flex-1 -translate-x-20">
+          <div className=" flex items-center justify-start flex-row xl:mr-32 xl:w-1/6">
             <a href="#">
               {/* <span className="sr-only">Goa Adventure</span> */}
               <img
-                className="h-8 w-auto sm:h-10"
+                className="h-8 xl:w-auto sm:h-10"
                 src="/assets/logo.svg"
                 alt="Goa Adventure logo"
               />
             </a>
           </div>
-
-          <div className="hidden md:flex items-center justify-between md:flex-1 lg:w-0 rounded-full :bg-gray-300 p-3 pr-6 py-2 ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="w-6 h-6 text-black scale-150"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-              />
-            </svg>
-
-            <a
-              href="#"
-              className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 cursor-pointer translate-x-2 "
-            >
-              Explore Destination
-            </a>
+          <div className="flex flex-row justify-center items-center xl:24 2xl:ml-32 w-4/6">
+            <div className="hidden md:flex items-center justify-center md:flex-1 lg:w-0 rounded-full :bg-gray-300 p-3 pr-6 py-2 ml-10 ">
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="w-6 h-6 text-black mx-2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 cursor-pointer translate-x-2 "
+                >
+                  Explore Destination
+                </a>
+              </div>
+            </div>
+            <div className="hidden md:flex items-center justify-center pl-16 md:flex-1 lg:w-0">
+              <a
+                href="#"
+                className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 cursor-pointer"
+              >
+                Tour Packages
+              </a>
+            </div>
+            <div className="hidden md:flex items-center justify-center px-8 md:flex-1 lg:w-0">
+              <a
+                href="#"
+                className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 cursor-pointer"
+              >
+                Things To Do
+              </a>
+            </div>
+            <div className="hidden md:flex items-center justify-start pl-6 md:flex-1 lg:w-0">
+              <a
+                href="#"
+                className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 cursor-pointer"
+              >
+                Help
+              </a>
+            </div>
           </div>
-          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            <a
-              href="#"
-              className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 cursor-pointer"
-            >
-              Tour Packages
-            </a>
-          </div>
-          <div className="hidden md:flex items-center justify-center md:flex-1 lg:w-0">
-            <a
-              href="#"
-              className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 cursor-pointer"
-            >
-              Things To Do
-            </a>
-          </div>
-          <div className="hidden md:flex items-center justify-start md:flex-1 lg:w-0">
-            <a
-              href="#"
-              className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 cursor-pointer"
-            >
-              Help
-            </a>
-          </div>
-          <div className="ml-28">
-            <Popover.Group as="nav" className="hidden md:flex space-x-10">
+          <div className="w-1/6 ">
+            <Popover.Group as="nav" className=" flex justify-start">
               {/* {navigation.map((item) => (
                 <a
                   key={item.name}
@@ -96,7 +100,7 @@ export default function Navbar({ setIsOpen }: INavbar) {
                 </a>
               ))} */}
 
-              <div className="flex items-center">
+              <div className="flex items-center justify-center lg:mr-6">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
