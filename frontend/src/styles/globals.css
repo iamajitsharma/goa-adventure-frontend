@@ -139,13 +139,28 @@ body {
   padding: 0 10px;
 }
 
-/*Image Gray Filter*/
+
 .img-filter {
   filter: grayscale(100%);
 }
 .img-filter:hover {
   transition: ease-in-out 0.3s;
   filter: grayscale(0%);
+}
+
+.login-btn {
+  --mouse-x: 50;
+  --mouse-y: 50;
+
+  
+
+  background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
+  background-image: radial-gradient(circle, rgba(252,141,47,0.95) 0%, rgba(241,37,75,1) 100%);
+  cursor: pointer;
+
+
+
+  font-family: 'Raleway', sans-serif;
 }
 
 .about-box {

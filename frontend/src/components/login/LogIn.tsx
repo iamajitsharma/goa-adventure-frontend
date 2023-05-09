@@ -28,7 +28,7 @@ export default function LogIn({ setIsOpen, isOpen }: ILogIn) {
     backgroundSize: "200% 200%",
     backgroundPosition: `calc((100% - ${mouseX}%) * 1%) calc((100% - ${mouseY}%) * 1%)`,
     backgroundImage:
-      "radial-gradient(circle, rgba(252,141,47,1) 0%, rgba(255,49,91,1) 100%)",
+      "radial-gradient(circle,rgb(215, 4, 102) 0%, rgba(255,49,91,1) 100%)",
     cursor: "pointer",
     border: "none",
 
