@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Popover, Transition, Dialog } from "@headlessui/react";
+import { RiMenu3Line } from "react-icons/ri";
 
 interface INavbar {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -132,7 +133,7 @@ export default function Navbar({ setIsOpen }: INavbar) {
                       )}
                     >
                       <div className="flex flex-row mx-2">
-                        <svg
+                        {/* <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
@@ -145,7 +146,8 @@ export default function Navbar({ setIsOpen }: INavbar) {
                             stroke-linejoin="round"
                             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                           />
-                        </svg>
+                        </svg> */}
+                        <RiMenu3Line className="w-6 h-6 ml-2 mr-2 my-2 scale-150  hover:text-gray-900 cursor-pointer" />
 
                         <div className="rounded-full bg-gray-300 mx-1">
                           <svg

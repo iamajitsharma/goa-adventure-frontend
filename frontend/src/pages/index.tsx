@@ -20,10 +20,6 @@ export default function Index() {
       <TourListing />
       <BannerSlider />
       <PartnerLogo />
-<<<<<<< HEAD
-=======
-      {/* <Footer /> */}
->>>>>>> 17dfbe132c449e54d57a654814ea44a494d939bd
     </div>
   );
 }
