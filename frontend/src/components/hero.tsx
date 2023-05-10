@@ -90,7 +90,6 @@ export default function Hero() {
 
   return (
     <div className="bg-white">
-      <Navbar setIsOpen={setIsOpen} />
       <main>
         <div>
           {/* Hero card */}

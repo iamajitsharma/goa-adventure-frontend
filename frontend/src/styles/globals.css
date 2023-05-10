@@ -42,16 +42,6 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 .company-slider .slick-track .slick-slide div {
   /* justify-content: center; */
   /* align-items: center; */
