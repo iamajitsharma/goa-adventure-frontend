@@ -4,7 +4,7 @@ import Heading from "../Heading";
 
 const ActivityListing = () => {
   return (
-    <section className="w-full py-4 bg-white">
+    <section className="w-screen lg:py-4 bg-white py-24">
       <Heading heading={"Popular Adventure Activities"} />
       <div className="grid grid-cols-2 gap-4 px-5 md:grid-cols-4 md:max-w-7xl mx-auto">
         {[0, 1, 2, 3, 4, 5, 6, 7].map((num) => (

@@ -54,12 +54,12 @@ const settings = {
 export default function HeavenEarth() {
   return (
     <>
-      <div className="text-center pb-8">
+      <div className="text-center pb-8 hidden lg:block">
         <p className="text-4xl titleFont">
           <Heading heading={"Heaven on the earth"} />
         </p>
       </div>
-      <div className="p-8 py-0">
+      <div className="p-8 py-0 hidden lg:block">
         <div className="company-slider px-8 md-px-0 ">
           <Slider {...settings}>
             <img

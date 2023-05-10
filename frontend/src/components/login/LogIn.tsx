@@ -38,7 +38,7 @@ export default function LogIn({ setIsOpen, isOpen }: ILogIn) {
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={() => closeModal()}>
+      <Dialog as="div" className="relative z-40" onClose={() => closeModal()}>
         <Transition.Child
           as={Fragment}
           enter="transition duration-4000"
@@ -56,15 +56,15 @@ export default function LogIn({ setIsOpen, isOpen }: ILogIn) {
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-800"
-              enterFrom="opacity-100 scale-100 -bottom-32"
-              enterTo="opacity-100 scale-100 bottom-32"
-              leave="ease-in duration-400 bottom-32"
+              enterFrom="opacity-100 scale-100  -bottom-24 md:-bottom-48 lg:-bottom-32"
+              enterTo="opacity-100 scale-100  bottom-24 md:bottom-48 lg:bottom-32"
+              leave="ease-in duration-400 bottom-24  md:-bottom-48 lg:bottom-32"
               leaveFrom="opacity-100 scale-100 "
               leaveTo="opacity-0 scale-100"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all absolute">
+              <Dialog.Panel className="w-10/12 md:w-3/6 -translate-x-2 translate-y-5 lg:w-full lg:max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all absolute">
                 <div>
-                  <header className="flex flex-col">
+                  <header className="flex flex-col ">
                     <div className="flex flex-row justify-between text-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

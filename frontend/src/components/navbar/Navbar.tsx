@@ -16,22 +16,27 @@ export default function Navbar({ setIsOpen }: INavbar) {
 
   return (
     <header>
-      <Popover className="relative xl:bg-white bg-transparent ">
-        <div className="flex justify-between items-center mx-8 ml-4 px-4 py-3">
+      <Popover className=" absolute -top-4 z-10 xl:bg-white bg-transparent xl:my-4">
+        <div className="flex justify-between items-center  mx-2 pl-4 xl:py-2 py-3 w-screen">
           {/* <div className="flex justify-start lg:w-0 lg:flex-1">
              
             </div> */}
-          <div className=" flex items-center justify-start flex-row xl:mr-32 xl:w-1/6">
+          <div className=" flex items-center justify-start flex-row lg:mr-32 lg:my-2 lg:w-2/6 xl:1/6 ">
             <a href="#">
               {/* <span className="sr-only">Goa Adventure</span> */}
               <img
-                className="h-8 xl:w-auto sm:h-10"
+                className="xl:h-8 lg:h-12 lg:w-auto h-16 hidden lg:flex "
                 src="/assets/logo.svg"
+                alt="Goa Adventure logo"
+              />
+              <img
+                className="xl:h-8 xl:w-auto h-16 w-32 flex lg:hidden scale-125"
+                src="/mobilelogo.svg"
                 alt="Goa Adventure logo"
               />
             </a>
           </div>
-          <div className="flex flex-row justify-center items-center xl:24 2xl:ml-32 w-4/6">
+          <div className="xl:flex xl:flex-row xl:justify-center xl:items-center xl:24 2xl:ml-32 xl:w-4/6 hidden">
             <div className="hidden md:flex items-center justify-center md:flex-1 lg:w-0 rounded-full :bg-gray-300 p-3 pr-6 py-2 ml-10 ">
               <div>
                 <svg
@@ -88,7 +93,7 @@ export default function Navbar({ setIsOpen }: INavbar) {
               </a>
             </div>
           </div>
-          <div className="w-1/6 ">
+          <div className="xl:w-1/6 ml-16 xl:ml-0 xl:pl-0 xl:-translate-x-6 pl-8 ">
             <Popover.Group as="nav" className=" flex justify-start">
               {/* {navigation.map((item) => (
                 <a
@@ -100,7 +105,7 @@ export default function Navbar({ setIsOpen }: INavbar) {
                 </a>
               ))} */}
 
-              <div className="flex items-center justify-center lg:mr-6">
+              <div className=" hidden xl:flex xl:items-center xl:justify-center xl:mr-6">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -117,7 +122,7 @@ export default function Navbar({ setIsOpen }: INavbar) {
                 </svg>
               </div>
 
-              <Popover className="relative">
+              <Popover className="relative scale-75">
                 {({ open }) => (
                   <>
                     <Popover.Button
@@ -141,6 +146,7 @@ export default function Navbar({ setIsOpen }: INavbar) {
                             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                           />
                         </svg>
+
                         <div className="rounded-full bg-gray-300 mx-1">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -169,7 +175,7 @@ export default function Navbar({ setIsOpen }: INavbar) {
                       leaveFrom="opacity-100 translate-y-0"
                       leaveTo="opacity-0 translate-y-1"
                     >
-                      <Popover.Panel className="absolute z-10 -ml-4 mt-3 transform  w-48 lg:max-w-xs lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
+                      <Popover.Panel className="absolute z-10 -ml-4 mt-3 transform -translate-x-1/4 scale-125 translate-y-1/6 w-36 xl:w-48 xl:max-w-xs xl:ml-0 xl:left-1/2 xl:-translate-x-1/2">
                         <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                           <div className="flex flex-col gap-6 bg-white p-3">
                             <a

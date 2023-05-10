@@ -7,10 +7,13 @@ import Hero from "@/components/hero";
 import ActivityListing from "@/components/listings/ActivityListing";
 import TourListing from "@/components/listings/TourListing";
 
+import MobileSlider from "@/components/MobileSlider";
+
 export default function Index() {
   return (
     <div>
       <Hero />
+      <MobileSlider />
       <HeavenEarth />
       <ActivityListing />
       <WhyChoose />
