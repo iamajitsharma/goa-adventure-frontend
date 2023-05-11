@@ -129,6 +129,14 @@
   padding: 0 10px;
 }
 
+<<<<<<< HEAD
+=======
+
+.slick-dots li button:before {
+  color: #ff0000; /* change the color to red */
+}
+
+>>>>>>> e50b9cb75969350bd7a1e67d532409cfd0b4c3c0
 .img-filter {
   filter: grayscale(100%);
 }
