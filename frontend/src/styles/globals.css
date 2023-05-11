@@ -129,7 +129,6 @@
   padding: 0 10px;
 }
 
-
 .img-filter {
   filter: grayscale(100%);
 }
@@ -142,15 +141,16 @@
   --mouse-x: 50;
   --mouse-y: 50;
 
-  
-
-  background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
-  background-image: radial-gradient(circle, rgba(252,141,47,0.95) 0%, rgba(241,37,75,1) 100%);
+  background-position: calc((100 - var(--mouse-x, 0)) * 1%)
+    calc((100 - var(--mouse-y, 0)) * 1%);
+  background-image: radial-gradient(
+    circle,
+    rgba(252, 141, 47, 0.95) 0%,
+    rgba(241, 37, 75, 1) 100%
+  );
   cursor: pointer;
 
-
-
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .about-box {
@@ -193,7 +193,6 @@
   border-right: 1px solid #dce0e0;
   overflow: hidden;
   cursor: pointer;
-    
 
   &:before {
     content: "";
@@ -209,12 +208,13 @@
   }
 }
 
-*, *:before, *:after {
-	box-sizing: border-box;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
 .select-option {
-  
   text-indent: 0.01px;
   text-overflow: "";
   display: block;
@@ -225,7 +225,6 @@
   border-radius: 2px;
   background-color: #fff;
   color: #565a5c;
-  
 
   &:focus {
     outline: none;
@@ -233,6 +232,5 @@
 }
 
 .container-dropdown:focus {
-outline: none;
- 
+  outline: none;
 }

@@ -1,27 +1,19 @@
 import React from "react";
-import dynamic from "next/dynamic";
 import Slider from "react-slick";
-const Activity = dynamic(() => import("./Activity"), {
-  ssr: false,
-});
-const TourCard = dynamic(() => import("./listings/ListingCard"), {
-  ssr: false,
-});
-const Heading = dynamic(() => import("./Heading"), {
-  ssr: false,
-});
+import LocationSlider from "./location/LocationSlider";
+import LocationImg from "../../public/assets/location.jpg";
 import CarouselNextArrow from "./CarouselNextArrow";
 
 const settings = {
   infinite: true,
-  autoplay: true,
+  autoplay: false,
   autoplaySpeed: 1000,
   speed: 1700,
-  slidesToShow: 3.5,
-  slidesToScroll: 0.5,
-  initialSlide: 2,
+  slidesToShow: 5,
+  slidesToScroll: 1,
   nextArrow: <CarouselNextArrow />,
   prevArrow: <CarouselNextArrow />,
+  initialSlide: 2,
   pauseOnHover: true,
   responsive: [
     {
@@ -51,59 +43,21 @@ const settings = {
   ],
 };
 
-export default function HeavenEarth() {
+const HeavenEarth = () => {
   return (
-    <>
-      <div className="text-center pb-8">
-        <p className="text-4xl titleFont">
-          <Heading heading={"Heaven on the earth"} />
-        </p>
+    <section>
+      <div className="md:max-w-7xl mx-auto bg-gray-300">
+        <Slider {...settings}>
+          <LocationSlider image={LocationImg} location="Ladakh" />
+          <LocationSlider image={LocationImg} location="Ladakh" />
+          <LocationSlider image={LocationImg} location="Ladakh" />
+          <LocationSlider image={LocationImg} location="Ladakh" />
+          <LocationSlider image={LocationImg} location="Ladakh" />
+          <LocationSlider image={LocationImg} location="Ladakh" />
+        </Slider>
       </div>
-      <div className="p-8 py-0">
-        <div className="company-slider px-8 md-px-0 ">
-          <Slider {...settings}>
-            <img
-              src="assets/Rectangle_20.png"
-              alt="Expedia logo"
-              className="slick-image"
-            />
-            <img
-              src="assets/Rectangle_21.png"
-              alt="Expedia logo"
-              className="slick-image"
-            />
-            <img
-              src="assets/Rectangle_22.png"
-              alt="Expedia logo"
-              className="slick-image"
-            />
-            <img
-              src="assets/Rectangle_20.png"
-              alt="Expedia logo"
-              className="slick-image"
-            />
-            <img
-              src="assets/Rectangle_23.png"
-              alt="Expedia logo"
-              className="slick-image"
-            />
-          </Slider>
-        </div>
-      </div>
-      <style jsx>{`
-        .slick-image {
-          border: 4px solid #fff;
-          border-radius: 5px;
-          margin: 0 10px;
-          width: 100%;
-          height: auto;
-          object-fit: contain;
-        }
-        .slick-image:first-child,
-        .slick-image:last-child {
-          width: 50%;
-        }
-      `}</style>
-    </>
+    </section>
   );
-}
+};
+
+export default HeavenEarth;
