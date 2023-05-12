@@ -177,7 +177,7 @@ export default function Navbar({ setIsOpen }: INavbar) {
                       leaveFrom="opacity-100 translate-y-0"
                       leaveTo="opacity-0 translate-y-1"
                     >
-                      <Popover.Panel className="absolute z-10 -ml-4 mt-3 transform -translate-x-1/4 scale-125 translate-y-1/6 w-36 xl:w-48 xl:max-w-xs xl:ml-0 xl:left-1/2 xl:-translate-x-1/2">
+                      <Popover.Panel className="absolute z-10 -ml-4 mt-3 transform -translate-x-1/4 scale-125 translate-y-1/6 w-36  xl:max-w-xs xl:ml-0 xl:left-1/2 xl:-translate-x-3/4">
                         <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                           <div className="flex flex-col gap-6 bg-white p-3">
                             <a
