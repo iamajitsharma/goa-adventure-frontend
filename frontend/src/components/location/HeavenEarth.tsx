@@ -1,12 +1,10 @@
 import React from "react";
 import Slider from "react-slick";
-import dynamic from "next/dynamic";
-import LocationSlider from "./location/LocationSlider";
+import LocationSlider from "./LocationSlider";
 import LocationImg from "../../public/assets/location.jpg";
-import CarouselNextArrow from "./CarouselNextArrow";
-const Heading = dynamic(() => import("./Heading"), {
-  ssr: false,
-});
+import CarouselNextArrow from "../CarouselNextArrow";
+import Heading from "../Heading";
+
 const settings = {
   infinite: true,
   autoplay: false,
@@ -49,12 +47,12 @@ const settings = {
 const HeavenEarth = () => {
   return (
     <>
-      <div className="text-center pb-8 hidden lg:block lg:translate-y-20">
+      <div className="text-center pb-8 hidden lg:block">
         <p className="text-4xl titleFont">
           <Heading heading={"Heaven on the earth"} />
         </p>
       </div>
-      <div className="p-8 py-0 hidden lg:block lg:mt-12">
+      <div className="p-8 py-0 hidden lg:block">
         <div className="company-slider px-8 md-px-0 ">
           <Slider {...settings}>
             <img

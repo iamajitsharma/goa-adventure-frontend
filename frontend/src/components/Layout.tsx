@@ -14,7 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      {/* <Navbar setIsOpen={setIsOpen} /> */}
+      <Navbar />
       {children}
       <Footer />
     </>

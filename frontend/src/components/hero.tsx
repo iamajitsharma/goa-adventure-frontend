@@ -1,7 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useState } from "react";
 import { Popover, Transition, Dialog } from "@headlessui/react";
-
+import { BsSearch } from "react-icons/bs";
 import CarouselNextArrow from "./CarouselNextArrow";
 import TourCardImg from "../../public/assets/tourcard.jpeg";
 import {
@@ -14,26 +14,19 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 import dynamic from "next/dynamic";
-import HeavenEarth from "../components/HeavenEarth";
+import HeavenEarth from "./location/HeavenEarth";
 import BannerSlider from "./featured/BannerSlider";
-
-const ThrillingActivity = dynamic(
-  () => import("../components/ThrillingActivity"),
-  {
-    ssr: false,
-  }
-);
 
 const ListingCard = dynamic(() => import("./listings/ListingCard"), {
   ssr: false,
 });
-const Navbar = dynamic(() => import("../components/navbar/Navbar"), {
+const Navbar = dynamic(() => import("./navbar/Navbar"), {
   ssr: false,
 });
-const LogIn = dynamic(() => import("../components/login/LogIn"), {
+const LogIn = dynamic(() => import("./login/LogIn"), {
   ssr: false,
 });
-const Heading = dynamic(() => import("../components/Heading"), {
+const Heading = dynamic(() => import("./Heading"), {
   ssr: false,
 });
 const Partners = dynamic(() => import("./featured/PartnerLogo"), {
@@ -90,19 +83,17 @@ export default function Hero() {
 
   return (
     <div className="xl:bg-white bg-transparent">
-      <Navbar setIsOpen={setIsOpen} />
       <main>
         <div>
           {/* Hero card */}
-          <LogIn setIsOpen={setIsOpen} isOpen={isOpen} />
 
-          <div className="relative  ">
-            <div className="absolute inset-x-0 bottom-0   lg:h-1/2 bg-gray-100 " />
-            <div className="w-screen lg:translate-y-16 ">
+          <div className="relative ">
+            <div className="absolute inset-x-0 bottom-0  lg:h-1/2 bg-gray-100 " />
+            <div className="w-screen">
               <div className="relative sm:overflow-hidden ">
                 <div className="absolute inset-0">
                   <img
-                    className="h-full w-screen  lg:flex hidden"
+                    className="h-full w-screen object-cover lg:flex hidden"
                     src="assets/hero.png"
                     alt="Hero Pic"
                   />
@@ -123,35 +114,17 @@ export default function Hero() {
                     </span>
                   </h1>
 
-                  <div className="w-fit ">
-                    <div className="lg:flex Lg:flex-row items-center justify-center text-black hidden text-sm  rounded-full  overflow-hidden">
-                      <div className="lg:flex lg:flex-row justify-center items-center bg-white w-100 h-100 ">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          className="w-6 h-6 ml-5"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                          />
-                        </svg>
-                        <span className="text-sm py-2.5 pl-2 pr-40">
-                          <input
-                            className="border-none w-auto border-transparent focus:border-transparent focus:ring-0"
-                            name="Location"
-                            type="text"
-                            placeholder=" Search Destination"
-                          />
-                        </span>
-                      </div>
-                      <div className="bg-orange-500 text-white py-5 pr-10 pl-4 w-100 h-200 overflow-hidden">
-                        <span>Search</span>
-                      </div>
+                  <div className="flex flex-row items-center justify-center text-black text-sm ">
+                    <div className="flex flex-row justify-center items-center bg-white rounded-md px-4">
+                      <BsSearch fontSize={20} />
+                      <span className="text-sm py-1 ">
+                        <input
+                          className="border-none w-auto border-transparent focus:border-transparent focus:ring-0 sm:w-72"
+                          name="Location"
+                          type="text"
+                          placeholder="Destination, Tours, Activites"
+                        />
+                      </span>
                     </div>
                     <div className="flex flex-row items-center justify-center text-black lg:hidden text-sm  overflow-hidden">
                       <div className="flex flex-row justify-center items-center bg-white rounded-md ">
