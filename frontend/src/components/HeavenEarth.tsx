@@ -1,9 +1,12 @@
 import React from "react";
 import Slider from "react-slick";
+import dynamic from "next/dynamic";
 import LocationSlider from "./location/LocationSlider";
 import LocationImg from "../../public/assets/location.jpg";
 import CarouselNextArrow from "./CarouselNextArrow";
-
+const Heading = dynamic(() => import("./Heading"), {
+  ssr: false,
+});
 const settings = {
   infinite: true,
   autoplay: false,
