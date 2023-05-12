@@ -8,6 +8,7 @@ export default function Heading({ heading }: IHeading) {
     <div
       className="
     text-gray-800
+
     text-lg
     md:text-2xl
     font-poppins

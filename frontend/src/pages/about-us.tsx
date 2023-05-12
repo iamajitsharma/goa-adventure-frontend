@@ -28,13 +28,7 @@ const AboutUs = () => {
             Who We Are
           </h2>
           <p className="text-sm py-2 leading-loose px-4">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos atque
-            eligendi architecto? Numquam perferendis sunt quisquam. Optio culpa,
-            consequuntur fugit perspiciatis beatae quidem ratione, facere, ullam
-            qui odio blanditiis aliquam! Molestias voluptatibus maxime
-            laudantium, a illo pariatur sed quaerat doloribus consequatur
-            voluptatum quo nam id in consectetur veniam at impedit ducimus
-            sequi?
+            Whereas disregard and contempt for human rights have resulted
           </p>
         </div>
         <div className="flex flex-row flex-wrap gap-2 md:flex-row items-center justify-around my-12 py-8 px-2">

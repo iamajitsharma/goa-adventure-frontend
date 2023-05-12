@@ -106,7 +106,7 @@ export default function Hero() {
 
                 <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8 flex flex-col items-center">
                   <h1 className="font-nunito text-center text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl m-7">
-                    <span className="lg:block text-white hidden">
+                    <span className="lg:block text-white hidden ">
                       Where will you find yourself
                     </span>
                     <span className="lg:hidden text-white block ">
