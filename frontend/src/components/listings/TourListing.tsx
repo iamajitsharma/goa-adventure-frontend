@@ -2,6 +2,7 @@ import Slider from "react-slick";
 import Heading from "../Heading";
 import ListingCard from "./ListingCard";
 import CarouselNextArrow from "../CarouselNextArrow";
+import CarouselPrevArrow from "../CarouselNextArrowTourPack";
 import TourCardImg from "../../../public/assets/tourcard.jpeg";
 
 const settings = {
@@ -13,7 +14,7 @@ const settings = {
   slidesToScroll: 1,
   initialSlide: 2,
   nextArrow: <CarouselNextArrow />,
-  prevArrow: <CarouselNextArrow />,
+  prevArrow: <CarouselPrevArrow />,
   pauseOnHover: true,
   responsive: [
     {
