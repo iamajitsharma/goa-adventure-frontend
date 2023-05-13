@@ -15,7 +15,7 @@ const ThingsToDo = () => {
   return (
     <div>
       <ImageSection />
-      <div className="m-8">
+      <div className="m-12">
         <PriceAndPlaceSection />
       </div>
     </div>
