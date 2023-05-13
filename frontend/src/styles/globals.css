@@ -5,7 +5,7 @@
 
 @layer components {
   .card {
-    @apply relative bg-white text-gray-700 max-w-xs h-fit shadow-lg rounded-lg overflow-hidden font-poppins;
+    @apply relative bg-white text-gray-700 max-w-xs h-fit shadow-lg rounded-lg overflow-hidden font-poppins mx-4;
   }
   .card-content {
     @apply px-2 py-2;
@@ -72,6 +72,15 @@
   .company-slider .slick-next {
     right: -29px;
   }
+}
+
+.slick-image-things-slider {
+  height: 100%;
+  object-fit: cover;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
 }
 
 .companyBanner-slider .slick-slider .slick-track > div,

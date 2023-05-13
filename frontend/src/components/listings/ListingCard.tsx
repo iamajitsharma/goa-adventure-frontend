@@ -17,6 +17,7 @@ interface CardProps {
   salePrice?: number;
   regularPrice?: number;
   discount?: string | number;
+  className?: string;
 }
 
 const ListingCard: React.FC<CardProps> = ({
@@ -30,6 +31,7 @@ const ListingCard: React.FC<CardProps> = ({
   salePrice,
   regularPrice,
   discount,
+  className,
 }) => {
   return (
     <div className="card">

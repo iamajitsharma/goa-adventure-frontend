@@ -4,6 +4,9 @@ import ListingCard from "./ListingCard";
 import CarouselNextArrow from "../CarouselNextArrow";
 import CarouselPrevArrow from "../CarouselNextArrowTourPack";
 import TourCardImg from "../../../public/assets/tourcard.jpeg";
+const handleEdge = (edge: string) => {
+  console.log(`Edge reached: ${edge}`);
+};
 
 const settings = {
   infinite: true,
@@ -16,6 +19,7 @@ const settings = {
   nextArrow: <CarouselNextArrow />,
   prevArrow: <CarouselPrevArrow />,
   pauseOnHover: true,
+  onEdge: (edge: string) => handleEdge(edge),
   responsive: [
     {
       breakpoint: 1024,
@@ -52,6 +56,7 @@ const TourListing = () => {
         <Slider {...settings}>
           {[0, 1, 2, 3, 4, 5, 6, 7].map((num) => (
             <ListingCard
+              key={num}
               title="Goa Tour Package"
               image={TourCardImg}
               location="Goa"
@@ -61,9 +66,27 @@ const TourListing = () => {
               salePrice={2500}
               regularPrice={5000}
               discount={`25%`}
+              // className={
+              //   currentSlide === num
+              //     ? "slick-current"
+              //     : num === 0
+              //     ? "slick-first"
+              //     : num === 7
+              //     ? "slick-last"
+              //     : ""
+              // }
             />
           ))}
         </Slider>
+        <style jsx>{`
+          .slick-slide:first-child::before {
+            padding-left: 0;
+          }
+
+          .slick-slide:last-child::after {
+            padding-right: 0;
+          }
+        `}</style>
       </div>
     </section>
   );
