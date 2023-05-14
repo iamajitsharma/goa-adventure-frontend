@@ -10,9 +10,11 @@ import {
 } from "react-icons/md";
 import Avatar from "./Avatar";
 import MenuItem from "./MenuItem";
+import useLoginModal from "@/hook/useLoginModal";
 
 const UserMenu = () => {
   const router = useRouter();
+  const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(false);
 
@@ -54,7 +56,7 @@ const UserMenu = () => {
               <MenuItem
                 icon={<MdLogin className="w-5 h-5" />}
                 label="Login"
-                onClick={() => setCurrentUser(true)}
+                onClick={loginModal.onOpen}
               />
               <MenuItem
                 icon={<MdOutlineAccountBox className="w-5 h-5" />}
