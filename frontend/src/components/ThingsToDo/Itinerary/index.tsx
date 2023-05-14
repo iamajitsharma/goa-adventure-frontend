@@ -16,9 +16,13 @@ export default function Itinerary() {
       time: "7:00 AM",
       text: "Pick up from Hotel",
     },
+    {
+      time: "7:00 AM",
+      text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus assumenda voluptatibus dignissimos iusto aut quia laudantium ea neque eum asperiores ab, mollitia rem ipsa culpa est magni repudiandae impedit? Temporibus.",
+    },
   ];
   return (
-    <div className="flex flex-row justify-center items-center mt-12 ml-20">
+    <div className="flex flex-row justify-center items-center my-12 ml-20">
       <div className="w-9/12  ">
         <div className="text-xl my-4">Itinerary</div>
         <div className="flex flex-col">
