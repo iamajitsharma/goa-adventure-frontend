@@ -2,7 +2,8 @@ import React from "react";
 
 import Slider from "react-slick";
 
-import CarouselNextArrow from "../../CarouselNextArrow";
+import LeftArrow from "./LeftArrow";
+import RightArrow from "./RightArrow";
 import Heading from "../../Heading";
 export default function HighLightsSlider() {
   const settings = {
@@ -12,8 +13,8 @@ export default function HighLightsSlider() {
     speed: 1700,
     slidesToShow: 2,
     slidesToScroll: 2,
-    nextArrow: <CarouselNextArrow />,
-    prevArrow: <CarouselNextArrow />,
+    nextArrow: <LeftArrow />,
+    prevArrow: <RightArrow />,
     initialSlide: 2,
     pauseOnHover: true,
     responsive: [

@@ -3,6 +3,8 @@ import React from "react";
 import Slider from "react-slick";
 
 import CarouselNextArrow from "../../CarouselNextArrow";
+import LeftArrow from "./LeftArrow";
+import RightArrow from "./RightArrow";
 import Heading from "../../Heading";
 export default function ThingsToDoSlider() {
   const settings = {
@@ -12,8 +14,8 @@ export default function ThingsToDoSlider() {
     speed: 1700,
     slidesToShow: 1,
     slidesToScroll: 1,
-    nextArrow: <CarouselNextArrow />,
-    prevArrow: <CarouselNextArrow />,
+    nextArrow: <LeftArrow />,
+    prevArrow: <RightArrow />,
     initialSlide: 2,
     pauseOnHover: true,
     responsive: [
