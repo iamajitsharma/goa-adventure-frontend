@@ -69,8 +69,11 @@ const databullet = [
 ];
 export default function Policies() {
   return (
-    <div className="flex flex-row justify-center items-center mt-12">
-      <div className="flex flex-col mt-8 w-9/12 justify-start">
+    <div className="flex flex-row justify-center items-center mt-12 mx-6">
+      <div className="flex flex-col mt-8 w-9/12 justify-start ">
+        <div className="text-2xl my-4 mb-12 mx-4 ">
+          Scuba Diving Grand Island Policies{" "}
+        </div>
         {data.map((d) => (
           <div>
             <Header heading={d.header} />

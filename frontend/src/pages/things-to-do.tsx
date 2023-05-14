@@ -7,6 +7,7 @@ import Overview from "../components/ThingsToDo/Overview";
 import Options from "../components/ThingsToDo/Options";
 import Reviews from "../components/ThingsToDo/Reviews";
 import Policies from "../components/ThingsToDo/Policies";
+import Faq from "../components/ThingsToDo/Faq";
 
 import Itinerary from "../components/ThingsToDo/Itinerary";
 const ThingsToDo = () => {
@@ -21,6 +22,7 @@ const ThingsToDo = () => {
         <Itinerary />
         <Reviews />
         <Policies />
+        <Faq />
       </div>
     </div>
   );
