@@ -237,3 +237,11 @@ width:0
 .container-dropdown:focus {
   outline: none;
 }
+
+
+/* things-to-do starts */
+.custom-shadow{
+  box-shadow: 6px 6px 2px -2px #dddddd;
+
+}
+/* things-to-do ends */

@@ -63,7 +63,7 @@ export default function Reviews() {
       <div className="flex flex-col mt-8 w-9/12">
         <div className="text-2xl my-4 mx-20">Review</div>
         {data.map((d) => (
-          <div className="mx-8 p-8 my-2 shadow-lg  shadow-gray-400">
+          <div className="mx-8 p-8 my-2 custom-shadow">
             <Header
               noOfStars={d.header.noOfStars}
               name={d.header.name}

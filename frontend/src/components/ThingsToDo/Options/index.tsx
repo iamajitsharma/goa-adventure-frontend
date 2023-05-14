@@ -5,7 +5,7 @@ export default function Options() {
   return (
     <div className="flex flex-row justify-center items-center mt-12">
       <div className="w-9/12 px-4">
-        <div className="flex flex-row justify-start pt-4 shadow-lg bg-white shadow-gray-400 w-full p-6">
+        <div className="flex flex-row justify-start pt-4 custom-shadow bg-white  w-full p-6">
           {lists.map((list) => (
             <OverviewButton btnTitle={list} />
           ))}

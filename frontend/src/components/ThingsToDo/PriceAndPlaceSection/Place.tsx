@@ -1,7 +1,7 @@
 import React from "react";
 export default function Place() {
   return (
-    <div className="flex flex-col justify-start mx-4  px-4 pt-4 shadow-lg shadow-gray-400">
+    <div className="flex flex-col justify-start mx-4  px-4 pt-4 custom-shadow">
       <div className="text-4xl">Scuba Diving In Grand Island</div>
 
       <div className="flex flex-row my-8 items-center  ">

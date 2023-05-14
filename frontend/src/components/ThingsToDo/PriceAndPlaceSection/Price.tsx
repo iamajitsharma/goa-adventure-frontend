@@ -1,7 +1,7 @@
 import React from "react";
 export default function Price() {
   return (
-    <div className="flex flex-col justify-start items-center mx-4  px-4 py-5 shadow-lg shadow-gray-400">
+    <div className="flex flex-col justify-start items-center mx-4  px-4 py-5 custom-shadow">
       <div className="flex flex-row text-4xl items-center">
         <span className="mr-4">$ 1350</span>
         <span className="text-orange-600 text-sm bg-orange-100 rounded-md px-2 py-2 ">
