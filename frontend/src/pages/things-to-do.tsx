@@ -6,6 +6,7 @@ import HighLights from "../components/ThingsToDo/HighLights";
 import Overview from "../components/ThingsToDo/Overview";
 import Options from "../components/ThingsToDo/Options";
 import Reviews from "../components/ThingsToDo/Reviews";
+import Policies from "../components/ThingsToDo/Policies";
 
 import Itinerary from "../components/ThingsToDo/Itinerary";
 const ThingsToDo = () => {
@@ -19,6 +20,7 @@ const ThingsToDo = () => {
         <Options />
         <Itinerary />
         <Reviews />
+        <Policies />
       </div>
     </div>
   );
