@@ -24,7 +24,7 @@ export default function Itinerary() {
   return (
     <div className="flex flex-row justify-center items-center my-12 ml-20">
       <div className="w-9/12  ">
-        <div className="text-xl my-4">Itinerary</div>
+        <div className="text-2xl my-4">Itinerary</div>
         <div className="flex flex-col">
           {data.map((d) => (
             <div className="flex flex-row items-center justify-start my-4 ">
