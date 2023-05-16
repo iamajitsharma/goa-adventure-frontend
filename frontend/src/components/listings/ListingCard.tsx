@@ -5,6 +5,7 @@ import { MdLocationPin } from "react-icons/md";
 import { BiRupee } from "react-icons/bi";
 import { AiFillStar, AiFillHeart, AiFillEye } from "react-icons/ai";
 import { BsClock } from "react-icons/bs";
+import Link from "next/link";
 
 interface CardProps {
   id?: string | number;
@@ -18,6 +19,7 @@ interface CardProps {
   regularPrice?: number;
   discount?: string | number;
   className?: string;
+  href?: URL;
 }
 
 const ListingCard: React.FC<CardProps> = ({
@@ -32,6 +34,7 @@ const ListingCard: React.FC<CardProps> = ({
   regularPrice,
   discount,
   className,
+  href,
 }) => {
   return (
     <div className="card">
@@ -68,7 +71,9 @@ const ListingCard: React.FC<CardProps> = ({
         </div>
 
         <div className="mt-5 flex w-full justify-center items-center gap-2">
-          <button className="button-primary">Book Now</button>
+          <button className="button-primary">
+            <Link href={href}>Book Now</Link>
+          </button>
           <button className="button-icon">
             <AiFillHeart className="text-sm md:text-lg" />
           </button>

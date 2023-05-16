@@ -1,12 +1,15 @@
 import React from "react";
-
+import LeftArrow from "../common/LeftArrow";
+import RightArrow from "../common/RightArrow";
 import Slider from "react-slick";
+import Image from "next/image";
 
-import CarouselNextArrow from "../../CarouselNextArrow";
-import LeftArrow from "../../common/LeftArrow";
-import RightArrow from "../../common/RightArrow";
-import Heading from "../../Heading";
-export default function ThingsToDoSlider() {
+const imageStyle = {
+  width: "100%",
+  height: "100%",
+};
+
+const DetailsPageSlider = () => {
   const settings = {
     infinite: true,
     autoplay: false,
@@ -47,16 +50,14 @@ export default function ThingsToDoSlider() {
   };
 
   return (
-    <>
-      <Slider {...settings}>
-        <img src="Rectangle_29.png" alt="Expedia logo" />
-        <img src="Rectangle_29.png" alt="Expedia logo" />
-        <img src="Rectangle_29.png" alt="Expedia logo" />
-        <img src="Rectangle_29.png" alt="Expedia logo" />
-        <img src="Rectangle_29.png" alt="Expedia logo" />
-        <img src="Rectangle_29.png" alt="Expedia logo" />
-        <img src="Rectangle_29.png" alt="Expedia logo" />
-      </Slider>
-    </>
+    <Slider {...settings} className="w-full h-[500px] object-cover">
+      <img src="/Rectangle_29.png" alt="" />
+      <img src="/Rectangle_29.png" alt="" />
+      <img src="/Rectangle_29.png" alt="" />
+      <img src="/Rectangle_29.png" alt="" />
+      <img src="/Rectangle_29.png" alt="" />
+    </Slider>
   );
-}
+};
+
+export default DetailsPageSlider;

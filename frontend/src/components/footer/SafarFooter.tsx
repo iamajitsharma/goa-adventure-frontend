@@ -9,8 +9,11 @@ const SafarFooter = () => {
       <FooterTitle title={"About Safar"} />
       <div>
         <ul className="flex flex-row gap-1 md:gap-2 md:flex-col ">
-          {footerNavigation.about.map((item) => (
-            <li className="text-gray-700 text-sm leading-loose font-poppins">
+          {footerNavigation.about.map((item, index) => (
+            <li
+              key={index}
+              className="text-gray-700 text-sm leading-loose font-poppins"
+            >
               <Link href={item.href}>{item.name}</Link>
             </li>
           ))}

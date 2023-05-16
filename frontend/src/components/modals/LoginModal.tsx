@@ -1,14 +1,9 @@
 import React, { useCallback, useState } from "react";
+import Input from "../common/inputs/Input";
 import Modal from "./Modal";
-import useLoginModal from "@/hook/useLoginModal";
 
 const LoginModal = () => {
-  const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
-
-  const onSubmitHandler = () => {
-    setIsLoading(true);
-  };
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -17,19 +12,9 @@ const LoginModal = () => {
       <input type="password" id="password" required />
     </div>
   );
-
   const footerContent = <div>Footer</div>;
-  return (
-    <Modal
-      isOpen={loginModal.isOpen}
-      title="Login"
-      actionLabel="Log In"
-      onSubmit={onSubmitHandler}
-      onClose={loginModal.onClose}
-      body={bodyContent}
-      footer={footerContent}
-    />
-  );
+
+  return <Modal title="Login" body={bodyContent} />;
 };
 
 export default LoginModal;

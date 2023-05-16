@@ -25,7 +25,7 @@ const Navbar = () => {
                 </div>
               </li>
               <li>
-                <Link href="/things-to-do">Things To Do</Link>
+                <Link href="/activity">Things To Do</Link>
               </li>
               <li>
                 <Link href="/tour-package">Tour Packages</Link>

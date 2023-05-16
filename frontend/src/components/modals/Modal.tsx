@@ -4,8 +4,8 @@ import Button from "../common/Button";
 
 interface ModalProps {
   isOpen?: boolean;
-  onClose: () => void;
-  onSubmit: () => void;
+  onClose?: () => void;
+  onSubmit?: () => void;
   title?: string;
   body?: React.ReactElement;
   footer?: React.ReactElement;
@@ -28,37 +28,6 @@ const Modal: React.FC<ModalProps> = ({
   secondaryActionLabel,
 }) => {
   const [showModal, setShowModal] = useState(isOpen);
-
-  useEffect(() => {
-    setShowModal(isOpen);
-  }, [isOpen]);
-
-  const handleClose = useCallback(() => {
-    if (disabled) {
-      return;
-    }
-
-    setShowModal(false);
-    setTimeout(() => {
-      onClose();
-    }, 300);
-  }, [onClose, disabled]);
-
-  const handleSubmit = useCallback(() => {
-    if (disabled) {
-      return;
-    }
-
-    onSubmit();
-  }, [onSubmit, disabled]);
-
-  const handleSecondaryAction = useCallback(() => {
-    if (disabled || !secondaryAction) {
-      return;
-    }
-
-    secondaryAction();
-  }, [secondaryAction, disabled]);
 
   if (!isOpen) {
     return null;
@@ -144,7 +113,6 @@ const Modal: React.FC<ModalProps> = ({
                     absolute
                     left-9
                   "
-                  onClick={handleClose}
                 >
                   <GrClose size={18} />
                 </button>
@@ -167,15 +135,10 @@ const Modal: React.FC<ModalProps> = ({
                     <Button
                       disabled={disabled}
                       label={secondaryActionLabel}
-                      onClick={handleSecondaryAction}
                       outline
                     />
                   )}
-                  <Button
-                    disabled={disabled}
-                    label={actionLabel}
-                    onClick={handleSubmit}
-                  />
+                  <Button disabled={disabled} label={actionLabel} />
                 </div>
                 {footer}
               </div>

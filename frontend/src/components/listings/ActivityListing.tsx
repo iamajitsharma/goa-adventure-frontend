@@ -18,6 +18,7 @@ const ActivityListing = () => {
             salePrice={2500}
             regularPrice={5000}
             discount={`25%`}
+            href="localhost"
           />
         ))}
       </div>
