@@ -5,7 +5,7 @@ import Slider from "react-slick";
 const TourCard = dynamic(() => import("../listings/ListingCard"), {
   ssr: false,
 });
-const Heading = dynamic(() => import("../Heading"), {
+const Heading = dynamic(() => import("../common/Heading"), {
   ssr: false,
 });
 const bannerSlider = {

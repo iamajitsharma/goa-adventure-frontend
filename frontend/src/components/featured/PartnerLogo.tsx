@@ -3,7 +3,7 @@ import airasia from "../../../public/airasia.png";
 import airbnb from "../../../public/airbnb.png";
 import expedia from "../../../public/expedia.png";
 import tripadvisor from "../../../public/airasia.png";
-import Heading from "../Heading";
+import Heading from "../common/Heading";
 import { partnerLogos } from "./partnerLogos";
 
 const PartnerLogo = () => {

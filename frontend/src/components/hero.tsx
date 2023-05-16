@@ -26,7 +26,7 @@ const Navbar = dynamic(() => import("./navbar/Navbar"), {
 const LogIn = dynamic(() => import("./login/LogIn"), {
   ssr: false,
 });
-const Heading = dynamic(() => import("./Heading"), {
+const Heading = dynamic(() => import("./common/Heading"), {
   ssr: false,
 });
 const Partners = dynamic(() => import("./featured/PartnerLogo"), {

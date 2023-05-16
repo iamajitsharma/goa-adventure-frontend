@@ -4,7 +4,7 @@ import Slider from "react-slick";
 
 import LeftArrow from "./LeftArrow";
 import RightArrow from "./RightArrow";
-import Heading from "../../Heading";
+import Heading from "../../common/Heading";
 export default function HighLightsSlider() {
   const settings = {
     infinite: true,

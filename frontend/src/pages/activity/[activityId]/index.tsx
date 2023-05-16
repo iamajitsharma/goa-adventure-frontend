@@ -1,14 +1,10 @@
 import React from "react";
 import { useRouter } from "next/router";
-import ImageSection from "@/components/ThingsToDo/ImgSection";
-import ActivityData from "@/data/ActivityData";
 import Image from "next/image";
 import DetailsPageSlider from "@/components/listings/DetailsPageSlider";
 import DetailsPagePricing from "@/components/listings/DetailsPagePricing";
-import Container from "@/components/Container";
+import Container from "@/components/common/Container";
 import ProductTitle from "@/components/listings/ProductTitle";
-import { MdLocationPin } from "react-icons/md";
-import { GrLocation } from "react-icons/gr";
 import Col from "@/components/common/Col";
 import Itinerary from "@/components/listings/Itinerary";
 import Button from "@/components/common/Button";
@@ -24,7 +20,6 @@ const ItineraryData = [
 const index = () => {
   const router = useRouter();
   const activityId = router.query.activityId;
-  const activity = ActivityData.find((activity) => activity.id === activityId);
 
   return (
     <section className="relative">

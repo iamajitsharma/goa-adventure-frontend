@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import Heading from "../Heading";
+import Heading from "../common/Heading";
 import ListingCard from "./ListingCard";
 import CarouselNextArrow from "../CarouselNextArrow";
 import CarouselPrevArrow from "../CarouselNextArrowTourPack";

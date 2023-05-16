@@ -1,6 +1,6 @@
 import ListingCard from "./ListingCard";
 import TourCardImg from "../../../public/assets/tourcard.jpeg";
-import Heading from "../Heading";
+import Heading from "../common/Heading";
 
 const ActivityListing = () => {
   return (

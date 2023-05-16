@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import LocationSlider from "./LocationSlider";
 import LocationImg from "../../public/assets/location.jpg";
 import CarouselNextArrow from "../CarouselNextArrow";
-import Heading from "../Heading";
+import Heading from "../common/Heading";
 
 const settings = {
   infinite: true,

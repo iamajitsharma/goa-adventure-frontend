@@ -7,7 +7,7 @@ import Link from "next/link";
 import Logo from "./Logo";
 import { GrLocation } from "react-icons/gr";
 import UserMenu from "./UserMenu";
-import Container from "../Container";
+import Container from "../common/Container";
 
 const Navbar = () => {
   const currentUser = null;
