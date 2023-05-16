@@ -32,6 +32,12 @@ module.exports = {
       }),
       colors: {
         mainColor: "#FF6100",
+        variantColor: "#FF9E4D",
+        variantLight: "rgba(251, 197, 151, 0.36)",
+        lightGray: "#F5F5F5",
+        textGray: "#CACACA",
+        textBlack: "#333333",
+        blackOverlay: "rgba(0, 0 ,0 ,0.7)",
       },
     },
   },

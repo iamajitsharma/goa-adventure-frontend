@@ -5,7 +5,7 @@ import PriceAndPlaceSection from "../components/ThingsToDo/PriceAndPlaceSection"
 import HighLights from "../components/ThingsToDo/HighLights";
 import Overview from "../components/ThingsToDo/Overview";
 import Options from "../components/ThingsToDo/Options";
-import Reviews from "../components/ThingsToDo/Reviews";
+import Reviews from "../components/Reviews/dex";
 import Policies from "../components/ThingsToDo/Policies";
 import Faq from "../components/ThingsToDo/Faq";
 

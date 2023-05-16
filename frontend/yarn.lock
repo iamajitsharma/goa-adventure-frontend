@@ -1069,6 +1069,11 @@
   dependencies:
     "picomatch" "^2.2.1"
 
+"remixicon@^3.2.0":
+  "integrity" "sha512-ADh4EQE4UGtm9GHqD+TIfVp1b0zeWso6efaMAnejdB6/7Z1W02Ka5K8khQaz+LNgIqC6dSZxCvXMWNalYWHiNQ=="
+  "resolved" "https://registry.npmjs.org/remixicon/-/remixicon-3.2.0.tgz"
+  "version" "3.2.0"
+
 "resize-observer-polyfill@^1.5.0":
   "integrity" "sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg=="
   "resolved" "https://registry.npmjs.org/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz"

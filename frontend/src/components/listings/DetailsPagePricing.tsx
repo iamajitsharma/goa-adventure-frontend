@@ -1,17 +1,33 @@
 import React from "react";
 import Button from "../common/Button";
 
-const DetailsPagePricing = () => {
+interface SinglePriceProps {
+  regularPrice: string | number;
+  salePrice: string | number;
+  discount: string | number;
+  onClick: () => void;
+}
+
+const DetailsPagePricing: React.FC<SinglePriceProps> = ({
+  regularPrice,
+  salePrice,
+  discount,
+  onClick,
+}) => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-row items-center gap-2 justify-center">
         <span className="text-base font-medium line-through text-gray-500/80">
-          2500
+          ₹{regularPrice}
         </span>
-        <span className="text-2xl font-bold text-slate-800/80">Rs1350</span>
-        <button className="p-0.5 bg-yellow-300/70">40% off</button>
+        <span className="text-2xl font-bold text-slate-800/80">
+          ₹{salePrice}
+        </span>
+        <button className="p-1 bg-variantLight text-variantColor font-medium rounded-md">
+          {discount}
+        </button>
       </div>
-      <Button label="Book Now" onClick={() => {}} />
+      <Button label="Book Now" onClick={onClick} />
     </div>
   );
 };
