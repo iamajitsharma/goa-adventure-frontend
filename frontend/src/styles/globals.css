@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -27,50 +27,11 @@
     md:text-sm
     md:py-2;
   }
-}
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  .main_layout {
+    @apply bg-neutral-100 md:col-span-3 md:p-4 p-1;
   }
-}
-
-/*  */
-/* .company-slider .slick-track .slick-slide div img {
-  width: 90% !important;
-  height: 100%;
-  margin: auto;
-}
-.company-slider .slick-prev {
-  left: -45px;
-  z-index: 10;
-
-  transform: scale(3);
-}
-.company-slider .slick-next {
-  right: 10px;
-
-  z-index: 10;
-  transform: scale(3);
-} */
-
-@media only screen and (max-width: 600px) {
-  .company-slider .slick-track .slick-slide div {
-    width: auto;
-  }
-  .company-slider .slick-prev {
-    left: -60px;
-  }
-  .company-slider .slick-next {
-    right: -29px;
+  .sidebar_layout {
+    @apply p-4;
   }
 }
 
@@ -83,54 +44,9 @@
   flex-grow: 1;
 }
 
-.companyBanner-slider .slick-slider .slick-track > div,
-.companyBanner-slider .slick-slider .slick-track > div + div {
-  height: 344px;
-  position: relative;
-}
-.companyBanner-slider .slick-slider .slick-track > div + div img {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.companyBanner-slider .slick-prev {
-  left: 20px;
-}
-.companyBanner-slider .slick-next {
-  right: 30px;
-}
-.companyBanner-slider .slick-slide img {
-  width: 100%;
-}
-.slick-prev:before,
-.slick-next:before {
-
-width:0
-}
-
-.companyBanner-slider .slick-slider .slick-track > div,
-.companyBanner-slider .slick-slider .slick-track > div + div {
-  height: 500px;
-  position: relative;
-}
-.companyBanner-slider .slick-next {
-  right: -30px;
-}
-.companyBanner-slider .slick-prev {
-  left: -30px;
-}
-.companyBanner-slider .slick-slider .slick-track > div + div img {
-  width: 70%;
-}
-
 .slick-slide {
   padding: 0 10px;
 }
-
 
 .img-filter {
   filter: grayscale(100%);
@@ -139,109 +55,3 @@ width:0
   transition: ease-in-out 0.3s;
   filter: grayscale(0%);
 }
-
-.login-btn {
-  --mouse-x: 50;
-  --mouse-y: 50;
-
-  background-position: calc((100 - var(--mouse-x, 0)) * 1%)
-    calc((100 - var(--mouse-y, 0)) * 1%);
-  background-image: radial-gradient(
-    circle,
-    rgba(252, 141, 47, 0.95) 0%,
-    rgba(241, 37, 75, 1) 100%
-  );
-  cursor: pointer;
-
-  font-family: "Raleway", sans-serif;
-}
-
-.about-box {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  padding: 0.5rem;
-  text-align: center;
-  padding: 1rem;
-  border-radius: 10px;
-  background: #ffffff;
-  position: relative;
-  z-index: 1;
-  transition: all 0.5s ease-in-out;
-  overflow: hidden;
-}
-
-.about-box::before {
-  content: "";
-  position: absolute;
-  background-color: #cbe0fb;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  top: 100%;
-  transition: all 0.5s;
-  z-index: -1;
-}
-
-.about-box:hover::before {
-  background-color: #ff6100;
-  top: 0;
-  border-radius: 0px;
-}
-
-.select-dropdown {
-  position: relative;
-  display: block;
-  width: 100%;
-  border-radius: 2px;
-  border-right: 1px solid #dce0e0;
-  overflow: hidden;
-  cursor: pointer;
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: 15px;
-    right: 12px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 8px 6px 0 6px;
-    border-color: #b7babd transparent transparent transparent;
-    pointer-events: none;
-  }
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-.select-option {
-  text-indent: 0.01px;
-  text-overflow: "";
-  display: block;
-  width: 110%;
-  padding: 8px 2em 8px 10px;
-  transition: border-color 0.2s;
-  border: 1px solid #dce0e0;
-  border-radius: 2px;
-  background-color: #fff;
-  color: #565a5c;
-
-  &:focus {
-    outline: none;
-  }
-}
-
-.container-dropdown:focus {
-  outline: none;
-}
-
-
-/* things-to-do starts */
-.custom-shadow{
-  box-shadow: 5px 8px 8px 3px #dddddd;
-
-}
-/* things-to-do ends */

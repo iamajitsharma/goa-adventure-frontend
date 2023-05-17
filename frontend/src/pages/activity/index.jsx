@@ -2,7 +2,7 @@ import React from "react";
 import ListingCard from "../../components/listings/ListingCard";
 import Image from "next/image";
 import ActivityCover from "../../../public/assets/activityCover.png";
-import Container from "../../components/Container";
+import Container from "../../components/common/Container";
 import ActivityData from "../../data/ActivityData.ts";
 
 const index = () => {

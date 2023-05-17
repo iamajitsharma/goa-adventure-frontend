@@ -46,10 +46,8 @@ export default function HighLightsSlider() {
   };
 
   return (
-    <div className="flex flex-col justify-start  mx-4 px-4 pt-4 custom-shadow bg-gray-100 ">
-      <div className="text-md mx-10">
-        Scuba Diving In Grand Island Highlights
-      </div>
+    <div className="flex flex-col justify-start custom-shadow bg-gray-100">
+      <div className="text-md">Scuba Diving In Grand Island Highlights</div>
       <div className="mx-12">
         {" "}
         <Slider {...settings}>

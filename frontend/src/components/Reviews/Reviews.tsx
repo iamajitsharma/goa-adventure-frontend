@@ -20,7 +20,7 @@ const Reviews: React.FC<ReviewProps> = ({
   review,
 }) => {
   return (
-    <div className="shadow-lg p-4">
+    <div className="shadow-md p-4 bg-white rounded-md mt-4">
       <div className="flex flex-row items-center gap-4">
         <Image
           src={profileImg}
@@ -41,7 +41,7 @@ const Reviews: React.FC<ReviewProps> = ({
         </div>
       </div>
       <div className="pt-4">
-        <p>{review}</p>
+        <p className="text-sm text-textBlack leading-loose">{review}</p>
       </div>
       <div className="flex flex-row items-center gap-4 pt-6">
         <img src={src} alt="" className="w-[100px] h-[100px] rounded-md" />

@@ -19,14 +19,14 @@ const DetailsPageSlider = () => {
     slidesToScroll: 1,
     nextArrow: <LeftArrow />,
     prevArrow: <RightArrow />,
-    initialSlide: 2,
+    initialSlide: 1,
     pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
           dots: false,
         },
@@ -34,9 +34,9 @@ const DetailsPageSlider = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
         },
       },
       {
@@ -50,12 +50,10 @@ const DetailsPageSlider = () => {
   };
 
   return (
-    <Slider {...settings} className="w-full h-[500px] object-cover">
-      <img src="/Rectangle_29.png" alt="" />
-      <img src="/Rectangle_29.png" alt="" />
-      <img src="/Rectangle_29.png" alt="" />
-      <img src="/Rectangle_29.png" alt="" />
-      <img src="/Rectangle_29.png" alt="" />
+    <Slider {...settings} className="object-cover h-full">
+      {[0, 1, 3, 4, 5, 6, 7].map((item, index) => (
+        <img src="/Rectangle_29.png" alt="" />
+      ))}
     </Slider>
   );
 };

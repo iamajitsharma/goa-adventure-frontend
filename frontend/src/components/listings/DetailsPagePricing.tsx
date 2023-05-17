@@ -15,7 +15,7 @@ const DetailsPagePricing: React.FC<SinglePriceProps> = ({
   onClick,
 }) => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
       <div className="flex flex-row items-center gap-2 justify-center">
         <span className="text-base font-medium line-through text-gray-500/80">
           ₹{regularPrice}

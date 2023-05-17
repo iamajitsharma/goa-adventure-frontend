@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import DetailsPageSlider from "@/components/listings/DetailsPageSlider";
@@ -9,6 +9,9 @@ import Col from "@/components/common/Col";
 import Itinerary from "@/components/listings/Itinerary";
 import Button from "@/components/common/Button";
 import Reviews from "@/components/Reviews/Reviews";
+import HighLightsSlider from "@/components/ThingsToDo/HighLights/HighLightsSlider";
+import Overviews from "@/components/listings/Overviews";
+import Accordion from "@/components/common/Accordion";
 
 const ItineraryData = [
   { time: "7:00AM", itineray: "Pick Up & Drop Off" },
@@ -17,172 +20,139 @@ const ItineraryData = [
   { time: "10:00AM", itineray: "Pick Up & Drop Off" },
 ];
 
+const description =
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore minus ipsam voluptatum culpa magni dolor reiciendis modi soluta nostrum iste consequuntur vel, accusamus fugit expedita rerum. Temporibus nihil non perspiciatis! Necessitatibus amet, possimus unde ut est id reiciendis ipsa nemo similique vitae architecto aliquid non repudiandae accusantium quo atque obcaecati maxime doloribus impedit culpa. Laudantium explicabo consectetur reprehenderit nostrum officia? Ipsam reprehenderit quo nobis facere, illum deserunt atque quaerat optio ipsum sint iusto ex incidunt assumenda nulla deleniti natus laborum animi vitae, ut quae ea non. Quasi quaerat non quos? Deleniti voluptas harum, ipsam mollitia minus culpa ut obcaecati deserunt? Error veniam quasi fugiat quia rerum deserunt, assumenda molestias iusto ratione quaerat. Illum suscipit illo dolor, eligendi ex itaque consectetur. Quaerat incidunt nemo dicta voluptatem non commodi ab reprehenderit eos vel, aperiam culpa at mollitia! Esse qui, quia nam corporis optio aspernatur pariatur autem incidunt aliquam beatae, totam assumenda quam. Asperiores consequatur veritatis placeat alias rem animi molestias aperiam voluptatem sed distinctio! Pariatur provident voluptatem, nisi ipsum dolorem nulla. Officiis, dolores repellat cupiditate quod laudantium quisquam ipsum consequatur aspernatur corporis!";
 const index = () => {
   const router = useRouter();
   const activityId = router.query.activityId;
 
   return (
-    <section className="relative">
+    <>
       {/* Product Slider Start */}
-      <div className="grid grid-cols-4 gap-2 items-center text-center justify-items-stretch h-[500px]">
-        <div className="h-full">
-          <Image
+      <div className="grid grid-cols-4 gap-1 items-center text-center justify-items-stretch md:min-h-full">
+        <div className="">
+          <img
             src="/Things-To-Do1.png"
-            width={100}
-            height={100}
             alt=""
             className="object-cover w-full h-full"
           />
         </div>
-        <div className="row-span-2 col-span-2 h-full">
-          <DetailsPageSlider />
+        <div className="row-span-2 col-span-2 w-full h-full">
+          <img
+            src="/Rectangle_29.png"
+            alt=""
+            className="object-cover h-full w-full"
+          />
         </div>
-        <div className="h-full">
-          <Image
+        <div className="">
+          <img
             src="/Things-To-Do1.png"
-            width={100}
-            height={100}
             alt=""
             className="object-cover w-full h-full"
           />
         </div>
-        <div className=" h-full">
-          <Image
+        <div className="">
+          <img
             src="/Things-To-Do1.png"
-            width={100}
-            height={100}
             alt=""
             className="object-cover w-full h-full"
           />
         </div>
-        <div className=" h-full">
-          <Image
+        <div className="">
+          <img
             src="/Things-To-Do1.png"
-            width={100}
-            height={100}
             alt=""
             className="object-cover w-full h-full"
           />
         </div>
       </div>
       {/* Product Slider End */}
-      <Container className="mt-20">
-        <div className="flex flex-col md:flex-row items-center gap-4">
-          <div className="w-full md:w-9/12 md:p-4 md:shadow-lg">
-            <div className="flex flex-col gap-3">
-              <ProductTitle h1={true} title="Scuba Diving Grand Island" />
-              <div className="flex flex-row items-center gap-4">
-                <span className="flex flex-row items-center gap-2">
-                  <i className="ri-map-pin-line text-mainColor text-2xl"></i>
-                  Grand Island
-                </span>
-                <span className="flex flex-row items-center gap-2">
-                  <i className="ri-star-fill text-2xl text-yellow-400"></i>
-                  4.5
-                </span>
-                <button className="bg-green-600/80 text-white text-sm p-2 rounded-full">
-                  450 reviews
-                </button>
+      {/* Product Title & Pricing Section Start */}
+      <section className="bg-neutral-100  font-poppins">
+        <Container>
+          <div className="grid md:grid-cols-4 gap-4 grid-flow-row-dense">
+            <div className="main_layout">
+              {/* Product Title Section */}
+              <div className="bg-white shadow-sm p-4 rounded-md">
+                <ProductTitle h1 title="Scuba Diving Grand Island" />
+                <div className="flex flex-row items-center gap-6 py-4">
+                  <span className="flex flex-row items-center gap-2">
+                    <i className="ri-map-pin-line text-mainColor text-2xl"></i>
+                    Grand Island
+                  </span>
+                  <span className="flex flex-row items-center gap-2">
+                    <i className="ri-star-fill text-2xl text-yellow-400"></i>
+                    4.5
+                  </span>
+                  <button className="bg-green-600/80 text-white text-sm p-2 rounded-full">
+                    450 reviews
+                  </button>
+                </div>
+              </div>
+              {/* Product Title Section End */}
+              {/* Overview Section Start */}
+              <div className="bg-white shadow-sm p-4 rounded-md mt-4">
+                <ProductTitle h2 title="Scuba Diving Overview" />
+                <Overviews description={description} />
+              </div>
+              {/* Overview Section End */}
+              {/* Acitivity Navigation   */}
+              <div className="bg-white shadow-sm p-4 rounded-md mt-4">
+                <div className="flex flex-row items-center gap-4">
+                  <Button outline label="Itinerary" onClick={() => {}} />
+                  <Button outline label="Review" onClick={() => {}} />
+                  <Button outline label="Policies" onClick={() => {}} />
+                  <Button outline label="FAQ" onClick={() => {}} />
+                </div>
+              </div>
+              {/*Itinerary*/}
+              <div className="bg-white shadow-md p-4 rounded-md mt-4">
+                <ProductTitle h4 title="Scuba Diving Grand Island Itinerary" />
+                {ItineraryData.map((item, index) => (
+                  <Itinerary
+                    key={index}
+                    timeSlot={item.time}
+                    itinerary={item.itineray}
+                  />
+                ))}
+              </div>
+              {/* Reviews Section Start      */}
+              {[0, 1, 2].map((item, index) => (
+                <Reviews
+                  key={index}
+                  profileImg={"/assets/placeholder.jpg"}
+                  reviewer="Ajit Sharma"
+                  reviewDate="11-Dec-2022"
+                  review="Purchase Universal Studios Singapore tickets and enter a world in Resorts World Sentosa where the worlds of blockbuster films and their iconic characters come to life! In this wonderful theme park, you and your companions can experience the thrills of cutting-edge rides, shows, and attractions based on movies and television shows like Puss In Boots’ Giant Journey, Battlestar G"
+                />
+              ))}
+
+              <div className="bg-white shadow-md p-4 rounded-md mt-4">
+                {[0, 1, 2, 3, 4].map((item, index) => (
+                  <Accordion
+                    key={index}
+                    title="Why Scuba Diving Is Famous"
+                    content="Answer is here"
+                  />
+                ))}
+              </div>
+            </div>
+            {/* Main Content End       */}
+            {/* Sidebar Start */}
+            <div className="sidebar_layout">
+              <div className="w-full shadow-lg p-4 rounded-md bg-white">
+                <DetailsPagePricing
+                  regularPrice="2500"
+                  salePrice={1350}
+                  discount={"40% off"}
+                  onClick={() => {}}
+                />
               </div>
             </div>
           </div>
-          <div className="w-full bottom-0 inset-x-0 md:w-3/12 shadow-lg p-4 rounded-md">
-            <DetailsPagePricing
-              regularPrice="2500"
-              salePrice={1350}
-              discount={"40% off"}
-              onClick={() => {}}
-            />
-          </div>
-        </div>
-      </Container>
-      {/* Overview Section Start */}
-      <Container className="flex flex-col md:flex-row items-start gap-4 w-full">
-        <Col col3 className="shadow-md p-2">
-          <ProductTitle h2={true} title="Scuba Diving Grand Island Overview" />
-          <div className="mt-4">
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-              labore id atque dolore porro esse molestiae quis odit magni
-              expedita numquam deserunt laborum, cum saepe nobis ex. Sunt, ab
-              tempora. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Tenetur labore id atque dolore porro esse molestiae quis odit
-              magni expedita numquam deserunt laborum, cum saepe nobis ex. Sunt,
-              ab tempora. Lorem, ipsum dolor sit amet consectetur adipisicing
-              elit. Tenetur labore id atque dolore porro esse molestiae quis
-              odit magni expedita numquam deserunt laborum, cum saepe nobis ex.
-              Sunt, ab tempora. Lorem, ipsum dolor sit amet consectetur
-              adipisicing elit. Tenetur labore id atque dolore porro esse
-              molestiae quis odit magni expedita numquam deserunt laborum, cum
-              saepe nobis ex. Sunt, ab tempora. elit. Tenetur labore id atque
-              dolore porro esse molestiae quis odit magni expedita numquam
-              deserunt laborum, cum saepe nobis ex. Sunt, ab tempora. Lorem,
-              ipsum dolor sit amet consectetur adipisicing elit. Tenetur labore
-              id atque dolore porro esse molestiae quis odit magni expedita
-              numquam deserunt laborum, cum saepe nobis ex. Sunt, ab tempora.
-            </p>
-          </div>
-        </Col>
-        <Col col1>
-          <div className="w-full p-4">
-            <h4 className="w-full bg-gray-500/60 text-black text-base font-medium p-2 rounded-md">
-              Inclusion
-            </h4>
-            <ul className="pt-4 leading-loose text-sm font-medium text-textBlack list-disc pl-4">
-              <li>Scuba Diving Grand Island</li>
-              <li>Scuba Diving Grand Island</li>
-              <li>Scuba Diving Grand Island</li>
-              <li>Scuba Diving Grand Island</li>
-            </ul>
-          </div>
-          <div className="w-full p-4">
-            <h4 className="w-full bg-gray-500/60 text-black text-base font-medium p-2 rounded-md">
-              Exclusion
-            </h4>
-            <ul className="pt-4 leading-loose text-sm font-medium text-textBlack list-disc pl-4">
-              <li>Scuba Diving Grand Island</li>
-              <li>Scuba Diving Grand Island</li>
-              <li>Scuba Diving Grand Island</li>
-              <li>Scuba Diving Grand Island</li>
-            </ul>
-          </div>
-        </Col>
-      </Container>
-      {/* Overview Section End */}
-      {/* Itinerary Section Start */}
-      <Container>
-        <Col col3 className="shadow-lg p-4">
-          <div className="flex flex-row items-center gap-4">
-            <Button outline label="Itinerary" onClick={() => {}} />
-            <Button outline label="Review" onClick={() => {}} />
-            <Button outline label="Policies" onClick={() => {}} />
-            <Button outline label="FAQ" onClick={() => {}} />
-          </div>
-          <div className="pt-8">
-            <ProductTitle h4 title="Scuba Diving Grand Island Itinerary" />
-            {ItineraryData.map((item, index) => (
-              <Itinerary
-                key={index}
-                timeSlot={item.time}
-                itinerary={item.itineray}
-              />
-            ))}
-          </div>
-        </Col>
-      </Container>
-      {/* Itinerary Section End */}
-
-      <Container>
-        <Col col3>
-          <Reviews
-            profileImg={"/assets/placeholder.jpg"}
-            reviewer="Ajit Sharma"
-            reviewDate="11-Dec-2022"
-            review="Purchase Universal Studios Singapore tickets and enter a world in Resorts World Sentosa where the worlds of blockbuster films and their iconic characters come to life! In this wonderful theme park, you and your companions can experience the thrills of cutting-edge rides, shows, and attractions based on movies and television shows like Puss In Boots’ Giant Journey, Battlestar G"
-          />
-        </Col>
-      </Container>
-    </section>
+        </Container>
+      </section>
+    </>
   );
 };
 
