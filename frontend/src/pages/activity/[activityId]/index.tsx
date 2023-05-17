@@ -12,6 +12,7 @@ import Reviews from "@/components/Reviews/Reviews";
 import HighLightsSlider from "@/components/ThingsToDo/HighLights/HighLightsSlider";
 import Overviews from "@/components/listings/Overviews";
 import Accordion from "@/components/common/Accordion";
+import { AiFillStar } from "react-icons/ai";
 
 const ItineraryData = [
   { time: "7:00AM", itineray: "Pick Up & Drop Off" },
@@ -117,17 +118,39 @@ const index = () => {
                 ))}
               </div>
               {/* Reviews Section Start      */}
-              {[0, 1, 2].map((item, index) => (
-                <Reviews
-                  key={index}
-                  profileImg={"/assets/placeholder.jpg"}
-                  reviewer="Ajit Sharma"
-                  reviewDate="11-Dec-2022"
-                  review="Purchase Universal Studios Singapore tickets and enter a world in Resorts World Sentosa where the worlds of blockbuster films and their iconic characters come to life! In this wonderful theme park, you and your companions can experience the thrills of cutting-edge rides, shows, and attractions based on movies and television shows like Puss In Boots’ Giant Journey, Battlestar G"
-                />
-              ))}
-
               <div className="bg-white shadow-md p-4 rounded-md mt-4">
+                <div className="flex flex-row items-center gap-4 py-4">
+                  <div className="text-5xl font-bold">
+                    4.8<span className="text-lg font-medium">/5</span>
+                  </div>
+                  <div className="flex flex-row items-center gap-2">
+                    <span className="flex flex-row items-center">
+                      {[0, 1, 2, 3, 4].map((item, index) => (
+                        <AiFillStar
+                          key={index}
+                          className="w-7 h-7 text-yellow-500/80"
+                        />
+                      ))}
+                    </span>
+                    <span className="text-base text-textBlack">
+                      50K+ reviews
+                    </span>
+                  </div>
+                </div>
+                {[0, 1, 2].map((item, index) => (
+                  <Reviews
+                    key={index}
+                    profileImg={"/assets/placeholder.jpg"}
+                    reviewer="Ajit Sharma"
+                    reviewDate="11-Dec-2022"
+                    review="Purchase Universal Studios Singapore tickets and enter a world in Resorts World Sentosa where the worlds of blockbuster films and their iconic characters come to life! In this wonderful theme park, you and your companions can experience the thrills of cutting-edge rides, shows, and attractions based on movies and television shows like Puss In Boots’ Giant Journey, Battlestar G"
+                  />
+                ))}
+              </div>
+
+              {/* FAQ Start */}
+              <div className="bg-white shadow-md p-4 rounded-md mt-4">
+                <ProductTitle h4 title="Scuba Diving Grand Island FAQ" />
                 {[0, 1, 2, 3, 4].map((item, index) => (
                   <Accordion
                     key={index}
@@ -136,6 +159,19 @@ const index = () => {
                   />
                 ))}
               </div>
+              {/* FAQ End */}
+              {/* Policy Section Start */}
+              <div className="bg-white shadow-md p-4 rounded-md mt-4">
+                <ProductTitle h4 title="Scuba Diving Grand Island Policies" />
+                {[0, 1, 2, 3, 4].map((item, index) => (
+                  <Accordion
+                    key={index}
+                    title="Why Scuba Diving Is Famous"
+                    content="Answer is here"
+                  />
+                ))}
+              </div>
+              {/* Policy Section End */}
             </div>
             {/* Main Content End       */}
             {/* Sidebar Start */}
