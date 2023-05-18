@@ -23,7 +23,7 @@ const index = () => {
 
       <Container className="flex flex-row justify-center">
         <FilterComponents />
-        <div className="grid grid-cols-2 gap-4 px-5 md:grid-cols-3 md:gap-0 md:max-w-7xl  py-8">
+        <div className="grid grid-cols-2 gap-4 px-5 md:grid-cols-3 md:gap-0 md:max-w-7xl  -z-20 py-8">
           {ActivityData?.map((item) => (
             <ListingCard
               key={item.id}
