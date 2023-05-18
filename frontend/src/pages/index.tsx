@@ -12,6 +12,7 @@ import Modal from "@/components/modals/Modal";
 import LocationMobileSlider from "@/components/location/LocationMobileSlider";
 
 import MobileSlider from "@/components/featured/MobileSlider";
+import LoginModal from "@/components/modals/LoginModal";
 
 export default function Index() {
   return (

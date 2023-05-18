@@ -4,7 +4,7 @@ import Image from "next/image";
 import ActivityCover from "../../../public/assets/activityCover.png";
 import Container from "../../components/common/Container";
 import FilterComponents from "../../components/common/FilterComponents";
-import ActivityData from "../../data/ActivityData.ts";
+import ActivityData from "../../data/ActivityData";
 import FilterSearchBar from "../../components/common/FilterSearchBar";
 const index = () => {
   return (
