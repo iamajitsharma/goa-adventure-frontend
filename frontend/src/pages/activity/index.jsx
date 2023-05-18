@@ -11,6 +11,7 @@ import FilterLine from "../../components/common/FilterLine";
 import { RxCross1 } from "react-icons/rx";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
+import Select from "react-dropdown-select";
 
 const index = () => {
   const location = [
@@ -27,7 +28,11 @@ const index = () => {
     "Kolkata",
   ];
   const duration = ["0-2 Hours", "2-5 Hours", "Full Day", "Multi Day"];
-  const options = ["High Priority", "High Relevance", "High Ratings"];
+  const options = [
+    { value: 0, label: "High Priority" },
+    { value: 1, label: "High Relevance" },
+    { value: 2, label: "High Ratings" },
+  ];
   const onChange = () => {};
   const defaultOption = options[0];
 
@@ -54,13 +59,11 @@ const index = () => {
           <RxCross1 />
           <div className="flex flex-row ml-10 mr-3 items-center">
             <span className="text-gray-400 text-sm">Sort By:</span>
-            <div className="z-50 mx-4 rounded-full bg-gray-200 ">
-              <Dropdown
+            <div className="z-50 mx-4 rounded-full bg-gray-200 w-[200px] z-50 ">
+              <Select
                 options={options}
-                onChange={onChange}
-                value={defaultOption}
-                placeholder="Select an option"
-                className="z-50"
+                onChange={(values) => onClick()}
+                className=""
               />
             </div>
           </div>
