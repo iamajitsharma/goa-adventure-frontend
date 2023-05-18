@@ -47,9 +47,9 @@ export default function FilterComponents() {
       <FilterCheckBox label="Activities" />
       <FilterCheckBox label="Tour" />
       <FilterTitle title="Categories" />
-      {/* {location.map((loc) => (
+      {locationData.map((loc) => (
         <FilterCheckBox label={loc} />
-      ))} */}
+      ))}
       <FilterTitle title="Duration " />
       {duration.map((loc) => (
         <FilterCheckBox label={loc} />
