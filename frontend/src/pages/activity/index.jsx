@@ -59,7 +59,7 @@ const index = () => {
           <RxCross1 />
           <div className="flex flex-row ml-10 mr-3 items-center">
             <span className="text-gray-400 text-sm">Sort By:</span>
-            <div className="z-50 mx-4 rounded-full bg-gray-200 w-[200px] z-50 ">
+            <div className="z-50 mx-4 rounded-full bg-gray-200 w-[200px]  ">
               <Select
                 options={options}
                 onChange={(values) => onClick()}
@@ -67,6 +67,9 @@ const index = () => {
               />
             </div>
           </div>
+        </div>
+        <div className="flex flex-row text-gray-400 text-sm">
+          Showing 1-20 of 31 results
         </div>
       </div>
       <Container className="flex flex-row justify-center">
