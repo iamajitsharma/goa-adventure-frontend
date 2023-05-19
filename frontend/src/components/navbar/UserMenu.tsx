@@ -13,7 +13,6 @@ import MenuItem from "./MenuItem";
 
 const UserMenu = () => {
   const router = useRouter();
-
   const [isOpen, setIsOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(false);
 
@@ -52,7 +51,7 @@ const UserMenu = () => {
             </>
           ) : (
             <>
-              <MenuItem icon={<MdLogin className="w-5 h-5" />} label="Login" />
+              <MenuItem icon={<MdLogin className="w-5 h-5" />} label="Login" onClick={()=>{}}/>
               <MenuItem
                 icon={<MdOutlineAccountBox className="w-5 h-5" />}
                 label="Sign Up"
