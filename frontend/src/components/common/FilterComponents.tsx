@@ -29,8 +29,8 @@ export default function FilterComponents({
   const duration = ["0-2 Hours", "2-5 Hours", "Full Day", "Multi Day"];
   return (
     <div
-      className={`bg-white drop-shadow-lg h-full w-full lg:w-[300px] rounde-md ${
-        showFilterOption ? "hidden" : "flex flex-col"
+      className={`bg-white drop-shadow-lg h-full w-full lg:w-[300px] rounde-md lg:flex lg:flex-col ${
+        showFilterOption ? "hidden " : "flex flex-col"
       }  my-8 rounded-2xl pt-2 pb-8 `}
     >
       <div className="flex flex-row justify-between px-4 pt-3 pb-2">
