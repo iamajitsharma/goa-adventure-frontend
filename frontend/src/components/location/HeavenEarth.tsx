@@ -3,11 +3,7 @@ import Slider from "react-slick";
 import LocationSlider from "./LocationSlider";
 import LocationImg from "../../public/assets/location.jpg";
 import CarouselNextArrow from "../CarouselNextArrow";
-<<<<<<< Updated upstream
 import Heading from "../common/Heading";
-=======
-import Heading from "../Heading";
->>>>>>> Stashed changes
 
 const settings = {
   infinite: true,
