@@ -6,7 +6,9 @@ import Container from "../../components/common/Container";
 import FilterComponents from "../../components/common/FilterComponents";
 import ActivityData from "../../data/ActivityData";
 import FilterSearchBar from "../../components/common/FilterSearchBar";
+import { useState } from "react";
 const index = () => {
+  const [showFilterOption, setShowFilterOption] = useState(true);
   return (
     <section className="">
       <div className="relative h-[300px]">
@@ -19,10 +21,13 @@ const index = () => {
           <h2 className="text-4xl text-white font-bold">Things To Do</h2>
         </div>
       </div>
-      <FilterSearchBar />
+      <FilterSearchBar
+        setShowFilterOption={setShowFilterOption}
+        showFilterOption={showFilterOption}
+      />
 
-      <Container className="flex flex-row justify-center">
-        <FilterComponents />
+      <Container className="flex flex-col lg:flex-row justify-center">
+        <FilterComponents showFilterOption={showFilterOption} />
         <div className="grid grid-cols-2 gap-4 px-5 md:grid-cols-3 md:gap-0 md:max-w-7xl  -z-20 py-8">
           {ActivityData?.map((item) => (
             <ListingCard

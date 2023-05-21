@@ -4,7 +4,15 @@ import { RxCross1 } from "react-icons/rx";
 import { AiOutlineSortAscending } from "react-icons/ai";
 import { BiFilterAlt } from "react-icons/bi";
 import { useState } from "react";
-export default function FilterSearchBar() {
+
+interface IFilterSearchBarProps {
+  setShowFilterOption: (value: boolean) => void;
+  showFilterOption: Boolean;
+}
+export default function FilterSearchBar({
+  setShowFilterOption,
+  showFilterOption,
+}: IFilterSearchBarProps) {
   const [showSortOption, setShowSortOption] = useState(false);
   const options = [
     { value: 0, label: "High Priority" },
@@ -14,6 +22,9 @@ export default function FilterSearchBar() {
   const onChange = () => {};
   const handleShow = () => {
     setShowSortOption(!showSortOption);
+  };
+  const handleFilterShow = () => {
+    setShowFilterOption(!showFilterOption);
   };
 
   return (
@@ -50,7 +61,10 @@ export default function FilterSearchBar() {
           <span className="px-2">Sort By</span>
           <AiOutlineSortAscending />
         </div>
-        <div className="flex flex-row items-center justify-center w-1/2">
+        <div
+          className="flex flex-row items-center justify-center w-1/2"
+          onClick={() => handleFilterShow()}
+        >
           <span className="px-2">Filter By</span>
           <BiFilterAlt />
         </div>
