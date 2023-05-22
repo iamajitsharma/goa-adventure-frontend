@@ -153,3 +153,20 @@
 .container-dropdown:focus {
   outline: none;
 }
+
+/* Slide down animation starts */
+
+.expandable {
+  background: #fff;
+  overflow: hidden;
+  color: #000;   
+  line-height: 50px;
+   background-color:red;
+
+  transition: all .5s ease-in-out;
+ 
+ }
+ 
+/* Slide down animation ends */
+ 
+

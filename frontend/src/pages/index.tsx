@@ -7,14 +7,19 @@ import Hero from "@/components/Hero";
 import ActivityListing from "@/components/listings/ActivityListing";
 import TourListing from "@/components/listings/TourListing";
 import Navbar from "@/components/navbar/Navbar";
+
 import Modal from "@/components/modals/Modal";
+
 import MobileSlider from "@/components/featured/MobileSlider";
 import LoginModal from "@/components/modals/LoginModal";
+
+import LocationMobileSlider from "@/components/location/LocationMobileSlider";
 
 export default function Index() {
   return (
     <>
       <Hero />
+      <LocationMobileSlider />
       <ActivityListing />
       <WhyChoose />
       <TourListing />

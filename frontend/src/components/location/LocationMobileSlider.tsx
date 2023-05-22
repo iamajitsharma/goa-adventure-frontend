@@ -3,6 +3,15 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+const locationData = [
+  { id: "01", locatonImg: "MobileSlider1.png", location: "Delhi" },
+  { id: "02", locatonImg: "MobileSlider2.png", location: "Kerala" },
+  { id: "03", locatonImg: "MobileSlider3.png", location: "Mumbai" },
+  { id: "04", locatonImg: "MobileSlider4.png", location: "Goa" },
+  { id: "05", locatonImg: "MobileSlider4.png", location: "Himachal" },
+  { id: "06", locatonImg: "MobileSlider4.png", location: "Uttrakhand" },
+];
+
 export default function LocationMobileSlider() {
   const settings = {
     dots: true,
@@ -16,7 +25,7 @@ export default function LocationMobileSlider() {
         breakpoint: 768,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToScroll: 2,
         },
         dots: true,
         appendDots: (dots: any) => (
