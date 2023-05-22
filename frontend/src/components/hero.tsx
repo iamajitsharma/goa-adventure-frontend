@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <div className="relative bg-hero md:h-[70vh] h-[50vh] w-full bg-cover bg-center">
       <div className="flex flex-col justify-center h-full mx-auto gap-4 text-center max-w-2xl ">
-        <h1 className="text-3xl md:text-5xl font-bold text-white">
+        <h1 className="text-3xl md:text-5xl font-bold text-white font-poppins">
           Where you want to go?
         </h1>
         <div>
