@@ -4,7 +4,7 @@
   "info": {
     "singularName": "activity",
     "pluralName": "activities",
-    "displayName": "Activity",
+    "displayName": "Product",
     "description": ""
   },
   "options": {
@@ -15,12 +15,7 @@
     "title": {
       "type": "string"
     },
-    "categories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::category.category"
-    },
-    "images": {
+    "gallery": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -29,13 +24,13 @@
       ]
     },
     "video": {
-      "type": "string"
+      "type": "text"
     },
     "overview": {
       "type": "richtext"
     },
-    "regular_price": {
-      "type": "decimal",
+    "price": {
+      "type": "integer",
       "default": 0
     },
     "discount_percent": {
@@ -43,12 +38,6 @@
       "default": 0
     },
     "activity_highlight": {
-      "type": "richtext"
-    },
-    "activity_exclusion": {
-      "type": "richtext"
-    },
-    "activity_inclusion": {
       "type": "richtext"
     },
     "min_people": {
@@ -62,16 +51,62 @@
     "start_time": {
       "type": "datetime"
     },
-    "duration": {
-      "type": "decimal",
-      "default": 0
-    },
     "featured_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "duration": {
+      "type": "string"
+    },
+    "booking_period": {
+      "type": "integer",
+      "required": false
+    },
+    "activity_exclusion": {
+      "type": "json"
+    },
+    "activity_inclusion": {
+      "type": "json"
+    },
+    "highlights": {
+      "type": "json"
+    },
+    "deposit": {
+      "type": "enumeration",
+      "enum": [
+        "Disallow Deposit",
+        "Deposit by Percent"
+      ]
+    },
+    "deposit_value": {
+      "type": "decimal"
+    },
+    "allow_cancel": {
+      "type": "enumeration",
+      "enum": [
+        "Yes",
+        "No"
+      ]
+    },
+    "last_updated_by": {
+      "type": "string"
+    },
+    "creator": {
+      "type": "string"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Activity",
+        "Tour"
+      ]
+    },
+    "category_type": {
+      "type": "string"
     }
   }
 }

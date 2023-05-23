@@ -4,7 +4,7 @@
   "info": {
     "singularName": "category",
     "pluralName": "categories",
-    "displayName": "Activity Category",
+    "displayName": "Category",
     "description": ""
   },
   "options": {
@@ -12,7 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "category_name": {
+      "type": "string"
+    },
+    "category_type": {
       "type": "string"
     }
   }
