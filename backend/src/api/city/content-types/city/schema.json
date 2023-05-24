@@ -12,8 +12,8 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "city_name": {
-      "type": "text"
+    "cities_of_state": {
+      "type": "json"
     }
   }
 }

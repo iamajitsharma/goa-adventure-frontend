@@ -107,6 +107,12 @@
     },
     "category_type": {
       "type": "string"
+    },
+    "states": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::state.state",
+      "inversedBy": "products"
     }
   }
 }
