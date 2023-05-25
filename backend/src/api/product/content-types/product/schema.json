@@ -98,28 +98,20 @@
     "creator": {
       "type": "string"
     },
-    "states": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::state.state",
-      "inversedBy": "products"
-    },
     "country": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::country.country",
-      "inversedBy": "products"
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
     },
     "category": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category",
-      "inversedBy": "product"
+      "type": "string"
     },
-    "category_types": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category"
+    "category_type": {
+      "type": "string"
     }
   }
 }

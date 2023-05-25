@@ -13,12 +13,6 @@
   "attributes": {
     "state_name": {
       "type": "text"
-    },
-    "products": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "mappedBy": "states"
     }
   }
 }
