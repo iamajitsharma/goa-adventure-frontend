@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * activity service
+ * country service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::activity.activity');
+module.exports = createCoreService('api::country.country');

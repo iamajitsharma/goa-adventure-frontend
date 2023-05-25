@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * activity controller
+ * country controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::activity.activity');
+module.exports = createCoreController('api::country.country');

@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "activities",
+  "collectionName": "products",
   "info": {
-    "singularName": "activity",
-    "pluralName": "activities",
+    "singularName": "product",
+    "pluralName": "products",
     "displayName": "Product",
     "description": ""
   },
@@ -98,21 +98,28 @@
     "creator": {
       "type": "string"
     },
-    "category": {
-      "type": "enumeration",
-      "enum": [
-        "Activity",
-        "Tour"
-      ]
-    },
-    "category_type": {
-      "type": "string"
-    },
     "states": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::state.state",
       "inversedBy": "products"
+    },
+    "country": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::country.country",
+      "inversedBy": "products"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category",
+      "inversedBy": "product"
+    },
+    "category_types": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
     }
   }
 }

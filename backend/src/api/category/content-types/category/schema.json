@@ -12,11 +12,28 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "category_name": {
-      "type": "string"
+    "categories": {
+      "type": "enumeration",
+      "enum": [
+        "Activity",
+        "Tour"
+      ]
     },
-    "category_type": {
-      "type": "string"
+    "category_types": {
+      "type": "enumeration",
+      "enum": [
+        "Scuba Diving",
+        "Watersports",
+        "Combo Pack",
+        "Sightseeing",
+        "River Rafting"
+      ]
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product",
+      "inversedBy": "category"
     }
   }
 }
