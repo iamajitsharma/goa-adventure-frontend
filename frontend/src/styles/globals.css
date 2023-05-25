@@ -35,6 +35,10 @@
   }
 }
 
+section {
+  padding: 60px 0;
+}
+
 .slick-image-things-slider {
   height: 100%;
   object-fit: cover;
@@ -159,14 +163,27 @@
 .expandable {
   background: #fff;
   overflow: hidden;
-  color: #000;   
+  color: #000;
   line-height: 50px;
-   background-color:red;
+  background-color: red;
 
-  transition: all .5s ease-in-out;
- 
- }
- 
+  transition: all 0.5s ease-in-out;
+}
+
 /* Slide down animation ends */
- 
 
+/*Privacy Policy & Terms & Conditions Css*/
+.disclosure {
+  padding: 0.8rem 0;
+}
+
+.disclosure h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #000000;
+  padding: 0.6rem 0;
+}
+.disclosure p {
+  font-size: 0.9rem;
+  color: #333;
+}
