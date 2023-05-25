@@ -11,8 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "state_name": {
-      "type": "text"
+    "country_name": {
+      "type": "string"
+    },
+    "states": {
+      "type": "json"
     }
   }
 }
