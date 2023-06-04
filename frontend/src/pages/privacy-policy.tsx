@@ -28,7 +28,7 @@ export const disclosure_navLink = [
 const initialPrivacyPolicy: IPrivacy = {
   id: 0,
   attributes: {
-    privacy_policy: "",
+    privacy_policies: "",
     createdAt: new Date(),
     updatedAt: new Date(),
     publishedAt: new Date(),
@@ -38,7 +38,7 @@ const initialPrivacyPolicy: IPrivacy = {
 const PrivacyPolicy = () => {
   const [privacyPolicy, setPrivacyPolicy] =
     useState<IPrivacy>(initialPrivacyPolicy);
-
+  console.log("Privacy pol", privacyPolicy);
   async function setPrivacy() {
     let privacy = await privacyPoliciesApi();
     console.log("privaolicy", privacy);
@@ -64,7 +64,7 @@ const PrivacyPolicy = () => {
             <div
               className="disclosure"
               dangerouslySetInnerHTML={{
-                __html: privacyPolicy.attributes.privacy_policy,
+                __html: privacyPolicy.attributes.privacy_policies,
               }}
             >
               {/* <h4>Introduction</h4> */}

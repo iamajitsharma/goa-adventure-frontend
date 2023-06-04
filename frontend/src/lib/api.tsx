@@ -19,7 +19,7 @@ var requestOptions = {
 const initialPrivacyPolicy: IPrivacy = {
   id: 0,
   attributes: {
-    privacy_policy: "",
+    privacy_policies: "",
     createdAt: new Date(),
     updatedAt: new Date(),
     publishedAt: new Date(),
@@ -67,9 +67,9 @@ export async function privacyPoliciesApi() {
   if (response.data) {
     const processedContent = await remark()
       .use(html)
-      .process(response.data.attributes.terms_conditions);
+      .process(response.data.attributes.privacy_policies);
     const contentHtml = processedContent.toString();
-    response.data.attributes.privacy_policy = contentHtml;
+    response.data.attributes.privacy_policies = contentHtml;
     console.log("HTMl content privacy", response.data);
     return response.data;
   }

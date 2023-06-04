@@ -1,5 +1,5 @@
 export interface IAttributesPrivacy {
-  privacy_policy: string;
+  privacy_policies: string;
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date;
