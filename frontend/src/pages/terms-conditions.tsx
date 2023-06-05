@@ -1,6 +1,33 @@
 import Container from "@/components/Container";
 
+import { useEffect, useState } from "react";
+import { ITerms } from "../lib/interfaces";
+import { termsCondiitonsApi } from "../lib/api";
+
+const intialTermsConditons: ITerms = {
+  id: 0,
+  attributes: {
+    terms_conditions: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    publishedAt: new Date(),
+  },
+};
+
 const TermsConditions = () => {
+  const [termsCondiitons, setTermsConditons] =
+    useState<ITerms>(intialTermsConditons);
+
+  async function setTerms() {
+    let privacy = await termsCondiitonsApi();
+    console.log("privaolicy", privacy);
+    setTermsConditons(privacy);
+  }
+
+  useEffect(() => {
+    console.log("Terms Condtions", termsCondiitons);
+    let test = setTerms();
+  }, []);
   return (
     <section className="font-poppins">
       <Container>
@@ -11,15 +38,12 @@ const TermsConditions = () => {
               Effective from 1st Jan 2021
             </span>
           </div>
-          <div className="disclosure">
-            <h4>Introduction</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure odit
-              distinctio omnis totam? Dignissimos, consectetur similique alias
-              laborum distinctio voluptas sequi sapiente veritatis neque
-              accusantium iure illum, id autem amet?
-            </p>
-          </div>
+          <div
+            className="disclosure"
+            dangerouslySetInnerHTML={{
+              __html: termsCondiitons.attributes.terms_conditions,
+            }}
+          ></div>
         </div>
       </Container>
     </section>

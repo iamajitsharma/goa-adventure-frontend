@@ -1,5 +1,6 @@
 import { remark } from "remark";
 import html from "remark-html";
+import { IPrivacy, ITerms } from "./interfaces";
 
 const devServer = "http://localhost:1337/api";
 const prodServer = "";
@@ -18,6 +19,15 @@ var requestOptions = {
 const initialPrivacyPolicy: IPrivacy = {
   id: 0,
   attributes: {
+    privacy_policy: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    publishedAt: new Date(),
+  },
+};
+const intialTermsConditons: ITerms = {
+  id: 0,
+  attributes: {
     terms_conditions: "",
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -25,23 +35,42 @@ const initialPrivacyPolicy: IPrivacy = {
   },
 };
 
-import { IPrivacy } from "./interfaces";
-
-export async function privacyPolicies(): Promise<IPrivacy> {
+export async function termsCondiitonsApi(): Promise<ITerms> {
   const result: any = await fetch(
     `${serverURL}/terms-condition`,
     requestOptions
   );
 
   const response = await result.json();
-  console.log("Result", response);
+  console.log("Result terms", response);
   if (response.data) {
     const processedContent = await remark()
       .use(html)
       .process(response.data.attributes.terms_conditions);
     const contentHtml = processedContent.toString();
     response.data.attributes.terms_conditions = contentHtml;
-    console.log("HTMl content", response.data);
+    console.log("HTMl content terms", response.data);
+    return response.data;
+  }
+
+  return intialTermsConditons;
+}
+
+export async function privacyPoliciesApi() {
+  const result: any = await fetch(
+    `${serverURL}/privacy-policy`,
+    requestOptions
+  );
+  console.log("Raw data", result);
+  const response = await result.json();
+  console.log("Result privacy", response);
+  if (response.data) {
+    const processedContent = await remark()
+      .use(html)
+      .process(response.data.attributes.terms_conditions);
+    const contentHtml = processedContent.toString();
+    response.data.attributes.privacy_policy = contentHtml;
+    console.log("HTMl content privacy", response.data);
     return response.data;
   }
 

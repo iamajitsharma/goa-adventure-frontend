@@ -5,7 +5,7 @@ import { SlEarphonesAlt, SlLocationPin } from "react-icons/sl";
 import { AiOutlineMail } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { IPrivacy } from "../lib/interfaces";
-import { privacyPolicies } from "../lib/api";
+import { privacyPoliciesApi } from "../lib/api";
 
 export const disclosure_navLink = [
   {
@@ -28,7 +28,7 @@ export const disclosure_navLink = [
 const initialPrivacyPolicy: IPrivacy = {
   id: 0,
   attributes: {
-    terms_conditions: "",
+    privacy_policy: "",
     createdAt: new Date(),
     updatedAt: new Date(),
     publishedAt: new Date(),
@@ -40,7 +40,7 @@ const PrivacyPolicy = () => {
     useState<IPrivacy>(initialPrivacyPolicy);
 
   async function setPrivacy() {
-    let privacy = await privacyPolicies();
+    let privacy = await privacyPoliciesApi();
     console.log("privaolicy", privacy);
     setPrivacyPolicy(privacy);
   }
@@ -64,7 +64,7 @@ const PrivacyPolicy = () => {
             <div
               className="disclosure"
               dangerouslySetInnerHTML={{
-                __html: privacyPolicy.attributes.terms_conditions,
+                __html: privacyPolicy.attributes.privacy_policy,
               }}
             >
               {/* <h4>Introduction</h4> */}
