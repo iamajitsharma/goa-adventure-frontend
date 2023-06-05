@@ -3,6 +3,9 @@ import Container from "@/components/Container";
 import PrivacyPolicies from "@/components/disclosure/PrivacyPolicy";
 import { SlEarphonesAlt, SlLocationPin } from "react-icons/sl";
 import { AiOutlineMail } from "react-icons/ai";
+import { useEffect, useState } from "react";
+import { IPrivacy } from "../lib/interfaces";
+import { privacyPolicies } from "../lib/api";
 
 export const disclosure_navLink = [
   {
@@ -22,7 +25,30 @@ export const disclosure_navLink = [
   },
 ];
 
+const initialPrivacyPolicy: IPrivacy = {
+  id: 0,
+  attributes: {
+    terms_conditions: "",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    publishedAt: new Date(),
+  },
+};
+
 const PrivacyPolicy = () => {
+  const [privacyPolicy, setPrivacyPolicy] =
+    useState<IPrivacy>(initialPrivacyPolicy);
+
+  async function setPrivacy() {
+    let privacy = await privacyPolicies();
+    console.log("privaolicy", privacy);
+    setPrivacyPolicy(privacy);
+  }
+
+  useEffect(() => {
+    console.log("Privacy policy", privacyPolicy);
+    let test = setPrivacy();
+  }, []);
   return (
     <section className="font-poppins">
       <Container>
@@ -34,33 +60,15 @@ const PrivacyPolicy = () => {
                 Effective from 1st Jan 2021
               </span>
             </div>
-            <div className="disclosure">
-              <h4>Introduction</h4>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-                odit distinctio omnis totam? Dignissimos, consectetur similique
-                alias laborum distinctio voluptas sequi sapiente veritatis neque
-                accusantium iure illum, id autem amet? Lorem ipsum dolor sit
-                amet consectetur adipisicing elit. Iure odit distinctio omnis
-                totam? Dignissimos, consectetur similique alias laborum
-                distinctio voluptas sequi sapiente veritatis neque accusantium
-                iure illum, id autem amet? Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Iure odit distinctio omnis totam?
-                Dignissimos, consectetur similique alias laborum distinctio
-                voluptas sequi sapiente veritatis neque accusantium iure illum,
-                id autem amet? Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Iure odit distinctio omnis totam? Dignissimos,
-                consectetur similique alias laborum distinctio voluptas sequi
-                sapiente veritatis neque accusantium iure illum, id autem amet?
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-                odit distinctio omnis totam? Dignissimos, consectetur similique
-                alias laborum distinctio voluptas sequi sapiente veritatis neque
-                accusantium iure illum, id autem amet? Lorem ipsum dolor sit
-                amet consectetur adipisicing elit. Iure odit distinctio omnis
-                totam? Dignissimos, consectetur similique alias laborum
-                distinctio voluptas sequi sapiente veritatis neque accusantium
-                iure illum, id autem amet?
-              </p>
+
+            <div
+              className="disclosure"
+              dangerouslySetInnerHTML={{
+                __html: privacyPolicy.attributes.terms_conditions,
+              }}
+            >
+              {/* <h4>Introduction</h4> */}
+              {/* <p>{}</p> */}
             </div>
           </div>
           <div className="hidden lg:block w-full md:w-3/12 bg-white shadow-lg p-4 rounded-lg">
