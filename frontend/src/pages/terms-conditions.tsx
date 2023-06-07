@@ -1,5 +1,5 @@
 import Container from "@/components/Container";
-
+import Loader from "react-loader";
 import { useEffect, useState } from "react";
 import { ITerms } from "../lib/interfaces";
 import { termsCondiitonsApi } from "../lib/api";
@@ -15,13 +15,16 @@ const intialTermsConditons: ITerms = {
 };
 
 const TermsConditions = () => {
+  const [loaded, setLoaded] = useState(true);
   const [termsCondiitons, setTermsConditons] =
     useState<ITerms>(intialTermsConditons);
 
   async function setTerms() {
+    setLoaded(false);
     let privacy = await termsCondiitonsApi();
     console.log("privaolicy", privacy);
     setTermsConditons(privacy);
+    setLoaded(true);
   }
 
   useEffect(() => {
@@ -46,6 +49,27 @@ const TermsConditions = () => {
           ></div>
         </div>
       </Container>
+      <Loader
+        loaded={loaded}
+        lines={13}
+        length={20}
+        width={10}
+        radius={30}
+        corners={1}
+        rotate={0}
+        direction={1}
+        color="#000"
+        speed={1}
+        trail={60}
+        shadow={false}
+        hwaccel={false}
+        className="spinner"
+        zIndex={2e9}
+        top="50%"
+        left="50%"
+        scale={1.0}
+        loadedClassName="loadedContent"
+      />
     </section>
   );
 };
