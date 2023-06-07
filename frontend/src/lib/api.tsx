@@ -1,11 +1,13 @@
 import { remark } from "remark";
 import html from "remark-html";
 import { IPrivacy, ITerms } from "./interfaces";
+import { calculateSalePrice } from "./operations";
 
 const devServer = "http://localhost:1337/api";
 const prodServer = "";
 const serverURL = devServer;
 //const serverURL = prodServer;
+export const url = "http://localhost:1337";
 
 var myHeaders = new Headers();
 myHeaders.append(
@@ -56,7 +58,7 @@ export async function termsCondiitonsApi(): Promise<ITerms> {
   return intialTermsConditons;
 }
 
-export async function privacyPoliciesApi() {
+export async function privacyPoliciesApi(): Promise<IPrivacy> {
   const result: any = await fetch(
     `${serverURL}/privacy-policy`,
     requestOptions
@@ -75,4 +77,25 @@ export async function privacyPoliciesApi() {
   }
 
   return initialPrivacyPolicy;
+}
+
+export async function fetchProducts() {
+  const result: any = await fetch(
+    `${serverURL}/products?populate=*`,
+    requestOptions
+  );
+
+  const response = await result.json();
+
+  if (response.data) {
+    console.log("Result products", response);
+    response.data = response.data.filter((img: any) => img.id !== 4);
+    response.data.map((info: any) => {
+      info.attributes.salePrice = calculateSalePrice(
+        info.attributes.discount_percent,
+        info.attributes.price
+      );
+    });
+    return response.data;
+  }
 }

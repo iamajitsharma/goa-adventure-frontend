@@ -38,7 +38,13 @@ const ListingCard: React.FC<CardProps> = ({
 }) => {
   return (
     <div className="card">
-      <Image src={image} alt="Tour" className="w-full h-full object-cover" />
+      <Image
+        src={image}
+        alt="Tour"
+        className="w-full h-full object-cover"
+        width={500} // Provide the required "width" property here
+        height={300}
+      />
       <div className="flex flex-row justify-between items-center absolute top-0 w-full px-4 pt-2 text-white">
         <span className="flex items-center gap-1 text-sm font-medium">
           <MdLocationPin />

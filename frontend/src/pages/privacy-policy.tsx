@@ -39,6 +39,7 @@ const PrivacyPolicy = () => {
   const [privacyPolicy, setPrivacyPolicy] =
     useState<IPrivacy>(initialPrivacyPolicy);
   console.log("Privacy pol", privacyPolicy);
+
   async function setPrivacy() {
     let privacy = await privacyPoliciesApi();
     console.log("privaolicy", privacy);

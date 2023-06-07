@@ -1,23 +1,49 @@
 import ListingCard from "./ListingCard";
 import TourCardImg from "../../../public/assets/tourcard.jpeg";
 import Heading from "../common/Heading";
+import { useEffect, useState } from "react";
+import { fetchProducts, url } from "../../lib/api";
 
 const ActivityListing = () => {
+  const [allProducts, setAllProducts] = useState([]);
+
+  async function setProducts() {
+    let products = await fetchProducts();
+    console.log("products check", products);
+    products.map((check) =>
+      console.log(
+        "Test",
+        url +
+          check?.attributes?.featured_image?.data?.attributes?.formats
+            ?.thumbnail?.url
+      )
+    );
+    setAllProducts(products);
+  }
+
+  useEffect(() => {
+    console.log("Privacy policy", allProducts);
+    let test = setProducts();
+  }, []);
+
   return (
     <section className="w-screen lg:py-4 bg-white py-24">
       <Heading heading={"Popular Adventure Activities"} />
       <div className="grid grid-cols-2 gap-4 px-5 md:grid-cols-4 md:max-w-7xl mx-auto">
-        {[0, 1, 2, 3, 4, 5, 6, 7].map((num) => (
+        {allProducts.map((prod) => (
           <ListingCard
-            title="Goa Tour Package"
-            image={TourCardImg}
-            location="Goa"
-            duration="3N/4D"
+            title={prod?.attributes?.title}
+            image={
+              prod?.attributes?.featured_image?.data?.attributes?.formats
+                ?.thumbnail?.url
+            }
+            location={prod?.attributes?.state}
+            duration={prod?.attributes?.duration}
             review={4.5}
             reviewCount={`(450 reviews)`}
-            salePrice={2500}
-            regularPrice={5000}
-            discount={`25%`}
+            salePrice={prod?.attributes?.salePrice}
+            regularPrice={prod?.attributes?.price}
+            discount={`${prod?.attributes?.discount_percent}%`}
             href="localhost"
           />
         ))}
