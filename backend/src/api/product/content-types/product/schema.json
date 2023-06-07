@@ -37,7 +37,7 @@
       "type": "decimal",
       "default": 0
     },
-    "activity_highlight": {
+    "highlight": {
       "type": "richtext"
     },
     "min_people": {
@@ -49,7 +49,7 @@
       "default": 0
     },
     "start_time": {
-      "type": "datetime"
+      "type": "time"
     },
     "featured_image": {
       "type": "media",
@@ -70,9 +70,6 @@
       "type": "json"
     },
     "activity_inclusion": {
-      "type": "json"
-    },
-    "highlights": {
       "type": "json"
     },
     "deposit": {
