@@ -18,14 +18,8 @@ const index = () => {
   async function setProducts() {
     let products = await fetchProducts();
     console.log("products check", products);
-    products.map((check: any) =>
-      console.log(
-        "Test",
-        url +
-          check?.attributes?.featured_image?.data?.attributes?.formats
-            ?.thumbnail?.url
-      )
-    );
+
+    products.map((check) => console.log("Check key", check.id));
     setAllProducts(products);
   }
 
@@ -35,11 +29,17 @@ const index = () => {
   }, []);
 
   function handleClick(event: any) {
-    alert(event);
-    // router.push({`/activity/${});
+    console.log("Event tiggered ", event);
+    const finalProduct = allProducts.filter((fil: any) => fil?.id == event);
+    console.log("Fianl product to be pushed", finalProduct);
+
+    // router.push({
+    //   pathname: `/activity/${1}`,
+    //   state: { finalProduct },
+    // });
   }
   return (
-    <section className="">
+    <>
       <div className="relative h-[300px]">
         <Image
           src={ActivityCover}
@@ -57,10 +57,11 @@ const index = () => {
 
       <Container className="flex flex-col lg:flex-row justify-center">
         <FilterComponents showFilterOption={showFilterOption} />
-        <div className="grid grid-cols-2 gap-4 px-5 md:grid-cols-3 md:gap-0 md:max-w-7xl  -z-20 py-8">
+        <div className="grid grid-cols-2 gap-4 px-5 md:grid-cols-3 md:gap-0 md:max-w-7xl  py-8">
           {allProducts?.map((item) => (
             <ListingCard
-              onClick={handleClick}
+              prodId={item?.id}
+              key={item?.id}
               title={item?.attributes?.title}
               image={
                 item?.attributes?.featured_image?.data?.attributes?.formats
@@ -74,11 +75,12 @@ const index = () => {
               regularPrice={item?.attributes?.price}
               discount={`${item?.attributes?.discount_percent}%`}
               href="localhost"
+              onClick={handleClick}
             />
           ))}
         </div>
       </Container>
-    </section>
+    </>
   );
 };
 

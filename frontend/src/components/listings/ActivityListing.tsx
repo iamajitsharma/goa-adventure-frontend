@@ -10,14 +10,7 @@ const ActivityListing = () => {
   async function setProducts() {
     let products = await fetchProducts();
     console.log("products check", products);
-    products.map((check) =>
-      console.log(
-        "Test",
-        url +
-          check?.attributes?.featured_image?.data?.attributes?.formats
-            ?.thumbnail?.url
-      )
-    );
+
     setAllProducts(products);
   }
 
@@ -32,6 +25,7 @@ const ActivityListing = () => {
       <div className="grid grid-cols-2 gap-4 px-5 md:grid-cols-4 md:max-w-7xl mx-auto">
         {allProducts.map((prod) => (
           <ListingCard
+            key={prod?.id}
             title={prod?.attributes?.title}
             image={
               prod?.attributes?.featured_image?.data?.attributes?.formats

@@ -8,7 +8,7 @@ import { BsClock } from "react-icons/bs";
 import Link from "next/link";
 
 interface CardProps {
-  id?: string | number;
+  key?: any;
   title?: string;
   image?: any;
   location?: string;
@@ -19,12 +19,13 @@ interface CardProps {
   regularPrice?: number;
   discount?: string | number;
   className?: string;
-  href?: URL;
-  onClick?: (value: string) => void;
+  href?: URL | string;
+  onClick?: any;
+  prodId?: number;
 }
 
 const ListingCard: React.FC<CardProps> = ({
-  id,
+  key,
   title,
   image,
   location,
@@ -34,26 +35,25 @@ const ListingCard: React.FC<CardProps> = ({
   salePrice,
   regularPrice,
   discount,
-  className,
+  prodId,
   href,
   onClick,
 }) => {
-  const handleClick = () => {
-    if (onClick) {
-      onClick("hello"); // Pass the value "hello" to onClick
-    }
-  };
+  console.log("Key");
   return (
-    <div className="card">
-      <button onClick={handleClick}>Test</button>
+    <div className="card cursor-pointer">
       <Image
         src={image}
         alt="Tour"
         className="w-full h-full object-cover"
         width={500} // Provide the required "width" property here
         height={300}
+        onClick={() => onClick(prodId)}
       />
-      <div className="flex flex-row justify-between items-center absolute top-0 w-full px-4 pt-2 text-white">
+      <div
+        className="flex flex-row justify-between items-center absolute top-0 w-full px-4 pt-2 text-white"
+        onClick={() => onClick(prodId)}
+      >
         <span className="flex items-center gap-1 text-sm font-medium">
           <MdLocationPin />
           {location}
@@ -64,7 +64,9 @@ const ListingCard: React.FC<CardProps> = ({
         </span>
       </div>
       <div className="card-content">
-        <h2 className="card-title">{title}</h2>
+        <h2 className="card-title" onClick={() => onClick(prodId)}>
+          {title}
+        </h2>
 
         <div className="flex flex-row items-center text-sm pt-2">
           <AiFillStar className="text-yellow-400" fontSize={15} />
