@@ -10,7 +10,7 @@ const ActivityListing = () => {
   async function setProducts() {
     let products = await fetchProducts();
     console.log("products check", products);
-
+    localStorage.setItem("products", JSON.stringify(products));
     setAllProducts(products);
   }
 

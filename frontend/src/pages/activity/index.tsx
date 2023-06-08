@@ -25,7 +25,13 @@ const index = () => {
 
   useEffect(() => {
     console.log("Privacy policy", allProducts);
-    let test = setProducts();
+    const itemsFromStorage = localStorage.getItem("products");
+    if (itemsFromStorage) {
+      const items = JSON.parse(itemsFromStorage);
+      setAllProducts(items);
+    } else {
+      let test = setProducts();
+    }
   }, []);
 
   function handleClick(event: any) {
@@ -33,10 +39,9 @@ const index = () => {
     const finalProduct = allProducts.filter((fil: any) => fil?.id == event);
     console.log("Fianl product to be pushed", finalProduct);
 
-    // router.push({
-    //   pathname: `/activity/${1}`,
-    //   state: { finalProduct },
-    // });
+    router.push({
+      pathname: `/activity/${1}`,
+    });
   }
   return (
     <>
