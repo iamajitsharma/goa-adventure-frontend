@@ -20,6 +20,7 @@ interface CardProps {
   discount?: string | number;
   className?: string;
   href?: URL;
+  onClick?: (value: string) => void;
 }
 
 const ListingCard: React.FC<CardProps> = ({
@@ -35,9 +36,16 @@ const ListingCard: React.FC<CardProps> = ({
   discount,
   className,
   href,
+  onClick,
 }) => {
+  const handleClick = () => {
+    if (onClick) {
+      onClick("hello"); // Pass the value "hello" to onClick
+    }
+  };
   return (
     <div className="card">
+      <button onClick={handleClick}>Test</button>
       <Image
         src={image}
         alt="Tour"
