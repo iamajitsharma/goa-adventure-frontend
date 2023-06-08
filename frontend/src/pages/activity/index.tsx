@@ -35,12 +35,8 @@ const index = () => {
   }, []);
 
   function handleClick(event: any) {
-    console.log("Event tiggered ", event);
-    const finalProduct = allProducts.filter((fil: any) => fil?.id == event);
-    console.log("Fianl product to be pushed", finalProduct);
-
     router.push({
-      pathname: `/activity/${1}`,
+      pathname: `/activity/${event}`,
     });
   }
   return (
