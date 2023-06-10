@@ -17,7 +17,7 @@ const ActivityListing = () => {
     );
     setFilterProduct(filterProductFn);
     console.log(filterProduct);
-  }, [filterProduct]);
+  }, []);
 
   function handleClick(event: any) {
     router.push({

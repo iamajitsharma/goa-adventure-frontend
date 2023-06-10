@@ -1,6 +1,6 @@
 export const products = [
   {
-    id: 1,
+    id: "1",
     title: "Scuba Diving Grand Island",
     category: "Activity",
     categoryType: "Scuba Diving",
@@ -35,6 +35,7 @@ export const products = [
     startTime: "7:30 AM",
     duration: "30 Min",
     location: "Grand Island",
+    salePrice: 1750,
     city: "Calangute",
     state: "Goa",
     country: "India",
