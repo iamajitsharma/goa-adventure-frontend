@@ -3,8 +3,10 @@ import TourCardImg from "../../../public/assets/tourcard.jpeg";
 import Heading from "../common/Heading";
 import { useEffect, useState } from "react";
 import { fetchProducts, url } from "../../lib/api";
+import { useRouter } from "next/router";
 
 const ActivityListing = () => {
+  const router = useRouter();
   const [allProducts, setAllProducts] = useState([]);
 
   async function setProducts() {
@@ -26,14 +28,14 @@ const ActivityListing = () => {
     let test = setProducts();
   }, []);
 
-  console.log(allProducts);
-
   return (
     <section className="w-screen lg:py-4 bg-white py-24">
       <Heading heading={"Popular Adventure Activities"} />
       <div className="grid grid-cols-2 gap-4 px-5 md:grid-cols-4 md:max-w-7xl mx-auto">
         {allProducts.map((prod) => (
           <ListingCard
+            prodId={prod?.id}
+            key={prod?.id}
             title={prod?.attributes?.title}
             image={prod?.attributes?.featured_image?.data?.attributes?.url}
             location={prod?.attributes?.state}
@@ -44,6 +46,7 @@ const ActivityListing = () => {
             regularPrice={prod?.attributes?.price}
             discount={`${prod?.attributes?.discount_percent}%`}
             href="localhost"
+            onClick={handleClick}
           />
         ))}
       </div>

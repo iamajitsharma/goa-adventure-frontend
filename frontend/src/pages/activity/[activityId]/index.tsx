@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import DetailsPageSlider from "@/components/listings/DetailsPageSlider";
@@ -23,9 +24,25 @@ const ItineraryData = [
 
 const description =
   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore minus ipsam voluptatum culpa magni dolor reiciendis modi soluta nostrum iste consequuntur vel, accusamus fugit expedita rerum. Temporibus nihil non perspiciatis! Necessitatibus amet, possimus unde ut est id reiciendis ipsa nemo similique vitae architecto aliquid non repudiandae accusantium quo atque obcaecati maxime doloribus impedit culpa. Laudantium explicabo consectetur reprehenderit nostrum officia? Ipsam reprehenderit quo nobis facere, illum deserunt atque quaerat optio ipsum sint iusto ex incidunt assumenda nulla deleniti natus laborum animi vitae, ut quae ea non. Quasi quaerat non quos? Deleniti voluptas harum, ipsam mollitia minus culpa ut obcaecati deserunt? Error veniam quasi fugiat quia rerum deserunt, assumenda molestias iusto ratione quaerat. Illum suscipit illo dolor, eligendi ex itaque consectetur. Quaerat incidunt nemo dicta voluptatem non commodi ab reprehenderit eos vel, aperiam culpa at mollitia! Esse qui, quia nam corporis optio aspernatur pariatur autem incidunt aliquam beatae, totam assumenda quam. Asperiores consequatur veritatis placeat alias rem animi molestias aperiam voluptatem sed distinctio! Pariatur provident voluptatem, nisi ipsum dolorem nulla. Officiis, dolores repellat cupiditate quod laudantium quisquam ipsum consequatur aspernatur corporis!";
-const index = () => {
+const index = (props: any) => {
+  const [product, setProduct] = useState({});
   const router = useRouter();
-  const activityId = router.query.activityId;
+  console.log("Final Product received ", product);
+  useEffect(() => {
+    const activityId = router.query.activityId;
+    if (!activityId) {
+      router.push({
+        pathname: `/`,
+      });
+    }
+    const itemsFromStorage = localStorage.getItem("products");
+    if (itemsFromStorage) {
+      const items = JSON.parse(itemsFromStorage);
+      const products = items.filter((fil: any) => fil?.id == activityId);
+      console.log("Final Received product info", products[0]);
+      setProduct(products[0]);
+    }
+  }, []);
 
   return (
     <>
@@ -75,7 +92,7 @@ const index = () => {
             <div className="main_layout">
               {/* Product Title Section */}
               <div className="bg-white shadow-sm p-4 rounded-md">
-                <ProductTitle h1 title="Scuba Diving Grand Island" />
+                <ProductTitle h1 title={product?.attributes?.title} />
                 <div className="flex flex-row items-center gap-6 py-4">
                   <span className="flex flex-row items-center gap-2">
                     <i className="ri-map-pin-line text-mainColor text-2xl"></i>
@@ -93,8 +110,8 @@ const index = () => {
               {/* Product Title Section End */}
               {/* Overview Section Start */}
               <div className="bg-white shadow-sm p-4 rounded-md mt-4">
-                <ProductTitle h2 title="Scuba Diving Overview" />
-                <Overviews description={description} />
+                <ProductTitle h2 title={product?.attributes?.title} />
+                <Overviews description={product?.attributes?.overview} />
               </div>
               {/* Overview Section End */}
               {/* Acitivity Navigation   */}
@@ -108,7 +125,7 @@ const index = () => {
               </div>
               {/*Itinerary*/}
               <div className="bg-white shadow-md p-4 rounded-md mt-4">
-                <ProductTitle h4 title="Scuba Diving Grand Island Itinerary" />
+                <ProductTitle h4 title={product?.attributes?.title} />
                 {ItineraryData.map((item, index) => (
                   <Itinerary
                     key={index}
@@ -150,7 +167,7 @@ const index = () => {
 
               {/* FAQ Start */}
               <div className="bg-white shadow-md p-4 rounded-md mt-4">
-                <ProductTitle h4 title="Scuba Diving Grand Island FAQ" />
+                <ProductTitle h4 title={`${product?.attributes?.title} FAQ`} />
                 {[0, 1, 2, 3, 4].map((item, index) => (
                   <Accordion
                     key={index}
@@ -162,7 +179,10 @@ const index = () => {
               {/* FAQ End */}
               {/* Policy Section Start */}
               <div className="bg-white shadow-md p-4 rounded-md mt-4">
-                <ProductTitle h4 title="Scuba Diving Grand Island Policies" />
+                <ProductTitle
+                  h4
+                  title={`${product?.attributes?.title} Policies`}
+                />
                 {[0, 1, 2, 3, 4].map((item, index) => (
                   <Accordion
                     key={index}
@@ -178,9 +198,9 @@ const index = () => {
             <div className="sidebar_layout">
               <div className="w-full shadow-lg p-4 rounded-md bg-white">
                 <DetailsPagePricing
-                  regularPrice="2500"
-                  salePrice={1350}
-                  discount={"40% off"}
+                  regularPrice={product?.attributes?.price}
+                  salePrice={product?.attributes?.salePrice}
+                  discount={`${product?.attributes?.discount_percent}%`}
                   onClick={() => {}}
                 />
               </div>
@@ -191,5 +211,27 @@ const index = () => {
     </>
   );
 };
+
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   const { id } = context.query;
+
+//   const itemsFromStorage = localStorage.getItem("products");
+//   if (itemsFromStorage) {
+//     const items = JSON.parse(itemsFromStorage);
+//     const products = items.filter((fil: any) => fil?.id == id);
+//     console.log("Final Received product info", products[0]);
+//     return {
+//       props: {
+//         product: products[0],
+//       },
+//     };
+//   }
+//   return {
+//     redirect: {
+//       permanent: false,
+//       destination: "/",
+//     },
+//   };
+// };
 
 export default index;

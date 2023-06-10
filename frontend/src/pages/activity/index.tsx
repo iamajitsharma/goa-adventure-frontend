@@ -6,9 +6,39 @@ import Container from "../../components/common/Container";
 import FilterComponents from "../../components/common/FilterComponents";
 import ActivityData from "../../data/ActivityData";
 import FilterSearchBar from "../../components/common/FilterSearchBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { fetchProducts, url } from "../../lib/api";
+import { useRouter } from "next/router";
+
 const index = () => {
   const [showFilterOption, setShowFilterOption] = useState(true);
+  const [allProducts, setAllProducts] = useState([]);
+  const router = useRouter();
+
+  async function setProducts() {
+    let products = await fetchProducts();
+    console.log("products check", products);
+
+    products.map((check) => console.log("Check key", check.id));
+    setAllProducts(products);
+  }
+
+  useEffect(() => {
+    console.log("Privacy policy", allProducts);
+    const itemsFromStorage = localStorage.getItem("products");
+    if (itemsFromStorage) {
+      const items = JSON.parse(itemsFromStorage);
+      setAllProducts(items);
+    } else {
+      let test = setProducts();
+    }
+  }, []);
+
+  function handleClick(event: any) {
+    router.push({
+      pathname: `/activity/${event}`,
+    });
+  }
   return (
     <>
       <div className="relative h-[300px]">
@@ -28,15 +58,25 @@ const index = () => {
 
       <Container className="flex flex-col lg:flex-row justify-center">
         <FilterComponents showFilterOption={showFilterOption} />
-        <div className="grid grid-cols-2 gap-4 px-5 md:grid-cols-3 md:gap-0 md:max-w-7xl  -z-20 py-8">
-          {ActivityData?.map((item) => (
+        <div className="grid grid-cols-2 gap-4 px-5 md:grid-cols-3 md:gap-0 md:max-w-7xl  py-8">
+          {allProducts?.map((item) => (
             <ListingCard
-              key={item.id}
-              title={item.title}
-              image={item.images[0].image}
-              salePrice={item.salePrice}
-              regularPrice={item.regularPrice}
-              href={`/activity/${item.id}`}
+              prodId={item?.id}
+              key={item?.id}
+              title={item?.attributes?.title}
+              image={
+                item?.attributes?.featured_image?.data?.attributes?.formats
+                  ?.thumbnail?.url
+              }
+              location={item?.attributes?.state}
+              duration={item?.attributes?.duration}
+              review={4.5}
+              reviewCount={`(450 reviews)`}
+              salePrice={item?.attributes?.salePrice}
+              regularPrice={item?.attributes?.price}
+              discount={`${item?.attributes?.discount_percent}%`}
+              href="localhost"
+              onClick={handleClick}
             />
           ))}
         </div>
