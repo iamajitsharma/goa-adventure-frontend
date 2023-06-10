@@ -14,6 +14,7 @@ import HighLightsSlider from "@/components/ThingsToDo/HighLights/HighLightsSlide
 import Overviews from "@/components/listings/Overviews";
 import Accordion from "@/components/common/Accordion";
 import { AiFillStar } from "react-icons/ai";
+import { products } from "@/data/ActivityData";
 
 const ItineraryData = [
   { time: "7:00AM", itineray: "Pick Up & Drop Off" },
@@ -30,20 +31,17 @@ const index = (props: any) => {
   console.log("Final Product received ", product);
   useEffect(() => {
     const activityId = router.query.activityId;
-    if (!activityId) {
-      router.push({
-        pathname: `/`,
-      });
-    }
-    const itemsFromStorage = localStorage.getItem("products");
-    if (itemsFromStorage) {
-      const items = JSON.parse(itemsFromStorage);
-      const products = items.filter((fil: any) => fil?.id == activityId);
-      console.log("Final Received product info", products[0]);
-      setProduct(products[0]);
-    }
+    // if (!activityId) {
+    //   router.push({
+    //     pathname: `/`,
+    //   });
+    // }
+    const singleProduct = products.filter((fil: any) => fil?.id == activityId);
+    console.log("Final Received product info", singleProduct[0]);
+    setProduct(singleProduct[0]);
   }, []);
 
+  console.log(product);
   return (
     <>
       {/* Product Slider Start */}
@@ -92,7 +90,7 @@ const index = (props: any) => {
             <div className="main_layout">
               {/* Product Title Section */}
               <div className="bg-white shadow-sm p-4 rounded-md">
-                <ProductTitle h1 title={product?.attributes?.title} />
+                <ProductTitle h1 title="t" />
                 <div className="flex flex-row items-center gap-6 py-4">
                   <span className="flex flex-row items-center gap-2">
                     <i className="ri-map-pin-line text-mainColor text-2xl"></i>

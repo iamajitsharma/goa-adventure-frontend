@@ -1,9 +1,13 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+// next.config.js
+module.exports = {
   images: {
-    domains: ["localhost"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "goaadventure.in",
+        port: "",
+        pathname: "/wp-content/**",
+      },
+    ],
   },
 };
-
-module.exports = nextConfig;

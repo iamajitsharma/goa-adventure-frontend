@@ -1,386 +1,50 @@
-import TourCardImg from "/public/assets/tourCard.jpeg";
-
-const ActivityData = [
+export const products = [
   {
-    id: "01",
+    id: 1,
     title: "Scuba Diving Grand Island",
-    overview: "This is overview",
-    regularPrice: 2500,
-    salePrice: 1350,
-    images: [
-      {
-        id: "01",
-        image: TourCardImg,
-      },
-      {
-        id: "02",
-        image: TourCardImg,
-      },
-      {
-        id: "03",
-        image: TourCardImg,
-      },
-      {
-        id: "04",
-        image: TourCardImg,
-      },
-      {
-        id: "05",
-        image: TourCardImg,
-      },
+    category: "Activity",
+    categoryType: "Scuba Diving",
+    overview:
+      "Scuba diving grand island is a sport popular in Goa because of the blue and clean waters. Safar travel express does dive with proper gear that allows the diver to breathe beneath the surface of the water quickly. Divers are equipped with oxygen masks and eye protection to help enjoy deep water experience. You can plan the dive or go unplanned as we also provide a camera to help picture underwater ecosystems. The scuba diving in goa charges is not very high, considering all the experience provided. The underwater ecosystems are very much filled with fishes as we plan all locations carefully. Grand Island is popular among tourists who visit Goa because of the fantastic scuba diving grand island services here. With the best scuba diving in Goa, you can go down the depth of the cold blue ocean to see rare fishes that do not come all over to the surface. With Safar travel express’s service, you will be availing a lot of benefits. The assistance includes travel to many known and loved locations for the best photographic experience. Our staff can help you locate some less known underwater life as well. You will also have 20 minutes to dive inside the water with sufficient resources such as suit and diving gear. The price for scuba diving in grand island is 1999 INR, which is not negotiable.",
+    highlight: [
+      "Get an chance to explore scuba diving",
+      "Learn scuba diving from certified trainer",
+      "Enjoy boat ride for 45 mins",
+      "Get a change to see dolphin",
     ],
-    highlights: [
-      { id: "01", highlight: "Scuba diving highlight" },
-      { id: "02", highlight: "Scuba diving highlight 2" },
-      { id: "03", highlight: "Scuba diving highlight 3" },
+    inclusion: [
+      "Pickup and drop",
+      "Approx. 15-20 mins scuba dive",
+      "Basic training",
+      "Safety Equipment",
+      "Buffet lunch after dive",
+      "Snack, juices & water bottle",
     ],
-    inclusions: [
-      { id: "01", inclusion: "Scuba Diving for 15 min" },
-      { id: "02", inclusion: "Free Training" },
-      { id: "03", inclusion: "Drink and Beverage" },
-      { id: "04", inclusion: "Scuba Diving for 15 min" },
+    exclusion: [
+      "Any personal expenses",
+      "extra dive charges",
+      "Anything which are not included in the package",
     ],
-    exclusions: [
-      { id: "01", exclusion: "Extra Dive" },
-      { id: "02", exclusion: "Personal Expense" },
-      { id: "03", exclusion: "Anything which not included in the packages" },
-    ],
-    reviews: [
-      { id: "01", name: "Ajit Sharma", review: "I love scuba diving" },
-      { id: "02", name: "Ankit Gupta", review: "I enjoyed scuba diving" },
-      { id: "03", name: "Prem", review: "I liked scuba diving" },
-    ],
-    faq: [
-      {
-        id: "01",
-        title: "Question 1",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-      {
-        id: "02",
-        title: "Question 2",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-      {
-        id: "03",
-        title: "Question 3",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-      {
-        id: "04",
-        title: "Question 4",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-    ],
-  },
-  {
-    id: "02",
-    title: "Scuba Diving Malvan",
-    overview: "This is overview",
-    regularPrice: 2500,
-    salePrice: 1350,
-    images: [
-      {
-        id: "01",
-        image: TourCardImg,
-      },
-      {
-        id: "02",
-        image: TourCardImg,
-      },
-      {
-        id: "03",
-        image: TourCardImg,
-      },
-      {
-        id: "04",
-        image: TourCardImg,
-      },
-      {
-        id: "05",
-        image: TourCardImg,
-      },
-    ],
-    highlights: [
-      { id: "01", highlight: "Scuba diving highlight" },
-      { id: "02", highlight: "Scuba diving highlight 2" },
-      { id: "03", highlight: "Scuba diving highlight 3" },
-    ],
-    inclusions: [
-      { id: "01", inclusion: "Scuba Diving for 15 min" },
-      { id: "02", inclusion: "Free Training" },
-      { id: "03", inclusion: "Drink and Beverage" },
-      { id: "04", inclusion: "Scuba Diving for 15 min" },
-    ],
-    exclusions: [
-      { id: "01", exclusion: "Extra Dive" },
-      { id: "02", exclusion: "Personal Expense" },
-      { id: "03", exclusion: "Anything which not included in the packages" },
-    ],
-    reviews: [
-      { id: "01", name: "Ajit Sharma", review: "I love scuba diving" },
-      { id: "02", name: "Ankit Gupta", review: "I enjoyed scuba diving" },
-      { id: "03", name: "Prem", review: "I liked scuba diving" },
-    ],
-    faq: [
-      {
-        id: "01",
-        title: "Question 1",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-      {
-        id: "02",
-        title: "Question 2",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-      {
-        id: "03",
-        title: "Question 3",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-      {
-        id: "04",
-        title: "Question 4",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-    ],
-  },
-  {
-    id: "03",
-    title: "Goa Watersports",
-    overview: "This is overview",
-    regularPrice: 2500,
-    salePrice: 1350,
-    images: [
-      {
-        id: "01",
-        image: TourCardImg,
-      },
-      {
-        id: "02",
-        image: TourCardImg,
-      },
-      {
-        id: "03",
-        image: TourCardImg,
-      },
-      {
-        id: "04",
-        image: TourCardImg,
-      },
-      {
-        id: "05",
-        image: TourCardImg,
-      },
-    ],
-    highlights: [
-      { id: "01", highlight: "Scuba diving highlight" },
-      { id: "02", highlight: "Scuba diving highlight 2" },
-      { id: "03", highlight: "Scuba diving highlight 3" },
-    ],
-    inclusions: [
-      { id: "01", inclusion: "Scuba Diving for 15 min" },
-      { id: "02", inclusion: "Free Training" },
-      { id: "03", inclusion: "Drink and Beverage" },
-      { id: "04", inclusion: "Scuba Diving for 15 min" },
-    ],
-    exclusions: [
-      { id: "01", exclusion: "Extra Dive" },
-      { id: "02", exclusion: "Personal Expense" },
-      { id: "03", exclusion: "Anything which not included in the packages" },
-    ],
-    reviews: [
-      { id: "01", name: "Ajit Sharma", review: "I love scuba diving" },
-      { id: "02", name: "Ankit Gupta", review: "I enjoyed scuba diving" },
-      { id: "03", name: "Prem", review: "I liked scuba diving" },
-    ],
-    faq: [
-      {
-        id: "01",
-        title: "Question 1",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-      {
-        id: "02",
-        title: "Question 2",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-      {
-        id: "03",
-        title: "Question 3",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-      {
-        id: "04",
-        title: "Question 4",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-    ],
-  },
-  {
-    id: "04",
-    title: "Bungee Jump",
-    overview: "This is overview",
-    regularPrice: 2500,
-    salePrice: 1350,
-    images: [
-      {
-        id: "01",
-        image: TourCardImg,
-      },
-      {
-        id: "02",
-        image: TourCardImg,
-      },
-      {
-        id: "03",
-        image: TourCardImg,
-      },
-      {
-        id: "04",
-        image: TourCardImg,
-      },
-      {
-        id: "05",
-        image: TourCardImg,
-      },
-    ],
-    highlights: [
-      { id: "01", highlight: "Scuba diving highlight" },
-      { id: "02", highlight: "Scuba diving highlight 2" },
-      { id: "03", highlight: "Scuba diving highlight 3" },
-    ],
-    inclusions: [
-      { id: "01", inclusion: "Scuba Diving for 15 min" },
-      { id: "02", inclusion: "Free Training" },
-      { id: "03", inclusion: "Drink and Beverage" },
-      { id: "04", inclusion: "Scuba Diving for 15 min" },
-    ],
-    exclusions: [
-      { id: "01", exclusion: "Extra Dive" },
-      { id: "02", exclusion: "Personal Expense" },
-      { id: "03", exclusion: "Anything which not included in the packages" },
-    ],
-    reviews: [
-      { id: "01", name: "Ajit Sharma", review: "I love scuba diving" },
-      { id: "02", name: "Ankit Gupta", review: "I enjoyed scuba diving" },
-      { id: "03", name: "Prem", review: "I liked scuba diving" },
-    ],
-    faq: [
-      {
-        id: "01",
-        title: "Question 1",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-      {
-        id: "02",
-        title: "Question 2",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-      {
-        id: "03",
-        title: "Question 3",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-      {
-        id: "04",
-        title: "Question 4",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-    ],
-  },
-  {
-    id: "05",
-    title: "Scuba Diving Grand Island",
-    overview: "This is overview",
-    regularPrice: 2500,
-    salePrice: 1350,
-    images: [
-      {
-        id: "01",
-        image: TourCardImg,
-      },
-      {
-        id: "02",
-        image: TourCardImg,
-      },
-      {
-        id: "03",
-        image: TourCardImg,
-      },
-      {
-        id: "04",
-        image: TourCardImg,
-      },
-      {
-        id: "05",
-        image: TourCardImg,
-      },
-    ],
-    highlights: [
-      { id: "01", highlight: "Scuba diving highlight" },
-      { id: "02", highlight: "Scuba diving highlight 2" },
-      { id: "03", highlight: "Scuba diving highlight 3" },
-    ],
-    inclusions: [
-      { id: "01", inclusion: "Scuba Diving for 15 min" },
-      { id: "02", inclusion: "Free Training" },
-      { id: "03", inclusion: "Drink and Beverage" },
-      { id: "04", inclusion: "Scuba Diving for 15 min" },
-    ],
-    exclusions: [
-      { id: "01", exclusion: "Extra Dive" },
-      { id: "02", exclusion: "Personal Expense" },
-      { id: "03", exclusion: "Anything which not included in the packages" },
-    ],
-    reviews: [
-      { id: "01", name: "Ajit Sharma", review: "I love scuba diving" },
-      { id: "02", name: "Ankit Gupta", review: "I enjoyed scuba diving" },
-      { id: "03", name: "Prem", review: "I liked scuba diving" },
-    ],
-    faq: [
-      {
-        id: "01",
-        title: "Question 1",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-      {
-        id: "02",
-        title: "Question 2",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-      {
-        id: "03",
-        title: "Question 3",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
-      {
-        id: "04",
-        title: "Question 4",
-        answer:
-          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos reiciendis suntdolor sit, amet consectetur adipisicing elit. E ullam maiores. Quibusdam non obcaecati quidem voluptate amet consectetur adconsequuntur magni, aut ratione assumenda ullam illo ipsam mollitia cum corporis molestias.",
-      },
+    price: 2500,
+    discountPercent: 30,
+    allowDeposit: "Yes",
+    depositPercent: 25,
+    allowCancel: "Yes",
+    minPeople: "1",
+    maxPeople: "",
+    startTime: "7:30 AM",
+    duration: "30 Min",
+    location: "Grand Island",
+    city: "Calangute",
+    state: "Goa",
+    country: "India",
+    featuredImage:
+      "https://goaadventure.in/wp-content/uploads/2020/12/Scuba-Diving-Grand-Island-1.jpg",
+    galleryImage: [
+      "https://goaadventure.in/wp-content/uploads/2020/12/Dolphin-Sightseeing.jpg",
+      "https://goaadventure.in/wp-content/uploads/2020/12/Dolphin-Sightseeing.jpg",
+      "https://goaadventure.in/wp-content/uploads/2020/12/Dolphin-Sightseeing.jpg",
+      "https://goaadventure.in/wp-content/uploads/2020/12/Dolphin-Sightseeing.jpg",
     ],
   },
 ];
-
-export default ActivityData;

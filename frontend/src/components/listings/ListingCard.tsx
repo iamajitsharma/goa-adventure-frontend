@@ -6,9 +6,10 @@ import { BiRupee } from "react-icons/bi";
 import { AiFillStar, AiFillHeart, AiFillEye } from "react-icons/ai";
 import { BsClock } from "react-icons/bs";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface CardProps {
-  key?: any;
+  id?: string | number;
   title?: string;
   image?: any;
   location?: string;
@@ -21,11 +22,11 @@ interface CardProps {
   className?: string;
   href?: URL | string;
   onClick?: any;
-  prodId?: number;
+  prodId?: any;
 }
 
 const ListingCard: React.FC<CardProps> = ({
-  key,
+  id,
   title,
   image,
   location,
@@ -36,24 +37,20 @@ const ListingCard: React.FC<CardProps> = ({
   regularPrice,
   discount,
   prodId,
-  href,
   onClick,
 }) => {
-  console.log("Key");
+  const router = useRouter();
   return (
-    <div className="card cursor-pointer">
+    <div className="card">
       <Image
         src={image}
         alt="Tour"
         className="w-full h-full object-cover"
-        width={500} // Provide the required "width" property here
+        width={500}
         height={300}
         onClick={() => onClick(prodId)}
       />
-      <div
-        className="flex flex-row justify-between items-center absolute top-0 w-full px-4 pt-2 text-white"
-        onClick={() => onClick(prodId)}
-      >
+      <div className="flex flex-row justify-between items-center absolute top-0 w-full px-4 pt-2 text-white">
         <span className="flex items-center gap-1 text-sm font-medium">
           <MdLocationPin />
           {location}
@@ -64,9 +61,7 @@ const ListingCard: React.FC<CardProps> = ({
         </span>
       </div>
       <div className="card-content">
-        <h2 className="card-title" onClick={() => onClick(prodId)}>
-          {title}
-        </h2>
+        <h2 className="card-title">{title}</h2>
 
         <div className="flex flex-row items-center text-sm pt-2">
           <AiFillStar className="text-yellow-400" fontSize={15} />
@@ -88,13 +83,16 @@ const ListingCard: React.FC<CardProps> = ({
 
         <div className="mt-5 flex w-full justify-center items-center gap-2">
           <button className="button-primary">
-            <Link href={href}>Book Now</Link>
+            <Link href="#">Book Now</Link>
           </button>
           <button className="button-icon">
             <AiFillHeart className="text-sm md:text-lg" />
           </button>
           <button className="button-icon">
-            <AiFillEye className="text-sm md:text-lg" />
+            <AiFillEye
+              className="text-sm md:text-lg"
+              onClick={() => onClick(prodId)}
+            />
           </button>
         </div>
       </div>
