@@ -10,7 +10,7 @@ const ActivityListing = () => {
   async function setProducts() {
     let products = await fetchProducts();
     console.log("products check", products);
-    products.map((check) =>
+    products.map((check: any) =>
       console.log(
         "Test",
         url +
@@ -26,6 +26,8 @@ const ActivityListing = () => {
     let test = setProducts();
   }, []);
 
+  console.log(allProducts);
+
   return (
     <section className="w-screen lg:py-4 bg-white py-24">
       <Heading heading={"Popular Adventure Activities"} />
@@ -33,10 +35,7 @@ const ActivityListing = () => {
         {allProducts.map((prod) => (
           <ListingCard
             title={prod?.attributes?.title}
-            image={
-              prod?.attributes?.featured_image?.data?.attributes?.formats
-                ?.thumbnail?.url
-            }
+            image={prod?.attributes?.featured_image?.data?.attributes?.url}
             location={prod?.attributes?.state}
             duration={prod?.attributes?.duration}
             review={4.5}

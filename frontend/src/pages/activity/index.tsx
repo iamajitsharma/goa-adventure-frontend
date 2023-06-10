@@ -10,7 +10,7 @@ import { useState } from "react";
 const index = () => {
   const [showFilterOption, setShowFilterOption] = useState(true);
   return (
-    <section className="">
+    <>
       <div className="relative h-[300px]">
         <Image
           src={ActivityCover}
@@ -41,7 +41,7 @@ const index = () => {
           ))}
         </div>
       </Container>
-    </section>
+    </>
   );
 };
 
