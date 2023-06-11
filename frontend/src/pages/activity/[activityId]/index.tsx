@@ -32,13 +32,6 @@ const index = () => {
 
   console.log("Final Product received ", product);
   useEffect(() => {
-    console.log("Activity id", activityId);
-    // if (!activityId) {
-    //   router.push({
-    //     pathname: `/`,
-    //   });
-    // }
-    console.log("PRoducts", products);
     let check = products.map((pro) => {
       console.log("PRo", pro);
       console.log("Congrats pro.id", pro.id);
