@@ -5,14 +5,14 @@
 
 @layer components {
   .card {
-    @apply relative bg-white text-gray-700 max-w-xs h-fit shadow-lg rounded-lg overflow-hidden font-poppins mx-4;
+    @apply relative bg-white text-gray-700 max-w-xs min-h-fit rounded-lg overflow-hidden font-poppins m-3 border-[1px] border-gray-200 shadow-sm;
   }
   .card-content {
     @apply px-2 py-2;
   }
   .card-title {
     @apply font-semibold text-base
-    overflow-ellipsis overflow-hidden whitespace-pre-wrap;
+    overflow-ellipsis overflow-hidden whitespace-pre-wrap py-4;
   }
   .discount-percent {
     @apply bg-green-400 px-1.5 py-0.5 rounded-md text-xs text-white;
@@ -37,6 +37,7 @@
 
 section {
   padding: 60px 0;
+  width: 100%;
 }
 
 .slick-image-things-slider {
@@ -107,7 +108,7 @@ section {
   top: 0;
   border-radius: 0px;
 }
-
+/* 
 .select-dropdown {
   position: relative;
   display: block;
@@ -156,7 +157,7 @@ section {
 
 .container-dropdown:focus {
   outline: none;
-}
+} */
 
 /* Slide down animation starts */
 

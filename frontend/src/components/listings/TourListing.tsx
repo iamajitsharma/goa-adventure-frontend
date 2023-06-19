@@ -50,14 +50,14 @@ const settings = {
 
 const TourListing = () => {
   return (
-    <section className="bg-white w-full py-4">
+    <section className="">
       <Heading heading={"Recommended tour packages"} />
-      <div className="md:max-w-7xl mx-auto px-5">
-        <Slider {...settings}>
+      <div className="md:max-w-7xl mx-auto bg-white">
+        <Slider {...settings} className="">
           {[0, 1, 2, 3, 4, 5, 6, 7].map((num) => (
             <ListingCard
               key={num}
-              title="Goa Tour Package"
+              title="Honeymoon Goa Tour Package for 3 Night 4 Days"
               image={TourCardImg}
               location="Goa"
               duration="3N/4D"
