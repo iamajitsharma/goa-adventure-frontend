@@ -43,7 +43,7 @@ const ListingCard: React.FC<CardProps> = ({
 }) => {
   const router = useRouter();
   return (
-    <div className="card">
+    <div className="card cursor-pointer">
       <motion.div>
         <Image
           src={image}

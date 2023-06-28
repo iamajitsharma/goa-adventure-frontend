@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import Footer from "./footer/Footer";
+import Header from "./Header/Header";
 
 const Navbar = dynamic(() => import("../components/navbar/Navbar"), {
   ssr: false,
@@ -14,7 +15,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <Navbar />
+      <Header />
       {children}
       <Footer />
     </>

@@ -1,27 +1,21 @@
 import React from "react";
 interface IHeading {
-  heading: String;
+  heading?: String;
+  subheading?: String;
+  textAlign?: String;
 }
 
-export default function Heading({ heading }: IHeading) {
+export default function Heading({ heading, subheading, textAlign }: IHeading) {
   return (
     <div
-      className="
-    text-gray-800
-
-    text-lg
-    md:text-2xl
-    font-poppins
-    text-slate-800
-    font-semibold
-    flex
-    flex-col
-    items-center
-    justify-center
-    py-6"
+      className={`mb-10 ${
+        textAlign === "center" ? "text-center" : "text-left"
+      }`}
     >
-      <h1>{heading}</h1>
-      <div className="bg-orange-500 w-1/6 md:w-1/12 h-0.5 m-3"></div>
+      <span className="font-poppins text-base text-primary uppercase font-semibold tracking-widest">
+        {subheading}
+      </span>
+      <h1 className="text-3xl font-merri font-black text-variant">{heading}</h1>
     </div>
   );
 }

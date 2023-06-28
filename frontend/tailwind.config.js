@@ -16,6 +16,7 @@ module.exports = {
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        merri: ["Merriweather", "serif"],
       },
       backgroundColor: {
         blackOverlay: "rgba(0, 0 ,0 ,0.4)",
@@ -38,6 +39,11 @@ module.exports = {
         textGray: "#CACACA",
         textBlack: "#333333",
         blackOverlay: "rgba(0, 0 ,0 ,0.7)",
+        primary: "#FF8359",
+        secondary: "#1BE8EE",
+        variant: "#252243",
+        yellow: "#FFD659",
+        lightBg: "#FFF8EF",
       },
     },
   },
