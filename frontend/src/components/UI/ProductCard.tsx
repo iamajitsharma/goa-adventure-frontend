@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
 import TourCardImg from "../../public/assets/tourcard.jpeg";
 import { MdLocationPin } from "react-icons/md";
@@ -16,21 +16,38 @@ interface CardProps {
 
 const ProductCard: React.FC<CardProps> = ({ item }) => {
   const router = useRouter();
+  const handleNavigation = () => {
+    if (item.category === "activity") {
+      router.push(`activity/${item.id}`);
+    } else if (item.category === "tour") {
+      router.push(`tour/${item.id}`);
+    } else {
+      router.push(`/${item.id}`);
+    }
+  };
+
+  // useEffect(() => {
+  //   handleNavigation();
+  // }, []);
+
+  const salePrice = item.price - (item.price * item.discountPercent) / 100;
+
   return (
     <motion.div className="card cursor-pointer" whileHover={{ scale: 1.02 }}>
       <div>
         <Image
-          src={item.image}
+          src={item.featuredImage}
           alt="Tour"
           className="w-full h-full object-cover"
           width={500}
           height={500}
+          onClick={handleNavigation}
         />
       </div>
 
       <div className="flex flex-row justify-between items-center absolute top-0 w-full px-4 pt-2 text-white">
         <span className="text-sm font-medium bg-rose-500 w-10 h-10 rounded-full flex items-center justify-center p-3">
-          -{item.discount}%
+          -{item.discountPercent}%
         </span>
         <span className="flex items-center gap-1 text-sm font-medium">
           <BsHeart className="text-sm md:text-lg w-6 h-6" />
@@ -40,26 +57,28 @@ const ProductCard: React.FC<CardProps> = ({ item }) => {
       </div>
       <div className="card-content">
         <div className="">
-          <h2 className="card-title">{item.title}</h2>
+          <h2 className="card-title" onClick={handleNavigation}>
+            {item.title}
+          </h2>
         </div>
 
         <div className="flex flex-row items-center justify-between text-sm py-1">
-          <span className="flex flex-row items-center gap-1 text-base text-neutral-900 font-medium">
-            <AiFillStar className="text-primary" /> {item.review}
+          <span className="flex flex-row items-center gap-1 text-sm text-neutral-900 font-medium">
+            <FiMapPin /> {item.location}
           </span>
           <span className="flex flex-row items-center gap-1 text-base text-neutral-900 font-medium">
-            <FiMapPin /> {item.location}
+            <AiFillStar className="text-primary" /> {item.review}
           </span>
         </div>
         <hr />
         <div className="mt-5 flex w-full justify-between items-center gap-2">
           <div className="flex gap-1 pt-2">
             <span className="flex flex-row items-center text-lg font-semibold text-primary">
-              <BiRupee fontSize={20} /> {item.salePrice}
+              <BiRupee fontSize={20} /> {salePrice}
             </span>
             <div className="flex flex-row gap-2 items-center">
               <span className="flex flex-row items-center line-through text-sm font-medium opacity-50 text-neutral-900 ">
-                {item.regularPrice}
+                {item.price}
               </span>
             </div>
           </div>

@@ -5,7 +5,7 @@
 
 @layer components {
   .card {
-    @apply relative bg-white text-gray-700 max-w-xs min-h-fit rounded-2xl overflow-hidden font-poppins m-3 border-[1px] border-gray-200 shadow-sm;
+    @apply relative bg-white text-gray-700 max-w-xs h-full max-h-min rounded-2xl overflow-hidden font-poppins m-3 border-[1px] border-gray-200 shadow-sm;
   }
   .card-content {
     @apply px-2 py-2;

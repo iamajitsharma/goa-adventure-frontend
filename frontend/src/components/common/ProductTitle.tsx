@@ -24,7 +24,9 @@ const ProductTitle: React.FC<ProductTitleProps> = ({
         <h2 className="text-xl font-semibold text-textBlack py-4">{title}</h2>
       )}
       {h3 && <h3>{title}</h3>}
-      {h4 && <h4 className="text-lg font-semibold text-textBlack">{title}</h4>}
+      {h4 && (
+        <h4 className="text-base font-semibold text-textBlack py-4">{title}</h4>
+      )}
     </>
   );
 };

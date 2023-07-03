@@ -8,7 +8,7 @@ const TourCard = dynamic(() => import("../listings/ListingCard"), {
 const Heading = dynamic(() => import("../common/Heading"), {
   ssr: false,
 });
-const bannerSlider = {
+const settings = {
   infinite: true,
   autoplay: true,
   autoplaySpeed: 4000,
@@ -46,23 +46,15 @@ const bannerSlider = {
 
 export default function BannerSlider() {
   return (
-    <>
-      <div className="text-center pb-8">
-        <p className="text-4xl titleFont">
-          <Heading heading={"Heaven on the earth"} />
-        </p>
+    <div className="p-8 py-0">
+      <div className="w-full">
+        <Slider {...settings}>
+          <img src="/assets/images/slider1.jpg" alt="Expedia logo" />
+          <img src="/assets/images/slider1.jpg" alt="Expedia logo" />
+          <img src="/assets/images/slider1.jpg" alt="Expedia logo" />
+          <img src="/assets/images/slider1.jpg" alt="Expedia logo" />
+        </Slider>
       </div>
-      <div className="p-8 py-0">
-        <div className="companyBanner-slider w-full  ">
-          <Slider {...bannerSlider}>
-            <img src="assets/banner.png" alt="Expedia logo" />
-            <img src="assets/banner.png" alt="Expedia logo" />
-            <img src="assets/banner.png" alt="Expedia logo" />
-            <img src="assets/banner.png" alt="Expedia logo" />
-            <img src="assets/banner.png" alt="Expedia logo" />
-          </Slider>
-        </div>
-      </div>
-    </>
+    </div>
   );
 }

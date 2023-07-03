@@ -1,7 +1,7 @@
 import Slider from "react-slick";
 import Heading from "../common/Heading";
 import ListingCard from "./ListingCard";
-import CarouselNextArrow from "../CarouselNextArrow";
+import CarouselNextArrow from "../UI/CarouselNextArrow";
 import CarouselPrevArrow from "../CarouselNextArrowTourPack";
 import TourCardImg from "../../../public/assets/tourcard.jpeg";
 const handleEdge = (edge: string) => {

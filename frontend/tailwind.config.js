@@ -18,12 +18,11 @@ module.exports = {
         poppins: ["Poppins", "sans-serif"],
         merri: ["Merriweather", "serif"],
       },
-      backgroundColor: {
-        blackOverlay: "rgba(0, 0 ,0 ,0.4)",
-      },
+
       backgroundImage: {
         worldPattern: "url('../../public/assets/worldmap.svg')",
         hero: "url('/assets/hero.png')",
+        gradiantBg: "linear-gradient(to top, rgba(0,0,0,0.9), transparent 50%)",
       },
       backgroundSize: ({ theme }) => ({
         auto: "auto",
@@ -38,12 +37,13 @@ module.exports = {
         lightGray: "#F5F5F5",
         textGray: "#CACACA",
         textBlack: "#333333",
-        blackOverlay: "rgba(0, 0 ,0 ,0.7)",
         primary: "#FF8359",
         secondary: "#1BE8EE",
         variant: "#252243",
         yellow: "#FFD659",
         lightBg: "#FFF8EF",
+        blackOverlay: "rgba(0, 0 ,0 ,0.9)",
+        lightOverlay: "rgba(0, 0 ,0 ,0.3)",
       },
     },
   },

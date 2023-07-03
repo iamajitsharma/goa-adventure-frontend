@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "@/components/Header/Header";
 import Container from "@/components/Container";
 import { BsSearch } from "react-icons/bs";
@@ -7,10 +7,28 @@ import Heading from "@/components/common/Heading";
 import HowWeWork from "@/components/Featured/HowWeWork";
 import ProductList from "@/components/UI/ProductList";
 import { activityData } from "../../public/assets/data/Data";
+import { products } from "../data/ActivityData";
 import TourPackageSlider from "@/components/UI/ProductSlider";
 import ProductSlider from "@/components/UI/ProductSlider";
+import Testimonials from "@/components/Testimonial/Testimonials";
+import BannerSlider from "@/components/Featured/BannerSlider";
 
 const index = () => {
+  const [activities, setActivities] = useState([]);
+  const [tourData, setTourData] = useState([]);
+
+  useEffect(() => {
+    const filterActivityData: any = products.filter(
+      (item) => item.category === "activity"
+    );
+    const filterTourData: any = products.filter(
+      (item) => item.category === "tour"
+    );
+
+    setActivities(filterActivityData);
+    setTourData(filterTourData);
+  }, []);
+
   return (
     <>
       <div className="bg-lightBg w-full h-full max-h-min">
@@ -40,13 +58,13 @@ const index = () => {
           </div>
         </div>
       </div>
-      <section className="py-16">
+      <section className="px-20 py-16">
         <Heading
           heading="Explore Top Destination"
           subheading="Top Destination"
           textAlign="center"
         />
-        <div className="flex flex-row items-center gap-4 px-20">
+        <div className="flex flex-row items-center gap-4">
           <DestinationList />
         </div>
       </section>
@@ -55,27 +73,37 @@ const index = () => {
       </section>
 
       {/* Activity Listing Start  */}
-      <section className="py-16 px-20">
+      <section className="px-20 py-16">
         <Heading
           heading="Enjoy Thrillilng Adventure"
           subheading="Top Adeventures"
           textAlign="center"
         />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <ProductList data={activityData} />
+        <div className="w-full py-6">
+          <ProductSlider data={activities} />
         </div>
       </section>
       {/* Activity Listing End  */}
-      {/* Banner Start  */}
-      <section className="px-20">
+      {/* Banner Slider  */}
+      <section className="px-20 py-16">
+        <BannerSlider />
+      </section>
+
+      {/* Tour Package Start  */}
+      <section className="px-20 py-16">
         <Heading
           heading="Recommended Tour Package"
           subheading="Top Selling Packages"
           textAlign="center"
         />
-        <div className="w-full">
-          <ProductSlider data={activityData} />
+        <div className="w-full py-6">
+          <ProductSlider data={tourData} />
         </div>
+      </section>
+      {/* Tour Package Start  */}
+      {/* Testimonial  */}
+      <section className="px-20 py-16 bg-lightBg">
+        <Testimonials />
       </section>
     </>
   );

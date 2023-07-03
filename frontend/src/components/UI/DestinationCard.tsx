@@ -1,44 +1,19 @@
 import React from "react";
-import { AiFillStar } from "react-icons/ai";
+
+import { motion } from "framer-motion";
 
 const DestinationCard = () => {
   return (
-    <div className="w-6/12 md:w-3/12 lg:w-3/12 flex flex-col items-center ">
-      <div className="w-full rounded-3xl bg-white shadow-md">
-        <img
-          src="/assets/location.jpg"
-          alt=""
-          className="max-h-[275px] w-full h-full object-cover rounded-t-3xl"
-        />
-
-        <div className="w-full py-4 px-3 font-poppins">
-          <div className="font-semibold  text-base">
-            <h4>North Goa</h4>
-          </div>
-          <div className="flex flex-row items-center justify-between ">
-            <div className="flex flex-row items-center gap-1 text-primary text-lg py-2">
-              <span>
-                <AiFillStar />
-              </span>
-              <span>
-                <AiFillStar />
-              </span>
-              <span>
-                <AiFillStar />
-              </span>
-              <span>
-                <AiFillStar />
-              </span>
-              <span className="text-gray-300/80">
-                <AiFillStar />
-              </span>
-            </div>
-            <div className="text-primary font-semibold text-base tracking-wide">
-              Rs12900
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="relative h-[300px] overflow-hidden rounded-2xl flex items-end justify-center">
+      <img
+        src="/assets/location.jpg"
+        alt="Location"
+        className="top-0 left-0 h-full w-full object-cover filter brightness-100 transform scale-100 transition-all duration-300 ease-in-out overflow-hidden -z-10"
+      />
+      <div className="absolute bottom-0 left-0 w-full h-full rounded-xl z-0 bg-gradient-to-t from-blackOverlay to-transparent to-50%"></div>
+      <span className="text-xl uppercase font-medium z-10 mb-5 text-center">
+        Goa
+      </span>
     </div>
   );
 };

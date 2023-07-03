@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import LocationSlider from "./LocationSlider";
 import LocationImg from "../../public/assets/location.jpg";
-import CarouselNextArrow from "../CarouselNextArrow";
+import CarouselNextArrow from "../UI/CarouselNextArrow";
 import Heading from "../common/Heading";
 
 const settings = {
