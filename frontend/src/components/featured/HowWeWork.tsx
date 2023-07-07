@@ -2,6 +2,9 @@ import React from "react";
 import Heading from "../common/Heading";
 import { GrMapLocation } from "react-icons/gr";
 import { IconType } from "react-icons";
+import Container from "../common/Container";
+import Image from "next/image";
+import flightImg from "../../../public/assets/images/flight.png";
 
 interface servicesProps {
   icon: any;
@@ -33,32 +36,30 @@ const services: servicesProps[] = [
 
 const HowWeWork = () => {
   return (
-    <div className="flex justify-between items-center font-poppins max-h-min h-full pl-20">
-      <div className="w-1/2">
-        <Heading heading="We Offer Best Services" subheading="How We Work" />
-        {services.map((item, index) => (
-          <div className="flex items-center gap-5 py-4">
-            <div className="p-4 text-3xl shadow-md rounded-md bg-white text-primary w-16 h-16 flex items-center justify-center">
-              {item.icon}
-            </div>
+    <Container>
+      <div className="flex flex-col-reverse md:flex-row justify-between items-center font-poppins max-h-fit h-full px-4 ">
+        <div className="w-full md:w-1/2">
+          <Heading heading="We Offer Best Services" subheading="How We Work" />
+          {services.map((item, index) => (
+            <div className="flex items-center gap-5 py-4">
+              <div className="p-4 text-3xl shadow-md rounded-md bg-white text-primary w-16 h-16 flex items-center justify-center">
+                {item.icon}
+              </div>
 
-            <div className="flex flex-col gap-2">
-              <h5 className="font-semibold text-base text-variant tracking-wide">
-                {item.title}
-              </h5>
-              <p className="text-sm">{item.description}</p>
+              <div className="flex flex-col gap-2">
+                <h5 className="font-semibold text-base text-variant tracking-wide">
+                  {item.title}
+                </h5>
+                <p className="text-sm">{item.description}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div className="w-full md:w-1/2 shrink-0">
+          <Image src={flightImg} alt="" className="object-cover" />
+        </div>
       </div>
-      <div className="w-1/2 ">
-        <img
-          src="assets/images/flight.png"
-          alt=""
-          className="object-cover bg-primary"
-        />
-      </div>
-    </div>
+    </Container>
   );
 };
 

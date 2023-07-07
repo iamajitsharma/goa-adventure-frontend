@@ -21,7 +21,7 @@ module.exports = {
 
       backgroundImage: {
         worldPattern: "url('../../public/assets/worldmap.svg')",
-        hero: "url('/assets/hero.png')",
+        hero: "url('/assets/cover.jpeg')",
         gradiantBg: "linear-gradient(to top, rgba(0,0,0,0.9), transparent 50%)",
       },
       backgroundSize: ({ theme }) => ({

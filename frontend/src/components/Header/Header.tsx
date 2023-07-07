@@ -1,58 +1,76 @@
-import React, { useRef, useEffect } from "react";
-import Navbar from "./Navbar/Navbar";
+import { Fragment, useState } from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { CiLogin } from "react-icons/ci";
+import Link from "next/link";
+import logo from "../../../public/assets/goaadventure_color_logo.svg";
+import whiteLogo from "../../../public/assets/goaadventure_white_logo.svg";
 import Image from "next/image";
+import Navbar from "./Navbar/Navbar";
+import UserNavigation from "./Navbar/UserNavigation";
+import MobileMenu from "./Navbar/MobileMenu";
 import { useRouter } from "next/router";
-import Container from "../Container";
-import Button from "../UI/Button";
+import Button from "../common/Button";
+import { deviceSize } from "../Responsive";
+import { useMediaQuery } from "react-responsive";
+
+const navigation = [
+  { name: "Home", href: "#" },
+  { name: "About Us", href: "#" },
+  { name: "Adventures", href: "#" },
+  { name: "Tour", href: "#" },
+  { name: "Contact", href: "#" },
+];
 
 const Header = () => {
+  const [isLogin, setIsLogin] = useState(false);
   const router = useRouter();
-  const headerRef: React.MutableRefObject<any> = useRef();
-
-  const stickyHeaderFn = () => {
-    window.addEventListener("scroll", () => {
-      if (
-        document.body.scrollTop > 80 ||
-        document.documentElement.scrollTop > 80
-      ) {
-        headerRef.current.classList.add("sticky_header");
-      } else {
-        headerRef.current.classList.remove("sticky_header");
-      }
-    });
-  };
-
-  console.log(router.pathname);
-
-  useEffect(() => {
-    stickyHeaderFn();
-    return () => window.removeEventListener("scroll", stickyHeaderFn);
-  }, []);
+  const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
 
   return (
-    <header
-      className={`w-full ${
-        router.pathname === "/" ? "bg-orange-50" : "bg-white"
-      }`}
-      ref={headerRef}
-    >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-2 lg:px-8">
-        <div className="shrink-0">
-          <Image
-            onClick={() => router.push("/")}
-            className="w-3/4 cursor-pointer "
-            src="/assets/goaadventure_color_logo.svg"
-            height="100"
-            width="100"
-            alt="Goa Adventure"
-          />
-        </div>
-        <Navbar />
-        <button className="text-sm tracking-wide font-medium bg-white shadow-sm min-w-fit px-4 py-2 rounded-md">
-          Log In
-        </button>
-      </nav>
-    </header>
+    <Disclosure as="nav" className="bg-transparent absolute z-10 w-full">
+      {({ open }) => (
+        <>
+          <div className="mx-auto w-full sm:px-6 py-2">
+            <div className="flex items-center justify-start gap-0 min-w-full">
+              <div className="flex items-center justify-between gap-4 md:gap-0 w-full">
+                <div className="flex-shrink-0 object-contain w-[200px] md:w-[250px]">
+                  {isTablet ? (
+                    <Image src={whiteLogo} alt="Your Company" className="" />
+                  ) : (
+                    <Image src={logo} alt="Your Company" className="" />
+                  )}
+                </div>
+                <Navbar />
+                {isLogin ? (
+                  <UserNavigation />
+                ) : (
+                  <Button
+                    label="Login"
+                    icon={<CiLogin fontSize={20} />}
+                    small
+                    white
+                  />
+                )}
+              </div>
+
+              <div className="flex md:hidden">
+                {/* Mobile menu button */}
+                <Disclosure.Button className="text-white inline-flex items-center justify-center rounded-md p-2 outline-none cursor-pointer pr-5">
+                  <span className="sr-only">Open main menu</span>
+                  {open ? (
+                    <XMarkIcon className="block h-8 w-8" aria-hidden="true" />
+                  ) : (
+                    <Bars3Icon className="block h-8 w-8" aria-hidden="true" />
+                  )}
+                </Disclosure.Button>
+              </div>
+            </div>
+          </div>
+          <MobileMenu />
+        </>
+      )}
+    </Disclosure>
   );
 };
 

@@ -18,7 +18,12 @@ import ProductImages from "@/components/SingleProductPage/ProductImages";
 import Pricing from "@/components/SingleProductPage/Pricing";
 import { RiAlbumLine } from "react-icons/ri";
 import Box from "@/components/common/Box";
-import { BsCheck2Circle } from "react-icons/bs";
+import { BsCheck2Circle, BsInfoCircle } from "react-icons/bs";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+import { BsTelephone } from "react-icons/bs";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ImWhatsapp } from "react-icons/im";
 
 const ItineraryData = [
   { time: "7:00AM", itineray: "Pick Up & Drop Off" },
@@ -49,9 +54,9 @@ const index = () => {
       <ProductImages />
       {/* Product Slider End */}
       {/* Product Title & Pricing Section Start */}
-      <section className="bg-neutral-100  font-poppins">
+      <section className="bg-neutral-100 font-poppins">
         <Container>
-          <div className="grid md:grid-cols-4 gap-4 grid-flow-row-dense">
+          <div className="flex gap-4 p-3">
             <div className="main_layout">
               {/* Product Title Section */}
               <div className="bg-white shadow-sm p-4 rounded-md">
@@ -107,7 +112,7 @@ const index = () => {
                   <ul>
                     {[0, 1, 2, 3].map((item, index) => (
                       <li className="flex items-center gap-6">
-                        <BsCheck2Circle className="text-green-600 w-6 h-6" />
+                        <BsCheck2Circle className="text-green-600 text-xl" />
                         Scuba Diving Inclusion
                       </li>
                     ))}
@@ -120,7 +125,20 @@ const index = () => {
                   <ul>
                     {[0, 1, 2, 3].map((item, index) => (
                       <li className="flex items-center gap-6">
-                        <BsCheck2Circle className="text-green-600 w-6 h-6" />
+                        <IoIosCloseCircleOutline className="text-red-500 text-xl" />
+                        Scuba Diving Inclusion
+                      </li>
+                    ))}
+                  </ul>
+                </Accordion>
+              </Box>
+              {/* Know Before You Go */}
+              <Box>
+                <Accordion title="Know Before You Go">
+                  <ul>
+                    {[0, 1, 2, 3].map((item, index) => (
+                      <li className="flex items-center gap-6">
+                        <BsInfoCircle className="text-primary text-xl" />
                         Scuba Diving Inclusion
                       </li>
                     ))}
@@ -131,9 +149,37 @@ const index = () => {
             {/* Main Content End       */}
             {/* Sidebar Start */}
             <div className="sidebar_layout">
-              <div className="w-full shadow-lg p-2 rounded-md bg-white">
+              <Box>
                 <Pricing price={2000} salePrice={1500} discount={`20%`} />
-              </div>
+              </Box>
+              <Box>
+                <h5 className="text-xl font-semibold text-variant">
+                  For more information
+                </h5>
+                <div className="flex flex-col gap-3 pt-4 pl-2">
+                  <motion.span
+                    className="flex items-center gap-2 text-base font-semibold tracking-wider"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <BsTelephone className="text-primary text-xl" />
+                    <Link href={"tel:+917387960861"}>+91 7387960861</Link>
+                  </motion.span>
+                  <motion.span
+                    className="flex items-center gap-2 text-base font-semibold tracking-wider"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <BsTelephone className="text-primary text-xl" />
+                    <Link href={"tel:+917387960861"}>+91 7387960861</Link>
+                  </motion.span>
+                </div>
+                <motion.button
+                  type="button"
+                  className="flex items-center justify-center gap-1 text-white bg-green-600/80 py-2 px-4 w-full rounded-md my-4"
+                  whileTap={{ scale: 1.2 }}
+                >
+                  <ImWhatsapp fontSize={24} /> WhatsApp
+                </motion.button>
+              </Box>
             </div>
           </div>
         </Container>

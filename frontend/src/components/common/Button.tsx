@@ -9,7 +9,8 @@ interface ButtonProps {
   secondary?: boolean;
   outline?: boolean;
   small?: boolean;
-  icon?: IconType;
+  white?: boolean;
+  icon?: React.ReactElement;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -19,26 +20,33 @@ const Button: React.FC<ButtonProps> = ({
   secondary,
   outline,
   small,
-  icon: Icon,
+  white,
+  icon,
 }) => {
   return (
     <motion.button
       whileTap={{ scale: 1.1 }}
+      whileHover={{ scale: 1.1 }}
       disabled={disabled}
       onClick={onClick}
-      className={`relative disabled:opacity-70 disabled:cursor-not-allowed rounded-lg hover:opacity-80 transition w-full
-      ${outline ? "bg-white" : "bg-primary hover:bg-variant"}
-      ${outline ? "border-black" : "border-none"}
-      ${outline ? "text-black" : "text-white"}
-      ${small ? "text-sm" : "text-md"}
-      ${small ? "py-1" : "py-3"}
-      ${small ? "font-normal" : "font-medium"}
-      ${small ? "border-[1px]" : "border-2"}
+      className={`relative disabled:opacity-70 disabled:cursor-not-allowed rounded-md hover:opacity-80 transition w-full max-w-fit inline-flex items-center gap-2 shadow-md font-semibold tracking-wider
+      ${outline ? "bg-transparent border-2 border-variant" : ""}
+      ${outline ? "border-black" : ""}
+      ${outline ? "text-black" : ""}
+      ${small ? "text-sm py-2 px-4" : "text-md py-3 px-6"}
+      ${
+        white
+          ? "bg-white text-variant border-2 border-white hover:bg-variant hover:text-white"
+          : ""
+      }
+      
+   
+     
       
 
        `}
     >
-      {Icon && <Icon size={24} className="absolute left-4 top-3" />}
+      {icon}
       {label}
     </motion.button>
   );

@@ -5,14 +5,14 @@
 
 @layer components {
   .card {
-    @apply relative bg-white text-gray-700 max-w-xs h-full max-h-min rounded-2xl overflow-hidden font-poppins m-3 border-[1px] border-gray-200 shadow-sm;
+    @apply relative bg-white text-gray-700 max-w-xs  max-h-fit h-full rounded-2xl overflow-hidden font-poppins m-3 border-[1px] border-gray-200 shadow-sm cursor-pointer;
   }
   .card-content {
     @apply px-2 py-2;
   }
   .card-title {
-    @apply font-semibold text-base
-    overflow-ellipsis overflow-hidden whitespace-pre-wrap py-4;
+    @apply font-semibold text-xs sm:text-sm md:text-base
+    text-clip pt-1 pb-4;
   }
   .discount-percent {
     @apply bg-green-400 px-1.5 py-0.5 rounded-md text-xs text-white;
@@ -28,10 +28,10 @@
     md:py-2;
   }
   .main_layout {
-    @apply bg-neutral-100 md:col-span-3 md:p-4 p-1;
+    @apply bg-neutral-100 w-8/12;
   }
   .sidebar_layout {
-    @apply p-4;
+    @apply w-4/12;
   }
 }
 * {
@@ -46,8 +46,19 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.heroBG {
+  background: url("../../public/assets/cover.jpeg"), rgba(0, 0, 0, 0.3);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-blend-mode: saturation;
+
+  z-index: -1;
+}
+
 section {
   width: 100%;
+  padding: 40px 0;
 }
 
 .sticky_header {

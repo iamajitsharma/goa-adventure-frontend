@@ -1,19 +1,61 @@
 import React from "react";
-
+import Image from "next/image";
 import { motion } from "framer-motion";
+import LocationImage from "../../../public/assets/location.jpg";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { BsCurrencyRupee } from "react-icons/bs";
 
-const DestinationCard = () => {
+interface DestinationCardProps {
+  location?: String;
+  lowestPrice?: number;
+  image?: any;
+  review?: any;
+}
+
+const DestinationCard: React.FC<DestinationCardProps> = ({
+  location,
+  lowestPrice,
+  image,
+  review,
+}) => {
   return (
-    <div className="relative h-[300px] overflow-hidden rounded-2xl flex items-end justify-center">
-      <img
-        src="/assets/location.jpg"
-        alt="Location"
-        className="top-0 left-0 h-full w-full object-cover filter brightness-100 transform scale-100 transition-all duration-300 ease-in-out overflow-hidden -z-10"
-      />
-      <div className="absolute bottom-0 left-0 w-full h-full rounded-xl z-0 bg-gradient-to-t from-blackOverlay to-transparent to-50%"></div>
-      <span className="text-xl uppercase font-medium z-10 mb-5 text-center">
-        Goa
-      </span>
+    <div className="hidden md:block w-[250px] bg-white border border-gray-200 rounded-3xl overflow-hidden shadow dark:bg-gray-800 dark:border-gray-700 mx-auto font-poppins">
+      <div className="">
+        <Image src={image} alt="Tour" className="max-h-64 object-cover" />
+        <div className="p-2 flex flex-col gap-2">
+          <h4 className="text-variant text-base tracking-wider font-semibold">
+            {location}
+          </h4>
+          <span className="self-end text-sm font-medium tracking-wider text-variant">
+            Starting from
+          </span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-start gap-1">
+              <span className="text-xl text-primary">
+                <AiFillStar />
+              </span>
+              <span className="text-xl text-primary">
+                <AiFillStar />
+              </span>
+              <span className="text-xl text-primary">
+                <AiFillStar />
+              </span>
+              <span className="text-xl text-primary">
+                <AiFillStar />
+              </span>
+              <span className="text-xl text-gray-500">
+                <AiOutlineStar />
+              </span>
+            </div>
+            <div className="flex flex-col items-start">
+              <span className="text-base font-semibold text-primary inline-flex items-center tracking-wider">
+                <BsCurrencyRupee />
+                {lowestPrice}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

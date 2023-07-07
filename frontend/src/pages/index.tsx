@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "@/components/Header/Header";
-import Container from "@/components/Container";
+import Container from "@/components/common/Container";
 import { BsSearch } from "react-icons/bs";
 import DestinationList from "@/components/UI/DestinationList";
 import Heading from "@/components/common/Heading";
@@ -12,10 +12,17 @@ import TourPackageSlider from "@/components/UI/ProductSlider";
 import ProductSlider from "@/components/UI/ProductSlider";
 import Testimonials from "@/components/Testimonial/Testimonials";
 import BannerSlider from "@/components/Featured/BannerSlider";
+import { useMediaQuery } from "react-responsive";
+import { deviceSize } from "@/components/Responsive";
+import MobileHero from "@/components/Hero/MobileHero";
+import DesktopHero from "@/components/Hero/DesktopHero";
+import PartnerLogo from "@/components/Featured/PartnerLogo";
 
-const index = () => {
+const Index = () => {
   const [activities, setActivities] = useState([]);
   const [tourData, setTourData] = useState([]);
+
+  const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
 
   useEffect(() => {
     const filterActivityData: any = products.filter(
@@ -31,82 +38,63 @@ const index = () => {
 
   return (
     <>
-      <div className="bg-lightBg w-full h-full max-h-min">
-        <div className="flex md:flex-row items-center justify-between px-16 gap-0">
-          <div className="w-1/2">
-            <h1 className="text-8xl font-merri font-black leading-none text-variant tracking-tighter">
-              Go where you
-              <br />
-              <span className="text-7xl leading-none">
-                feel most <span className="text-orange-500">alive</span>
-              </span>
-            </h1>
-            <div className="flex flex-row gap-2 items-center bg-white md:max-5xl rounded-lg shadow-md mt-4 font-poppins py-2 px-2">
-              <input
-                type="text"
-                id="search"
-                placeholder="Search Destination Activity Tour"
-                className="w-full focus:ring-0 border-none text-lg text-neutral-800 font-medium"
-              />
-              <button className="bg-secondary text-white p-4 rounded-md">
-                <BsSearch className="w-6 h-6" />
-              </button>
-            </div>
-          </div>
-          <div className="w-1/2 object-contain">
-            <img src="/assets/images/flight.png" alt="" />
-          </div>
-        </div>
-      </div>
-      <section className="px-20 py-16">
-        <Heading
-          heading="Explore Top Destination"
-          subheading="Top Destination"
-          textAlign="center"
-        />
-        <div className="flex flex-row items-center gap-4">
+      {isTablet ? <MobileHero /> : <DesktopHero />}
+
+      <section className="hidden md:block">
+        <Container>
+          <Heading
+            textAlign="center"
+            heading="Explore Top Destination"
+            subheading="Top Destination"
+          />
           <DestinationList />
-        </div>
+        </Container>
       </section>
+
+      <section className={`${isTablet ? "mt-20" : ""}`}>
+        <Container>
+          <Heading
+            textAlign="center"
+            heading="Top Adventure Activity"
+            subheading="TOP ADVENTURE"
+          />
+          <ProductSlider data={activities} />
+        </Container>
+      </section>
+
       <section className="bg-lightBg">
         <HowWeWork />
       </section>
 
-      {/* Activity Listing Start  */}
-      <section className="px-20 py-16">
-        <Heading
-          heading="Enjoy Thrillilng Adventure"
-          subheading="Top Adeventures"
-          textAlign="center"
-        />
-        <div className="w-full py-6">
-          <ProductSlider data={activities} />
-        </div>
-      </section>
-      {/* Activity Listing End  */}
-      {/* Banner Slider  */}
-      <section className="px-20 py-16">
-        <BannerSlider />
+      <section>
+        <Container>
+          <Heading
+            heading="Recommended Tour Package"
+            subheading="Top Rated Experience"
+            textAlign="center"
+          />
+          <ProductSlider data={tourData} />
+        </Container>
       </section>
 
-      {/* Tour Package Start  */}
-      <section className="px-20 py-16">
-        <Heading
-          heading="Recommended Tour Package"
-          subheading="Top Selling Packages"
-          textAlign="center"
-        />
-        <div className="w-full py-6">
-          <ProductSlider data={tourData} />
-        </div>
+      <section>
+        <Container>
+          <BannerSlider />
+        </Container>
       </section>
-      {/* Tour Package Start  */}
-      {/* Testimonial  */}
-      <section className="px-20 py-16 bg-lightBg">
-        <Testimonials />
+
+      <section>
+        <Container>
+          <Heading
+            heading="Top Rated Brands"
+            subheading="Our Valuable Partner"
+            textAlign="center"
+          />
+          <PartnerLogo />
+        </Container>
       </section>
     </>
   );
 };
 
-export default index;
+export default Index;

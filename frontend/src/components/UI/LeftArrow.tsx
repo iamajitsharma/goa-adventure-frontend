@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const LeftArrow = (props: any) => {
   const { onClick } = props;
   return (
-    <div className="absolute right-14 -top-16">
+    <div className="absolute right-14 -top-7">
       <motion.div
         className="text-2xl text-white bg-secondary border-2 border-secondary max-w-min p-2 max-h-min w-full h-full rounded-full cursor-pointer "
         onClick={onClick}

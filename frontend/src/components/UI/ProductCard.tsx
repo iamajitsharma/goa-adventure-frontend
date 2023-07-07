@@ -33,12 +33,12 @@ const ProductCard: React.FC<CardProps> = ({ item }) => {
   const salePrice = item.price - (item.price * item.discountPercent) / 100;
 
   return (
-    <motion.div className="card cursor-pointer" whileHover={{ scale: 1.02 }}>
-      <div>
+    <motion.div className="card box-border" whileHover={{ scale: 1.02 }}>
+      <div className="shrink-0">
         <Image
           src={item.featuredImage}
           alt="Tour"
-          className="w-full h-full object-cover"
+          className="w-full object-cover"
           width={500}
           height={500}
           onClick={handleNavigation}
@@ -62,7 +62,7 @@ const ProductCard: React.FC<CardProps> = ({ item }) => {
           </h2>
         </div>
 
-        <div className="flex flex-row items-center justify-between text-sm py-1">
+        <div className="flex flex-row items-center justify-between text-sm py-2">
           <span className="flex flex-row items-center gap-1 text-sm text-neutral-900 font-medium">
             <FiMapPin /> {item.location}
           </span>
@@ -70,10 +70,10 @@ const ProductCard: React.FC<CardProps> = ({ item }) => {
             <AiFillStar className="text-primary" /> {item.review}
           </span>
         </div>
-        <hr />
+        <hr className="py-3" />
         <div className="mt-5 flex w-full justify-between items-center gap-2">
-          <div className="flex gap-1 pt-2">
-            <span className="flex flex-row items-center text-lg font-semibold text-primary">
+          <div className="flex gap-1">
+            <span className="flex flex-row items-center text-base tracking-wider font-semibold text-primary">
               <BiRupee fontSize={20} /> {salePrice}
             </span>
             <div className="flex flex-row gap-2 items-center">
@@ -83,7 +83,7 @@ const ProductCard: React.FC<CardProps> = ({ item }) => {
             </div>
           </div>
           <div>
-            <span className="flex flex-row items-center gap-1 text-base text-neutral-900 font-medium">
+            <span className="flex flex-row items-center gap-1 text-sm text-neutral-900 font-medium">
               <BsClock />
               {item.duration}
             </span>

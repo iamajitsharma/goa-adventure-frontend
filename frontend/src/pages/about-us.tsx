@@ -12,7 +12,7 @@ import { RxInstagramLogo } from "react-icons/rx";
 const AboutUs = () => {
   return (
     <section className="w-full relative font-poppins">
-      <div className="relative flex items-center">
+      <div className="flex items-center">
         <div className="object-cover">
           <Image src={AboutImage} alt="" className="w-full" />
         </div>
