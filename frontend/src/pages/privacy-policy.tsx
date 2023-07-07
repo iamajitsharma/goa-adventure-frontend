@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Container from "@/components/Container";
+import Container from "@/components/common/Container";
 import PrivacyPolicies from "@/components/disclosure/PrivacyPolicy";
 import { SlEarphonesAlt, SlLocationPin } from "react-icons/sl";
 import { AiOutlineMail } from "react-icons/ai";

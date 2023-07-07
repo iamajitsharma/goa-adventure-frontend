@@ -10,7 +10,7 @@ interface ButtonProps {
   outline?: boolean;
   small?: boolean;
   white?: boolean;
-  icon?: React.ReactElement;
+  icon?: any;
 }
 
 const Button: React.FC<ButtonProps> = ({

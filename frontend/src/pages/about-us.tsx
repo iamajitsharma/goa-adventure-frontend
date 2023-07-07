@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import AboutImage from "../../public/assets/aboutus-img.jpg";
 import Heading from "@/components/common/Heading";
-import MasonryImagesGallery from "@/components/featured/MasonryImagesGallery";
+
 import profileImg from "../../public/assets/mdshabirali-01.svg";
 import Link from "next/link";
 import { SlSocialYoutube, SlSocialTwitter } from "react-icons/sl";

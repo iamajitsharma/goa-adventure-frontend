@@ -1,6 +1,6 @@
 import React from "react";
-import LeftArrow from "../common/LeftArrow";
-import RightArrow from "../common/RightArrow";
+import LeftArrow from "../UI/LeftArrow";
+import RightArrow from "../UI/RightArrow";
 import Slider from "react-slick";
 import Image from "next/image";
 
