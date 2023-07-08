@@ -2,11 +2,14 @@ import React from "react";
 
 interface BoxProps {
   children?: any;
+  className?: String;
 }
 
-const Box: React.FC<BoxProps> = ({ children }) => {
+const Box: React.FC<BoxProps> = ({ children, className }) => {
   return (
-    <div className="bg-white shadow-sm p-4 rounded-md mt-4">{children}</div>
+    <div className={` shadow-sm p-2 rounded-md mt-4 md:p-4 ${className}`}>
+      {children}
+    </div>
   );
 };
 

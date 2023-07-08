@@ -18,9 +18,10 @@ import ProductImages from "@/components/SingleProductPage/ProductImages";
 import Pricing from "@/components/SingleProductPage/Pricing";
 import { RiAlbumLine } from "react-icons/ri";
 import Box from "@/components/common/Box";
-import { BsCheck2Circle, BsInfoCircle } from "react-icons/bs";
+import { BsCheck2Circle, BsCurrencyRupee, BsInfoCircle } from "react-icons/bs";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { BsTelephone } from "react-icons/bs";
+import { FiMapPin, FiMinus, FiPlus } from "react-icons/fi";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ImWhatsapp } from "react-icons/im";
@@ -56,24 +57,25 @@ const index = () => {
       {/* Product Title & Pricing Section Start */}
       <section className="bg-neutral-100 font-poppins">
         <Container>
-          <div className="flex gap-4 p-3">
-            <div className="main_layout">
+          <div className="flex flex-col gap-4 p-3 md:flex-row">
+            {/* Layout Start */}
+            <div className="bg-neutral-100 w-full md:w-8/12">
               {/* Product Title Section */}
               <div className="bg-white shadow-sm p-4 rounded-md">
-                <h1 className="font-semibold text-xl">
+                <h1 className="text-lg font-semibold md:text-xl">
                   Scuba Diving Grand Island
                 </h1>
-                <div className="flex flex-row items-center gap-6 py-4">
-                  <span className="flex flex-row items-center gap-2">
-                    <i className="ri-map-pin-line text-primary text-xl"></i>
+                <div className="flex flex-row items-center w-full gap-4 py-4">
+                  <span className="flex flex-row items-center gap-2 text-neutral-600 text-sm font-medium sm:text-base">
+                    <FiMapPin className="text-primary text-xl" />
                     Grand Island Goa India
                   </span>
                   <div className="flex items-center gap-1">
-                    <span className="flex flex-row items-center gap-2">
-                      <i className="ri-star-fill text-xl text-primary"></i>
+                    <span className="flex flex-row items-center gap-2 text-neutral-600 text-sm font-medium sm:text-base">
+                      <AiFillStar className="text-primary text-xl" />
                       4.5
                     </span>
-                    <button className="bg-green-600/80 text-white text-sm p-2 rounded-full">
+                    <button className="px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm bg-green-600/80 text-white  rounded-full">
                       450 reviews
                     </button>
                   </div>
@@ -84,10 +86,12 @@ const index = () => {
                 <ProductTitle h4 title="Highlights" />
                 <ul className="">
                   {[0, 1, 2, 3, 4].map((item, index) => (
-                    <li className="flex items-center gap-2 text-sm text-textBlack pt-2">
-                      <RiAlbumLine className="text-primary" />
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
+                    <li className="flex items-center gap-2 text-textBlack pt-2 leading-loose">
+                      <RiAlbumLine className="text-primary text-xl" />
+                      <p className="text-sm font-medium">
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry.
+                      </p>
                     </li>
                   ))}
                 </ul>
@@ -148,11 +152,10 @@ const index = () => {
             </div>
             {/* Main Content End       */}
             {/* Sidebar Start */}
-            <div className="sidebar_layout">
-              <Box>
-                <Pricing price={2000} salePrice={1500} discount={`20%`} />
-              </Box>
-              <Box>
+            <div className="w-full md:w-4/12">
+              <Pricing price={2000} salePrice={1500} discount={`20%`} />
+
+              <Box className="hidden md:block">
                 <h5 className="text-xl font-semibold text-variant">
                   For more information
                 </h5>

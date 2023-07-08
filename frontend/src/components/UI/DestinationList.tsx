@@ -34,7 +34,6 @@ const DestinationList = () => {
     prevArrow: <LeftArrow />,
     speed: 500,
     slidesToShow: 4,
-
     centerMode: true,
     centerPadding: "60px",
   };

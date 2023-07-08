@@ -36,7 +36,7 @@ export default function LocationMobileSlider() {
     <>
       <Slider {...settings} className="">
         {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-          <MobileLocaltion image={locationImg} location="Goa" />
+          <MobileLocaltion image={locationImg} location="Himachal Pradesh" />
         ))}
       </Slider>
       <style>

@@ -39,7 +39,13 @@ const Accordion: React.FC<AccordionProps> = ({ title, isOpen, children }) => {
             <IoIosArrowDown className="transition duration-500" />
           )}
         </span>
-        <h4 className="text-base font-semibold text-textBlack">{title}</h4>
+        <h4
+          className={`text-base font-semibold tracking-wider ${
+            isActive ? "text-white" : "text-neutral-600"
+          }`}
+        >
+          {title}
+        </h4>
       </motion.div>
       <AnimatePresence initial={false}>
         {isActive && (

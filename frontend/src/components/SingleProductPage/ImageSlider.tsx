@@ -20,9 +20,13 @@ const ImageSlider = () => {
     initialSlide: 2,
   };
   return (
-    <Slider {...settings} className="object-cover h-full">
+    <Slider {...settings}>
       {[0, 1, 2, 3].map((item) => (
-        <Image src={MainImage} alt="Picture of the author" />
+        <Image
+          src={MainImage}
+          alt="Picture of the author"
+          className="object-cover w-full h-full"
+        />
       ))}
     </Slider>
   );

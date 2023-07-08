@@ -5,37 +5,21 @@ import TourImage from "../../../public/Things-To-Do1.png";
 
 const ProductImages = () => {
   return (
-    <div className="grid grid-cols-4 gap-1 items-center text-center justify-items-stretch md:min-h-full">
-      <div className="object-cover w-full h-full">
-        <Image
-          src={TourImage}
-          alt="Picture of the author"
-          className="object-cover w-full h-full"
-        />
+    <div className="grid grid-cols-3 gap-2 w-full h-full transition-all ease-in-out duration-200 md:grid-cols-4">
+      <div className="">
+        <Image src={TourImage} alt="1" className="object-cover w-full h-full" />
       </div>
-      <div className="row-span-2 col-span-2 w-full h-full min-h-full bg-red-400">
+      <div className="row-span-2 col-span-2 h-full">
         <ImageSlider />
       </div>
       <div className="">
-        <Image
-          src={TourImage}
-          alt="Picture of the author"
-          className="object-cover w-full h-full"
-        />
+        <Image src={TourImage} alt="2" className="object-cover w-full h-full" />
       </div>
-      <div className="">
-        <Image
-          src={TourImage}
-          alt="Picture of the author"
-          className="object-cover w-full h-full"
-        />
+      <div className="hidden md:grid ">
+        <Image src={TourImage} alt="3" className="object-cover w-full h-full" />
       </div>
-      <div className="">
-        <Image
-          src={TourImage}
-          alt="Picture of the author"
-          className="object-cover w-full h-full"
-        />
+      <div className="hidden md:grid ">
+        <Image src={TourImage} alt="4" className="object-cover w-full h-full" />
       </div>
     </div>
   );

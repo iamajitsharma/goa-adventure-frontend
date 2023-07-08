@@ -4,7 +4,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { CiLogin } from "react-icons/ci";
 import Link from "next/link";
 import logo from "../../../public/assets/goaadventure_color_logo.svg";
-import whiteLogo from "../../../public/assets/goaadventure_white_logo.svg";
+import whiteLogo from "../../../public/assets/Mobile_Whitelogo-01.svg";
 import Image from "next/image";
 import Navbar from "./Navbar/Navbar";
 import UserNavigation from "./Navbar/UserNavigation";
@@ -32,9 +32,9 @@ const Header = () => {
       {({ open }) => (
         <>
           <div className="mx-auto w-full sm:px-6 py-2">
-            <div className="flex items-center justify-start gap-0 min-w-full">
+            <div className="flex items-center justify-start gap-0 w-full">
               <div className="flex items-center justify-between gap-4 md:gap-0 w-full">
-                <div className="flex-shrink-0 object-contain w-[200px] md:w-[250px]">
+                <div className="flex-shrink-0 object-fill max-w-full h-auto md:w-[250px]">
                   {isTablet ? (
                     <Image src={whiteLogo} alt="Your Company" className="" />
                   ) : (
@@ -46,6 +46,7 @@ const Header = () => {
                   <UserNavigation />
                 ) : (
                   <Button
+                    className="hidden md:inline-flex"
                     label="Login"
                     icon={<CiLogin fontSize={20} />}
                     small

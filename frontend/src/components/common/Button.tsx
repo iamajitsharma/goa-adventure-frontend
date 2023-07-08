@@ -10,7 +10,8 @@ interface ButtonProps {
   outline?: boolean;
   small?: boolean;
   white?: boolean;
-  icon?: any;
+  icon?: React.ReactElement;
+  className?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -22,6 +23,7 @@ const Button: React.FC<ButtonProps> = ({
   small,
   white,
   icon,
+  className,
 }) => {
   return (
     <motion.button
@@ -29,7 +31,7 @@ const Button: React.FC<ButtonProps> = ({
       whileHover={{ scale: 1.1 }}
       disabled={disabled}
       onClick={onClick}
-      className={`relative disabled:opacity-70 disabled:cursor-not-allowed rounded-md hover:opacity-80 transition w-full max-w-fit inline-flex items-center gap-2 shadow-md font-semibold tracking-wider
+      className={`relative disabled:opacity-70 disabled:cursor-not-allowed rounded-md hover:opacity-80 transition w-full max-w-fit inline-flex items-center justify-center gap-2 shadow-md font-semibold tracking-wider
       ${outline ? "bg-transparent border-2 border-variant" : ""}
       ${outline ? "border-black" : ""}
       ${outline ? "text-black" : ""}
@@ -38,13 +40,7 @@ const Button: React.FC<ButtonProps> = ({
         white
           ? "bg-white text-variant border-2 border-white hover:bg-variant hover:text-white"
           : ""
-      }
-      
-   
-     
-      
-
-       `}
+      } ${className}`}
     >
       {icon}
       {label}
