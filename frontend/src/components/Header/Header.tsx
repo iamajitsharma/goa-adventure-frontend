@@ -27,14 +27,21 @@ const Header = () => {
   const router = useRouter();
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
 
+  console.log(router);
+
   return (
-    <Disclosure as="nav" className="bg-transparent absolute z-10 w-full">
+    <Disclosure
+      as="nav"
+      className={`${
+        router.route === "/" ? "" : "bg-red-200"
+      } w-full relative h-auto`}
+    >
       {({ open }) => (
         <>
-          <div className="mx-auto w-full sm:px-6 py-2">
+          <div className="mx-auto w-full sm:px-6 py-2 z-50 ">
             <div className="flex items-center justify-start gap-0 w-full">
               <div className="flex items-center justify-between gap-4 md:gap-0 w-full">
-                <div className="flex-shrink-0 object-fill max-w-full h-auto md:w-[250px]">
+                <div className="flex-shrink-0 object-fill max-w-full h-auto md:w-[250px] z-50">
                   {isTablet ? (
                     <Image src={whiteLogo} alt="Your Company" className="" />
                   ) : (
@@ -46,7 +53,7 @@ const Header = () => {
                   <UserNavigation />
                 ) : (
                   <Button
-                    className="hidden md:inline-flex"
+                    className="hidden md:inline-flex z-50"
                     label="Login"
                     icon={<CiLogin fontSize={20} />}
                     small
@@ -55,7 +62,7 @@ const Header = () => {
                 )}
               </div>
 
-              <div className="flex md:hidden">
+              <div className="flex md:hidden z-50">
                 {/* Mobile menu button */}
                 <Disclosure.Button className="text-white inline-flex items-center justify-center rounded-md p-2 outline-none cursor-pointer pr-5">
                   <span className="sr-only">Open main menu</span>

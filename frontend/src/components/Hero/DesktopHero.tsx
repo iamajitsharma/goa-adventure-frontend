@@ -14,10 +14,10 @@ import {
 
 const DesktopHero = () => {
   return (
-    <div className="w-full h-screen relative overflow-hidden">
+    <div className="hidden md:block w-full h-screen z-0 overflow-hidden">
       {/* <Image className="w-full h-full object-cover" src={travelImage} alt="" /> */}
-      <div className="absolute w-full h-full top-0 rright-0 bg-lightBg">
-        <div className="absolute -inset-y-20 inset-2/4 bg-primary h-[65%] w-[95%] md:w-full rounded-l-full -rotate-45 -z-5 overflow-hidden"></div>
+      <div className="absolute w-full h-full top-0 right-0 overflow-hidden bg-lightBg">
+        <div className="absolute lg:-inset-y-20 md:-inset-y-14 inset-2/4 right-0 bg-primary h-[65%] w-[95%] md:w-full rounded-l-full -rotate-45 -z-5 overflow-hidden"></div>
         <div className="absolute top-0 w-full h-full flex items-center justify-between gap-0 px-10">
           <div className="font-merri w-1/2">
             <h1 className="md:text-6xl lg:text-7xl xl:text-8xl font-merri font-black leading-none text-variant tracking-tighter transition duration-150 ease-in-out">

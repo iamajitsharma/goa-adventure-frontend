@@ -24,6 +24,9 @@ const locationData = [
 
 const DestinationList = () => {
   const router = useRouter();
+  const handleEdge = (edge: string) => {
+    console.log(`Edge reached: ${edge}`);
+  };
   const settings = {
     dots: false,
     infinite: true,
@@ -34,12 +37,40 @@ const DestinationList = () => {
     prevArrow: <LeftArrow />,
     speed: 500,
     slidesToShow: 4,
-    centerMode: true,
-    centerPadding: "60px",
+    slidesToScroll: 1,
+    initialSlide: 2,
+    onEdge: (edge: string) => handleEdge(edge),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
+
   return (
     <>
-      <Slider {...settings} className="pt-10">
+      <Slider {...settings} className="pt-8">
         {locationData.map((item: any, index: any) => (
           <DestinationCard
             key={index}
@@ -52,8 +83,11 @@ const DestinationList = () => {
       <style>
         {`
          .slick-list {
-   padding-left:0px !important;
-}
+          padding-left:0px !important;
+          }
+          .slick-slide{
+            margin:10px 0px;
+          }
         `}
       </style>
     </>

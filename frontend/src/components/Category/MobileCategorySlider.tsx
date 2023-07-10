@@ -43,8 +43,12 @@ const MobileCategorySlider = () => {
   return (
     <>
       <Slider {...settings} className="">
-        {categories.map((item) => (
-          <MobileCategoryCard image={item.image} category={item.category} />
+        {categories.map((item, index) => (
+          <MobileCategoryCard
+            key={item.category}
+            image={item.image}
+            category={item.category}
+          />
         ))}
       </Slider>
     </>

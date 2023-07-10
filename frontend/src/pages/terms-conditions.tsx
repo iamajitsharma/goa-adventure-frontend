@@ -1,5 +1,5 @@
 import Container from "@/components/common/Container";
-import Loader from "react-loader";
+// import Loader from "react-loader";
 import { useEffect, useState } from "react";
 import { ITerms } from "../lib/interfaces";
 import { termsCondiitonsApi } from "../lib/api";
@@ -49,7 +49,7 @@ const TermsConditions = () => {
           ></div>
         </div>
       </Container>
-      <Loader
+      {/* <Loader
         loaded={loaded}
         lines={13}
         length={20}
@@ -69,7 +69,7 @@ const TermsConditions = () => {
         left="50%"
         scale={1.0}
         loadedClassName="loadedContent"
-      />
+      /> */}
     </section>
   );
 };

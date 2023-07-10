@@ -73,7 +73,7 @@ const Pricing: React.FC<PricingProps> = ({ price, salePrice, discount }) => {
             </div>
             <motion.button
               type="button"
-              className="text-sm sm:text-base  p-2 py-2 px-5 rounded-lg text-variant  font-medium"
+              className="text-sm sm:text-base  p-2 py-2 px-5 rounded-lg text-variant font-medium bg-white"
               whileTap={{ scale: 1.2 }}
             >
               Book Now

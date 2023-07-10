@@ -19,13 +19,13 @@ const Navbar = () => {
     { display: "Need Help", path: "/contact" },
   ];
   return (
-    <div className="hidden md:block ">
+    <div className="hidden md:block z-50">
       <div className="flex items-center justify-between md:space-x-4 lg:space-x-8">
         {navLink.map((item) => (
           <Link
             key={item.display}
             href={item.path}
-            className="text-sm text-variant font-semibold"
+            className="text-sm  text-variant font-semibold"
           >
             {item.display}
           </Link>
