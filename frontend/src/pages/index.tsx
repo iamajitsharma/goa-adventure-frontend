@@ -4,19 +4,19 @@ import Container from "@/components/common/Container";
 import { BsSearch } from "react-icons/bs";
 import DestinationList from "@/components/UI/DestinationList";
 import Heading from "@/components/common/Heading";
-import HowWeWork from "@/components/Featured/HowWeWork";
+import HowWeWork from "@/components/featured/HowWeWork";
 import ProductList from "@/components/UI/ProductList";
 import { activityData } from "../../public/assets/data/Data";
 import { products } from "../data/ActivityData";
 import TourPackageSlider from "@/components/UI/ProductSlider";
 import ProductSlider from "@/components/UI/ProductSlider";
 import Testimonials from "@/components/Testimonial/Testimonials";
-import BannerSlider from "@/components/Featured/BannerSlider";
+import BannerSlider from "@/components/featured/BannerSlider";
 import { useMediaQuery } from "react-responsive";
 import { deviceSize } from "@/components/Responsive";
 import MobileHero from "@/components/Hero/MobileHero";
 import DesktopHero from "@/components/Hero/DesktopHero";
-import PartnerLogo from "@/components/Featured/PartnerLogo";
+import PartnerLogo from "@/components/featured/PartnerLogo";
 
 const Index = () => {
   const [activities, setActivities] = useState([]);

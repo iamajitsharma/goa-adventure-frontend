@@ -12,8 +12,8 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({
   max,
   onChange,
 }) => {
-  const [minVal, setMinVal] = useState(min);
-  const [maxVal, setMaxVal] = useState(max);
+  const [minVal, setMinVal] = useState(min || 0);
+  const [maxVal, setMaxVal] = useState(max || 1);
   const range = useRef(null);
 
   useEffect(() => {

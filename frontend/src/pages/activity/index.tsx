@@ -46,7 +46,7 @@ const index = () => {
                   <MultiRangeSlider
                     min={0}
                     max={25000}
-                    onChange={({ min, max }) =>
+                    onChange={({ min, max }: any) =>
                       console.log(`min = ${min}, max = ${max}`)
                     }
                   />
