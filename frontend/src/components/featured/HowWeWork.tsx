@@ -1,7 +1,5 @@
 import React from "react";
 import Heading from "../common/Heading";
-import { GrMapLocation } from "react-icons/gr";
-import { IconType } from "react-icons";
 import Container from "../common/Container";
 import Image from "next/image";
 import flightImg from "../../../public/assets/images/flight.png";
