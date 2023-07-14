@@ -14,14 +14,14 @@ const navLink = [
 
 const MobileMenu = () => {
   return (
-    <Disclosure.Panel className="md:hidden bg-white z-40">
+    <Disclosure.Panel className="block md:hidden bg-white relative z-10">
       <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
         {navLink.map((item) => (
           <Disclosure.Button
             key={item.display}
             as="a"
             href={item.path}
-            className="block rounded-md px-3 py-1 text-sm font-medium font-poppins hover:bg-lightBg hover:font-semibold"
+            className="block rounded-md px-3 py-1 text-sm font-medium font-poppins hover:bg-lightBg hover:font-semibold z-50"
           >
             {item.display}
           </Disclosure.Button>

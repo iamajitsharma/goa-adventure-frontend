@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
 import TourCardImg from "../../public/assets/tourcard.jpeg";
-import { MdLocationPin } from "react-icons/md";
+import { MdLocationPin, MdOutlineConfirmationNumber } from "react-icons/md";
 import { BiRupee } from "react-icons/bi";
 import { AiFillStar, AiFillHeart, AiFillEye } from "react-icons/ai";
-import { BsClock, BsHeart } from "react-icons/bs";
+import { BsClock, BsHeart, BsPiggyBank } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { HiOutlineReceiptRefund } from "react-icons/hi";
+import { TbDiscountCheck } from "react-icons/tb";
 
 interface CardProps {
   item?: any;
@@ -73,7 +75,21 @@ const ProductCard: React.FC<CardProps> = ({ item }) => {
             <AiFillStar className="text-primary" /> {item.review}
           </span>
         </div>
-        <hr className="py-3" />
+        <hr className="py-1" />
+        <div className="flex flex-row flex-wrap gap-2 py-1">
+          <span className="flex items-center gap-2 text-xs font-medium">
+            <MdOutlineConfirmationNumber className="text-green-600/80 text-xl" />
+            Instant Confirmation
+          </span>
+          <span className="flex items-center gap-2 text-xs font-medium">
+            <HiOutlineReceiptRefund className="text-amber-500 text-xl" />
+            Easy Refund
+          </span>
+          <span className="flex items-center gap-2 text-xs font-medium">
+            <TbDiscountCheck className="text-rose-500 text-xl" />
+            Pay 25% to book seat
+          </span>
+        </div>
         <div className="mt-5 flex w-full justify-between items-center gap-2">
           <div className="flex gap-1">
             <span className="flex flex-row items-center text-sm md:text-base  tracking-wider font-semibold text-primary">

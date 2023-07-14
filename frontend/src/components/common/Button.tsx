@@ -6,9 +6,11 @@ interface ButtonProps {
   label: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
-  secondary?: boolean;
-  outline?: boolean;
+  fullWidth?: boolean;
+
   small?: boolean;
+  outline?: boolean;
+  filled?: boolean;
   white?: boolean;
   icon?: any;
   className?: string;
@@ -18,9 +20,11 @@ const Button: React.FC<ButtonProps> = ({
   label,
   onClick,
   disabled,
-  secondary,
-  outline,
+  fullWidth,
+
   small,
+  outline,
+  filled,
   white,
   icon,
   className,
@@ -31,16 +35,20 @@ const Button: React.FC<ButtonProps> = ({
       whileHover={{ scale: 1.1 }}
       disabled={disabled}
       onClick={onClick}
-      className={`relative disabled:opacity-70 disabled:cursor-not-allowed rounded-md hover:opacity-80 transition w-full max-w-fit inline-flex items-center justify-center gap-2 shadow-md font-semibold tracking-wider
-      ${outline ? "bg-transparent border-2 border-variant" : ""}
-      ${outline ? "border-black" : ""}
-      ${outline ? "text-black" : ""}
-      ${small ? "text-sm py-2 px-4" : "text-md py-3 px-6"}
+      className={`relative disabled:opacity-70 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2 shadow-md
+      ${outline ? "border-2 border-neutral-700 " : "border-none"}
+      ${white ? "bg-white text-black" : "bg-primary text-white"}
+      
       ${
-        white
-          ? "bg-white text-variant border-2 border-white hover:bg-variant hover:text-white"
-          : ""
-      } ${className}`}
+        fullWidth
+          ? "min-w-full px-6 py-2 text-base font-medium"
+          : "px-4 py-2 text-base font-medium"
+      }
+      ${small ? "px-2 py-1 text-xs font-medium" : ""}
+      
+      
+      
+      `}
     >
       {icon}
       {label}

@@ -11,10 +11,14 @@ import { RxInstagramLogo } from "react-icons/rx";
 
 const AboutUs = () => {
   return (
-    <section className="w-full relative font-poppins">
-      <div className="flex items-center">
-        <div className="object-cover">
-          <Image src={AboutImage} alt="" className="w-full" />
+    <>
+      <div className="flex items-center w-full h-[250px] md:h-[475px] overflow-hidden">
+        <div className="shrink-0">
+          <Image
+            src={AboutImage}
+            alt=""
+            className="object-cover w-full h-full"
+          />
         </div>
         <div className="absolute text-center w-full">
           <h2 className="text-2xl md:text-6xl font-semibold md:font-bold text-white">
@@ -114,7 +118,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 

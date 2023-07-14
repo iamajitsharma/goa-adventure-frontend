@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { CiLogin } from "react-icons/ci";
@@ -13,72 +13,132 @@ import { useRouter } from "next/router";
 import Button from "../common/Button";
 import { deviceSize } from "../Responsive";
 import { useMediaQuery } from "react-responsive";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { HiMenuAlt3 } from "react-icons/hi";
 
 const navigation = [
-  { name: "Home", href: "#" },
-  { name: "About Us", href: "#" },
-  { name: "Adventures", href: "#" },
-  { name: "Tour", href: "#" },
-  { name: "Contact", href: "#" },
+  { name: "Home", href: "/" },
+  { name: "About Us", href: "about-us" },
+  { name: "Adventures", href: "activity" },
+  { name: "Tour", href: "tour" },
+  { name: "Contact", href: "contact-us" },
 ];
 
 const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
+  const [nav, setNav] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const changeColor = () => {
+      if (window.scrollY >= 90) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", changeColor);
+  }, []);
+
+  const handleNav = () => {
+    setNav(!nav);
+  };
+
   const router = useRouter();
+
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
+  const isMobile = useMediaQuery({ maxWidth: deviceSize.mobile });
 
   console.log(router);
 
   return (
-    <Disclosure
-      as="nav"
-      className={`${
-        router.route === "/" ? "" : "bg-red-200"
-      } w-full relative h-auto`}
+    <div
+      className={`sticky left-0 top-0 w-full z-[100] ease-in duration-300 text-variant 
+      ${
+        !scrolled && router.pathname === "/"
+          ? "bg-transparent shadow-none"
+          : "bg-white shadow-md"
+      }`}
     >
-      {({ open }) => (
-        <>
-          <div className="mx-auto w-full sm:px-6 py-2 z-50 ">
-            <div className="flex items-center justify-start gap-0 w-full">
-              <div className="flex items-center justify-between gap-4 md:gap-0 w-full">
-                <div className="flex-shrink-0 object-fill max-w-full h-auto md:w-[250px] z-50">
-                  {isTablet ? (
-                    <Image src={whiteLogo} alt="Your Company" className="" />
-                  ) : (
-                    <Image src={logo} alt="Your Company" className="" />
-                  )}
-                </div>
-                <Navbar />
-                {isLogin ? (
-                  <UserNavigation />
-                ) : (
-                  <Button
-                    className="hidden md:inline-flex z-50"
-                    label="Login"
-                    icon={<CiLogin fontSize={20} />}
-                    small
-                    white
-                  />
-                )}
-              </div>
+      <div className="max-w-[1260px] m-auto flex justify-between items-center p-2 px-4 text-white">
+        <div className="w-[250px] h-auto shrink-0 object-fill">
+          <Link href="/">
+            {router.pathname === "/" && !scrolled && isTablet ? (
+              <Image
+                src={whiteLogo}
+                alt="Your Company"
+                className="w-full h-full"
+              />
+            ) : (
+              <Image src={logo} alt="Your Company" className="w-full h-full" />
+            )}
+          </Link>
+        </div>
 
-              <div className="flex md:hidden z-50">
-                {/* Mobile menu button */}
-                <Disclosure.Button className="text-white inline-flex items-center justify-center rounded-md p-2 outline-none cursor-pointer pr-5">
-                  <span className="sr-only">Open main menu</span>
-                  {open ? (
-                    <XMarkIcon className="block h-8 w-8" aria-hidden="true" />
-                  ) : (
-                    <Bars3Icon className="block h-8 w-8" aria-hidden="true" />
-                  )}
-                </Disclosure.Button>
-              </div>
-            </div>
+        <ul className="hidden md:flex text-variant">
+          {navigation.map((item) => (
+            <li className="md:p-2 lg:p-4 md:text-sm lg:text-[0.90rem] font-semibold tracking-wide">
+              <Link href={item.href}>{item.name}</Link>
+            </li>
+          ))}
+        </ul>
+        <div className="flex items-center gap-2">
+          {isLogin && <UserNavigation />}
+
+          {router.pathname === "/" && !scrolled && !isTablet && (
+            <Button
+              label="Login"
+              icon={<CiLogin fontSize={20} />}
+              className="z-50"
+              white
+            />
+          )}
+
+          {scrolled && !isTablet && (
+            <Button
+              label="Login"
+              icon={<CiLogin fontSize={20} />}
+              className="z-50"
+              filled
+            />
+          )}
+
+          {/* Mobile Button */}
+          <div onClick={handleNav} className="block md:hidden z-10">
+            {nav ? (
+              <AiOutlineClose size={36} style={{ color: "#ffffff" }} />
+            ) : (
+              <HiMenuAlt3
+                size={36}
+                style={{
+                  color: `${
+                    !scrolled && router.pathname === "/" ? "#ffffff" : "#252243"
+                  }`,
+                }}
+              />
+            )}
           </div>
-          <MobileMenu />
-        </>
-      )}
-    </Disclosure>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={
+          nav
+            ? "md:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300"
+            : "md:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300"
+        }
+      >
+        <ul className="flex flex-col gap-4">
+          {navigation.map((item) => (
+            <li className="className='p-4 text-xl text-white hover:text-gray-500">
+              <Link href={item.href}>{item.name}</Link>
+            </li>
+          ))}
+          <Button label="Login" white fullWidth />
+        </ul>
+      </div>
+    </div>
   );
 };
 
