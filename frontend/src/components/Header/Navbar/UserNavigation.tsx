@@ -4,6 +4,7 @@ import Image from "next/image";
 import profileImage from "../../../../public/assets/user-profile.jpg";
 
 const userNavigation = [
+  { name: "My Booking", href: "#" },
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
   { name: "Sign out", href: "#" },

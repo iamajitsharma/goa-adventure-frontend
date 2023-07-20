@@ -1,11 +1,16 @@
 import React from "react";
+import{FieldErrors, FieldValues, UseFormRegister } from "react-hook-form"l
 
 interface InputProps {
-  id?: string;
-  label?: string;
+  id: string;
+  label: string;
   type?: string;
   disabled?: boolean;
+  formatPrice?: boolean;
   required?: boolean;
+  register?: UseFormRegister<FieldValues>,
+  errors: FieldErrors
+  className?:string
 }
 
 const Input: React.FC<InputProps> = ({
@@ -13,7 +18,11 @@ const Input: React.FC<InputProps> = ({
   label,
   type,
   disabled,
+  formatPrice,
   required,
+  register,
+  errors,
+  className
 }) => {
   return (
     <div className="w-full relative">

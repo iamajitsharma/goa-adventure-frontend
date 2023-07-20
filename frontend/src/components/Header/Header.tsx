@@ -15,6 +15,8 @@ import { deviceSize } from "../Responsive";
 import { useMediaQuery } from "react-responsive";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { HiMenuAlt3 } from "react-icons/hi";
+import { openModal } from "@/store/modal/modalSlice";
+import { useDispatch } from "react-redux";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -28,6 +30,8 @@ const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [nav, setNav] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const dispatch: any = useDispatch();
 
   useEffect(() => {
     const changeColor = () => {
@@ -48,8 +52,6 @@ const Header = () => {
 
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
   const isMobile = useMediaQuery({ maxWidth: deviceSize.mobile });
-
-  console.log(router);
 
   return (
     <div
@@ -83,7 +85,7 @@ const Header = () => {
           ))}
         </ul>
         <div className="flex items-center gap-2">
-          {isLogin && <UserNavigation />}
+          {!isLogin && <UserNavigation />}
 
           {router.pathname === "/" && !scrolled && !isTablet && (
             <Button
@@ -91,6 +93,7 @@ const Header = () => {
               icon={<CiLogin fontSize={20} />}
               className="z-50"
               white
+              onClick={() => dispatch(openModal())}
             />
           )}
 
@@ -100,6 +103,7 @@ const Header = () => {
               icon={<CiLogin fontSize={20} />}
               className="z-50"
               filled
+              onClick={() => dispatch(openModal())}
             />
           )}
 
