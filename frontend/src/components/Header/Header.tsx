@@ -93,7 +93,7 @@ const Header = () => {
               icon={<CiLogin fontSize={20} />}
               className="z-50"
               white
-              onClick={() => dispatch(openModal())}
+              onClick={() => dispatch(openModal)}
             />
           )}
 
@@ -103,7 +103,7 @@ const Header = () => {
               icon={<CiLogin fontSize={20} />}
               className="z-50"
               filled
-              onClick={() => dispatch(openModal())}
+              onClick={() => dispatch(openModal)}
             />
           )}
 

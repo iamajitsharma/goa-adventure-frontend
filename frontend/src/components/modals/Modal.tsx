@@ -15,7 +15,7 @@ import { footerNavigation } from "../footer/FooterLinks";
 interface ModalProps {
   isOpen?: boolean;
   image?: any;
-  onClose?: () => void;
+  onClose: () => void;
   onSubmit?: () => void;
   title?: string;
   body?: React.ReactElement;

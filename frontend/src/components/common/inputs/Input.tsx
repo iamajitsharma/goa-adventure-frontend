@@ -1,5 +1,5 @@
 import React from "react";
-import{FieldErrors, FieldValues, UseFormRegister } from "react-hook-form"l
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 
 interface InputProps {
   id: string;
@@ -8,9 +8,9 @@ interface InputProps {
   disabled?: boolean;
   formatPrice?: boolean;
   required?: boolean;
-  register?: UseFormRegister<FieldValues>,
-  errors: FieldErrors
-  className?:string
+  register?: UseFormRegister<FieldValues>;
+  errors: FieldErrors;
+  className?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -22,7 +22,7 @@ const Input: React.FC<InputProps> = ({
   required,
   register,
   errors,
-  className
+  className,
 }) => {
   return (
     <div className="w-full relative">
