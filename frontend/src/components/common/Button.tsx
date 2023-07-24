@@ -7,7 +7,7 @@ interface ButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   fullWidth?: boolean;
-
+  type?: string;
   small?: boolean;
   outline?: boolean;
   filled?: boolean;
@@ -21,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   disabled,
   fullWidth,
-
+  type,
   small,
   outline,
   filled,
@@ -38,7 +38,7 @@ const Button: React.FC<ButtonProps> = ({
       className={`relative disabled:opacity-70 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2 shadow-md
       ${outline ? "border-2 border-neutral-700 " : "border-none"}
       ${white ? "bg-white text-black" : "bg-primary text-white"}
-      
+${type ? type : null}
       ${
         fullWidth
           ? "min-w-full px-6 py-2 text-base font-medium"
