@@ -21,7 +21,7 @@ export default function TourInfo(tourData: any) {
       tourData.logo = <BiCheckCircle />;
       break;
     case "Pending":
-      tourData.color = "text-yellow-500";
+      tourData.color = "text-orange-300";
       tourData.logo = <MdOutlinePending />;
       break;
     case "Canceled":
@@ -37,7 +37,7 @@ export default function TourInfo(tourData: any) {
     <>
       <div className="px-4 flex flex-col ">
         <div className="text-lg">{tourData.title}</div>
-        <div className="flex flex-row items-center mt-3 mb-2">
+        <div className="flex flex-row items-center mb-1">
           <div className="flex flex-row items-center mt-3 mb-2">
             <span className="text-gray-400">
               <HiOutlineLocationMarker />
@@ -57,7 +57,10 @@ export default function TourInfo(tourData: any) {
             <span className="ml-1">{tourData.status}</span>
           </div>
         </div>
-        <div className="flex justify-end text-xs">{tourData.bookingDate}</div>
+        <div className="flex justify-end text-xs text-gray-500">
+          {"Booked : "}
+          {tourData.bookingDate}
+        </div>
       </div>
     </>
   );
