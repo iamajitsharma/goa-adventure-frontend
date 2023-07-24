@@ -7,12 +7,14 @@ export default function BookingHistoryCard() {
     title: "Scuba Diving Grand Island",
     state: "Goa",
     country: "India",
+    bookingDate: "25th Dec 2023",
+    status: "Complete",
   };
   return (
     <>
       <div className="flex flex-row ">
         <Date dateOfBooking={newDate} />
-        <TourInfo />
+        <TourInfo tourData={sampleObject} />
       </div>
     </>
   );
