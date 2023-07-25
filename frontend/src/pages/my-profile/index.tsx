@@ -3,7 +3,7 @@ import { AiOutlineCamera } from "react-icons/ai";
 import Button from "../../components/common/Button";
 import { useForm, Controller } from "react-hook-form";
 import Loader from "react-loader";
-import axios, * as others from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 var FormData = require("form-data");
 export default function Profile(props: any) {
   const [loaded, setLoaded] = useState(true);
@@ -35,11 +35,11 @@ export default function Profile(props: any) {
     formData.append("mobile_number", data.mobile_number.trim());
     formData.append("city", data.city.trim());
     formData.append("state", data.state.trim());
-    var config = {
+    var config: AxiosRequestConfig = {
       method: "POST",
       url: "http://localhost:4000/v1/customer/",
       headers: {
-        headers: { "content-type": "multipart/form-data" },
+        "content-type": "multipart/form-data",
       },
       data: formData,
     };
