@@ -6,8 +6,8 @@ import Link from "next/link";
 
 const userNavigation = [
   { name: "My Booking", href: "booking-history" },
+  { name: "Wishlist", href: "wishlist" },
   { name: "Your Profile", href: "my-profile" },
-  { name: "Settings", href: "settings" },
   { name: "Sign out", href: "logout" },
 ];
 

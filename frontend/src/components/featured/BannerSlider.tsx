@@ -2,9 +2,6 @@ import React from "react";
 import dynamic from "next/dynamic";
 import Slider from "react-slick";
 
-const TourCard = dynamic(() => import("../listings/ListingCard"), {
-  ssr: false,
-});
 const Heading = dynamic(() => import("../common/Heading"), {
   ssr: false,
 });

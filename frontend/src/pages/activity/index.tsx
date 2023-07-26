@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import Container from "@/components/common/Container";
 import SearchBar from "@/components/common/SearchBar";
-import ProductList from "@/components/UI/ProductList";
-import { products } from "../../data/ActivityData";
-import { BsSearch, BsCurrencyRupee } from "react-icons/bs";
+
 import MultiRangeSlider from "@/components/MultiRangeSlider/MultiRangeSlider";
-import { SlArrowDown, SlArrowUp } from "react-icons/sl";
+
 import { IoGridOutline } from "react-icons/io5";
 import { AiOutlineBars } from "react-icons/ai";
 import Image from "next/image";
 import CoverImage from "../../../public/assets/cover.jpeg";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
-import ProductCardAlt from "@/components/UI/ProductCardAlt";
+
 import DestinationListItems from "@/components/SearchPage/DestinationListItems";
 import HorizontalLayout from "@/components/SearchPage/HorizontalLayout";
 import VerticalLayout from "@/components/SearchPage/VerticalLayout";
