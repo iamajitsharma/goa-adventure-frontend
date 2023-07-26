@@ -1,3 +1,5 @@
+import { BsSearch } from "react-icons/bs";
+// import LocationMobileSlider from "../location/LocationMobileSlider";
 import SearchBar from "../common/SearchBar";
 import Image from "next/image";
 import travelImage from "../../../public/assets/images/flight.png";

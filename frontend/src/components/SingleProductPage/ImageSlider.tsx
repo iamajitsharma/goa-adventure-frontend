@@ -1,8 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
 import Image from "next/image";
-import LeftArrow from "../ThingsToDo/HighLights/LeftArrow";
-import RightArrow from "../ThingsToDo/HighLights/RightArrow";
+// import LeftArrow from "../ThingsToDo/HighLights/LeftArrow";
+// import RightArrow from "../ThingsToDo/HighLights/RightArrow";
 import { products } from "@/data/ActivityData";
 import MainImage from "../../../public/Rectangle_29.png";
 

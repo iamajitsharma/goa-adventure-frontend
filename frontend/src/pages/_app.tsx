@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "@/store/store";
 
 import Layout from "@/components/Layout";
-import UserLayout from "@/components/User/UserLayout";
+// import UserLayout from "@/components/User/UserLayout";
 
 const poppins = Poppins({
   subsets: ["latin"],
