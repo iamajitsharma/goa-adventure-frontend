@@ -3,7 +3,7 @@ import Image from "next/image";
 import HeroImage from "../../../public/assets/cover.jpeg";
 import BeachImage from "../../../public/assets/images/beach.jpeg";
 import SearchBar from "../common/SearchBar";
-import LocationMobileSlider from "../location/LocationMobileSlider";
+// import LocationMobileSlider from "../location/LocationMobileSlider";
 import MobileCategorySlider from "../Category/MobileCategorySlider";
 
 const MobileHero = () => {
