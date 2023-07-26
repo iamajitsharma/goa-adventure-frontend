@@ -1,37 +1,6 @@
 import React, { useState } from "react";
 import BookingHistoryCard from "@/components/Book-History/BookingHistoryCard";
 
-let data = [
-  {
-    title: "Scuba Diving Grand Island",
-    state: "Goa",
-    country: "India",
-    bookingDate: "25th Dec 2023",
-    status: "Complete",
-  },
-  {
-    title: "Scuba Diving Grand Island",
-    state: "Goa",
-    country: "India",
-    bookingDate: "25th Dec 2023",
-    status: "Refunded",
-  },
-  {
-    title: "Scuba Diving Grand Island",
-    state: "Goa",
-    country: "India",
-    bookingDate: "25th Dec 2023",
-    status: "Canceled",
-  },
-  {
-    title: "Scuba Diving Grand Island",
-    state: "Goa",
-    country: "India",
-    bookingDate: "25th Dec 2023",
-    status: "Pending",
-  },
-];
-
 const destinationList = [
   "Andhra Pradesh",
   "Himachal Pradesh",

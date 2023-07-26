@@ -7,7 +7,7 @@ import logo from "../../../public/assets/goaadventure_color_logo.svg";
 import whiteLogo from "../../../public/assets/Mobile_Whitelogo-01.svg";
 import Image from "next/image";
 import Navbar from "./Navbar/Navbar";
-import UserNavigation from "./Navbar/UserNavigation";
+import UserNavigation from "./UserNavigation";
 import MobileMenu from "./Navbar/MobileMenu";
 import { useRouter } from "next/router";
 import Button from "../common/Button";
