@@ -1,14 +1,10 @@
-import { Fragment, useState, useEffect } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useState, useEffect } from "react";
 import { CiLogin } from "react-icons/ci";
 import Link from "next/link";
 import logo from "../../../public/assets/goaadventure_color_logo.svg";
 import whiteLogo from "../../../public/assets/Mobile_Whitelogo-01.svg";
 import Image from "next/image";
-import Navbar from "./Navbar/Navbar";
 import UserNavigation from "./UserNavigation";
-import MobileMenu from "./Navbar/MobileMenu";
 import { useRouter } from "next/router";
 import Button from "../common/Button";
 import { deviceSize } from "../Responsive";
