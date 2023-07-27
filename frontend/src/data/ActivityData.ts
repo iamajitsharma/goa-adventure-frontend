@@ -2,6 +2,7 @@ export const products = [
   {
     id: "1",
     title: "Scuba Diving Grand Island",
+    slug: "scuba-diving-grand-island",
     category: "activity",
     subcategory: "Scuba Diving",
     overview:
@@ -50,6 +51,7 @@ export const products = [
   {
     id: "2",
     title: "Scuba Diving Malvan",
+    slug: "scuba-diving-malvan",
     category: "activity",
     subcategory: "Scuba Diving",
     overview:
@@ -98,6 +100,7 @@ export const products = [
   {
     id: "3",
     title: "Goa Watersport Package",
+    slug: "goa-watersport-package",
     category: "activity",
     subcategory: "Scuba Diving",
     overview:
@@ -146,6 +149,7 @@ export const products = [
   {
     id: "4",
     title: "Bungee Jumping",
+    slug: "bungee-jumping",
     category: "activity",
     subcategory: "Scuba Diving",
     overview:
@@ -194,6 +198,7 @@ export const products = [
   {
     id: "5",
     title: "North Goa Sightseeing",
+    slug: "north-goa-sightseeing",
     category: "activity",
     subcategory: "Scuba Diving",
     overview:
@@ -242,6 +247,7 @@ export const products = [
   {
     id: "6",
     title: "South Goa Sightseeing",
+    slug: "south-goa-sightseeing",
     category: "activity",
     subcategory: "Scuba Diving",
     overview:
@@ -290,6 +296,7 @@ export const products = [
   {
     id: "7",
     title: "Goa Tour Package",
+    slug: "goa-tour-package",
     category: "tour",
     subcategory: "Honeymoon",
     overview:
@@ -338,6 +345,7 @@ export const products = [
   {
     id: "8",
     title: "Goa Tour Package",
+    slug: "goa-tour-packages",
     category: "tour",
     subcategory: "Bachelor",
     overview:
@@ -385,7 +393,8 @@ export const products = [
   },
   {
     id: "9",
-    title: "Goa Tour Package",
+    title: "3 Days Goa Tour Package",
+    slug: "3-days-goa-tour-package",
     category: "tour",
     subcategory: "Corporate",
     overview:
@@ -434,6 +443,7 @@ export const products = [
   {
     id: "10",
     title: "Goa Corporate Tour Package",
+    slug: "goa-corporate-tour-package",
     category: "tour",
     subcategory: "Corporate",
     overview:
@@ -481,6 +491,7 @@ export const products = [
   {
     id: "11",
     title: "Honeymoon Tour Package",
+    slug: "honeymoon-tour-package",
     category: "tour",
     subcategory: "Corporate",
     overview:
@@ -529,6 +540,7 @@ export const products = [
   {
     id: "12",
     title: "Goa Corporate Tour Package",
+    slug: "goa-corporate-tour-package",
     category: "tour",
     subcategory: "Corporate",
     overview:

@@ -17,8 +17,8 @@ import { useDispatch } from "react-redux";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "about-us" },
-  { name: "Adventures", href: "activity" },
-  { name: "Tour", href: "tour" },
+  { name: "Adventures", href: "/activity" },
+  { name: "Tour", href: "/tour" },
   { name: "Contact", href: "contact-us" },
 ];
 
@@ -45,6 +45,10 @@ const Header = () => {
   };
 
   const router = useRouter();
+
+  const openModalHandler = () => {
+    dispatch(openModal());
+  };
 
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
   const isMobile = useMediaQuery({ maxWidth: deviceSize.mobile });
@@ -89,7 +93,7 @@ const Header = () => {
               icon={<CiLogin fontSize={20} />}
               className="z-50"
               white
-              onClick={() => dispatch(openModal)}
+              onClick={openModalHandler}
             />
           )}
 
@@ -99,7 +103,7 @@ const Header = () => {
               icon={<CiLogin fontSize={20} />}
               className="z-50"
               filled
-              onClick={() => dispatch(openModal)}
+              onClick={openModalHandler}
             />
           )}
 

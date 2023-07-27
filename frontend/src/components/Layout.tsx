@@ -13,9 +13,11 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const { isOpen } = useSelector((state: any) => state.modal);
+  const { open } = useSelector((state: any) => state.modal);
+
   return (
     <>
+      <LoginModal />
       <Header />
       {children}
       <Footer />

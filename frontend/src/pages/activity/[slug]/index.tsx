@@ -38,17 +38,19 @@ const description =
 const index = () => {
   const [product, setProduct] = useState<any>([]);
   const router = useRouter();
-  const activityId = router.query.activityId;
+  console.log(router);
+  const { slug } = router.query;
+  console.log(slug);
 
   useEffect(() => {
     const singleProduct = products.filter((item) => {
-      item.id === activityId;
+      item.slug === slug;
     });
     setProduct(singleProduct[0]);
-    console.log(product);
   }, []);
 
   console.log(product);
+
   return (
     <>
       {/* Product Slider Start */}
@@ -62,9 +64,7 @@ const index = () => {
             <div className="bg-neutral-100 w-full md:w-8/12">
               {/* Product Title Section */}
               <div className="bg-white shadow-sm p-4 rounded-md">
-                <h1 className="text-lg font-semibold md:text-xl">
-                  Scuba Diving Grand Island
-                </h1>
+                <h1 className="text-lg font-semibold md:text-xl"></h1>
                 <div className="flex flex-row items-center w-full gap-4 py-4">
                   <span className="flex flex-row items-center gap-2 text-neutral-600 text-sm font-medium sm:text-base">
                     <FiMapPin className="text-primary text-xl" />

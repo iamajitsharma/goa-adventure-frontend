@@ -41,7 +41,7 @@ const Button: React.FC<ButtonProps> = ({
 ${type ? type : null}
       ${
         fullWidth
-          ? "min-w-full px-6 py-2 text-base font-medium"
+          ? "min-w-full px-6 py-3 text-xl font-medium rounded-md"
           : "px-4 py-2 text-base font-medium"
       }
       ${small ? "px-2 py-1 text-xs font-medium" : ""}

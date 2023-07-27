@@ -81,7 +81,7 @@ const Pricing: React.FC<PricingProps> = ({ price, salePrice, discount }) => {
           </div>
         </Box>
       ) : (
-        <Box>
+        <Box className="bg-white mt-0">
           <div className="flex flex-col md:gap-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1 text-sm text-gray-500">
@@ -127,7 +127,7 @@ const Pricing: React.FC<PricingProps> = ({ price, salePrice, discount }) => {
               Just pay 25% now to book your seat
             </p>
             <Link href={"/checkout"}>
-              <Button label="Book Now" />
+              <Button label="Book Now" fullWidth />
             </Link>
           </div>
         </Box>

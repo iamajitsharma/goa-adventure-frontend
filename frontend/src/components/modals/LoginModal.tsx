@@ -17,6 +17,10 @@ import { FaGoogle, FaFacebookF, FaTwitter } from "react-icons/fa";
 const LoginModal = () => {
   const dispatch: any = useDispatch();
 
+  const openModalHandler = () => {
+    dispatch(openModal());
+  };
+
   const bodyContent = (
     <div className="mt-8 px-4 flex flex-col gap-8">
       <div className="border-b-2 border-gray-300 flex items-center justify-between">
@@ -35,20 +39,10 @@ const LoginModal = () => {
 
       <div className="flex items-center justify-between text-sm text-gray-300">
         <label className="inline-flex items-center gap-2">
-          <input type="checkbox" />
+          <input type="checkbox" className="p-2 rounded-sm" />
           Remember me
         </label>
       </div>
-
-      <button
-        type="submit"
-        className="w-full py-3 px-4 bg-slate-950 text-white text-lg rounded-md"
-      >
-        Login
-      </button>
-      <span className="text-sm text-gray-300 text-center">
-        Don't have an account?<Link href="#"> Register</Link>
-      </span>
     </div>
   );
   const footerContent = (
@@ -76,11 +70,10 @@ const LoginModal = () => {
 
   return (
     <Modal
-      isOpen={dispatch(openModal)}
-      onClose={dispatch(closeModal)}
       image={BeachImage}
-      title="Log in or sign up"
-      actionLabel="Login"
+      title="Log In"
+      actionLabel="Log In"
+      secondaryActionLabel="Don't have an account?"
       body={bodyContent}
       footer={footerContent}
     />

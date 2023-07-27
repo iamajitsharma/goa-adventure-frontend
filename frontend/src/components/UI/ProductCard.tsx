@@ -20,11 +20,11 @@ const ProductCard: React.FC<CardProps> = ({ item }) => {
   const router = useRouter();
   const handleNavigation = () => {
     if (item.category === "activity") {
-      router.push(`activity/${item.id}`);
+      router.push(`activity/${item.slug}`);
     } else if (item.category === "tour") {
-      router.push(`tour/${item.id}`);
+      router.push(`tour/${item.slug}`);
     } else {
-      router.push(`/${item.id}`);
+      router.push(`/${item.slug}`);
     }
   };
 
