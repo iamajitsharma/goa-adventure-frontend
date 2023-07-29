@@ -21,17 +21,17 @@ import { useSelector } from "react-redux";
 import { RxCross1 } from "react-icons/rx";
 
 const LoginModal = () => {
-  const isLoginModalOpen = useSelector(
-    (state: any) => state.authModal.isLoginModalOpen
+  const isRegisterModalOpen = useSelector(
+    (state: any) => state.authModal.isRegisterModalOpen
   );
-  const { closeLogin, openRegister } = useAuthModal();
+  const { closeLogin, openRegister, closeRegister, openLogin } = useAuthModal();
 
   const SubmitHandler = (e: any) => e.preventDefault();
 
   const onToggle = useCallback(() => {
-    closeLogin();
-    openRegister();
-  }, [closeLogin, openRegister]);
+    closeRegister();
+    openLogin();
+  }, [closeRegister, openLogin]);
 
   const bodyContent = (
     <div className="mt-8 px-4 flex flex-col gap-8">
@@ -80,9 +80,9 @@ const LoginModal = () => {
         </motion.span>
       </div>
       <h4 className="text-center text-sm font-semibold text-neutral-600 py-2">
-        Don't have an account?
+        Already have an account?
         <span className="cursor-pointer" onClick={onToggle}>
-          Register
+          Sign In
         </span>
       </h4>
     </div>
@@ -90,10 +90,10 @@ const LoginModal = () => {
 
   return (
     <Modal
-      isOpen={isLoginModalOpen}
-      title="Login"
+      isOpen={isRegisterModalOpen}
+      title="Register"
       actionLabel="Sign In"
-      onClose={closeLogin}
+      onClose={closeRegister}
       onSubmit={SubmitHandler}
       body={bodyContent}
       footer={footerContent}

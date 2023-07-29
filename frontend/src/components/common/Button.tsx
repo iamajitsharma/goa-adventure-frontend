@@ -31,8 +31,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <motion.button
-      whileTap={{ scale: 1.1 }}
-      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 1.05 }}
       disabled={disabled}
       onClick={onClick}
       className={`relative disabled:opacity-70 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2 shadow-md

@@ -11,8 +11,7 @@ import { deviceSize } from "../Responsive";
 import { useMediaQuery } from "react-responsive";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { openModal } from "@/store/modal/modalSlice";
-import { useDispatch } from "react-redux";
+import useAuthModal from "@/hook/useAuthModal";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -27,7 +26,7 @@ const Header = () => {
   const [nav, setNav] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const dispatch: any = useDispatch();
+  const { openLogin } = useAuthModal();
 
   useEffect(() => {
     const changeColor = () => {
@@ -45,10 +44,6 @@ const Header = () => {
   };
 
   const router = useRouter();
-
-  const openModalHandler = () => {
-    dispatch(openModal());
-  };
 
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
   const isMobile = useMediaQuery({ maxWidth: deviceSize.mobile });
@@ -93,7 +88,7 @@ const Header = () => {
               icon={<CiLogin fontSize={20} />}
               className="z-50"
               white
-              onClick={openModalHandler}
+              onClick={openLogin}
             />
           )}
 
@@ -103,7 +98,7 @@ const Header = () => {
               icon={<CiLogin fontSize={20} />}
               className="z-50"
               filled
-              onClick={openModalHandler}
+              onClick={openLogin}
             />
           )}
 
