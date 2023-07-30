@@ -91,9 +91,9 @@ const LoginModal = () => {
   return (
     <Modal
       isOpen={isLoginModalOpen}
+      onClose={closeLogin}
       title="Login"
       actionLabel="Sign In"
-      onClose={closeLogin}
       onSubmit={SubmitHandler}
       body={bodyContent}
       footer={footerContent}

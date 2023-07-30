@@ -17,6 +17,7 @@ import Button from "../common/Button";
 
 interface ModalProps {
   isOpen?: boolean;
+  onClose: () => void;
   onSubmit: () => void;
   title?: string;
   body?: React.ReactElement;
@@ -27,6 +28,7 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({
   isOpen,
+  onClose,
   onSubmit,
   title,
   body,
@@ -49,7 +51,7 @@ const Modal: React.FC<ModalProps> = ({
 
     setShowModal(false);
     setTimeout(() => {
-      closeLogin();
+      onClose();
     }, 300);
   }, [closeLogin, disabled]);
 

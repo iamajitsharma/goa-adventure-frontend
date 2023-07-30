@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from "react";
-import Input from "../common/inputs/Input";
 import Modal from "./Modal";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
@@ -18,36 +17,101 @@ import {
 } from "react-icons/fa";
 import useAuthModal from "@/hook/useAuthModal";
 import { useSelector } from "react-redux";
-import { RxCross1 } from "react-icons/rx";
+import Input from "../common/inputs/Input";
+import { AiOutlineUser, AiOutlineMail } from "react-icons/ai";
+import { HiChevronDown } from "react-icons/hi";
+import MobileInput from "../common/inputs/MobileInput";
 
 const LoginModal = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const isRegisterModalOpen = useSelector(
     (state: any) => state.authModal.isRegisterModalOpen
   );
   const { closeLogin, openRegister, closeRegister, openLogin } = useAuthModal();
 
-  const SubmitHandler = (e: any) => e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FieldValues>({});
 
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    setIsLoading(true);
+
+    // axios
+    //   .post("/api/register", data)
+    //   .then(() => {
+    //     toast.success("Registered!");
+    //     registerModal.onClose();
+    //     loginModal.onOpen();
+    //   })
+    //   .catch((error) => {
+    //     toast.error(error);
+    //   })
+    //   .finally(() => {
+    //     setIsLoading(false);
+    //   });
+  };
+
+  //Modal Toggle Function
   const onToggle = useCallback(() => {
     closeRegister();
     openLogin();
   }, [closeRegister, openLogin]);
 
   const bodyContent = (
-    <div className="mt-8 px-4 flex flex-col gap-8">
-      <div className="border-b-2 border-neutral-600 flex items-center justify-between">
-        <select className="text-base text-neutral-500 w-full border-none bg-transparent focus:ring-0 placeholder:text-neutral-500">
-          <option value="india-+91">India(+91)</option>
-        </select>
-      </div>
-      <div className="border-b-2 border-neutral-600 flex items-center justify-between">
-        <input
-          type="text"
-          placeholder="Mobile Number"
-          className="text-base text-neutral-600 w-full border-none bg-transparent focus:ring-0 placeholder:text-neutral-500"
-        />
-        <FiSmartphone className="text-3xl text-neutral-600" />
-      </div>
+    <div className="mt-8 px-4 flex flex-col gap-4">
+      <Input
+        id="fullname"
+        label="Full Name"
+        type="text"
+        icon={<AiOutlineUser />}
+        register={register}
+        disabled={isLoading}
+        errors={errors}
+        required
+      />
+      <MobileInput
+        id="mobilenumber"
+        label="Mobile Number"
+        type="text"
+        icon={<FiSmartphone />}
+        register={register}
+        disabled={isLoading}
+        errors={errors}
+        required
+      />
+      <Input
+        id="email"
+        label="Email"
+        type="email"
+        icon={<AiOutlineMail />}
+        register={register}
+        disabled={isLoading}
+        errors={errors}
+        required
+      />
+      <Input
+        id="state"
+        label="State"
+        type="text"
+        icon={<HiChevronDown />}
+        register={register}
+        disabled={isLoading}
+        errors={errors}
+        required
+      />
+      <Input
+        id="city"
+        label="City"
+        type="text"
+        icon={<HiChevronDown />}
+        register={register}
+        disabled={isLoading}
+        errors={errors}
+        required
+      />
 
       <div className="flex items-center justify-between text-sm text-neutral-600">
         <label className="inline-flex items-center gap-2">
@@ -94,7 +158,7 @@ const LoginModal = () => {
       title="Register"
       actionLabel="Sign In"
       onClose={closeRegister}
-      onSubmit={SubmitHandler}
+      onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
       footer={footerContent}
     />

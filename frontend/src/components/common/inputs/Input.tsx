@@ -1,5 +1,6 @@
 import React from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import { FiSmartphone } from "react-icons/fi";
 
 interface InputProps {
   id: string;
@@ -11,6 +12,7 @@ interface InputProps {
   register?: UseFormRegister<FieldValues>;
   errors: FieldErrors;
   className?: string;
+  icon?: any;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -23,48 +25,59 @@ const Input: React.FC<InputProps> = ({
   register,
   errors,
   className,
+  icon,
 }) => {
   return (
-    <div className="w-full relative">
-      <input
-        className="
+    <div className="w-full relative flex items-center justify-between border-b-2 border-neutral-600 ">
+      <div className="relative">
+        <input
+          id={id}
+          disabled={disabled}
+          {...register(id, { required })}
+          placeholder=" "
+          type={type}
+          className="
           peer
           w-full
           p-2
-          pt-2 
+          pt-6 
           font-light 
           bg-white 
-          border-2
-          rounded-md
+          border-none
           outline-none
+          focus:ring-0 
+          placeholder:text-neutral-500
           transition
           disabled:opacity-70
           disabled:cursor-not-allowed"
-        type={type}
-        id={id}
-        disabled={disabled}
-        placeholder=" "
-      />
-      <label
-        className="absolute
-          left-3 
-          text-md
+        />
+
+        <label
+          className="
+          absolute
+          left-2 
+          text-sm
+         
           text-gray-500
           duration-150 
           transform 
-          -translate-y-10 
-          top-2 
+          -translate-y-4 
+          top-6 
           z-10 
           origin-[0]
           peer-placeholder-shown:scale-100 
           peer-placeholder-shown:translate-y-0 
           peer-focus:scale-75
-          peer-focus:-translate-y-4
+          peer-focus:-translate-y-6
+          
+          
 
           "
-      >
-        {label}
-      </label>
+        >
+          {label}
+        </label>
+      </div>
+      <div className="text-2xl text-neutral-600">{icon}</div>
     </div>
   );
 };
