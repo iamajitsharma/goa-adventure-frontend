@@ -52,7 +52,6 @@ const MobileInput: React.FC<MobileInputProps> = ({
           <input
             id={id}
             disabled={disabled}
-            {...register(id, { required })}
             placeholder=" "
             type={type}
             className="
