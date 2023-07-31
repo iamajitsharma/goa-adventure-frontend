@@ -10,8 +10,8 @@ import Link from "next/link";
 import { FiSmartphone } from "react-icons/fi";
 import { FaTwitter, FaGoogle, FaFacebookF } from "react-icons/fa";
 import { motion } from "framer-motion";
-import LoginModal from "@/components/modals/LoginModal";
-import Modal from "@/components/modals/Modal";
+import LoginModal from "@/components/Modals/LoginModal";
+import Modal from "@/components/Modals/Modal";
 
 const login = () => {
   return (

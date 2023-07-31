@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import Footer from "./footer/Footer";
 import Header from "./Header/Header";
-import LoginModal from "./modals/LoginModal";
+import LoginModal from "./Modals/LoginModal";
 import { Provider } from "react-redux";
 import { store } from "@/store/store";
-import Modal from "./modals/Modal";
-import RegisterModal from "./modals/RegisterModal";
-import EmailLoginModal from "./modals/EmailLoginModal";
+import Modal from "./Modals/Modal";
+import RegisterModal from "./Modals/RegisterModal";
+import EmailLoginModal from "./Modals/EmailLoginModal";
 import { useRouter } from "next/router";
 
 type LayoutProps = {
