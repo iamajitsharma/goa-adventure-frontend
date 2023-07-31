@@ -2,7 +2,6 @@ import { useCallback } from "react";
 import { motion } from "framer-motion";
 import React from "react";
 import { FaGoogle, FaFacebookF, FaTwitter, FaEnvelope } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
 import useAuthModal from "@/hook/useAuthModal";
 
 const SocialLogin = () => {

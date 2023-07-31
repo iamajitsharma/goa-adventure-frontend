@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from "react";
 import Modal from "./Modal";
-import SocialLogin from "../Login/SocialLogin";
 import useAuthModal from "@/hook/useAuthModal";
 import { useSelector } from "react-redux";
 import Input from "../common/inputs/Input";
 import { FieldValues, useForm, SubmitHandler } from "react-hook-form";
+import SocialLogin from "../Login/SocialLogin";
 
 const EmailLoginModal = () => {
   const [isLoading, setIsLoading] = useState(false);
