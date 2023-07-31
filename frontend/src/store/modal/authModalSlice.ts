@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isLoginModalOpen: false,
   isRegisterModalOpen: false,
+  isEmailLoginModalOpen: false,
 };
 
 const authModalSlice = createSlice({
@@ -21,6 +22,12 @@ const authModalSlice = createSlice({
     closeRegisterModal: (state) => {
       state.isRegisterModalOpen = false;
     },
+    openEmailLoginModal: (state) => {
+      state.isEmailLoginModalOpen = true;
+    },
+    closeEmailLoginModal: (state) => {
+      state.isEmailLoginModalOpen = false;
+    },
   },
 });
 
@@ -29,5 +36,7 @@ export const {
   closeLoginModal,
   openRegisterModal,
   closeRegisterModal,
+  openEmailLoginModal,
+  closeEmailLoginModal,
 } = authModalSlice.actions;
 export default authModalSlice.reducer;

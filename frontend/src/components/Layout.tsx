@@ -7,21 +7,28 @@ import { Provider } from "react-redux";
 import { store } from "@/store/store";
 import Modal from "./modals/Modal";
 import RegisterModal from "./modals/RegisterModal";
+import EmailLoginModal from "./modals/EmailLoginModal";
+import { useRouter } from "next/router";
 
-interface LayoutProps {
+type LayoutProps = {
   children: React.ReactNode;
-}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
-  return (
-    <>
-      <LoginModal />
-      <RegisterModal />
-      <Header />
-      {children}
-      <Footer />
-    </>
-  );
 };
 
-export default Layout;
+export default function Layout({ children }: LayoutProps) {
+  const router = useRouter();
+
+  if (router.pathname != "/register") {
+    return (
+      <>
+        <LoginModal />
+        <RegisterModal />
+        <EmailLoginModal />
+        <Header />
+        {children}
+        <Footer />
+      </>
+    );
+  } else {
+    return <>{children}</>;
+  }
+}

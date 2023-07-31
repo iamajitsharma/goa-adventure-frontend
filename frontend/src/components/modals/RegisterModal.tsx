@@ -21,9 +21,11 @@ import Input from "../common/inputs/Input";
 import { AiOutlineUser, AiOutlineMail } from "react-icons/ai";
 import { HiChevronDown } from "react-icons/hi";
 import MobileInput from "../common/inputs/MobileInput";
+import SocialLogin from "../Login/SocialLogin";
 
-const LoginModal = () => {
+const RegisterModal = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [hasFilled, setHasFilled] = useState(false);
 
   const isRegisterModalOpen = useSelector(
     (state: any) => state.authModal.isRegisterModalOpen
@@ -36,8 +38,9 @@ const LoginModal = () => {
     formState: { errors },
   } = useForm<FieldValues>({});
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = () => {
     setIsLoading(true);
+    setHasFilled(true);
 
     // axios
     //   .post("/api/register", data)
@@ -61,7 +64,7 @@ const LoginModal = () => {
   }, [closeRegister, openLogin]);
 
   const bodyContent = (
-    <div className="mt-8 px-4 flex flex-col gap-4">
+    <div className="mt-6 px-4 flex flex-col gap-2">
       <Input
         id="fullname"
         label="Full Name"
@@ -72,16 +75,7 @@ const LoginModal = () => {
         errors={errors}
         required
       />
-      <MobileInput
-        id="mobilenumber"
-        label="Mobile Number"
-        type="text"
-        icon={<FiSmartphone />}
-        register={register}
-        disabled={isLoading}
-        errors={errors}
-        required
-      />
+
       <Input
         id="email"
         label="Email"
@@ -92,60 +86,35 @@ const LoginModal = () => {
         errors={errors}
         required
       />
-      <Input
-        id="state"
-        label="State"
+
+      <MobileInput
+        id="mobilenumber"
+        label="Mobile Number"
         type="text"
-        icon={<HiChevronDown />}
-        register={register}
-        disabled={isLoading}
-        errors={errors}
-        required
-      />
-      <Input
-        id="city"
-        label="City"
-        type="text"
-        icon={<HiChevronDown />}
+        icon={<FiSmartphone />}
         register={register}
         disabled={isLoading}
         errors={errors}
         required
       />
 
-      <div className="flex items-center justify-between text-sm text-neutral-600">
-        <label className="inline-flex items-center gap-2">
-          <input type="checkbox" className="p-2 rounded-sm" />
-          Remember me
-        </label>
-      </div>
+      <Input
+        id="otp"
+        label="OTP"
+        type="text"
+        register={register}
+        disabled={isLoading}
+        errors={errors}
+        required
+      />
     </div>
   );
   const footerContent = (
     <div>
-      <div className="flex items-center justify-center gap-6 text-xl px-4 py-4 text-gray-300">
-        <motion.span
-          className="border-2 border-gray-300 p-2 rounded-md"
-          whileHover={{ scale: 1.1 }}
-        >
-          <FaGoogle />
-        </motion.span>
-        <motion.span
-          className="border-2 border-gray-300 p-2 rounded-md"
-          whileHover={{ scale: 1.1 }}
-        >
-          <FaFacebookF className="" />
-        </motion.span>
-        <motion.span
-          className="border-2 border-gray-300 p-2 rounded-md"
-          whileHover={{ scale: 1.1 }}
-        >
-          <FaTwitter />
-        </motion.span>
-      </div>
+      <SocialLogin />
       <h4 className="text-center text-sm font-semibold text-neutral-600 py-2">
         Already have an account?
-        <span className="cursor-pointer" onClick={onToggle}>
+        <span className="cursor-pointer pl-2 text-primary" onClick={onToggle}>
           Sign In
         </span>
       </h4>
@@ -156,7 +125,7 @@ const LoginModal = () => {
     <Modal
       isOpen={isRegisterModalOpen}
       title="Register"
-      actionLabel="Sign In"
+      actionLabel="Create an account"
       onClose={closeRegister}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
@@ -165,4 +134,4 @@ const LoginModal = () => {
   );
 };
 
-export default LoginModal;
+export default RegisterModal;

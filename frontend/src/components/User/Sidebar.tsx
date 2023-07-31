@@ -8,7 +8,7 @@ import { CgProfile } from "react-icons/cg";
 const userMenu = [
   {
     name: "Booking",
-    href: "/user/booking-history",
+    href: "/user",
     icon: <IoGridOutline className="text-xl" />,
   },
   {
@@ -20,6 +20,11 @@ const userMenu = [
     name: "Profile",
     href: "/user/my-profile",
     icon: <CgProfile className="text-xl" />,
+  },
+  {
+    name: "Settings",
+    href: "/user/setting",
+    icon: <BsGear className="text-xl" />,
   },
 
   {

@@ -47,33 +47,33 @@ const Pricing: React.FC<PricingProps> = ({ price, salePrice, discount }) => {
             </div>
             <div className="flex items-center gap-2">
               <motion.span
-                className="shadow-md p-1 text-3xl rounded-md cursor-pointer text-white"
+                className="shadow-md p-1 text-3xl rounded-sm cursor-pointer text-white"
                 whileTap={{ scale: 1.2 }}
               >
                 <FiMinus
                   onClick={DecrementHandler}
-                  className="bg-slate-200 rounded-md text-variant"
+                  className="bg-slate-200 rounded-sm text-variant"
                 />
               </motion.span>
               <input
                 type="number"
                 min={1}
                 value={quantity}
-                className="p-2 w-12 sm:w-16 h-10 rounded-lg text-lg font-semibold text-center appearance-none"
+                className="p-2 w-12 sm:w-16 h-10 rounded-md text-lg font-semibold text-center appearance-none"
               />
               <motion.span
-                className="shadow-md p-1 text-3xl rounded-md cursor-pointer text-white"
+                className="shadow-md p-1 text-3xl rounded-sm cursor-pointer text-white"
                 whileTap={{ scale: 1.2 }}
               >
                 <FiPlus
                   onClick={incrementHandler}
-                  className="bg-slate-200 rounded-md text-variant"
+                  className="bg-slate-200 rounded-sm text-variant"
                 />
               </motion.span>
             </div>
             <motion.button
               type="button"
-              className="text-sm sm:text-base  p-2 py-2 px-5 rounded-lg text-variant font-medium bg-white"
+              className="text-sm sm:text-base  p-2 py-2 px-5 rounded-sm text-variant font-medium bg-white"
               whileTap={{ scale: 1.2 }}
             >
               Book Now
@@ -127,7 +127,7 @@ const Pricing: React.FC<PricingProps> = ({ price, salePrice, discount }) => {
               Just pay 25% now to book your seat
             </p>
             <Link href={"/checkout"}>
-              <Button label="Book Now" fullWidth />
+              <Button label="Book Now" fullWidth filled />
             </Link>
           </div>
         </Box>

@@ -35,12 +35,12 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       onClick={onClick}
       className={`relative disabled:opacity-70 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2 shadow-md
-      ${outline ? "border-2 border-neutral-700 " : "border-none"}
-      ${white ? "bg-white text-black" : "bg-primary text-white"}
-${type ? type : null}
+      ${outline ? "border-2 border-neutral-700 " : ""}
+      ${filled ? "border-none bg-primary text-white" : ""}
+      ${white ? "bg-white text-black" : "bg-black text-white"}
       ${
         fullWidth
-          ? "min-w-full px-6 py-3 text-xl font-medium rounded-md"
+          ? "min-w-full px-6 py-3 text-lg font-medium rounded-md"
           : "px-4 py-2 text-base font-medium"
       }
       ${small ? "px-2 py-1 text-xs font-medium" : ""}
