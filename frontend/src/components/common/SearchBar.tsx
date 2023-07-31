@@ -1,5 +1,6 @@
 import React from "react";
 import { BsSearch } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 const SearchBar = () => {
   return (

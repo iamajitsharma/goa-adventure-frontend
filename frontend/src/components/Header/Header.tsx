@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { CiLogin } from "react-icons/ci";
 import Link from "next/link";
 import logo from "../../../public/assets/goaadventure_color_logo.svg";
@@ -12,17 +12,21 @@ import { useMediaQuery } from "react-responsive";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { HiMenuAlt3 } from "react-icons/hi";
 import useAuthModal from "@/hook/useAuthModal";
+import { AiOutlineHome, AiOutlineProfile } from "react-icons/ai";
+import { MdSurfing, MdOutlineTour } from "react-icons/md";
+import { GrContactInfo } from "react-icons/gr";
+import { TfiMapAlt } from "react-icons/tfi";
 
 const navigation = [
-  { name: "Home", href: "/" },
-  { name: "About Us", href: "about-us" },
-  { name: "Adventures", href: "/activity" },
-  { name: "Tour", href: "/tour" },
-  { name: "Contact", href: "contact-us" },
+  { name: "Home", href: "/", icon: <AiOutlineHome /> },
+  { name: "Destination", href: "/location", icon: <TfiMapAlt /> },
+  { name: "Adventures", href: "/activity", icon: <MdSurfing /> },
+  { name: "Tour", href: "/tour", icon: <MdOutlineTour /> },
+  { name: "Contact", href: "contact-us", icon: <GrContactInfo /> },
 ];
 
 const Header = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [nav, setNav] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -42,6 +46,11 @@ const Header = () => {
   const handleNav = () => {
     setNav(!nav);
   };
+
+  const onToggle = useCallback(() => {
+    openLogin();
+    handleNav();
+  }, [openLogin, handleNav]);
 
   const router = useRouter();
 
@@ -72,7 +81,7 @@ const Header = () => {
           </Link>
         </div>
 
-        <ul className="hidden md:flex text-variant">
+        <ul className="hidden md:flex md:ml-auto md:mr-2 lg:mr-8 text-variant">
           {navigation.map((item) => (
             <li className="md:p-2 lg:p-4 md:text-sm lg:text-[0.90rem] font-semibold tracking-wide">
               <Link href={item.href}>{item.name}</Link>
@@ -80,13 +89,13 @@ const Header = () => {
           ))}
         </ul>
         <div className="flex items-center gap-2">
-          {!isLogin && <UserNavigation />}
+          {isLogin && <UserNavigation />}
 
           {router.pathname === "/" && !scrolled && !isTablet && (
             <Button
               label="Login"
               icon={<CiLogin fontSize={20} />}
-              className="z-50"
+              className="z-50 rounded-md"
               white
               onClick={openLogin}
             />
@@ -96,7 +105,7 @@ const Header = () => {
             <Button
               label="Login"
               icon={<CiLogin fontSize={20} />}
-              className="z-50"
+              className="z-50 rounded-md"
               filled
               onClick={openLogin}
             />
@@ -105,7 +114,7 @@ const Header = () => {
           {/* Mobile Button */}
           <div onClick={handleNav} className="block md:hidden z-10">
             {nav ? (
-              <AiOutlineClose size={36} style={{ color: "#ffffff" }} />
+              <AiOutlineClose size={36} className="text-neutral-600" />
             ) : (
               <HiMenuAlt3
                 size={36}
@@ -124,17 +133,27 @@ const Header = () => {
       <div
         className={
           nav
-            ? "md:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300"
+            ? "md:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-white text-center ease-in duration-300"
             : "md:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300"
         }
       >
-        <ul className="flex flex-col gap-4">
+        <ul className="flex flex-col gap-4 w-full mx-4">
           {navigation.map((item) => (
-            <li className="className='p-4 text-xl text-white hover:text-gray-500">
-              <Link href={item.href}>{item.name}</Link>
+            <li
+              className="p-2 text-base text-neutral-700 hover:bg-gray-300"
+              onClick={handleNav}
+            >
+              <Link href={"#"}>
+                <div className="flex items-center gap-2">
+                  <span className="text-xl">{item.icon}</span>
+                  <span>{item.name}</span>
+                </div>
+              </Link>
             </li>
           ))}
-          <Button label="Login" white fullWidth />
+
+          <Button label="Login" outline onClick={onToggle} />
+          <Button label="Register" outline onClick={onToggle} />
         </ul>
       </div>
     </div>

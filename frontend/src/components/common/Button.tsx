@@ -35,7 +35,7 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       onClick={onClick}
       className={`relative disabled:opacity-70 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2 shadow-md
-      ${outline ? "border-2 border-neutral-700 " : ""}
+      ${outline ? "border-2 border-neutral-700 " : "border-none"}
       ${filled ? "border-none bg-primary text-white" : ""}
       ${white ? "bg-white text-black" : "bg-black text-white"}
       ${
@@ -47,7 +47,7 @@ const Button: React.FC<ButtonProps> = ({
       
       
       
-      `}
+      ${className}`}
     >
       {icon}
       {label}
