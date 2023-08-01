@@ -21,7 +21,7 @@ import Input from "../common/inputs/Input";
 import { AiOutlineUser, AiOutlineMail } from "react-icons/ai";
 import { HiChevronDown } from "react-icons/hi";
 import MobileInput from "../common/inputs/MobileInput";
-import SocialLogin from "../Login/SocialLogin";
+import SocialLogin from "../login/SocialLogin";
 
 const RegisterModal = () => {
   const [isLoading, setIsLoading] = useState(false);
