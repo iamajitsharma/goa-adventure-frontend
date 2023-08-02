@@ -9,7 +9,7 @@ const SearchBar = () => {
         type="text"
         id="search"
         placeholder="Search Destination Activity Tour"
-        className="w-full focus:ring-0 border-none text-lg text-neutral-800 font-medium"
+        className="w-full focus:ring-0 border-none text-lg text-neutral-800 font-medium placeholder:text-sm placeholder:md:text-base"
       />
       <button className="bg-secondary text-white p-3 rounded-md">
         <BsSearch className="w-6 h-6" />

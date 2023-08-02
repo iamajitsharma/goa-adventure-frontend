@@ -1,20 +1,24 @@
 import React from "react";
-import { footerNavigation } from "./FooterLinks";
+import { aboutNavLinks } from "./FooterLinks";
 import FooterTitle from "./FooterTitle";
 import Link from "next/link";
+import { TbCircleDot } from "react-icons/tb";
 
 const SafarFooter = () => {
   return (
     <div>
       <FooterTitle title={"About Safar"} />
       <div>
-        <ul className="flex flex-row gap-1 md:gap-2 md:flex-col ">
-          {footerNavigation.about.map((item, index) => (
+        <ul className="">
+          {aboutNavLinks.map((item, index) => (
             <li
               key={index}
-              className="text-gray-700 text-sm leading-loose font-poppins"
+              className="text-gray-700 text-base leading-loose font-poppins font-medium"
             >
-              <Link href={item.href}>{item.name}</Link>
+              <Link href={item.href} className="flex items-center gap-2">
+                <TbCircleDot />
+                {item.name}
+              </Link>
             </li>
           ))}
         </ul>

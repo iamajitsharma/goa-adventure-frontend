@@ -1,5 +1,4 @@
 import Container from "@/components/common/Container";
-// import Loader from "react-loader";
 import { useEffect, useState } from "react";
 import { ITerms } from "../lib/interfaces";
 import { termsCondiitonsApi } from "../lib/api";

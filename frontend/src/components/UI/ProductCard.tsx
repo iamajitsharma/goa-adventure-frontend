@@ -79,7 +79,7 @@ const ProductCard: React.FC<CardProps> = ({ item }) => {
         <div className="flex flex-row flex-wrap gap-2 py-1">
           <span className="flex items-center gap-2 text-xs font-medium">
             <MdOutlineConfirmationNumber className="text-green-600/80 text-xl" />
-            Instant Confirmation
+            Mobile Ticket
           </span>
           <span className="flex items-center gap-2 text-xs font-medium">
             <HiOutlineReceiptRefund className="text-amber-500 text-xl" />

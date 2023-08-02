@@ -14,8 +14,8 @@ const MobileHero = () => {
         alt=""
         className="object-cover absolute top-0 left-0 right-0 w-full h-[70vh] overflow-hidden rounded-b-[3rem]"
       />
-      <div className="flex items-center justify-center absolute top-0 left-0 right-0 bottom-0 bg-lightOverlay z-[2] w-full h-[70vh] px-4 rounded-b-[3rem]">
-        <div className="w-full text-center px-3 font-poppins">
+      <div className="flex items-center justify-center absolute top-0 left-0 right-0 bottom-0 bg-lightOverlay z-[2] w-full h-[70vh] px-3 rounded-b-[3rem]">
+        <div className="w-full text-center px-2 font-poppins">
           <h1 className="text-2xl sm:text-4xl font-black text-white">
             Where do you want to go?
           </h1>

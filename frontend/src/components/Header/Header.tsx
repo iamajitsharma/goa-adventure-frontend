@@ -66,7 +66,7 @@ const Header = () => {
           : "bg-white shadow-md"
       }`}
     >
-      <div className="max-w-[1260px] m-auto flex justify-between items-center p-2 px-4 text-white">
+      <div className="max-w-[1260px] m-auto flex justify-between items-center py-2 text-white">
         <div className="w-[250px] h-auto shrink-0 object-fill">
           <Link href="/">
             {router.pathname === "/" && !scrolled && isTablet ? (
@@ -114,7 +114,7 @@ const Header = () => {
           {/* Mobile Button */}
           <div onClick={handleNav} className="block md:hidden z-10">
             {nav ? (
-              <AiOutlineClose size={36} className="text-neutral-600" />
+              <AiOutlineClose size={36} className="text-neutral-600 mr-4" />
             ) : (
               <HiMenuAlt3
                 size={36}
@@ -137,6 +137,11 @@ const Header = () => {
             : "md:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300"
         }
       >
+        <Image
+          src={logo}
+          alt=""
+          className="absolute top-0 left-4 md:hidden w-56 h-auto"
+        />
         <ul className="flex flex-col gap-4 w-full mx-4">
           {navigation.map((item) => (
             <li

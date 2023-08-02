@@ -24,23 +24,23 @@ const DestinationCard: React.FC<DestinationCardProps> = ({
         <Image
           src={image}
           alt="Tour"
-          className="w-full max-h-64 object-cover"
+          className="w-full max-h-40 md:max-h-64 object-cover"
         />
         <div className="p-2 flex flex-col gap-2 bg-white">
-          <h4 className="text-sm md:text-base text-variant tracking-wider font-semibold">
+          <h4 className="text-sm lg:text-base text-variant tracking-wider font-semibold">
             {location}
           </h4>
           <span className="self-end text-xs font-medium tracking-wider text-variant">
             Starting from
           </span>
           <div className="flex items-center justify-between">
-            <div className="flex items-start gap-1">
-              <span className="flex items-center text-base md:text-xl text-primary">
+            <div className="flex items-start gap-0">
+              <span className="flex items-center text-sm md:text-base text-primary">
                 {[0, 1, 2, 3].map((item, index) => (
                   <AiFillStar />
                 ))}
               </span>
-              <span className="text-base md:text-xl text-neutral-500">
+              <span className="text-sm md:text-base text-neutral-500">
                 <AiOutlineStar />
               </span>
             </div>

@@ -9,6 +9,7 @@ import Modal from "./modals/Modal";
 import RegisterModal from "./modals/RegisterModal";
 import EmailLoginModal from "./modals/EmailLoginModal";
 import { useRouter } from "next/router";
+import FAB from "./FloatingActionButton/FAB";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ export default function Layout({ children }: LayoutProps) {
   if (router.pathname != "/register") {
     return (
       <>
+        <FAB />
         <LoginModal />
         <RegisterModal />
         <EmailLoginModal />

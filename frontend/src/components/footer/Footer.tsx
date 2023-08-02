@@ -1,4 +1,3 @@
-import { footerNavigation } from "./FooterLinks";
 import SafarFooter from "./SafarFooter";
 import CompanyDetails from "./CompanyDetails";
 import FooterSubscribe from "./FooterSubscribe";
@@ -6,7 +5,7 @@ import FooterSubscribe from "./FooterSubscribe";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="w-full relative bg-gray-100 shadow-md font-poppins pb-16">
+    <footer className="w-full relative bg-slate-300 shadow-md font-poppins pb-16">
       <div className="md:max-w-7xl mx-auto pt-6 grid md:grid-cols-3 grid-col-1 gap-8 p-4 min-h-fit">
         <FooterSubscribe />
         <SafarFooter />

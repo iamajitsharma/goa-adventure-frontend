@@ -25,7 +25,7 @@ const UserNavigation = () => {
     <div className="block">
       <div className="flex items-center">
         <Menu as="div" className="relative ml-3">
-          <div className="w-12 h-12">
+          <div className="w-10 h-10">
             <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
               <span className="sr-only">Open user menu</span>
               <Image src={profileImage} alt="" className="rounded-full" />

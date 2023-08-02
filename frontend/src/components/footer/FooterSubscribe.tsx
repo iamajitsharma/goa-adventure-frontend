@@ -1,6 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import { AiOutlineFacebook } from "react-icons/ai";
+import { motion } from "framer-motion";
+import {
+  AiOutlineFacebook,
+  AiOutlineInstagram,
+  AiOutlineTwitter,
+  AiOutlineYoutube,
+} from "react-icons/ai";
 import { RiInstagramLine } from "react-icons/ri";
 import {
   SlSocialYoutube,
@@ -8,12 +14,13 @@ import {
   SlLocationPin,
 } from "react-icons/sl";
 import FooterTitle from "./FooterTitle";
+import { FaFacebookF } from "react-icons/fa";
 
 const FooterSubscribe = () => {
   return (
     <div className="pt-2 mx-auto">
       <div>
-        <h4 className="text-slate-700 font-medium">
+        <h4 className="text-slate-700 font-semibold">
           Subscribe our newsletter to get discount upto 50%
         </h4>
       </div>
@@ -45,28 +52,36 @@ const FooterSubscribe = () => {
       </div>
       <div className="py-4">
         <FooterTitle title="Follow Us" />
-        <ul className="flex flex-row gap-4 items-center text-gray-500">
-          <li>
-            <Link href="#">
-              <AiOutlineFacebook fontSize={30} />
-            </Link>
-          </li>
-          <li>
-            <Link href="#">
-              <RiInstagramLine fontSize={30} />
-            </Link>
-          </li>
-          <li>
-            <Link href="#">
-              <SlSocialYoutube fontSize={30} />
-            </Link>
-          </li>
-          <li>
-            <Link href="#">
-              <SlSocialTwitter fontSize={30} />
-            </Link>
-          </li>
-        </ul>
+        <div className="flex items-center gap-4">
+          <motion.span
+            className="text-2xl text-slate-700 bg-white p-2 shadow-xl rounded-lg cursor-pointer"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 1.2 }}
+          >
+            <FaFacebookF />
+          </motion.span>
+          <motion.span
+            className="text-2xl text-slate-700 bg-white p-2 shadow-xl rounded-lg cursor-pointer"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 1.2 }}
+          >
+            <AiOutlineInstagram />
+          </motion.span>
+          <motion.span
+            className="text-2xl text-slate-700 bg-white p-2 shadow-xl rounded-lg cursor-pointer "
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 1.2 }}
+          >
+            <AiOutlineTwitter />
+          </motion.span>
+          <motion.span
+            className="text-2xl text-slate-700 bg-white p-2 shadow-xl rounded-lg cursor-pointer"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 1.2 }}
+          >
+            <AiOutlineYoutube />
+          </motion.span>
+        </div>
       </div>
     </div>
   );

@@ -48,7 +48,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ data }) => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
