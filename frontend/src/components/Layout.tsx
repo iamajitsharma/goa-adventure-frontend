@@ -5,7 +5,6 @@ import Header from "./Header/Header";
 import LoginModal from "./modals/LoginModal";
 import { Provider } from "react-redux";
 import { store } from "@/store/store";
-import Modal from "./modals/Modal";
 import RegisterModal from "./modals/RegisterModal";
 import EmailLoginModal from "./modals/EmailLoginModal";
 import { useRouter } from "next/router";
