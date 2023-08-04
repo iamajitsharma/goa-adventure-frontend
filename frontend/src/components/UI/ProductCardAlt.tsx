@@ -7,7 +7,7 @@ import { FiMapPin } from "react-icons/fi";
 import { BiRupee } from "react-icons/bi";
 import { MdOutlineConfirmationNumber } from "react-icons/md";
 import { HiOutlineReceiptRefund } from "react-icons/hi";
-import Button from "../common/Button";
+import { Button } from "../common/Button";
 import { deviceSize } from "../Responsive";
 import { useMediaQuery } from "react-responsive";
 
@@ -55,21 +55,21 @@ const ProductCardAlt = () => {
         </div>
         {/* Card Pricing  */}
         <div className="flex items-end justify-between gap-0 w-full h-full py-2">
-          <div className="flex items-center gap-1 ">
-            <span className="flex items-center text-sm md:text-lg line-through tracking-wider font-medium text-neutral-500">
+          <div className="flex flex-col-reverse md:flex-row items-center gap-1 ">
+            <span className="flex items-center text-xs md:text-base line-through tracking-wider font-semibold text-neutral-400">
               <BiRupee className="text-base md:text-lg" />
               2000
             </span>
-            <span className="flex items-center text-base sm:text-xl md:text-2xl tracking-wider font-semibold text-primary">
+            <span className="flex items-center text-lg sm:text-xl md:text-xl tracking-wider font-semibold text-primary">
               <BiRupee className="text-xl md:text-2xl" />
               1500
             </span>
           </div>
-          <div>
+          <div className="">
             {isTable ? (
-              <Button label="Book Now" small />
+              <Button size={"sm"}>Book Now</Button>
             ) : (
-              <Button label="Book Now" fullWidth />
+              <Button size={"lg"}>Book Now</Button>
             )}
           </div>
         </div>

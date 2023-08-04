@@ -6,7 +6,7 @@ import whiteLogo from "../../../public/assets/Mobile_Whitelogo-01.svg";
 import Image from "next/image";
 import UserNavigation from "./UserNavigation";
 import { useRouter } from "next/router";
-import Button from "../common/Button";
+import { Button } from "../common/Button";
 import { deviceSize } from "../Responsive";
 import { useMediaQuery } from "react-responsive";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
@@ -92,23 +92,13 @@ const Header = () => {
           {isLogin && <UserNavigation />}
 
           {router.pathname === "/" && !scrolled && !isTablet && (
-            <Button
-              label="Login"
-              icon={<CiLogin fontSize={20} />}
-              className="z-50 rounded-md"
-              white
-              onClick={openLogin}
-            />
+            <Button onClick={openLogin}>Login</Button>
           )}
 
           {scrolled && !isTablet && (
-            <Button
-              label="Login"
-              icon={<CiLogin fontSize={20} />}
-              className="z-50 rounded-md"
-              filled
-              onClick={openLogin}
-            />
+            <Button onClick={openLogin} variant="primary">
+              Login
+            </Button>
           )}
 
           {/* Mobile Button */}
@@ -156,9 +146,8 @@ const Header = () => {
               </Link>
             </li>
           ))}
-
-          <Button label="Login" outline onClick={onToggle} />
-          <Button label="Register" outline onClick={onToggle} />
+          <Button onClick={onToggle}>Login</Button>
+          <Button onClick={onToggle}>Register</Button>
         </ul>
       </div>
     </div>

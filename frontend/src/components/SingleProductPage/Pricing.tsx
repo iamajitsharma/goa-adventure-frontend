@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../common/Button";
+import { Button } from "../common/Button";
 import Link from "next/link";
 import { BsCurrencyRupee } from "react-icons/bs";
 import { FiMinus, FiPlus } from "react-icons/fi";
@@ -126,9 +126,10 @@ const Pricing: React.FC<PricingProps> = ({ price, salePrice, discount }) => {
             <p className="text-xs text-textBlack">
               Just pay 25% now to book your seat
             </p>
-            <Link href={"/checkout"}>
-              <Button label="Book Now" fullWidth filled />
-            </Link>
+
+            <Button size="xl" variant="primary" href="/cart">
+              Book Now
+            </Button>
           </div>
         </Box>
       )}

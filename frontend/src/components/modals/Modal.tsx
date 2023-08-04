@@ -13,7 +13,7 @@ import {
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import useAuthModal from "@/hook/useAuthModal";
-import Button from "../common/Button";
+import { Button } from "../common/Button";
 
 interface ModalProps {
   isOpen?: boolean;
@@ -97,12 +97,9 @@ const Modal: React.FC<ModalProps> = ({
           <div className="relative max-h-[2/5]">{body}</div>
           {/* Modal Action */}
           <div className="relative py-4">
-            <Button
-              label={actionLabel}
-              white={false}
-              fullWidth
-              onClick={onSubmit}
-            />
+            <Button onClick={onSubmit} size={"xl"} variant={"dark"}>
+              {actionLabel}
+            </Button>
           </div>
           <div>{footer}</div>
         </div>

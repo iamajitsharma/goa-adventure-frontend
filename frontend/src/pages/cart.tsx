@@ -3,7 +3,7 @@ import CartCard from "@/components/UI/CartCard";
 import Link from "next/link";
 import { BsCartPlusFill } from "react-icons/bs";
 import { activityData } from "../../public/assets/data/Data";
-import Button from "@/components/common/Button";
+import { Button } from "@/components/common/Button";
 import placeholderImg from "../../public/assets/placeholder.jpg";
 import Container from "@/components/common/Container";
 import { HiOutlineShoppingBag } from "react-icons/hi";
@@ -35,10 +35,6 @@ const cart = () => {
         {cartItem?.length === 0 ? (
           <div className="w-full h-full px-4 py-2 flex flex-col items-center justify-center font-poppins">
             <h1 className="text-2xl font-bold mb-4 ">No Items in Cart</h1>
-            <Button
-              label="Start Shopping"
-              icon={<BsCartPlusFill className="text-xl" />}
-            />
           </div>
         ) : (
           <div className="w-full h-full flex flex-col gap-3 px-0 py-2 md:flex-row lg:px-4">
@@ -57,9 +53,9 @@ const cart = () => {
                 <input
                   type="text"
                   placeholder="Have coupon code?"
-                  className="w-full border-none focus:ring-0 outline-none"
+                  className="w-full border-none focus:ring-0 outline-none bg-gray-100 placeholder:text-sm"
                 />
-                <Button label="Apply" />
+                <Button>Apply</Button>
               </div>
               <div className="w-full h-full flex flex-col gap-4 px-1 py-4 font-semibold text-sm">
                 <div className="flex justify-between items-center">
@@ -79,7 +75,9 @@ const cart = () => {
                   <span>625</span>
                 </div>
               </div>
-              <Button label="Proceed to checkout" fullWidth small />
+              <Button size="xl" variant="dark" href="/checkout">
+                Proceed to checkout
+              </Button>
             </div>
           </div>
         )}

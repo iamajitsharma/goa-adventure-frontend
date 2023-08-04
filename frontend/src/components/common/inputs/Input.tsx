@@ -28,7 +28,9 @@ const Input: React.FC<InputProps> = ({
   icon,
 }) => {
   return (
-    <div className="w-full relative flex items-center justify-between border-b-2 border-neutral-600 ">
+    <div
+      className={`w-full relative flex items-center justify-between border-b-2 border-neutral-600 ${className}`}
+    >
       <div className="relative">
         <input
           id={id}

@@ -7,7 +7,6 @@ import Container from "@/components/common/Container";
 import ProductTitle from "@/components/common/ProductTitle";
 import Col from "@/components/common/Col";
 // import Itinerary from "@/components/listings/Itinerary";
-import Button from "@/components/common/Button";
 import Reviews from "@/components/Reviews/Reviews";
 // import HighLightsSlider from "@/components/ThingsToDo/HighLights/HighLightsSlider";
 import Overviews from "@/components/SingleProductPage/Overviews";

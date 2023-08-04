@@ -1,25 +1,11 @@
 import React, { useCallback, useState } from "react";
 import Modal from "./Modal";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { FcGoogle } from "react-icons/fc";
-import { ImFacebook2 } from "react-icons/im";
-import { TfiEmail } from "react-icons/tfi";
-import Button from "../common/Button";
-import BeachImage from "../../../public/assets/Login_BG_01.jpg";
-import Link from "next/link";
 import { FiSmartphone } from "react-icons/fi";
-import { motion } from "framer-motion";
-import {
-  FaGoogle,
-  FaFacebookF,
-  FaTwitter,
-  FaRegEnvelope,
-} from "react-icons/fa";
 import useAuthModal from "@/hook/useAuthModal";
 import { useSelector } from "react-redux";
 import Input from "../common/inputs/Input";
 import { AiOutlineUser, AiOutlineMail } from "react-icons/ai";
-import { HiChevronDown } from "react-icons/hi";
 import MobileInput from "../common/inputs/MobileInput";
 import SocialLogin from "../login/SocialLogin";
 

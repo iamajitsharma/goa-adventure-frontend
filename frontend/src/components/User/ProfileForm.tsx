@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import placeholderImage from "../../../public/assets/placeholder.jpg";
-import Button from "../common/Button";
+import { Button } from "../common/Button";
 import { RiSave3Fill } from "react-icons/ri";
 
 const ProfileForm = () => {
@@ -68,7 +68,7 @@ const ProfileForm = () => {
         </div>
       </div>
       <div className="flex justify-end w-full py-2">
-        <Button label="Save" icon={<RiSave3Fill />} />
+        <Button>Save</Button>
       </div>
     </>
   );
