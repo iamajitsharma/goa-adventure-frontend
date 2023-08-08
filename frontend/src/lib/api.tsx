@@ -99,3 +99,12 @@ export async function fetchProducts() {
     return response.data;
   }
 }
+
+export async function fetchOrderIdForRazorPay() {
+  const result: any = await fetch(
+    `${serverURL}/payment/create-order`,
+    requestOptions
+  );
+
+  const response = await result.json();
+}

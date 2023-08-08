@@ -6,6 +6,7 @@ import Container from "@/components/common/Container";
 import { FiSmartphone } from "react-icons/fi";
 import { Button } from "@/components/common/Button";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const Checkout = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -14,6 +15,70 @@ const Checkout = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FieldValues>({});
+
+  const initializeRazorpay = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+
+      document.body.appendChild(script);
+    });
+  };
+
+  async function callRazorPay() {
+    const amount = "5200";
+    // const booking_id = 2;
+    const customer_id = 7;
+    const product_id = 13;
+    const quantity = 2;
+
+    console.log("HEELLO");
+
+    // Make API call to the serverless API
+    const data = await fetch("/api/razorpay", { method: "POST" }).then((t) =>
+      t.json()
+    );
+    console.log(data);
+    const res = await initializeRazorpay();
+    if (!res) {
+      alert("Razorpay SDK Failed to load");
+      return;
+    }
+
+    var options = {
+      key: "rzp_test_lcf9GSjJoWx5Gk", // Enter the Key ID generated from the Dashboard
+      name: "Safar Travel Express",
+      currency: data.currency,
+      amount: data.amount,
+      order_id: data.orderId,
+      description: "Thankyou for your payment",
+      image:
+        "data:image/png;base64,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",
+      handler: function (response: any) {
+        // Validate payment at server - using webhooks is a better idea.
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature);
+        redirect("/success");
+      },
+
+      prefill: {
+        name: "Ajit Sharma",
+        email: "ajitsharma@gmail.com",
+        contact: "9999999999",
+      },
+    };
+    let windowRazorPay = window as any;
+    const paymentObject = new windowRazorPay.Razorpay(options);
+    paymentObject.open();
+  }
   return (
     <Container>
       <div className="w-full h-full py-4">
@@ -127,8 +192,9 @@ const Checkout = () => {
               </label>
             </div>
           </div>
-          <Button size="xl" variant="dark" href="/checkout">
-            Proceed to checkout
+          {/* <Button size="xl" variant="dark" onClick={callRazorPay}> */}
+          <Button size="xl" variant="dark" onClick={callRazorPay}>
+            Proceed to Pay
           </Button>
         </div>
       </div>
