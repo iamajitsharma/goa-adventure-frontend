@@ -1,5 +1,5 @@
 import UserContent from "@/components/User/UserContent";
-import Button from "@/components/common/Button";
+import { Button } from "@/components/common/Button";
 import React from "react";
 import { RiSave3Fill } from "react-icons/ri";
 
@@ -26,7 +26,7 @@ const Settings = () => {
         </div>
       </div>
       <div className="flex justify-end w-full py-2">
-        <Button label="Save" icon={<RiSave3Fill />} />
+        <Button>Save</Button>
       </div>
     </UserContent>
   );

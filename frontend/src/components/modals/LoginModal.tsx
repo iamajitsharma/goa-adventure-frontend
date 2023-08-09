@@ -15,7 +15,7 @@ const LoginModal = () => {
   const isLoginModalOpen = useSelector(
     (state: any) => state.authModal.isLoginModalOpen
   );
-  const { closeLogin, openRegister } = useAuthModal();
+  const { closeLogin, openRegister, openLogin } = useAuthModal();
 
   const {
     register,

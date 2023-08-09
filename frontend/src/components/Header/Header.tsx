@@ -9,13 +9,14 @@ import { useRouter } from "next/router";
 import { Button } from "../common/Button";
 import { deviceSize } from "../Responsive";
 import { useMediaQuery } from "react-responsive";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { AiFillCaretDown, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { HiMenuAlt3 } from "react-icons/hi";
 import useAuthModal from "@/hook/useAuthModal";
-import { AiOutlineHome, AiOutlineProfile } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineShoppingCart } from "react-icons/ai";
 import { MdSurfing, MdOutlineTour } from "react-icons/md";
 import { GrContactInfo } from "react-icons/gr";
 import { TfiMapAlt } from "react-icons/tfi";
+import { motion } from "framer-motion";
 
 const navigation = [
   { name: "Home", href: "/", icon: <AiOutlineHome /> },
@@ -64,7 +65,9 @@ const Header = () => {
         !scrolled && router.pathname === "/"
           ? "bg-transparent shadow-none"
           : "bg-white shadow-md"
-      }`}
+      }
+      
+      `}
     >
       <div className="max-w-[1260px] m-auto flex justify-between items-center py-2 text-white">
         <div className="w-[250px] h-auto shrink-0 object-fill">
@@ -90,10 +93,24 @@ const Header = () => {
         </ul>
         <div className="flex items-center gap-2">
           {isLogin && <UserNavigation />}
+          <motion.span
+            className={`
+            ${!scrolled && isTablet ? "text-white" : "text-primary"}
+            ${
+              !scrolled && !isTablet && router.pathname === "/"
+                ? "text-white"
+                : "text-primary"
+            }
+         
+            
+            text-3xl px-3 cursor-pointer`}
+            whileTap={{ scale: 1.1 }}
+            onClick={() => router.push("/cart")}
+          >
+            <AiOutlineShoppingCart />
+          </motion.span>
 
-          {router.pathname === "/" && !scrolled && !isTablet && (
-            <Button onClick={openLogin}>Login</Button>
-          )}
+          {!scrolled && !isTablet && <Button onClick={openLogin}>Login</Button>}
 
           {scrolled && !isTablet && (
             <Button onClick={openLogin} variant="primary">
@@ -106,14 +123,18 @@ const Header = () => {
             {nav ? (
               <AiOutlineClose size={36} className="text-neutral-600 mr-4" />
             ) : (
-              <HiMenuAlt3
-                size={36}
-                style={{
-                  color: `${
-                    !scrolled && router.pathname === "/" ? "#ffffff" : "#252243"
-                  }`,
-                }}
-              />
+              <>
+                <HiMenuAlt3
+                  size={36}
+                  style={{
+                    color: `${
+                      !scrolled && router.pathname === "/"
+                        ? "#ffffff"
+                        : "#252243"
+                    }`,
+                  }}
+                />
+              </>
             )}
           </div>
         </div>
@@ -146,6 +167,7 @@ const Header = () => {
               </Link>
             </li>
           ))}
+
           <Button onClick={onToggle}>Login</Button>
           <Button onClick={onToggle}>Register</Button>
         </ul>

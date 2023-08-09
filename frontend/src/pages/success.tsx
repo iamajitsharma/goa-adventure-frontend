@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import { Button } from "@/components/common/Button";
+import successImage from "../../public/assets/success-tick.png";
 
 export default function PaymentSuccess() {
   const [isGrowing, setIsGrowing] = useState(true);
@@ -16,29 +19,20 @@ export default function PaymentSuccess() {
   const size = isGrowing ? "100px" : "120px";
 
   return (
-    <div className="flex flex-col items-center justify-center mt-10 pt-28">
-      <div
-        className="image-container"
-        style={{
-          width: size,
-          height: size,
-          transition: "width 1s ease, height 1s ease",
-        }}
-      >
-        <img src={"success-tick.png"} className="image" alt="Success Logo" />
+    <div className="w-full h-[70vh] py-8 flex items-center justify-center flex-col font-poppins">
+      <Image src={successImage} alt="" className="animate-bounce w-20 h-20" />
+      <div className="flex items-center justify-center flex-col gap-0">
+        <h2 className="text-3xl font-bold text-green-600 mt-8">
+          Payment Successful!
+        </h2>
+        <p className="text-base text-gray-600 py-2 text-center">
+          Thank you for your payment. Your transaction has been successfully
+          processed.
+        </p>
       </div>
-      <h2 className="text-3xl font-bold text-green-600 mt-8">
-        Payment Successful!
-      </h2>
-      <p className="text-lg text-gray-600 mt-4">
-        Thank you for your payment. Your transaction has been successfully
-        processed.
-      </p>
-      <button className=" text-white font-bold py-2 px-4 rounded mt-8">
-        {/* <Link to="/AdminPage/dashboard" className="btn btn-primary ">
-          Go to Dashboard
-        </Link> */}
-      </button>
+      <Button variant="primary" className="my-8" href="/user/booking-history">
+        Dashboard
+      </Button>
     </div>
   );
 }

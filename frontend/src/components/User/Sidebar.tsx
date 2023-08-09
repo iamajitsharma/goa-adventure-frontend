@@ -8,7 +8,7 @@ import { CgProfile } from "react-icons/cg";
 const userMenu = [
   {
     name: "Booking",
-    href: "/user",
+    href: "/user/booking-history",
     icon: <IoGridOutline className="text-xl" />,
   },
   {
