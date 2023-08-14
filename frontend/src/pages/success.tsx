@@ -2,14 +2,22 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/common/Button";
 import successImage from "../../public/assets/success-tick.png";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function PaymentSuccess() {
   const [isGrowing, setIsGrowing] = useState(true);
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
+    console.log("ROuter", router);
     const interval = setInterval(() => {
       setIsGrowing((prevIsGrowing) => !prevIsGrowing);
     }, 1000);
+
+    setTimeout(() => {
+      router.push(`/invoice?order_id=${searchParams.get("order_id")}`);
+    }, 8000);
 
     return () => {
       clearInterval(interval);
