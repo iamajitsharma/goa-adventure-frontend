@@ -12,14 +12,17 @@ import { deviceSize } from "@/components/Responsive";
 import MobileHero from "@/components/Hero/MobileHero";
 import DesktopHero from "@/components/Hero/DesktopHero";
 import PartnerLogo from "@/components/featured/PartnerLogo";
+import CardSkelton from "@/components/Animation/CardSkelton";
 
 const Index = () => {
   const [activities, setActivities] = useState([]);
   const [tourData, setTourData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
 
   useEffect(() => {
+    setIsLoading(true);
     const filterActivityData: any = products.filter(
       (item) => item.category === "activity"
     );
@@ -27,7 +30,11 @@ const Index = () => {
       (item) => item.category === "tour"
     );
 
-    setActivities(filterActivityData);
+    setTimeout(() => {
+      setActivities(filterActivityData);
+      setIsLoading(false);
+    }, 6000);
+
     setTourData(filterTourData);
   }, []);
 
@@ -59,7 +66,7 @@ const Index = () => {
             heading="Top Adventure Activity"
             subheading="TOP ADVENTURE"
           />
-          <ProductSlider data={activities} />
+          <ProductSlider data={activities} isLoading={isLoading} />
         </Container>
       </section>
 
@@ -74,7 +81,7 @@ const Index = () => {
             subheading="Top Rated Experience"
             textAlign="center"
           />
-          <ProductSlider data={tourData} />
+          <ProductSlider data={tourData} isLoading={isLoading} />
         </Container>
       </section>
 

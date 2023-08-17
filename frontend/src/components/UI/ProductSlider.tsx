@@ -5,12 +5,14 @@ import { activityData } from "../../../public/assets/data/Data";
 import ProductCard from "./ProductCard";
 import LeftArrow from "./LeftArrow";
 import RightArrow from "./RightArrow";
+import CardSkelton from "@/components/Animation/CardSkelton";
 
 interface ProductSliderProps {
   data?: any;
+  isLoading?: boolean;
 }
 
-const ProductSlider: React.FC<ProductSliderProps> = ({ data }) => {
+const ProductSlider: React.FC<ProductSliderProps> = ({ data, isLoading }) => {
   const handleEdge = (edge: string) => {
     console.log(`Edge reached: ${edge}`);
   };
@@ -57,7 +59,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ data }) => {
   return (
     <Slider {...settings} className="pt-8">
       {data?.map((item: any, index: any) => (
-        <ProductCard item={item} key={index} />
+        <ProductCard item={item} isLoading={isLoading} key={index} />
       ))}
     </Slider>
   );
