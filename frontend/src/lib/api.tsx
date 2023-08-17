@@ -3,7 +3,7 @@ import html from "remark-html";
 import { IPrivacy, ITerms } from "./interfaces";
 import { calculateSalePrice } from "./operations";
 
-const devServer = "http://localhost:1337/api";
+const devServer = "http://localhost:4000/v1";
 const prodServer = "";
 const serverURL = devServer;
 //const serverURL = prodServer;
@@ -107,4 +107,14 @@ export async function fetchOrderIdForRazorPay() {
   );
 
   const response = await result.json();
+}
+
+export async function getBookingInfo(orderId: string) {
+  const result: any = await fetch(
+    `${serverURL}/booking/invoice/${orderId}`,
+    requestOptions
+  );
+
+  const response = await result.json();
+  return response;
 }

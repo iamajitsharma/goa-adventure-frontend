@@ -2,19 +2,35 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/common/Button";
 import successImage from "../../public/assets/success-tick.png";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function PaymentSuccess() {
   const [isGrowing, setIsGrowing] = useState(true);
+  const [updateTime, setUpdateTime] = useState(5);
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
+    console.log("ROuter", router);
     const interval = setInterval(() => {
       setIsGrowing((prevIsGrowing) => !prevIsGrowing);
     }, 1000);
 
+    setTimeout(() => {
+      router.push(`/invoice?order_id=${searchParams.get("order_id")}`);
+    }, 5000);
+    // setTimeout(()=>setUpdateTime((prev:any)=>prev-1),1000)
+    countDown();
     return () => {
       clearInterval(interval);
     };
   }, []);
+  function countDown() {
+    setTimeout(() => {
+      setUpdateTime((prev: any) => prev - 1);
+      countDown();
+    }, 1000);
+  }
 
   const size = isGrowing ? "100px" : "120px";
 
@@ -28,6 +44,9 @@ export default function PaymentSuccess() {
         <p className="text-base text-gray-600 py-2 text-center">
           Thank you for your payment. Your transaction has been successfully
           processed.
+        </p>
+        <p className="text-base text-gray-600 py-2 text-center">
+          You will be redirected in {updateTime} seconds
         </p>
       </div>
       <Button variant="primary" className="my-8" href="/user/booking-history">
