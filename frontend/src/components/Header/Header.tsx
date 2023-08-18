@@ -70,7 +70,7 @@ const Header = () => {
       `}
     >
       <div className="max-w-[1260px] m-auto flex justify-between items-center py-2 text-white">
-        <div className="w-[250px] h-auto shrink-0 object-fill">
+        <div className="w-[200px] h-auto shrink-0 object-fill">
           <Link href="/">
             {router.pathname === "/" && !scrolled && isTablet ? (
               <Image

@@ -7,6 +7,8 @@ import { FiSmartphone } from "react-icons/fi";
 import { Button } from "@/components/common/Button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Select from "@/components/common/inputs/CustomSelect";
+import CustomSelect from "@/components/common/inputs/CustomSelect";
 
 const Checkout = () => {
   const router = useRouter();
@@ -120,13 +122,19 @@ const Checkout = () => {
     const paymentObject = new windowRazorPay.Razorpay(options);
     paymentObject.open();
   }
+
+  const options = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+  ];
   return (
     <Container>
       <div className="w-full h-full py-4">
         <h3 className="font-poppins font-semibold text-2xl">Checkout</h3>
       </div>
-      <div className="w-full h-full flex gap-4 items-start font-poppins my-4">
-        <div className="w-8/12 h-full">
+      <div className="w-full h-full flex flex-col md:flex-row gap-4 items-start font-poppins my-4">
+        <div className="w-full md:w-8/12 h-full">
           <div className="py-4 shadow-3xl p-2">
             <h4 className="font-semibold text-base">Billing Information</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 w-full h-full gap-4">
@@ -139,6 +147,7 @@ const Checkout = () => {
                 disabled={isLoading}
                 errors={errors}
                 required
+                className="col-span-2"
               />
               <Input
                 id="mobilenumber"
@@ -190,13 +199,19 @@ const Checkout = () => {
                 errors={errors}
                 required
               />
+              <CustomSelect
+                id="meetingPoint"
+                options={options}
+                isSearchable={false}
+                placeholder="Meeting Points"
+              />
             </div>
             <div className="pt-6 text-right">
               <Button>Add Details</Button>
             </div>
           </div>
         </div>
-        <div className="w-4/12  h-full shadow-3xl p-2">
+        <div className="w-full md:w-4/12  h-full shadow-3xl p-2">
           <h4 className="py-2 font-semibold text-xl">Order Summary</h4>
           <div className="flex items-center w-full shadow-3xl p-0 rounded-sm">
             <input

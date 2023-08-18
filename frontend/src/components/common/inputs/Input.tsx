@@ -31,7 +31,7 @@ const Input: React.FC<InputProps> = ({
     <div
       className={`w-full relative flex items-center justify-between border-b-2 border-neutral-600 ${className}`}
     >
-      <div className="relative">
+      <div className="relative w-full">
         <input
           id={id}
           disabled={disabled}
