@@ -38,7 +38,7 @@ export const products = [
     duration: "30 Min",
     location: "Grand Island",
     state: "Goa",
-    country: "India",
+    country: "india",
     featuredImage:
       "https://goaadventure.in/wp-content/uploads/2020/12/Scuba-Diving-Grand-Island-1.jpg",
     galleryImage: [
@@ -87,7 +87,7 @@ export const products = [
     duration: "30 Min",
     location: "Grand Island",
     state: "Goa",
-    country: "India",
+    country: "india",
     featuredImage:
       "https://goaadventure.in/wp-content/uploads/2020/12/Scuba-Diving-Grand-Island-1.jpg",
     galleryImage: [
@@ -136,7 +136,7 @@ export const products = [
     duration: "30 Min",
     location: "Grand Island",
     state: "Goa",
-    country: "India",
+    country: "india",
     featuredImage:
       "https://goaadventure.in/wp-content/uploads/2020/12/Scuba-Diving-Grand-Island-1.jpg",
     galleryImage: [
@@ -185,7 +185,7 @@ export const products = [
     duration: "30 Min",
     location: "Grand Island",
     state: "Goa",
-    country: "India",
+    country: "india",
     featuredImage:
       "https://goaadventure.in/wp-content/uploads/2020/12/Scuba-Diving-Grand-Island-1.jpg",
     galleryImage: [
@@ -234,7 +234,7 @@ export const products = [
     duration: "30 Min",
     location: "Grand Island",
     state: "Goa",
-    country: "India",
+    country: "india",
     featuredImage:
       "https://goaadventure.in/wp-content/uploads/2020/12/Scuba-Diving-Grand-Island-1.jpg",
     galleryImage: [
@@ -283,7 +283,7 @@ export const products = [
     duration: "30 Min",
     location: "Grand Island",
     state: "Goa",
-    country: "India",
+    country: "india",
     featuredImage:
       "https://goaadventure.in/wp-content/uploads/2020/12/Scuba-Diving-Grand-Island-1.jpg",
     galleryImage: [
@@ -332,7 +332,7 @@ export const products = [
     duration: "30 Min",
     location: "Grand Island",
     state: "Goa",
-    country: "India",
+    country: "india",
     featuredImage:
       "https://goaadventure.in/wp-content/uploads/2020/12/Scuba-Diving-Grand-Island-1.jpg",
     galleryImage: [
@@ -381,7 +381,7 @@ export const products = [
     duration: "30 Min",
     location: "Grand Island",
     state: "Goa",
-    country: "India",
+    country: "india",
     featuredImage:
       "https://goaadventure.in/wp-content/uploads/2020/12/Scuba-Diving-Grand-Island-1.jpg",
     galleryImage: [
@@ -430,7 +430,7 @@ export const products = [
     duration: "30 Min",
     location: "Grand Island",
     state: "Goa",
-    country: "India",
+    country: "india",
     featuredImage:
       "https://goaadventure.in/wp-content/uploads/2020/12/Scuba-Diving-Grand-Island-1.jpg",
     galleryImage: [
@@ -479,7 +479,7 @@ export const products = [
     duration: "30 Min",
     location: "Grand Island",
     state: "Goa",
-    country: "India",
+    country: "india",
     featuredImage:
       "https://goaadventure.in/wp-content/uploads/2020/12/Scuba-Diving-Grand-Island-1.jpg",
     galleryImage: [
@@ -527,7 +527,7 @@ export const products = [
     duration: "30 Min",
     location: "Grand Island",
     state: "Goa",
-    country: "India",
+    country: "india",
     featuredImage:
       "https://goaadventure.in/wp-content/uploads/2020/12/Scuba-Diving-Grand-Island-1.jpg",
     galleryImage: [
@@ -576,7 +576,7 @@ export const products = [
     duration: "30 Min",
     location: "Grand Island",
     state: "Goa",
-    country: "India",
+    country: "india",
     featuredImage:
       "https://goaadventure.in/wp-content/uploads/2020/12/Scuba-Diving-Grand-Island-1.jpg",
     galleryImage: [

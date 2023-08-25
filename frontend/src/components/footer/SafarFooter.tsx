@@ -13,7 +13,7 @@ const SafarFooter = () => {
           {aboutNavLinks.map((item, index) => (
             <li
               key={index}
-              className="text-gray-700 text-base leading-loose font-poppins font-medium"
+              className="text-gray-700 text-sm font-medium tracking-wider leading-loose font-poppins"
             >
               <Link href={item.href} className="flex items-center gap-2">
                 <TbCircleDot />

@@ -4,22 +4,39 @@ import { motion } from "framer-motion";
 import LocationImage from "../../../public/assets/location.jpg";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { BsCurrencyRupee } from "react-icons/bs";
+import { useRouter } from "next/router";
+import { useParams } from "next/navigation";
 
 interface DestinationCardProps {
-  location?: String;
+  state?: string;
+  country: string;
   lowestPrice?: number;
   image?: any;
   review?: any;
 }
 
 const DestinationCard: React.FC<DestinationCardProps> = ({
-  location,
+  state,
+  country,
   lowestPrice,
   image,
   review,
 }) => {
+  const router = useRouter();
+
+  //Navigation To Location
+  const navigationHandler = (country: any, location: any) => {
+    const locationNav = location.replace(" ", "-").toLowerCase();
+    const countryNav = country.toLowerCase();
+
+    router.push(`/destination/${countryNav}/${locationNav}`);
+  };
+
   return (
-    <div className="max-w-xs w-[95%] md:w-[84%] max-h-fit h-full bg-white border border-gray-200 rounded-2xl overflow-hidden drop-shadow-sm shadow-sm mx-auto font-poppins">
+    <div
+      className="max-w-xs w-[95%] md:w-[84%] max-h-fit h-full bg-white border border-gray-200 rounded-2xl overflow-hidden drop-shadow-sm shadow-sm mx-auto font-poppins cursor-pointer"
+      onClick={() => router.push(`/destination/${country}/${state}`)}
+    >
       <div className="shrink-0">
         <Image
           src={image}
@@ -28,7 +45,7 @@ const DestinationCard: React.FC<DestinationCardProps> = ({
         />
         <div className="p-2 flex flex-col gap-2 bg-white">
           <h4 className="text-sm lg:text-base text-variant tracking-wider font-semibold">
-            {location}
+            {state}
           </h4>
           <span className="self-end text-xs font-medium tracking-wider text-variant">
             Starting from

@@ -22,8 +22,8 @@ const navigation = [
   { name: "Home", href: "/", icon: <AiOutlineHome /> },
   { name: "Destination", href: "/location", icon: <TfiMapAlt /> },
   { name: "Adventures", href: "/activity", icon: <MdSurfing /> },
-  { name: "Tour", href: "/tour", icon: <MdOutlineTour /> },
-  { name: "Contact", href: "contact-us", icon: <GrContactInfo /> },
+  { name: "Tour Package", href: "/tour", icon: <MdOutlineTour /> },
+  { name: "Weekend Getaways", href: "#", icon: <GrContactInfo /> },
 ];
 
 const Header = () => {
@@ -70,7 +70,7 @@ const Header = () => {
       `}
     >
       <div className="max-w-[1260px] m-auto flex justify-between items-center py-2 text-white">
-        <div className="w-[200px] h-auto shrink-0 object-fill">
+        <div className="w-56 md:w-[250px] h-auto shrink-0 object-fill">
           <Link href="/">
             {router.pathname === "/" && !scrolled && isTablet ? (
               <Image
@@ -93,7 +93,7 @@ const Header = () => {
         </ul>
         <div className="flex items-center gap-2">
           {isLogin && <UserNavigation />}
-          <motion.span
+          {/* <motion.span
             className={`
             ${!scrolled && isTablet ? "text-white" : "text-primary"}
             ${
@@ -108,7 +108,7 @@ const Header = () => {
             onClick={() => router.push("/cart")}
           >
             <AiOutlineShoppingCart />
-          </motion.span>
+          </motion.span> */}
 
           {!scrolled && !isTablet && <Button onClick={openLogin}>Login</Button>}
 

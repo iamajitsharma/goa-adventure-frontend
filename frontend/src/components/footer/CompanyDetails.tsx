@@ -14,16 +14,16 @@ const CompanyDetails = () => {
     <div className="font-poppins">
       <FooterTitle title={"Reach Us"} />
       <div className="flex flex-col gap-4 mt-4">
-        <span className="flex flex-row gap-2 items-center text-base font-medium text-neutral-700">
+        <span className="flex flex-row gap-2 items-center  text-sm font-medium tracking-wider text-neutral-700">
           <MdLocalPhone fontSize={24} />
           +91 7387960861
         </span>
 
-        <span className="flex flex-row gap-2 items-center text-base font-medium text-neutral-700">
+        <span className="flex flex-row gap-2 items-center text-sm font-medium tracking-wider text-neutral-700">
           <MdEmail fontSize={24} />
           choiceyourtrip@gmail.com
         </span>
-        <span className="flex flex-row gap-2 items-center text-base font-medium text-neutral-700">
+        <span className="flex flex-row gap-2 items-center text-sm font-medium tracking-wider text-neutral-700">
           <MdLocationOn fontSize={24} />
           Calangute Umta Vado Goa 503415
         </span>

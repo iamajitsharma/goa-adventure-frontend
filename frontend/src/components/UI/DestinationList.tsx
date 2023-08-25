@@ -10,20 +10,46 @@ import location03 from "../../../public/assets/Rectangle_22.png";
 import location04 from "../../../public/assets/Rectangle_23.png";
 
 const locationData = [
-  { location: "Goa", image: location01, lowestPrice: 2500, review: 4.5 },
-  { location: "Kerala", image: location02, lowestPrice: 2500, review: 4.5 },
+  {
+    location: "Goa",
+    country: "India",
+    image: location01,
+    lowestPrice: 2500,
+    review: 4.5,
+  },
+  {
+    location: "Kerala",
+    country: "India",
+    image: location02,
+    lowestPrice: 2500,
+    review: 4.5,
+  },
   {
     location: "Himachal Pradesh",
+    country: "India",
     image: location03,
     lowestPrice: 2500,
     review: 4.5,
   },
-  { location: "Mumbai", image: location04, lowestPrice: 2500, review: 4.5 },
-  { location: "Sikkim", image: location01, lowestPrice: 2500, review: 4.5 },
+  {
+    location: "Mumbai",
+    country: "India",
+    image: location04,
+    lowestPrice: 2500,
+    review: 4.5,
+  },
+  {
+    location: "Sikkim",
+    country: "India",
+    image: location01,
+    lowestPrice: 2500,
+    review: 4.5,
+  },
 ];
 
 const DestinationList = () => {
   const router = useRouter();
+
   const handleEdge = (edge: string) => {
     console.log(`Edge reached: ${edge}`);
   };
@@ -74,7 +100,8 @@ const DestinationList = () => {
         {locationData.map((item: any, index: any) => (
           <DestinationCard
             key={index}
-            location={item.location}
+            state={item.location}
+            country={item.country}
             image={item.image}
             lowestPrice={item.lowestPrice}
           />

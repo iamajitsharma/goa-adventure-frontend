@@ -20,7 +20,7 @@ const FooterSubscribe = () => {
   return (
     <div className="pt-2 mx-auto">
       <div>
-        <h4 className="text-slate-700 font-semibold">
+        <h4 className="text-slate-700 font-semibold text-sm tracking-wide">
           Subscribe our newsletter to get discount upto 50%
         </h4>
       </div>

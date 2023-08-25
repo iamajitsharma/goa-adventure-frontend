@@ -30,12 +30,9 @@ const Index = () => {
       (item) => item.category === "tour"
     );
 
-    setTimeout(() => {
-      setActivities(filterActivityData);
-      setIsLoading(false);
-    }, 6000);
-
+    setActivities(filterActivityData);
     setTourData(filterTourData);
+    setIsLoading(false);
   }, []);
 
   return (
@@ -82,12 +79,6 @@ const Index = () => {
             textAlign="center"
           />
           <ProductSlider data={tourData} isLoading={isLoading} />
-        </Container>
-      </section>
-
-      <section>
-        <Container>
-          <BannerSlider />
         </Container>
       </section>
 
