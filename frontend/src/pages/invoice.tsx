@@ -13,7 +13,7 @@ export default function Invoice() {
   async function getBookingData() {
     // setLoaded(false);
     if (searchParams.get("order_id")) {
-      let order_id = searchParams.get("order_id");
+      let order_id: any = searchParams.get("order_id");
       console.log("Order id", order_id);
       const bookingInfo = await getBookingInfo(order_id);
       console.log("bookingInfo", bookingInfo);

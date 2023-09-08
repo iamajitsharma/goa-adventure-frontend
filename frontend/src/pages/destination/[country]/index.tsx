@@ -62,7 +62,7 @@ const index = () => {
                 Top tourist destination in {country}
               </h2>
             </div>
-            <DestinationList />
+            {/* <DestinationList /> */}
           </Box>
 
           <Box>

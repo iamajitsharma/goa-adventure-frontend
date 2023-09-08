@@ -118,3 +118,33 @@ export async function getBookingInfo(orderId: string) {
   const response = await result.json();
   return response;
 }
+
+export async function getDestination() {
+  const result: any = await fetch(
+    `${serverURL}/location/getMainHomePageDestination`,
+    requestOptions
+  );
+  console.log("Result", result);
+  const response = await result.json();
+  return response;
+}
+
+export async function getHomePageActivity() {
+  const result: any = await fetch(
+    `${serverURL}/products/getHomePageActivity`,
+    requestOptions
+  );
+
+  const response = await result.json();
+  return response;
+}
+
+export async function getHomePageTour() {
+  const result: any = await fetch(
+    `${serverURL}/products/getHomePageTours`,
+    requestOptions
+  );
+
+  const response = await result.json();
+  return response;
+}

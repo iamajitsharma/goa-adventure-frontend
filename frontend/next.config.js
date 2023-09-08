@@ -4,9 +4,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "goaadventure.in",
-        port: "",
-        pathname: "/wp-content/**",
+        hostname: "goa-adventures-bucket.s3.ap-south-1.amazonaws.com",
       },
     ],
   },

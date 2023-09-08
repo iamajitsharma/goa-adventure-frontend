@@ -23,6 +23,7 @@ const DestinationCard: React.FC<DestinationCardProps> = ({
   review,
 }) => {
   const router = useRouter();
+  console.log("Image received", image);
 
   //Navigation To Location
   const navigationHandler = (country: any, location: any) => {

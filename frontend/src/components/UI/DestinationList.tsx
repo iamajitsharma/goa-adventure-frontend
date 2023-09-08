@@ -9,47 +9,47 @@ import location02 from "../../../public/assets/Rectangle_21.png";
 import location03 from "../../../public/assets/Rectangle_22.png";
 import location04 from "../../../public/assets/Rectangle_23.png";
 
-const locationData = [
-  {
-    location: "Goa",
-    country: "India",
-    image: location01,
-    lowestPrice: 2500,
-    review: 4.5,
-  },
-  {
-    location: "Kerala",
-    country: "India",
-    image: location02,
-    lowestPrice: 2500,
-    review: 4.5,
-  },
-  {
-    location: "Himachal Pradesh",
-    country: "India",
-    image: location03,
-    lowestPrice: 2500,
-    review: 4.5,
-  },
-  {
-    location: "Mumbai",
-    country: "India",
-    image: location04,
-    lowestPrice: 2500,
-    review: 4.5,
-  },
-  {
-    location: "Sikkim",
-    country: "India",
-    image: location01,
-    lowestPrice: 2500,
-    review: 4.5,
-  },
-];
+// const locationData = [
+//   {
+//     location: "Goa",
+//     country: "India",
+//     image: location01,
+//     lowestPrice: 2500,
+//     review: 4.5,
+//   },
+//   {
+//     location: "Kerala",
+//     country: "India",
+//     image: location02,
+//     lowestPrice: 2500,
+//     review: 4.5,
+//   },
+//   {
+//     location: "Himachal Pradesh",
+//     country: "India",
+//     image: location03,
+//     lowestPrice: 2500,
+//     review: 4.5,
+//   },
+//   {
+//     location: "Mumbai",
+//     country: "India",
+//     image: location04,
+//     lowestPrice: 2500,
+//     review: 4.5,
+//   },
+//   {
+//     location: "Sikkim",
+//     country: "India",
+//     image: location01,
+//     lowestPrice: 2500,
+//     review: 4.5,
+//   },
+// ];
 
-const DestinationList = () => {
+const DestinationList = ({ locationData }: any) => {
   const router = useRouter();
-
+  console.log("Resceived locationData", locationData);
   const handleEdge = (edge: string) => {
     console.log(`Edge reached: ${edge}`);
   };
@@ -97,13 +97,13 @@ const DestinationList = () => {
   return (
     <>
       <Slider {...settings} className="pt-8">
-        {locationData.map((item: any, index: any) => (
+        {locationData?.map((item: any, index: any) => (
           <DestinationCard
             key={index}
             state={item.location}
-            country={item.country}
+            country={item.location}
             image={item.image}
-            lowestPrice={item.lowestPrice}
+            lowestPrice={item.minimum_price}
           />
         ))}
       </Slider>

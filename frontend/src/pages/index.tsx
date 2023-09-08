@@ -13,8 +13,10 @@ import MobileHero from "@/components/Hero/MobileHero";
 import DesktopHero from "@/components/Hero/DesktopHero";
 import PartnerLogo from "@/components/featured/PartnerLogo";
 import CardSkelton from "@/components/Animation/CardSkelton";
+import { getDestination } from "../lib/api";
 
-const Index = () => {
+const Index = (props: any) => {
+  console.log("Reeivig props from static", props);
   const [activities, setActivities] = useState([]);
   const [tourData, setTourData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -52,7 +54,7 @@ const Index = () => {
             heading="Explore Top Destination"
             subheading="Top Destination"
           />
-          <DestinationList />
+          <DestinationList locationData={props?.destination} />
         </Container>
       </section>
 
@@ -94,6 +96,16 @@ const Index = () => {
       </section>
     </>
   );
+};
+
+export const getStaticProps = async () => {
+  const destination = await getDestination();
+  console.log("FInal destgination", destination);
+  return {
+    props: {
+      destination,
+    },
+  };
 };
 
 export default Index;
