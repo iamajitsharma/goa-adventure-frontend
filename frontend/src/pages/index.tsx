@@ -13,7 +13,11 @@ import MobileHero from "@/components/Hero/MobileHero";
 import DesktopHero from "@/components/Hero/DesktopHero";
 import PartnerLogo from "@/components/featured/PartnerLogo";
 import CardSkelton from "@/components/Animation/CardSkelton";
-import { getDestination } from "../lib/api";
+import {
+  getDestination,
+  getHomePageActivity,
+  getHomePageTour,
+} from "../lib/api";
 
 const Index = (props: any) => {
   console.log("Reeivig props from static", props);
@@ -65,7 +69,7 @@ const Index = (props: any) => {
             heading="Top Adventure Activity"
             subheading="TOP ADVENTURE"
           />
-          <ProductSlider data={activities} isLoading={isLoading} />
+          <ProductSlider data={props?.activityData} isLoading={isLoading} />
         </Container>
       </section>
 
@@ -80,7 +84,7 @@ const Index = (props: any) => {
             subheading="Top Rated Experience"
             textAlign="center"
           />
-          <ProductSlider data={tourData} isLoading={isLoading} />
+          <ProductSlider data={props?.tourData} isLoading={isLoading} />
         </Container>
       </section>
 
@@ -100,10 +104,14 @@ const Index = (props: any) => {
 
 export const getStaticProps = async () => {
   const destination = await getDestination();
-  console.log("FInal destgination", destination);
+  const activityData = await getHomePageActivity();
+  const tourData = await getHomePageTour();
+
   return {
     props: {
       destination,
+      tourData,
+      activityData,
     },
   };
 };

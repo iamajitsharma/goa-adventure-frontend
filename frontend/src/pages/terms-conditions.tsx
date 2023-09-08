@@ -13,23 +13,7 @@ const intialTermsConditons: ITerms = {
   },
 };
 
-const TermsConditions = () => {
-  const [loaded, setLoaded] = useState(true);
-  const [termsCondiitons, setTermsConditons] =
-    useState<ITerms>(intialTermsConditons);
-
-  async function setTerms() {
-    setLoaded(false);
-    let privacy = await termsCondiitonsApi();
-    console.log("privaolicy", privacy);
-    setTermsConditons(privacy);
-    setLoaded(true);
-  }
-
-  useEffect(() => {
-    console.log("Terms Condtions", termsCondiitons);
-    let test = setTerms();
-  }, []);
+const TermsConditions = (props: any) => {
   return (
     <section className="font-poppins">
       <Container>
@@ -43,7 +27,7 @@ const TermsConditions = () => {
           <div
             className="disclosure"
             dangerouslySetInnerHTML={{
-              __html: termsCondiitons.attributes.terms_conditions,
+              __html: props.termsConditions.terms_conditions,
             }}
           ></div>
         </div>
@@ -71,6 +55,15 @@ const TermsConditions = () => {
       /> */}
     </section>
   );
+};
+
+export const getStaticProps = async () => {
+  const termsConditions = await termsCondiitonsApi();
+  return {
+    props: {
+      termsConditions,
+    },
+  };
 };
 
 export default TermsConditions;

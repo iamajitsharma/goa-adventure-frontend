@@ -39,7 +39,7 @@ const intialTermsConditons: ITerms = {
 
 export async function termsCondiitonsApi(): Promise<ITerms> {
   const result: any = await fetch(
-    `${serverURL}/terms-condition`,
+    `${serverURL}/terms-conditions`,
     requestOptions
   );
 
@@ -60,7 +60,7 @@ export async function termsCondiitonsApi(): Promise<ITerms> {
 
 export async function privacyPoliciesApi(): Promise<IPrivacy> {
   const result: any = await fetch(
-    `${serverURL}/privacy-policy`,
+    `${serverURL}/privacy-policies`,
     requestOptions
   );
   console.log("Raw data", result);
