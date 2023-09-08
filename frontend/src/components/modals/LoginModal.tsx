@@ -63,7 +63,7 @@ const LoginModal = () => {
   );
   const footerContent = (
     <div>
-      <SocialLogin />
+      {/* <SocialLogin /> */}
       <h4 className="text-center text-sm font-semibold text-neutral-600 py-2">
         Don't have an account?
         <span className="cursor-pointer pl-2 text-primary" onClick={onToggle}>

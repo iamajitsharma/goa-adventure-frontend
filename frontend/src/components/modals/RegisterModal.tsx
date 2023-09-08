@@ -84,7 +84,7 @@ const RegisterModal = () => {
         required
       />
 
-      <Input
+      {/* <Input
         id="otp"
         label="OTP"
         type="text"
@@ -92,12 +92,12 @@ const RegisterModal = () => {
         disabled={isLoading}
         errors={errors}
         required
-      />
+      /> */}
     </div>
   );
   const footerContent = (
     <div>
-      <SocialLogin />
+      {/* <SocialLogin /> */}
       <h4 className="text-center text-sm font-semibold text-neutral-600 py-2">
         Already have an account?
         <span className="cursor-pointer pl-2 text-primary" onClick={onToggle}>

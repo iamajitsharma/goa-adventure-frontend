@@ -21,11 +21,11 @@ const userMenu = [
     href: "/user/my-profile",
     icon: <CgProfile className="text-xl" />,
   },
-  {
-    name: "Settings",
-    href: "/user/setting",
-    icon: <BsGear className="text-xl" />,
-  },
+  // {
+  //   name: "Settings",
+  //   href: "/user/setting",
+  //   icon: <BsGear className="text-xl" />,
+  // },
 
   {
     name: "Logout",
