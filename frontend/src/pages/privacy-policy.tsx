@@ -35,21 +35,7 @@ const initialPrivacyPolicy: IPrivacy = {
   },
 };
 
-const PrivacyPolicy = () => {
-  const [privacyPolicy, setPrivacyPolicy] =
-    useState<IPrivacy>(initialPrivacyPolicy);
-  console.log("Privacy pol", privacyPolicy);
-
-  async function setPrivacy() {
-    let privacy = await privacyPoliciesApi();
-    console.log("privaolicy", privacy);
-    setPrivacyPolicy(privacy);
-  }
-
-  useEffect(() => {
-    console.log("Privacy policy", privacyPolicy);
-    let test = setPrivacy();
-  }, []);
+const PrivacyPolicy = (props: any) => {
   return (
     <section className="font-poppins">
       <Container>
@@ -65,7 +51,7 @@ const PrivacyPolicy = () => {
             <div
               className="disclosure"
               dangerouslySetInnerHTML={{
-                __html: privacyPolicy.attributes.privacy_policies,
+                __html: props?.privacyPolicies?.privacy_policies,
               }}
             >
               {/* <h4>Introduction</h4> */}
@@ -116,6 +102,15 @@ const PrivacyPolicy = () => {
       </Container>
     </section>
   );
+};
+
+export const getStaticProps = async () => {
+  const privacyPolicies = await privacyPoliciesApi();
+  return {
+    props: {
+      privacyPolicies,
+    },
+  };
 };
 
 export default PrivacyPolicy;

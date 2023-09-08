@@ -27,7 +27,7 @@ const TermsConditions = (props: any) => {
           <div
             className="disclosure"
             dangerouslySetInnerHTML={{
-              __html: props.termsConditions.terms_conditions,
+              __html: props?.termsConditions?.terms_conditions,
             }}
           ></div>
         </div>

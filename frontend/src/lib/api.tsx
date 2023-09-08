@@ -45,17 +45,17 @@ export async function termsCondiitonsApi(): Promise<ITerms> {
 
   const response = await result.json();
   console.log("Result terms", response);
-  if (response.data) {
-    const processedContent = await remark()
-      .use(html)
-      .process(response.data.attributes.terms_conditions);
-    const contentHtml = processedContent.toString();
-    response.data.attributes.terms_conditions = contentHtml;
-    console.log("HTMl content terms", response.data);
-    return response.data;
-  }
+  // if (response.data) {
+  //   const processedContent = await remark()
+  //     .use(html)
+  //     .process(response.data.attributes.terms_conditions);
+  //   const contentHtml = processedContent.toString();
+  //   response.data.attributes.terms_conditions = contentHtml;
+  //   console.log("HTMl content terms", response.data);
+  //   return response.data;
+  // }
 
-  return intialTermsConditons;
+  return response;
 }
 
 export async function privacyPoliciesApi(): Promise<IPrivacy> {
@@ -66,17 +66,17 @@ export async function privacyPoliciesApi(): Promise<IPrivacy> {
   console.log("Raw data", result);
   const response = await result.json();
   console.log("Result privacy", response);
-  if (response.data) {
-    const processedContent = await remark()
-      .use(html)
-      .process(response.data.attributes.privacy_policies);
-    const contentHtml = processedContent.toString();
-    response.data.attributes.privacy_policies = contentHtml;
-    console.log("HTMl content privacy", response.data);
-    return response.data;
-  }
+  // if (response.data) {
+  //   const processedContent = await remark()
+  //     .use(html)
+  //     .process(response.data.attributes.privacy_policies);
+  //   const contentHtml = processedContent.toString();
+  //   response.data.attributes.privacy_policies = contentHtml;
+  //   console.log("HTMl content privacy", response.data);
+  //   return response.data;
+  // }
 
-  return initialPrivacyPolicy;
+  return response;
 }
 
 export async function fetchProducts() {
