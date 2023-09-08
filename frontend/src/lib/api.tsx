@@ -4,8 +4,8 @@ import { IPrivacy, ITerms } from "./interfaces";
 import { calculateSalePrice } from "./operations";
 
 const devServer = "http://localhost:4000/v1";
-const prodServer = "";
-const serverURL = devServer;
+const prodServer = "https://backend.goaadventure.in/v1";
+const serverURL = prodServer;
 //const serverURL = prodServer;
 export const url = "http://localhost:1337";
 
