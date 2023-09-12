@@ -71,7 +71,7 @@ const index = () => {
                 Popular tour package {country}
               </h2>
             </div>
-            <ProductSlider data={products} />
+            {/* <ProductSlider data={products} /> */}
           </Box>
           <Box>
             <div className="pt-2 pb-6">
@@ -79,7 +79,7 @@ const index = () => {
                 Thing to do in {country}
               </h2>
             </div>
-            <ProductSlider data={products} />
+            {/* <ProductSlider data={products} /> */}
           </Box>
         </Container>
       </section>

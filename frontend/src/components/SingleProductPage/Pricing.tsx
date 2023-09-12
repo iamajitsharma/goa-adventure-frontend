@@ -7,16 +7,25 @@ import { motion } from "framer-motion";
 import Box from "../common/Box";
 import { deviceSize } from "../Responsive";
 import { useMediaQuery } from "react-responsive";
+import DatePicker, { DayValue } from "react-modern-calendar-datepicker";
 
 interface PricingProps {
   price: string | number;
   salePrice: string | number;
   discount: string | number;
+  date?: Date;
 }
 
-const Pricing: React.FC<PricingProps> = ({ price, salePrice, discount }) => {
+const Pricing: React.FC<PricingProps> = ({
+  price,
+  salePrice,
+  discount,
+  date,
+}) => {
   const [quantity, setQuantity] = useState(1);
+  const [day, setDay] = useState<DayValue>(null);
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
+  console.log(day);
 
   const incrementHandler = () => {
     setQuantity(quantity + 1);
@@ -104,6 +113,19 @@ const Pricing: React.FC<PricingProps> = ({ price, salePrice, discount }) => {
                 <span className="text-primary self-end">/Person</span>
               </div>
               <div className="flex items-center gap-2">
+                <DatePicker
+                  value={day}
+                  onChange={setDay}
+                  inputPlaceholder="Choose Date"
+                  shouldHighlightWeekends
+                />
+              </div>
+            </div>
+            <div className="flex justify-between items-center">
+              <p className="text-xs text-textBlack">
+                Just pay 25% now to book your seat
+              </p>
+              <div className="flex items-center gap-2">
                 <motion.span
                   className="shadow-md p-1 text-3xl rounded-md cursor-pointer"
                   whileTap={{ scale: 1.1 }}
@@ -113,7 +135,7 @@ const Pricing: React.FC<PricingProps> = ({ price, salePrice, discount }) => {
                 <input
                   type="text"
                   min={0}
-                  className="w-8 h-8 rounded-lg text-base font-semibold"
+                  className="w-12 h-8 rounded-md text-base font-semibold"
                 />
                 <motion.span
                   className="shadow-md p-1 text-3xl rounded-md cursor-pointer"
@@ -123,9 +145,6 @@ const Pricing: React.FC<PricingProps> = ({ price, salePrice, discount }) => {
                 </motion.span>
               </div>
             </div>
-            <p className="text-xs text-textBlack">
-              Just pay 25% now to book your seat
-            </p>
 
             <Button size="xl" variant="primary" href="/cart">
               Book Now

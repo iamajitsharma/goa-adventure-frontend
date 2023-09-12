@@ -1,6 +1,9 @@
 import "@/styles/globals.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import "remixicon/fonts/remixicon.css";
+import "react-date-picker/dist/DatePicker.css";
+import "react-calendar/dist/Calendar.css";
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import type { AppProps } from "next/app";
 import { Poppins, Merriweather } from "next/font/google";
 import { Provider } from "react-redux";

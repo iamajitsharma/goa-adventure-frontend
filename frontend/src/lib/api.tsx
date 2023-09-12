@@ -129,6 +129,8 @@ export async function getDestination() {
   return response;
 }
 
+// Acitivity API
+
 export async function getHomePageActivity() {
   const result: any = await fetch(
     `${serverURL}/products/getHomePageActivity`,
@@ -137,6 +139,17 @@ export async function getHomePageActivity() {
 
   const response = await result.json();
   return response;
+}
+
+// Single Page Activity
+
+export async function getSinglePageDetails(productId: any) {
+  const result: any = await fetch(
+    `${serverURL}/products/activity/${productId}`,
+    requestOptions
+  );
+  const product = await result.json();
+  return product;
 }
 
 export async function getHomePageTour() {

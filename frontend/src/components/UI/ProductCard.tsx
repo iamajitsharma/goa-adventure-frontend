@@ -21,10 +21,10 @@ interface CardProps {
 const ProductCard: React.FC<CardProps> = ({ item, isLoading }) => {
   const router = useRouter();
   const handleNavigation = () => {
-    if (item.category === "activity") {
-      router.push(`activity/${item.slug}`);
-    } else if (item.category === "tour") {
-      router.push(`tour/${item.slug}`);
+    if (item.category === "Activity") {
+      router.push(`/activity/${item.slug}`);
+    } else if (item.category === "Tour") {
+      router.push(`/tour/${item.slug}`);
     } else {
       router.push(`/${item.slug}`);
     }
@@ -34,7 +34,9 @@ const ProductCard: React.FC<CardProps> = ({ item, isLoading }) => {
   //   handleNavigation();
   // }, []);
 
-  const salePrice = item.price - (item.price * item.discountPercent) / 100;
+  const originalPrice = parseFloat(item.price);
+  const discountPercent = parseFloat(item.discount_percent);
+  const salePrice = originalPrice - (originalPrice * discountPercent) / 100;
 
   return (
     <>
@@ -42,11 +44,11 @@ const ProductCard: React.FC<CardProps> = ({ item, isLoading }) => {
         <CardSkelton />
       ) : (
         <motion.div className="card" whileHover={{ scale: 1.02 }}>
-          <div className="shrink-0">
+          <div className="shrink-0 w-full h-44 overflow-hidden">
             <Image
-              src={item.featuredImage}
+              src={item.featured_image}
               alt="Tour"
-              className="object-cover"
+              className="w-full h-full object-cover"
               height={500}
               width={500}
               onClick={handleNavigation}
@@ -55,7 +57,7 @@ const ProductCard: React.FC<CardProps> = ({ item, isLoading }) => {
 
           <div className="flex flex-row justify-between items-center absolute top-0 w-full px-2 md:px-4 pt-2 text-white">
             <span className="text-xs md:text-sm font-medium bg-rose-500 w-10 h-10 rounded-full flex items-center justify-center p-1 md:p-3">
-              -{item.discountPercent}%
+              -{item.discount_percent}%
             </span>
             <motion.span
               className="flex items-center gap-1 text-sm font-medium"
@@ -67,7 +69,7 @@ const ProductCard: React.FC<CardProps> = ({ item, isLoading }) => {
             </motion.span>
           </div>
           <div className="card-content">
-            <div className="">
+            <div className="overflow-hidden">
               <h2 className="card-title" onClick={handleNavigation}>
                 {item.title}
               </h2>
@@ -75,7 +77,8 @@ const ProductCard: React.FC<CardProps> = ({ item, isLoading }) => {
 
             <div className="flex flex-row items-center justify-between text-sm py-2">
               <span className="flex flex-row items-center gap-1 text-xs md:text-sm text-neutral-900 font-medium">
-                <FiMapPin /> {item.location}
+                <FiMapPin />
+                {item.state}
               </span>
               <span className="flex flex-row items-center gap-1 text-xs md:text-sm  text-neutral-900 font-medium">
                 <AiFillStar className="text-primary" /> {item.review}

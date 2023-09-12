@@ -35,39 +35,42 @@ const DestinationCard: React.FC<DestinationCardProps> = ({
 
   return (
     <div
-      className="max-w-xs w-[95%] md:w-[84%] max-h-fit h-full bg-white border border-gray-200 rounded-2xl overflow-hidden drop-shadow-sm shadow-sm mx-auto font-poppins cursor-pointer"
+      className="max-w-xs w-[95%] md:w-[84%] max-h-min h-full bg-white border border-gray-200 rounded-xl overflow-hidden drop-shadow-sm shadow-sm mx-auto font-poppins cursor-pointer"
       onClick={() => router.push(`/destination/${country}/${state}`)}
     >
-      <div className="shrink-0">
+      <div className="shrink-0 w-full h-40 overflow-hidden">
         <Image
           src={image}
           alt="Tour"
-          className="w-full max-h-40 md:max-h-64 object-cover"
+          className="w-full h-full object-cover"
+          width={500}
+          height={500}
         />
-        <div className="p-2 flex flex-col gap-2 bg-white">
-          <h4 className="text-sm lg:text-base text-variant tracking-wider font-semibold">
-            {state}
-          </h4>
-          <span className="self-end text-xs font-medium tracking-wider text-variant">
-            Starting from
-          </span>
-          <div className="flex items-center justify-between">
-            <div className="flex items-start gap-0">
-              <span className="flex items-center text-sm md:text-base text-primary">
-                {[0, 1, 2, 3].map((item, index) => (
-                  <AiFillStar />
-                ))}
-              </span>
-              <span className="text-sm md:text-base text-neutral-500">
-                <AiOutlineStar />
-              </span>
-            </div>
-            <div className="flex flex-col items-start">
-              <span className="text-sm md:text-base font-semibold text-primary inline-flex items-center tracking-wider">
-                <BsCurrencyRupee />
-                {lowestPrice}
-              </span>
-            </div>
+      </div>
+      <div className="p-2 w-full flex flex-col justify-between gap-4 bg-white overflow-hidden ">
+        <h4 className="text-sm lg:text-base text-variant tracking-wider font-semibold">
+          {state}
+        </h4>
+
+        <div className="flex items-center justify-between">
+          <div className="flex items-start gap-0">
+            <span className="flex items-center text-sm md:text-base text-primary">
+              {[0, 1, 2, 3].map((item, index) => (
+                <AiFillStar key={index} />
+              ))}
+            </span>
+            <span className="text-sm md:text-base text-neutral-500">
+              <AiOutlineStar />
+            </span>
+          </div>
+          <div className="flex flex-col items-start">
+            <span className="self-end text-xs font-medium tracking-wider text-variant">
+              Starting from
+            </span>
+            <span className="text-sm md:text-base font-semibold text-primary inline-flex items-center tracking-wider">
+              <BsCurrencyRupee />
+              {lowestPrice}
+            </span>
           </div>
         </div>
       </div>

@@ -68,12 +68,13 @@ const DestinationList = ({ locationData }: any) => {
     onEdge: (edge: string) => handleEdge(edge),
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 768,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
           dots: false,
+          rows: 1,
         },
       },
       {
@@ -82,6 +83,7 @@ const DestinationList = ({ locationData }: any) => {
           slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
+          rows: 1,
         },
       },
       {
@@ -89,6 +91,7 @@ const DestinationList = ({ locationData }: any) => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          rows: 1,
         },
       },
     ],
@@ -99,7 +102,7 @@ const DestinationList = ({ locationData }: any) => {
       <Slider {...settings} className="pt-8">
         {locationData?.map((item: any, index: any) => (
           <DestinationCard
-            key={index}
+            key={item.location}
             state={item.location}
             country={item.location}
             image={item.image}
