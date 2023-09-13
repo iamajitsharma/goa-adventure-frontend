@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { deviceSize } from "../Responsive";
 import { useMediaQuery } from "react-responsive";
+import HTMLRenderer from "react-html-renderer";
 
 interface OverviewsProps {
   description?: string;
@@ -18,20 +19,14 @@ const Overviews: React.FC<OverviewsProps> = ({ description, className }) => {
     <div
       className={`text-sm text-justify text-textBlack leading-loose transition ease-in-out duration-1000 delay-1000 ${className}`}
     >
-      {isTablet
-        ? !readMore
-          ? description?.slice(0, 400)
-          : description
-        : !readMore
-        ? description?.slice(0, 1500)
-        : description}
+      <HTMLRenderer html={description} />
 
-      <span
+      {/* <span
         onClick={readMoreHandler}
         className="text-primary font-semibold flex justify-end cursor-pointer"
       >
         {readMore ? "Read Less" : "Read More"}
-      </span>
+      </span> */}
     </div>
   );
 };

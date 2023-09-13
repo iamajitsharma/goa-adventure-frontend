@@ -143,9 +143,9 @@ export async function getHomePageActivity() {
 
 // Single Page Activity
 
-export async function getSinglePageDetails(productId: any) {
+export async function getSinglePageDetails(slug: any) {
   const result: any = await fetch(
-    `${serverURL}/products/activity/${productId}`,
+    `${serverURL}/products/${slug}`,
     requestOptions
   );
   const product = await result.json();

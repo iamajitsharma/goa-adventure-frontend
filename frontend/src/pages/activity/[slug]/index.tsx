@@ -1,58 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import Image from "next/image";
-// import DetailsPageSlider from "@/components/listings/DetailsPageSlider";
 import Container from "@/components/common/Container";
 import ProductTitle from "@/components/common/ProductTitle";
-import Col from "@/components/common/Col";
-// import Itinerary from "@/components/listings/Itinerary";
-import Reviews from "@/components/Reviews/Reviews";
-// import HighLightsSlider from "@/components/ThingsToDo/HighLights/HighLightsSlider";
 import Overviews from "@/components/SingleProductPage/Overviews";
 import Accordion from "@/components/common/Accordion";
 import { AiFillStar } from "react-icons/ai";
-import { products } from "@/data/ActivityData";
 import ProductImages from "@/components/SingleProductPage/ProductImages";
 import Pricing from "@/components/SingleProductPage/Pricing";
 import { RiAlbumLine } from "react-icons/ri";
 import Box from "@/components/common/Box";
-import { BsCheck2Circle, BsCurrencyRupee, BsInfoCircle } from "react-icons/bs";
+import { BsCheck2Circle, BsTelephone } from "react-icons/bs";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import { BsTelephone } from "react-icons/bs";
 import { FiMapPin, FiMinus, FiPlus } from "react-icons/fi";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ImWhatsapp } from "react-icons/im";
 import { getSinglePageDetails } from "../../../lib/api";
-
-const ItineraryData = [
-  { time: "7:00AM", itineray: "Pick Up & Drop Off" },
-  { time: "8:00AM", itineray: "Pick Up & Drop Off" },
-  { time: "9:00AM", itineray: "Pick Up & Drop Off" },
-  { time: "10:00AM", itineray: "Pick Up & Drop Off" },
-];
-
-const description =
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore minus ipsam voluptatum culpa magni dolor reiciendis modi soluta nostrum iste consequuntur vel, accusamus fugit expedita rerum. Temporibus nihil non perspiciatis! Necessitatibus amet, possimus unde ut est id reiciendis ipsa nemo similique vitae architecto aliquid non repudiandae accusantium quo atque obcaecati maxime doloribus impedit culpa. Laudantium explicabo consectetur reprehenderit nostrum officia? Ipsam reprehenderit quo nobis facere, illum deserunt atque quaerat optio ipsum sint iusto ex incidunt assumenda nulla deleniti natus laborum animi vitae, ut quae ea non. Quasi quaerat non quos? Deleniti voluptas harum, ipsam mollitia minus culpa ut obcaecati deserunt? Error veniam quasi fugiat quia rerum deserunt, assumenda molestias iusto ratione quaerat. Illum suscipit illo dolor, eligendi ex itaque consectetur. Quaerat incidunt nemo dicta voluptatem non commodi ab reprehenderit eos vel, aperiam culpa at mollitia! Esse qui, quia nam corporis optio aspernatur pariatur autem incidunt aliquam beatae, totam assumenda quam. Asperiores consequatur veritatis placeat alias rem animi molestias aperiam voluptatem sed distinctio! Pariatur provident voluptatem, nisi ipsum dolorem nulla. Officiis, dolores repellat cupiditate quod laudantium quisquam ipsum consequatur aspernatur corporis!";
+import { calculateSalePrice } from "@/lib/operations";
 
 const index = (props: any) => {
-  const [product, setProduct] = useState<any>([]);
   const router = useRouter();
-  console.log(router);
-  const { slug } = router.query;
-  console.log(slug);
-
-  console.log(props);
-
-  useEffect(() => {
-    const singleProduct = products.filter((item) => {
-      item.slug === slug;
-    });
-    setProduct(singleProduct[0]);
-  }, []);
-
-  console.log(product);
+  console.log("Single Page Data", props);
+  const salePrice = calculateSalePrice(
+    props.data[0].discount_percent,
+    props.data[0].price
+  );
 
   return (
     <>
@@ -67,11 +39,13 @@ const index = (props: any) => {
             <div className="bg-neutral-100 w-full md:w-8/12">
               {/* Product Title Section */}
               <div className="bg-white shadow-sm p-4 rounded-md">
-                <h1 className="text-lg font-semibold md:text-xl"></h1>
+                <h1 className="text-lg font-semibold md:text-xl">
+                  {props.data[0].title}
+                </h1>
                 <div className="flex flex-row items-center w-full gap-4 py-4">
                   <span className="flex flex-row items-center gap-2 text-neutral-600 text-sm font-medium sm:text-base">
                     <FiMapPin className="text-primary text-xl" />
-                    Grand Island Goa India
+                    {props.data[0].city} {props.data[0].state}
                   </span>
                   <div className="flex items-center gap-1">
                     <span className="flex flex-row items-center gap-2 text-neutral-600 text-sm font-medium sm:text-base">
@@ -88,13 +62,13 @@ const index = (props: any) => {
               <div className="bg-white shadow-sm p-4 rounded-md mt-4">
                 <ProductTitle h4 title="Highlights" />
                 <ul className="">
-                  {[0, 1, 2, 3, 4].map((item, index) => (
-                    <li className="flex items-center gap-2 text-textBlack pt-2 leading-loose">
+                  {props.data[0].highlight.map((item: any, index: any) => (
+                    <li
+                      key={index}
+                      className="flex items-center gap-2 text-textBlack pt-2 leading-loose"
+                    >
                       <RiAlbumLine className="text-primary text-xl" />
-                      <p className="text-sm font-medium">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry.
-                      </p>
+                      <p className="text-sm font-medium">{item}</p>
                     </li>
                   ))}
                 </ul>
@@ -105,11 +79,7 @@ const index = (props: any) => {
                   h4
                   title={"Overview: Scuba Diving Grand Island"}
                 />
-                <Overviews
-                  description={
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-                  }
-                />
+                <Overviews description={props.data[0].overview} />
               </div>
               {/* Overview Section End */}
 
@@ -117,12 +87,14 @@ const index = (props: any) => {
               <Box>
                 <Accordion title="Inclusion" isOpen>
                   <ul>
-                    {[0, 1, 2, 3].map((item, index) => (
-                      <li className="flex items-center gap-6">
-                        <BsCheck2Circle className="text-green-600 text-xl" />
-                        Scuba Diving Inclusion
-                      </li>
-                    ))}
+                    {props.data[0].activity_inclusion.map(
+                      (item: any, index: any) => (
+                        <li key={index} className="flex items-center gap-6">
+                          <BsCheck2Circle className="text-green-600 text-xl" />
+                          {item}
+                        </li>
+                      )
+                    )}
                   </ul>
                 </Accordion>
               </Box>
@@ -130,23 +102,10 @@ const index = (props: any) => {
               <Box>
                 <Accordion title="Exclusion">
                   <ul>
-                    {[0, 1, 2, 3].map((item, index) => (
-                      <li className="flex items-center gap-6">
+                    {props.data[0].activity_exclusion.map((item: any) => (
+                      <li key={item} className="flex items-center gap-6">
                         <IoIosCloseCircleOutline className="text-red-500 text-xl" />
-                        Scuba Diving Inclusion
-                      </li>
-                    ))}
-                  </ul>
-                </Accordion>
-              </Box>
-              {/* Know Before You Go */}
-              <Box>
-                <Accordion title="Know Before You Go">
-                  <ul>
-                    {[0, 1, 2, 3].map((item, index) => (
-                      <li className="flex items-center gap-6">
-                        <BsInfoCircle className="text-primary text-xl" />
-                        Scuba Diving Inclusion
+                        {item}
                       </li>
                     ))}
                   </ul>
@@ -156,7 +115,11 @@ const index = (props: any) => {
             {/* Main Content End       */}
             {/* Sidebar Start */}
             <div className="w-full md:w-4/12">
-              <Pricing price={2000} salePrice={1500} discount={`20%`} />
+              <Pricing
+                price={props.data[0].price}
+                salePrice={salePrice}
+                discount={props.data[0].discount_percent}
+              />
 
               <Box className="hidden md:block">
                 <h5 className="text-xl font-semibold text-variant">
@@ -196,11 +159,11 @@ const index = (props: any) => {
 
 export async function getServerSideProps(context: any) {
   const { params } = context;
-  const productId = params.productId;
+  const { slug } = params;
 
-  const singlePageData = await getSinglePageDetails(productId);
+  const data = await getSinglePageDetails(slug);
   return {
-    props: { singlePageData },
+    props: { data },
   };
 }
 

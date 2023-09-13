@@ -20,7 +20,7 @@ import {
 } from "../lib/api";
 
 const Index = (props: any) => {
-  console.log("Reeivig props from static", props);
+  console.log("Reeivig props from static", props.tourData);
   const [activities, setActivities] = useState([]);
   const [tourData, setTourData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
