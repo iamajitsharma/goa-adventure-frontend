@@ -13,7 +13,6 @@ const Overviews: React.FC<OverviewsProps> = ({ description, className }) => {
   const isTablet = useMediaQuery({ maxWidth: deviceSize.mobile });
 
   const parsedContent = parse(`${description}`);
-  console.log(parsedContent);
   const readMoreHandler = () => {
     setReadMore(!readMore);
   };

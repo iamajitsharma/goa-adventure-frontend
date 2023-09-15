@@ -21,37 +21,33 @@ import { getHomePageTour } from "../../../lib/api";
 import ProductLayout from "@/components/SingleProductPage/ProductLayout";
 
 const index = (props: any) => {
-  const router = useRouter();
-  console.log("Single Page Data", props);
-  console.log(props.data[0].featured_image);
-
   const salePrice = calculateSalePrice(
-    props.data[0].discount_percent,
-    props.data[0].price
+    props?.data[0]?.discount_percent,
+    props?.data[0]?.price
   );
 
   return (
     <section className="pt-0 bg-slate-50">
       {/* Product Slider Start */}
       <ProductImages
-        featuredImage={props.data[0].featured_image}
-        galleryImage={props.data[0].gallery}
+        featuredImage={props?.data[0]?.featured_image}
+        galleryImage={props?.data[0]?.gallery}
       />
       {/* Product Slider End */}
       <ProductLayout
-        price={props.data[0].price}
+        price={props?.data[0]?.price}
         salePrice={salePrice}
-        discount={props.data[0].discount_percent}
+        discount={props?.data[0]?.discount_percent}
       >
         {/* Product Title Section */}
         <Box className="bg-white">
           <h1 className="text-lg font-semibold md:text-xl">
-            {props.data[0].title}
+            {props?.data[0]?.title}
           </h1>
           <div className="flex flex-row items-center w-full gap-4 py-4">
             <span className="flex flex-row items-center gap-2 text-neutral-600 text-sm font-medium sm:text-base">
               <FiMapPin className="text-primary text-xl" />
-              {props.data[0].city} {props.data[0].state}
+              {props?.data[0]?.city} {props?.data[0]?.state}
             </span>
             <div className="flex items-center gap-1">
               <span className="flex flex-row items-center gap-2 text-neutral-600 text-sm font-medium sm:text-base">
@@ -70,25 +66,27 @@ const index = (props: any) => {
         <Box className="bg-white">
           <ProductTitle
             variant="h2"
-            title={`Overview: ${props.data[0].title}`}
+            title={`Overview: ${props?.data[0]?.title}`}
           />
-          <Overviews description={props?.data[0].overview} />
+          <Overviews description={props?.data[0]?.overview} />
         </Box>
 
         <Box className="bg-white">
           <Accordion title="Inclusion" isOpen>
             <ul>
-              {props.data[0].activity_inclusion.map((item: any, index: any) => (
-                <li key={index} className="flex items-center gap-6">
-                  <BsCheck2Circle className="text-green-600 text-xl" />
-                  {item}
-                </li>
-              ))}
+              {props?.data[0]?.activity_inclusion?.map(
+                (item: any, index: any) => (
+                  <li key={index} className="flex items-center gap-6">
+                    <BsCheck2Circle className="text-green-600 text-xl" />
+                    {item}
+                  </li>
+                )
+              )}
             </ul>
           </Accordion>
           <Accordion title="Exclusion">
             <ul>
-              {props.data[0].activity_exclusion.map((item: any) => (
+              {props?.data[0]?.activity_exclusion?.map((item: any) => (
                 <li key={item} className="flex items-center gap-6">
                   <IoIosCloseCircleOutline className="text-red-500 text-xl" />
                   {item}
