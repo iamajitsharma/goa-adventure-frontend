@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { deviceSize } from "../Responsive";
 import { useMediaQuery } from "react-responsive";
 import parse from "html-react-parser";
-import ReadMoreReact from "read-more-react";
 
 interface OverviewsProps {
   description?: string;

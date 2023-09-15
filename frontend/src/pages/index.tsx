@@ -51,7 +51,7 @@ const Index = (props: any) => {
       </div>
       {isTablet ? <MobileHero /> : <DesktopHero />}
 
-      <section className="">
+      {/* <section className="">
         <Container>
           <Heading
             textAlign="center"
@@ -60,7 +60,7 @@ const Index = (props: any) => {
           />
           <DestinationList locationData={props?.destination} />
         </Container>
-      </section>
+      </section> */}
 
       <section className="">
         <Container>
