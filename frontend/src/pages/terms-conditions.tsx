@@ -2,6 +2,7 @@ import Container from "@/components/common/Container";
 import { useEffect, useState } from "react";
 import { ITerms } from "../lib/interfaces";
 import { termsCondiitonsApi } from "../lib/api";
+import parse from "html-react-parser";
 
 const intialTermsConditons: ITerms = {
   id: 0,
@@ -14,6 +15,7 @@ const intialTermsConditons: ITerms = {
 };
 
 const TermsConditions = (props: any) => {
+  const parsedContent = parse(`${props?.termsConditions?.terms_conditions}`);
   return (
     <section className="font-poppins">
       <Container>
@@ -24,12 +26,7 @@ const TermsConditions = (props: any) => {
               Effective from 1st Jan 2021
             </span>
           </div>
-          <div
-            className="disclosure"
-            dangerouslySetInnerHTML={{
-              __html: props?.termsConditions?.terms_conditions,
-            }}
-          ></div>
+          {parsedContent}
         </div>
       </Container>
       {/* <Loader

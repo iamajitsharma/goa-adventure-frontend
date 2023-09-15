@@ -17,7 +17,7 @@ import { motion } from "framer-motion";
 import { ImWhatsapp } from "react-icons/im";
 import { getSinglePageDetails } from "../../../lib/api";
 import { calculateSalePrice } from "@/lib/operations";
-import { getHomePageActivity } from "../../../lib/api";
+import { getHomePageTour } from "../../../lib/api";
 import ProductLayout from "@/components/SingleProductPage/ProductLayout";
 
 const index = (props: any) => {
@@ -113,11 +113,11 @@ export async function getStaticProps(context: any) {
 }
 
 export async function getStaticPaths() {
-  const allActivity = await getHomePageActivity();
+  const allTour = await getHomePageTour();
   //Creating an array of objects
-  const paths = allActivity.map((activity: any) => {
+  const paths = allTour.map((tour: any) => {
     return {
-      params: { slug: `${activity.slug}` },
+      params: { slug: `${tour.slug}` },
     };
   });
 

@@ -16,7 +16,7 @@ const Accordion: React.FC<AccordionProps> = ({ title, isOpen, children }) => {
   };
 
   return (
-    <div>
+    <div className="py-2">
       <motion.div
         className="flex items-center gap-3 cursor-pointer p-2 rounded-md"
         initial={false}

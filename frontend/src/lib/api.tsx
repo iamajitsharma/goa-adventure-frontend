@@ -133,7 +133,7 @@ export async function getDestination() {
 
 export async function getHomePageActivity() {
   const result: any = await fetch(
-    `${serverURL}/products/getHomePageActivity`,
+    `${serverURL}/products/activity/getHomePageActivity`,
     requestOptions
   );
 
@@ -154,7 +154,7 @@ export async function getSinglePageDetails(slug: any) {
 
 export async function getHomePageTour() {
   const result: any = await fetch(
-    `${serverURL}/products/getHomePageTours`,
+    `${serverURL}/products/tours/getHomePageTours`,
     requestOptions
   );
 

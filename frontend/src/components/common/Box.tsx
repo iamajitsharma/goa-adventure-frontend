@@ -7,7 +7,7 @@ interface BoxProps {
 
 const Box: React.FC<BoxProps> = ({ children, className }) => {
   return (
-    <div className={` shadow-sm p-2 rounded-md mt-4 md:p-4 ${className}`}>
+    <div className={`shadow-3xl p-2 rounded-md mt-4 md:p-4 ${className}`}>
       {children}
     </div>
   );

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { deviceSize } from "../Responsive";
 import { useMediaQuery } from "react-responsive";
-import HTMLRenderer from "react-html-renderer";
+import parse from "html-react-parser";
+import ReadMoreReact from "read-more-react";
 
 interface OverviewsProps {
   description?: string;
@@ -12,15 +13,17 @@ const Overviews: React.FC<OverviewsProps> = ({ description, className }) => {
   const [readMore, setReadMore] = useState(false);
   const isTablet = useMediaQuery({ maxWidth: deviceSize.mobile });
 
+  const parsedContent = parse(`${description}`);
+  console.log(parsedContent);
   const readMoreHandler = () => {
     setReadMore(!readMore);
   };
+
   return (
     <div
-      className={`text-sm text-justify text-textBlack leading-loose transition ease-in-out duration-1000 delay-1000 ${className}`}
+      className={`bg-transparent text-sm text-textBlack leading-loose transition ease-in-out duration-1000 delay-1000 ${className}`}
     >
-      <HTMLRenderer html={description} />
-
+      {parsedContent}
       {/* <span
         onClick={readMoreHandler}
         className="text-primary font-semibold flex justify-end cursor-pointer"
