@@ -76,18 +76,33 @@ const Header = () => {
               <Image
                 src={whiteLogo}
                 alt="Your Company"
+                width="0"
+                height="0"
+                sizes="100vw"
                 className="w-full h-full"
               />
             ) : (
-              <Image src={logo} alt="Your Company" className="w-full h-full" />
+              <Image
+                src={logo}
+                alt="Your Company"
+                width="0"
+                height="0"
+                sizes="100vw"
+                className="w-full h-full"
+              />
             )}
           </Link>
         </div>
 
         <ul className="hidden md:flex md:ml-auto md:mr-2 lg:mr-8 text-variant">
           {navigation.map((item) => (
-            <li className="md:p-2 lg:p-4 md:text-sm lg:text-[0.90rem] font-semibold tracking-wide">
-              <Link href={item.href}>{item.name}</Link>
+            <li
+              key={item.name}
+              className="md:p-2 lg:p-4 md:text-sm lg:text-[0.90rem] font-semibold tracking-wide"
+            >
+              <Link key={item.name} href={item.href}>
+                {item.name}
+              </Link>
             </li>
           ))}
         </ul>
@@ -156,6 +171,7 @@ const Header = () => {
         <ul className="flex flex-col gap-4 w-full mx-4">
           {navigation.map((item) => (
             <li
+              key={item.name}
               className="p-2 text-base text-neutral-700 hover:bg-gray-300"
               onClick={handleNav}
             >

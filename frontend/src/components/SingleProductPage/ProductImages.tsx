@@ -1,7 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import ImageSlider from "./ImageSlider";
-import TourImage from "../../../public/Things-To-Do1.png";
 import Slider from "react-slick";
 import FallbackImage from "../../../public/assets/fallback_Artboard 1.svg";
 import RightArrowAlt from "../UI/RightArrowAlt";

@@ -38,8 +38,8 @@ const HowWeWork = () => {
       <div className="flex flex-col-reverse md:flex-row justify-between items-center font-poppins max-h-fit h-full px-4 ">
         <div className="w-full md:w-1/2">
           <Heading heading="We Offer Best Services" subheading="How We Work" />
-          {services.map((item, index) => (
-            <div className="flex items-center gap-5 py-4">
+          {services.map((item: any, index: any) => (
+            <div className="flex items-center gap-5 py-4" key={index}>
               <div className="p-4 text-3xl shadow-md rounded-md bg-white text-primary w-16 h-16 flex items-center justify-center">
                 {item.icon}
               </div>

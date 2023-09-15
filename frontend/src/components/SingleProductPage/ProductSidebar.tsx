@@ -115,12 +115,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
                 <span className="text-primary self-end">/Person</span>
               </div>
               <div className="flex items-center gap-2">
-                <DatePicker
-                  value={day}
-                  onChange={setDay}
-                  inputPlaceholder="Choose Date"
-                  shouldHighlightWeekends
-                />
+                <input type="date" className="rounded-md" />
               </div>
             </div>
             <div className="flex justify-between items-center">
