@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import Container from "@/components/common/Container";
 import SearchBar from "@/components/common/SearchBar";
-
 import MultiRangeSlider from "@/components/MultiRangeSlider/MultiRangeSlider";
-
 import { IoGridOutline } from "react-icons/io5";
 import { AiOutlineBars } from "react-icons/ai";
 import Image from "next/image";
 import CoverImage from "../../../public/assets/cover.jpeg";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-
 import DestinationListItems from "@/components/SearchPage/DestinationListItems";
 import HorizontalLayout from "@/components/SearchPage/HorizontalLayout";
 import VerticalLayout from "@/components/SearchPage/VerticalLayout";
+import { fetchProducts } from "@/lib/api";
+import { getHomePageActivity } from "@/lib/api";
+import { toast } from "react-toastify";
 
 interface ActivitySearchProps {
   min?: any;
@@ -34,9 +34,12 @@ const destinationList = [
   "Rajasthan",
 ];
 
-const index: React.FC<ActivitySearchProps> = ({ min, max }) => {
+const index: React.FC<ActivitySearchProps> = (props: any) => {
   const [isOpen, setIsOpen] = useState(false);
   const [productSwitch, setProductSwitch] = useState(false);
+  console.log("Activity Page", props);
+
+  const notify = () => toast("Wow so easy");
   return (
     <>
       <div className="relative w-full h-96 overflow-hidden font-poppins">
@@ -44,10 +47,13 @@ const index: React.FC<ActivitySearchProps> = ({ min, max }) => {
           <Image
             src={CoverImage}
             alt=""
-            className="object-cover w-full h-full"
+            className="object-cover w-full h-full cursor-pointer"
           />
         </div>
-        <div className="absolute top-0 bg-lightOverlay w-full h-full flex items-center justify-start">
+        <div
+          className="absolute top-0 bg-lightOverlay w-full h-full flex items-center justify-start"
+          onClick={notify}
+        >
           <div className="w-full md:w-3/4 lg:w-3/5">
             <h1 className="text-3xl md:text-5xl text-white font-bold pl-2 md:pl-16 font-merri">
               Switzerland Tour Packages : Grab Exciting Deals | Upto 50% Off
@@ -114,17 +120,17 @@ const index: React.FC<ActivitySearchProps> = ({ min, max }) => {
                       />
                     )}
                   </button>
-                  {isOpen && (
-                    <div className="absolute top-10 right-0 z-10">
-                      <MultiRangeSlider
-                        min={0}
-                        max={25000}
-                        onChange={({}) =>
-                          console.log(`min = ${min}, max = ${max}`)
-                        }
-                      />
-                    </div>
-                  )}
+                  {/* {isOpen && (
+                    // <div className="absolute top-10 right-0 z-10">
+                    //   <MultiRangeSlider
+                    //     min={0}
+                    //     max={25000}
+                    //     onChange={({}) =>
+                    //       console.log(`min = ${min}, max = ${max}`)
+                    //     }
+                    //   />
+                    // </div>
+                  )} */}
                 </div>
               </div>
               {/* Filter Option End */}
@@ -140,7 +146,11 @@ const index: React.FC<ActivitySearchProps> = ({ min, max }) => {
               </div>
               {/* Main Product Listing */}
               <div>
-                {productSwitch ? <VerticalLayout /> : <HorizontalLayout />}
+                {productSwitch ? (
+                  <VerticalLayout data={props.response} />
+                ) : (
+                  <HorizontalLayout data={props.response} />
+                )}
               </div>
             </div>
           </div>
@@ -151,3 +161,11 @@ const index: React.FC<ActivitySearchProps> = ({ min, max }) => {
 };
 
 export default index;
+
+export async function getStaticProps() {
+  const response = await getHomePageActivity();
+
+  return {
+    props: { response },
+  };
+}

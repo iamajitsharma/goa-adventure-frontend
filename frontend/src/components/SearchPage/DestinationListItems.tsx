@@ -1,3 +1,4 @@
+import Index from "@/pages";
 import React from "react";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 
@@ -23,8 +24,11 @@ const DestinationListItems = () => {
       </h4>
       <div>
         <ul className="p-2">
-          {destinationList.map((item, index) => (
-            <li className="flex items-center gap-2 text-base text-neutral-700 hover:bg-gray-200 p-2 w-full">
+          {destinationList.map((item: any, index: any) => (
+            <li
+              key={index}
+              className="flex items-center gap-2 text-base text-neutral-700 hover:bg-gray-200 p-2 w-full"
+            >
               <MdOutlineCheckBoxOutlineBlank />
               {item}
             </li>

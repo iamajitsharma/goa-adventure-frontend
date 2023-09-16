@@ -47,7 +47,7 @@ const ProductCard: React.FC<CardProps> = ({ item, isLoading }) => {
           <div className="shrink-0 w-full h-44 overflow-hidden">
             <Image
               src={item.featured_image}
-              alt="Tour"
+              alt="T"
               className="w-full h-full object-cover"
               height={500}
               width={500}

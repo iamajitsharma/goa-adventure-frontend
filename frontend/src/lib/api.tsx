@@ -2,6 +2,7 @@ import { remark } from "remark";
 import html from "remark-html";
 import { IPrivacy, ITerms } from "./interfaces";
 import { calculateSalePrice } from "./operations";
+import { toast } from "react-toastify";
 
 const devServer = "http://localhost:4000/v1";
 const prodServer = "https://backend.goaadventure.in/v1";
@@ -80,23 +81,22 @@ export async function privacyPoliciesApi(): Promise<IPrivacy> {
 }
 
 export async function fetchProducts() {
-  const result: any = await fetch(
-    `${serverURL}/products?populate=*`,
-    requestOptions
-  );
+  try {
+    const result: any = await fetch(
+      `${serverURL}/products?populate=*`,
+      requestOptions
+    );
 
-  const response = await result.json();
-
-  if (response.data) {
-    console.log("Result products", response);
-    response.data = response.data.filter((img: any) => img.id !== 4);
-    response.data.map((info: any) => {
-      info.attributes.salePrice = calculateSalePrice(
-        info.attributes.discount_percent,
-        info.attributes.price
+    if (!result.ok) {
+      throw new Error(
+        `Failed to fetch products. Status code: ${result.status}`
       );
-    });
-    return response.data;
+    }
+    const response = await result.json();
+    return response;
+  } catch (error) {
+    console.error("Error fetching products", error);
+    throw error;
   }
 }
 
@@ -107,6 +107,7 @@ export async function fetchOrderIdForRazorPay() {
   );
 
   const response = await result.json();
+  return response;
 }
 
 export async function getBookingInfo(orderId: string) {
@@ -132,13 +133,24 @@ export async function getDestination() {
 // Acitivity API
 
 export async function getHomePageActivity() {
-  const result: any = await fetch(
-    `${serverURL}/products/activity/getHomePageActivity`,
-    requestOptions
-  );
+  try {
+    const result: any = await fetch(
+      `${serverURL}/products/activity/getHomePageActivity`,
+      requestOptions
+    );
 
-  const response = await result.json();
-  return response;
+    if (!result.ok) {
+      throw new Error(
+        `Failed to fetch products. Status code: ${result.status}`
+      );
+    }
+
+    const response = await result.json();
+    return response;
+  } catch (error) {
+    console.error("Failed To Fetch", error);
+    toast.error("Something went wrong");
+  }
 }
 
 // Single Page Activity

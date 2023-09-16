@@ -10,27 +10,71 @@ import { HiOutlineReceiptRefund } from "react-icons/hi";
 import { Button } from "../common/Button";
 import { deviceSize } from "../Responsive";
 import { useMediaQuery } from "react-responsive";
+import Slider from "react-slick";
+import FallBackImage from "../../../public/assets/fallback_Artboard 1.svg";
 
-const ProductCardAlt = () => {
+interface ProductCardAltProps {
+  item: any;
+}
+
+const settings = {
+  dots: true,
+  infinite: true,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  pauseOnHover: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  initialSlide: 2,
+};
+
+const ProductCardAlt: React.FC<ProductCardAltProps> = ({ item }) => {
   const isTable = useMediaQuery({ maxWidth: deviceSize.tablet });
 
+  const originalPrice = parseFloat(item.price);
+  const discountPercent = parseFloat(item.discount_percent);
+  const salePrice = originalPrice - (originalPrice * discountPercent) / 100;
+
+  console.log("Product Card", item.gallery);
   return (
     <div className="w-full h-full shadow-3xl bg-white flex flex-row items-start gap-0 overflow-hidden rounded-lg">
-      <Image src={cardImage} alt="" className="w-2/5 h-full object-cover" />
+      <div className="w-2/5 h-full">
+        <Slider {...settings}>
+          {item.gallery?.map((img: any, index: any) => (
+            <Image
+              src={img}
+              key={index}
+              alt=""
+              className="object-cover"
+              height={500}
+              width={500}
+            />
+          ))}
+        </Slider>
+        <style>
+          {`
+         .slick-dots {
+          bottom:5px !important;
+          color:white !important;
+          }
+        `}
+        </style>
+      </div>
       <div className="w-full h-full flex flex-col px-2 py-1">
         <h2 className="text-sm sm:text-base md:text-lg font-semibold text-neutral-700">
-          Scuba Diving Grand Island
+          {item.title}
         </h2>
 
         {/* Card Details */}
         <div className="flex flex-wrap gap-2 md:gap-4 py-4">
           <span className="flex items-center gap-2 text-xs md:text-sm">
             <FiMapPin className="text-primary text-xl" />
-            Grand Island
+            {item.city} {item.state}
           </span>
           <span className="flex items-center gap-2 text-xs md:text-sm">
             <BsClock className="text-primary text-xl" />
-            30 Mins
+            {item.duration}
           </span>
           <span className="flex items-center gap-2 text-xs md:text-sm">
             <AiFillStar className="text-primary text-xl" />
@@ -50,7 +94,7 @@ const ProductCardAlt = () => {
           </span>
           <span className="flex items-center gap-2 text-xs">
             <BsPiggyBank className="text-blue-600/80 text-xl" />
-            Just pay 25% to book seat
+            Just pay {`${item.deposit_value}%`} to book seat
           </span>
         </div>
         {/* Card Pricing  */}
@@ -58,11 +102,11 @@ const ProductCardAlt = () => {
           <div className="flex flex-col-reverse md:flex-row items-center gap-1 ">
             <span className="flex items-center text-xs md:text-base line-through tracking-wider font-semibold text-neutral-400">
               <BiRupee className="text-base md:text-lg" />
-              2000
+              {item.price}
             </span>
             <span className="flex items-center text-lg sm:text-xl md:text-xl tracking-wider font-semibold text-primary">
               <BiRupee className="text-xl md:text-2xl" />
-              1500
+              {salePrice}
             </span>
           </div>
           <div className="">

@@ -13,7 +13,7 @@ const Footer = () => {
           <CompanyDetails />
         </div>
       </div>
-      <div className="bg-slate-700 py-4 w-full text-gray-300 text-sm font-light px-4">
+      <div className=" bg-slate-700 py-4 w-full text-gray-300 text-sm font-light px-4">
         <span>
           Copyright {currentYear} All Rights Reserved | Safar Travel Express
         </span>

@@ -62,7 +62,7 @@ const Index = (props: any) => {
         </Container>
       </section> */}
 
-      <section className="">
+      <section className="pt-0">
         <Container>
           <Heading
             textAlign="center"

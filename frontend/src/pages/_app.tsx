@@ -8,6 +8,8 @@ import type { AppProps } from "next/app";
 import { Poppins, Merriweather } from "next/font/google";
 import { Provider } from "react-redux";
 import { store } from "@/store/store";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Layout from "@/components/Layout";
 // import UserLayout from "@/components/User/UserLayout";
@@ -29,6 +31,13 @@ const merrifont = Merriweather({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
+      <ToastContainer
+        theme="dark"
+        position="bottom-right"
+        autoClose={2000}
+        closeOnClick
+        pauseOnHover={false}
+      />
       <Layout>
         <main className={`${poppins.variable} ${merrifont.variable} font-sans`}>
           <Component {...pageProps} />

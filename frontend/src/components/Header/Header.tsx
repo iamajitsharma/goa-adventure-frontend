@@ -17,10 +17,10 @@ import { MdSurfing, MdOutlineTour } from "react-icons/md";
 import { GrContactInfo } from "react-icons/gr";
 import { TfiMapAlt } from "react-icons/tfi";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const navigation = [
   { name: "Home", href: "/", icon: <AiOutlineHome /> },
-  { name: "Destination", href: "/location", icon: <TfiMapAlt /> },
   { name: "Adventures", href: "/activity", icon: <MdSurfing /> },
   { name: "Tour Package", href: "/tour", icon: <MdOutlineTour /> },
   { name: "Weekend Getaways", href: "#", icon: <GrContactInfo /> },
@@ -30,8 +30,8 @@ const Header = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [nav, setNav] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
   const { openLogin } = useAuthModal();
+  const pathname = usePathname();
 
   useEffect(() => {
     const changeColor = () => {
@@ -95,16 +95,22 @@ const Header = () => {
         </div>
 
         <ul className="hidden md:flex md:ml-auto md:mr-2 lg:mr-8 text-variant">
-          {navigation.map((item) => (
-            <li
-              key={item.name}
-              className="md:p-2 lg:p-4 md:text-sm lg:text-[0.90rem] font-semibold tracking-wide"
-            >
-              <Link key={item.name} href={item.href}>
-                {item.name}
-              </Link>
-            </li>
-          ))}
+          {navigation.map((link) => {
+            const isActive = pathname === link.href;
+
+            return (
+              <li
+                key={link.name}
+                className={`${
+                  isActive ? "text-primary" : "text-variant"
+                } md:p-2 lg:p-4 md:text-sm lg:text-[0.90rem] font-semibold tracking-wide`}
+              >
+                <Link key={link.name} href={link.href}>
+                  {link.name}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
         <div className="flex items-center gap-2">
           {isLogin && <UserNavigation />}
