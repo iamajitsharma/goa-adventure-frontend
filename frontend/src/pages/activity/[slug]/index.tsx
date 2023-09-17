@@ -115,13 +115,13 @@ export async function getStaticPaths() {
   //Creating an array of objects
   const paths = allActivity.map((activity: any) => {
     return {
-      params: { slug: `${activity.slug}` },
+      params: { slug: activity.slug },
     };
   });
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }
 

@@ -115,13 +115,13 @@ export async function getStaticPaths() {
   //Creating an array of objects
   const paths = allTour.map((tour: any) => {
     return {
-      params: { slug: `${tour.slug}` },
+      params: { slug: tour.slug },
     };
   });
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }
 

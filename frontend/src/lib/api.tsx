@@ -146,6 +146,7 @@ export async function getHomePageActivity() {
     }
 
     const response = await result.json();
+
     return response;
   } catch (error) {
     console.error("Failed To Fetch", error);
