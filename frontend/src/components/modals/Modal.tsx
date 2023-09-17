@@ -18,12 +18,14 @@ import { Button } from "../common/Button";
 interface ModalProps {
   isOpen?: boolean;
   onClose: () => void;
-  onSubmit: () => void;
+
+  onSubmit: any;
   title?: string;
   body?: React.ReactElement;
   footer?: React.ReactElement;
   actionLabel: string;
   disabled?: boolean;
+  error: any;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -35,6 +37,7 @@ const Modal: React.FC<ModalProps> = ({
   actionLabel,
   footer,
   disabled,
+  error,
 }) => {
   const [showModal, setShowModal] = useState(isOpen);
 
@@ -95,6 +98,9 @@ const Modal: React.FC<ModalProps> = ({
           </div>
           {/* Body */}
           <div className="relative max-h-[2/5]">{body}</div>
+          {error.status ? (
+            <span className="text-red-500">{error.message}</span>
+          ) : null}
           {/* Modal Action */}
           <div className="relative py-4">
             <Button onClick={onSubmit} size={"xl"} variant={"dark"}>

@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { FiSmartphone } from "react-icons/fi";
@@ -6,14 +7,17 @@ import CountryCodes from "../../../data/CountryCodes.json";
 interface MobileInputProps {
   id: string;
   label: string;
-  type?: string;
+  type?: number;
   disabled?: boolean;
   formatPrice?: boolean;
   required?: boolean;
   register?: UseFormRegister<FieldValues>;
-  errors: FieldErrors;
+  errors: any;
   className?: string;
   icon?: any;
+  mobileNo: any;
+  setMobileNo: any;
+  setError: any;
 }
 
 const MobileInput: React.FC<MobileInputProps> = ({
@@ -27,10 +31,35 @@ const MobileInput: React.FC<MobileInputProps> = ({
   errors,
   className,
   icon,
+  mobileNo,
+  setMobileNo,
+  setError,
 }) => {
   const [CountryPhoneCode, setCountryPhoneCode] = useState(CountryCodes);
+  // const [mobileNo, setMobileNo] = useState("");
+  // const [error, setError] = useState({ status: false, message: "" });
 
   console.log(CountryPhoneCode);
+  const handleChange = (e: any) => {
+    setMobileNo(e.target.value);
+  };
+  const handleSubmit = () => {
+    if (mobileNo.length < 10) {
+      const errorStatus = {
+        status: true,
+        message: "MObile Number must be equal to 10 digits",
+      };
+      setError(errorStatus);
+    } else if (mobileNo.length == 0) {
+      const errorStatus = {
+        status: true,
+        message: "Please enter mobile Number",
+      };
+      setError(errorStatus);
+    } else {
+      console.log("Captured Value", mobileNo);
+    }
+  };
 
   return (
     <div className="flex items-center border-b-2 border-neutral-600">
@@ -55,7 +84,8 @@ const MobileInput: React.FC<MobileInputProps> = ({
             id={id}
             disabled={disabled}
             placeholder=" "
-            type={type}
+            type={"number"}
+            onChange={(e) => handleChange(e)}
             className="
           peer
           w-full
@@ -96,6 +126,7 @@ const MobileInput: React.FC<MobileInputProps> = ({
             {label}
           </label>
         </div>
+
         <div className="text-2xl text-neutral-600">{icon}</div>
       </div>
     </div>

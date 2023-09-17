@@ -47,10 +47,10 @@ const EmailLoginModal = () => {
         />
         <div className="flex items-center justify-between pt-4">
           <div className="text-sm text-neutral-600">
-            <label className="inline-flex items-center gap-2">
+            {/* <label className="inline-flex items-center gap-2">
               <input type="checkbox" className="p-2 rounded-sm" />
               Remember me
-            </label>
+            </label> */}
           </div>
           <span className="text-sm text-neutral-600 cursor-pointer">
             Forget password?

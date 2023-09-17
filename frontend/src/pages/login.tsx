@@ -45,10 +45,10 @@ const login = () => {
             </div>
 
             <div className="flex items-center justify-between text-sm text-gray-300">
-              <label className="inline-flex items-center gap-2">
+              {/* <label className="inline-flex items-center gap-2">
                 <input type="checkbox" />
                 Remember me
-              </label>
+              </label> */}
             </div>
 
             <button

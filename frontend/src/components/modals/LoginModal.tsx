@@ -12,6 +12,27 @@ import { useRouter } from "next/router";
 
 const LoginModal = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [mobileNo, setMobileNo] = useState("");
+  const [error, setError] = useState({ status: false, message: "" });
+  // function handleDataSubmit(mobileNo: string) {
+  const handleDataSubmit = () => {
+    if (mobileNo.length < 10) {
+      const errorStatus = {
+        status: true,
+        message: "MObile Number must be equal to 10 digits",
+      };
+      setError(errorStatus);
+    } else if (mobileNo.length == 0) {
+      const errorStatus = {
+        status: true,
+        message: "Please enter mobile Number",
+      };
+      setError(errorStatus);
+    } else {
+      console.log("Captured Value", mobileNo);
+    }
+  };
+
   const isLoginModalOpen = useSelector(
     (state: any) => state.authModal.isLoginModalOpen
   );
@@ -35,11 +56,13 @@ const LoginModal = () => {
       <MobileInput
         id="mobilenumber"
         label="Mobile Number"
-        type="text"
         icon={<FiSmartphone />}
         register={register}
         disabled={isLoading}
-        errors={errors}
+        errors={error}
+        mobileNo={mobileNo}
+        setMobileNo={setMobileNo}
+        setError={setError}
         required
       />
 
@@ -54,10 +77,10 @@ const LoginModal = () => {
       /> */}
 
       <div className="flex items-center justify-between text-sm text-neutral-600 pt-4">
-        <label className="inline-flex items-center gap-2">
+        {/* <label className="inline-flex items-center gap-2">
           <input type="checkbox" className="p-2 rounded-sm" />
           Remember me
-        </label>
+        </label> */}
       </div>
     </div>
   );
@@ -78,10 +101,11 @@ const LoginModal = () => {
       isOpen={isLoginModalOpen}
       onClose={closeLogin}
       title="Login"
-      actionLabel="Sign In"
-      onSubmit={() => {}}
+      actionLabel="Log In"
+      onSubmit={handleDataSubmit}
       body={bodyContent}
       footer={footerContent}
+      error={error}
     />
   );
 };
