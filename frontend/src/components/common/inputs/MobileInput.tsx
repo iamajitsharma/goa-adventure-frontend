@@ -35,17 +35,19 @@ const MobileInput: React.FC<MobileInputProps> = ({
   return (
     <div className="flex items-center border-b-2 border-neutral-600">
       <select
+        disabled
         name="country"
         className="border-none outline-none
           focus:ring-0 text-sm font-poppins "
       >
-        {CountryPhoneCode.map((e, key) => {
-          return (
-            <option key={key} value={e.name}>
-              {e.code} {e.dial_code}
-            </option>
-          );
-        })}
+        {/* {CountryPhoneCode.map((e, key) => {
+          return ( */}
+
+        <option value={"India"}>
+          {"IN"} {"+91"}
+        </option>
+        {/* ); */}
+        {/* })} */}
       </select>
       <div className="w-full relative flex items-center justify-between">
         <div className="relative">

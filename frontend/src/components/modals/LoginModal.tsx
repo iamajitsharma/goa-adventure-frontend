@@ -43,7 +43,7 @@ const LoginModal = () => {
         required
       />
 
-      <Input
+      {/* <Input
         id="otp"
         label="OTP"
         type="text"
@@ -51,7 +51,7 @@ const LoginModal = () => {
         disabled={isLoading}
         errors={errors}
         required
-      />
+      /> */}
 
       <div className="flex items-center justify-between text-sm text-neutral-600 pt-4">
         <label className="inline-flex items-center gap-2">
