@@ -52,7 +52,7 @@ const EmailLoginModal = () => {
           type="email"
           register={register}
           disabled={isLoading}
-          errors={errors}
+          errors={error}
           setInputData={setEmail}
           setError={setError}
           required

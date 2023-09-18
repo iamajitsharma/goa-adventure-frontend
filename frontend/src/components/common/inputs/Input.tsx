@@ -10,9 +10,10 @@ interface InputProps {
   formatPrice?: boolean;
   required?: boolean;
   register?: UseFormRegister<FieldValues>;
-  errors: FieldErrors;
+  errors: any;
   className?: string;
   setInputData: any;
+  setError: any;
   icon?: any;
 }
 
@@ -26,6 +27,7 @@ const Input: React.FC<InputProps> = ({
   register,
   errors,
   className,
+  setError,
   setInputData,
   icon,
 }) => {

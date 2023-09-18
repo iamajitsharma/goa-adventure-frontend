@@ -12,6 +12,14 @@ import SocialLogin from "../login/SocialLogin";
 const RegisterModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasFilled, setHasFilled] = useState(false);
+  const [mobileNo, setMobileNo] = useState("");
+  const [error, setError] = useState({
+    status: false,
+    message: "",
+  });
+  const [email, setEmail] = useState("");
+
+  const [name, setName] = useState("");
 
   const isRegisterModalOpen = useSelector(
     (state: any) => state.authModal.isRegisterModalOpen
@@ -43,6 +51,42 @@ const RegisterModal = () => {
     //   });
   };
 
+  const handleDataSubmit = () => {
+    if (name.length == 0) {
+      const errorStatus = {
+        status: true,
+        message: "Please enter email",
+      };
+      setError(errorStatus);
+    } else {
+      console.log("Captured Value email", name);
+    }
+
+    if (email.length == 0) {
+      const errorStatus = {
+        status: true,
+        message: "Please enter email",
+      };
+      setError(errorStatus);
+    } else {
+      console.log("Captured Value email", email);
+    }
+
+    if (mobileNo.length < 10) {
+      const errorStatus = {
+        status: true,
+        message: "MObile Number must be equal to 10 digits",
+      };
+      setError(errorStatus);
+    } else if (mobileNo.length == 0) {
+      const errorStatus = {
+        status: true,
+        message: "Please enter mobile Number",
+      };
+      setError(errorStatus);
+    }
+  };
+
   //Modal Toggle Function
   const onToggle = useCallback(() => {
     closeRegister();
@@ -58,7 +102,9 @@ const RegisterModal = () => {
         icon={<AiOutlineUser />}
         register={register}
         disabled={isLoading}
-        errors={errors}
+        errors={error}
+        setInputData={setName}
+        setError={setError}
         required
       />
 
@@ -66,21 +112,24 @@ const RegisterModal = () => {
         id="email"
         label="Email"
         type="email"
-        icon={<AiOutlineMail />}
         register={register}
         disabled={isLoading}
-        errors={errors}
+        errors={error}
+        setInputData={setEmail}
+        setError={setError}
         required
       />
 
       <MobileInput
         id="mobilenumber"
         label="Mobile Number"
-        type="text"
         icon={<FiSmartphone />}
         register={register}
         disabled={isLoading}
-        errors={errors}
+        errors={error}
+        mobileNo={mobileNo}
+        setMobileNo={setMobileNo}
+        setError={setError}
         required
       />
 
@@ -113,9 +162,10 @@ const RegisterModal = () => {
       title="Register"
       actionLabel="Create an account"
       onClose={closeRegister}
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleDataSubmit}
       body={bodyContent}
       footer={footerContent}
+      error={error}
     />
   );
 };
