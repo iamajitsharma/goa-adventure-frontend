@@ -29,6 +29,11 @@ const LoginModal = () => {
       };
       setError(errorStatus);
     } else {
+      const errorStatus = {
+        status: false,
+        message: "",
+      };
+      setError(errorStatus);
       console.log("Captured Value", mobileNo);
     }
   };

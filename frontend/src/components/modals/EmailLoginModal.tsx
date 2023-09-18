@@ -11,6 +11,25 @@ const EmailLoginModal = () => {
   const isEmailLoginModalOpen = useSelector(
     (state: any) => state.authModal.isEmailLoginModalOpen
   );
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState({ status: false, message: "" });
+
+  const handleDataSubmit = () => {
+    if (email.length == 0) {
+      const errorStatus = {
+        status: true,
+        message: "Please enter email",
+      };
+      setError(errorStatus);
+    } else {
+      const errorStatus = {
+        status: false,
+        message: "",
+      };
+      setError(errorStatus);
+      console.log("Captured Value email", email);
+    }
+  };
 
   const {
     register,
@@ -34,17 +53,11 @@ const EmailLoginModal = () => {
           register={register}
           disabled={isLoading}
           errors={errors}
+          setInputData={setEmail}
+          setError={setError}
           required
         />
-        <Input
-          id="password"
-          label="Pasword"
-          type="password"
-          register={register}
-          disabled={isLoading}
-          errors={errors}
-          required
-        />
+
         <div className="flex items-center justify-between pt-4">
           <div className="text-sm text-neutral-600">
             {/* <label className="inline-flex items-center gap-2">
@@ -77,11 +90,12 @@ const EmailLoginModal = () => {
       isOpen={isEmailLoginModalOpen}
       onClose={closeEmailLogin}
       disabled={isLoading}
-      onSubmit={() => {}}
+      onSubmit={handleDataSubmit}
       title="Log in with email"
       body={bodyContent}
       footer={footerContent}
       actionLabel="Continue with email"
+      error={error}
     />
   );
 };

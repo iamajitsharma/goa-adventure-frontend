@@ -12,6 +12,7 @@ interface InputProps {
   register?: UseFormRegister<FieldValues>;
   errors: FieldErrors;
   className?: string;
+  setInputData: any;
   icon?: any;
 }
 
@@ -25,6 +26,7 @@ const Input: React.FC<InputProps> = ({
   register,
   errors,
   className,
+  setInputData,
   icon,
 }) => {
   return (
