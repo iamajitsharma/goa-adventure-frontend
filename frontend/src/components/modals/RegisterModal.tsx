@@ -8,6 +8,7 @@ import Input from "../common/inputs/Input";
 import { AiOutlineUser, AiOutlineMail } from "react-icons/ai";
 import MobileInput from "../common/inputs/MobileInput";
 import SocialLogin from "../login/SocialLogin";
+import { createCustomerAndLogin } from "../../lib/api";
 
 const RegisterModal = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +52,7 @@ const RegisterModal = () => {
     //   });
   };
 
-  const handleDataSubmit = () => {
+  const handleDataSubmit = async () => {
     console.log("Email MObilenumber name", email, mobileNo, name);
     let errorVal = 0;
     if (name.length == 0) {
@@ -94,6 +95,8 @@ const RegisterModal = () => {
         status: false,
         message: "",
       });
+
+      const logInData = await createCustomerAndLogin(email, mobileNo, name);
     }
   };
 

@@ -19,6 +19,7 @@ var requestOptions = {
   method: "GET",
   headers: myHeaders,
 };
+
 const initialPrivacyPolicy: IPrivacy = {
   id: 0,
   attributes: {
@@ -169,6 +170,30 @@ export async function getHomePageTour() {
   const result: any = await fetch(
     `${serverURL}/products/tours/getHomePageTours`,
     requestOptions
+  );
+
+  const response = await result.json();
+  return response;
+}
+
+export async function createCustomerAndLogin(
+  email: string,
+  mobileNo: string,
+  name: string
+) {
+  var raw = JSON.stringify({
+    email,
+    mobile_number: mobileNo,
+    name,
+  });
+  var requestOptionsForPost = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+  };
+  const result: any = await fetch(
+    `${serverURL}/customer/create-and-login-customer`,
+    requestOptionsForPost
   );
 
   const response = await result.json();
