@@ -52,14 +52,15 @@ const RegisterModal = () => {
   };
 
   const handleDataSubmit = () => {
+    console.log("Email MObilenumber name", email, mobileNo, name);
+    let errorVal = 0;
     if (name.length == 0) {
       const errorStatus = {
         status: true,
         message: "Please enter email",
       };
       setError(errorStatus);
-    } else {
-      console.log("Captured Value email", name);
+      errorVal = 1;
     }
 
     if (email.length == 0) {
@@ -68,22 +69,31 @@ const RegisterModal = () => {
         message: "Please enter email",
       };
       setError(errorStatus);
-    } else {
-      console.log("Captured Value email", email);
+      errorVal = 1;
     }
-
-    if (mobileNo.length < 10) {
-      const errorStatus = {
-        status: true,
-        message: "MObile Number must be equal to 10 digits",
-      };
-      setError(errorStatus);
-    } else if (mobileNo.length == 0) {
+    if (mobileNo.length == 0) {
       const errorStatus = {
         status: true,
         message: "Please enter mobile Number",
       };
       setError(errorStatus);
+      errorVal = 1;
+    } else if (mobileNo.length < 10) {
+      const errorStatus = {
+        status: true,
+
+        message: "MObile Number must be equal to 10 digits",
+      };
+      setError(errorStatus);
+      errorVal = 1;
+    }
+    console.log("");
+
+    if (errorVal == 0) {
+      setError({
+        status: false,
+        message: "",
+      });
     }
   };
 
@@ -103,6 +113,7 @@ const RegisterModal = () => {
         register={register}
         disabled={isLoading}
         errors={error}
+        inputData={name}
         setInputData={setName}
         setError={setError}
         required
@@ -115,6 +126,7 @@ const RegisterModal = () => {
         register={register}
         disabled={isLoading}
         errors={error}
+        inputData={email}
         setInputData={setEmail}
         setError={setError}
         required

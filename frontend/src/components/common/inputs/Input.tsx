@@ -15,6 +15,7 @@ interface InputProps {
   setInputData: any;
   setError: any;
   icon?: any;
+  inputData: any;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -29,6 +30,7 @@ const Input: React.FC<InputProps> = ({
   className,
   setError,
   setInputData,
+  inputData,
   icon,
 }) => {
   return (
@@ -41,6 +43,8 @@ const Input: React.FC<InputProps> = ({
           disabled={disabled}
           placeholder=" "
           type={type}
+          value={inputData}
+          onChange={(e) => setInputData(e.target.value)}
           className="
           peer
           w-full
