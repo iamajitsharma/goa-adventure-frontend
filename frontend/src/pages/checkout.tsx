@@ -137,7 +137,7 @@ const Checkout = () => {
         <div className="w-full md:w-8/12 h-full">
           <div className="py-4 shadow-3xl p-2">
             <h4 className="font-semibold text-base">Billing Information</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 w-full h-full gap-4">
+            {/* <div className="grid grid-cols-1 sm:grid-cols-2 w-full h-full gap-4">
               <Input
                 id="fullname"
                 label="Full Name"
@@ -205,7 +205,7 @@ const Checkout = () => {
                 isSearchable={false}
                 placeholder="Meeting Points"
               />
-            </div>
+            </div> */}
             <div className="pt-6 text-right">
               <Button>Add Details</Button>
             </div>
