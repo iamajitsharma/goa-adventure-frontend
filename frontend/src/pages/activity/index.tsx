@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "@/components/common/Container";
 import SearchBar from "@/components/common/SearchBar";
 import MultiRangeSlider from "@/components/MultiRangeSlider/MultiRangeSlider";
@@ -10,7 +10,12 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import DestinationListItems from "@/components/SearchPage/DestinationListItems";
 import HorizontalLayout from "@/components/SearchPage/HorizontalLayout";
 import VerticalLayout from "@/components/SearchPage/VerticalLayout";
-import { fetchProducts } from "@/lib/api";
+import {
+  fetchProducts,
+  getCategories,
+  getPriceRange,
+  getSubCategories,
+} from "@/lib/api";
 import { getHomePageActivity } from "@/lib/api";
 import { toast } from "react-toastify";
 
@@ -37,7 +42,41 @@ const destinationList = [
 const index: React.FC<ActivitySearchProps> = (props: any) => {
   const [isOpen, setIsOpen] = useState(false);
   const [productSwitch, setProductSwitch] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [subcategories, setSubCategories] = useState([]);
+  const [category, setCategory] = useState<string | null>(null);
+  const [subcategory, setSubCategory] = useState<string | null>(null);
+  const [finalPriceRange, setFinalPriceRange] = useState<any>([]);
+
   console.log("Activity Page", props);
+  async function calculateRange(rangeValues: any) {
+    rangeValues.max_price = Number(rangeValues.max_price);
+    rangeValues.min_price = Number(rangeValues.min_price);
+    const interval = (rangeValues.max_price - rangeValues.min_price) / 5;
+    let finalArray = [];
+    finalArray[4] = rangeValues.max_price;
+    finalArray[0] = rangeValues.min_price;
+    for (let i = 1; i < 4; i++) {
+      finalArray[i] = rangeValues.min_price + interval * i;
+    }
+    console.log("FInal Array", finalArray);
+    return finalArray;
+  }
+  async function getData() {
+    const categoryFetched = await getCategories();
+    setCategories(categoryFetched);
+    const subcategoryFetched = await getSubCategories();
+    setSubCategories(subcategoryFetched);
+
+    const priceRange = await getPriceRange({ category, subcategory });
+    const getBreakup = await calculateRange(priceRange[0]);
+    console.log("FINAL RANGE FETCHED", priceRange);
+
+    setFinalPriceRange(getBreakup);
+  }
+  useEffect(() => {
+    getData();
+  }, [category, subcategory]);
 
   const notify = () => toast("Wow so easy");
   return (
@@ -66,43 +105,65 @@ const index: React.FC<ActivitySearchProps> = (props: any) => {
       <section>
         <Container className="font-poppins">
           <div className="flex flex-col gap-4 w-full h-full md:flex-row">
-            <div className="hidden md:block md:w-3/12">
+            {/* <div className="hidden md:block md:w-3/12">
               <DestinationListItems />
-            </div>
+            </div> */}
             <div className="w-full md:w-9/12">
               <SearchBar />
               {/* Filter Option Start */}
               <div className="flex flex-row items-center flex-wrap gap-3 pt-6 w-full">
                 {/* Destination Drodown */}
-                <div>
+                {/* <div>
                   <select className="inline-flex items-center gap-3 px-3 py-1 border border-neutral-500 rounded-md text-sm md:text-base cursor-pointer">
                     <option defaultValue="Destination">Destination</option>
                     <option>Goa</option>
                     <option>Kerala</option>
                     <option>Himachal Pradesh</option>
                   </select>
-                </div>
+                </div> */}
                 {/* Category Dropdown */}
                 <div>
-                  <select className="inline-flex items-center gap-3 px-3 py-1 border border-neutral-500 rounded-md text-sm md:text-base cursor-pointer">
-                    <option defaultValue="Destination">Category</option>
-                    <option>Tour Package</option>
-                    <option>Adventure</option>
-                    <option>Local Sightseeing</option>
+                  <select
+                    onChange={(e) => setCategory(e.target.value)}
+                    className="inline-flex items-center gap-3 px-3 py-1 border border-neutral-500 rounded-md text-sm md:text-base cursor-pointer"
+                  >
+                    <option defaultValue="Destination">Category Type</option>
+                    {categories.map((cate: any) => (
+                      <option value={cate.id}>{cate.category}</option>
+                    ))}
                   </select>
                 </div>
                 {/* Sub Category Dropdown */}
                 <div>
-                  <select className="inline-flex items-center gap-3 px-3 py-1 border border-neutral-500 rounded-md text-sm md:text-base cursor-pointer">
-                    <option defaultValue="Destination">Category Type</option>
-                    <option>Tour Package</option>
-                    <option>Adventure</option>
-                    <option>Local Sightseeing</option>
+                  <select
+                    onChange={(e) => setSubCategory(e.target.value)}
+                    className="inline-flex items-center gap-3 px-3 py-1 border border-neutral-500 rounded-md text-sm md:text-base cursor-pointer"
+                  >
+                    <option defaultValue="Destination">
+                      Sub Category Type
+                    </option>
+                    {subcategories.map((cate: any) => (
+                      <option value={cate.id}>{cate.subcategory}</option>
+                    ))}
                   </select>
                 </div>
                 {/* Price Range */}
                 <div className="relative">
-                  <button
+                  <select
+                    onChange={(e) => setSubCategory(e.target.value)}
+                    className="inline-flex items-center gap-3 px-3 py-1 border border-neutral-500 rounded-md text-sm md:text-base cursor-pointer"
+                  >
+                    <option defaultValue="Destination">Price Range</option>
+                    {finalPriceRange.map((cate: any, index: number) => (
+                      <option value={index}>
+                        {finalPriceRange[0] +
+                          finalPriceRange[0] * (index - 1) +
+                          "-" +
+                          (finalPriceRange[0] + finalPriceRange[0] * index)}
+                      </option>
+                    ))}
+                  </select>
+                  {/* <button
                     type="button"
                     className="inline-flex items-center gap-3 px-3 py-1 border border-neutral-500 rounded-md text-sm md:text-base cursor-pointer"
                     onClick={() => setIsOpen(!isOpen)}
@@ -119,7 +180,7 @@ const index: React.FC<ActivitySearchProps> = (props: any) => {
                         className="text-base font-medium"
                       />
                     )}
-                  </button>
+                  </button> */}
                   {/* {isOpen && (
                     // <div className="absolute top-10 right-0 z-10">
                     //   <MultiRangeSlider

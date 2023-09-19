@@ -88,22 +88,22 @@ const index: React.FC<StateProps> = ({ min, max }) => {
           {/* Search Field */}
 
           <div className="flex flex-col gap-4 w-full h-full md:flex-row">
-            <div className="hidden md:block md:w-3/12">
+            {/* <div className="hidden md:block md:w-3/12">
               <DestinationListItems />
-            </div>
+            </div> */}
             <div className="w-full md:w-9/12">
               <SearchBar />
               {/* Filter Option Start */}
               <div className="flex flex-row items-center flex-wrap gap-3 pt-6 w-full">
                 {/* Destination Drodown */}
-                <div>
+                {/* <div>
                   <select className="inline-flex items-center gap-3 px-3 py-1 border border-neutral-500 rounded-md text-sm md:text-base cursor-pointer">
                     <option defaultValue="Destination">Destination</option>
                     <option>Goa</option>
                     <option>Kerala</option>
                     <option>Himachal Pradesh</option>
                   </select>
-                </div>
+                </div> */}
                 {/* Category Dropdown */}
                 <div>
                   <select className="inline-flex items-center gap-3 px-3 py-1 border border-neutral-500 rounded-md text-sm md:text-base cursor-pointer">
