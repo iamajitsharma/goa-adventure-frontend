@@ -14,6 +14,7 @@ import {
   fetchProducts,
   getCategories,
   getPriceRange,
+  getProductsWithFilter,
   getSubCategories,
 } from "@/lib/api";
 import { getHomePageActivity } from "@/lib/api";
@@ -47,6 +48,11 @@ const index: React.FC<ActivitySearchProps> = (props: any) => {
   const [category, setCategory] = useState<string | null>(null);
   const [subcategory, setSubCategory] = useState<string | null>(null);
   const [finalPriceRange, setFinalPriceRange] = useState<any>([]);
+  const [minMaxPrice, setMinMaxPrice] = useState({
+    minPrice: null,
+    maxPrice: null,
+  });
+  const [products, setProducts] = useState([]);
 
   console.log("Activity Page", props);
   async function calculateRange(rangeValues: any) {
@@ -68,15 +74,44 @@ const index: React.FC<ActivitySearchProps> = (props: any) => {
     const subcategoryFetched = await getSubCategories();
     setSubCategories(subcategoryFetched);
 
-    const priceRange = await getPriceRange({ category, subcategory });
+    const priceRange = await getPriceRange({
+      category,
+      subcategory,
+    });
     const getBreakup = await calculateRange(priceRange[0]);
     console.log("FINAL RANGE FETCHED", priceRange);
 
     setFinalPriceRange(getBreakup);
+    const prod = await getProductsWithFilter({
+      category,
+      subcategory,
+      minMaxPrice,
+    });
+    setProducts(prod);
+  }
+
+  async function getProds() {
+    console.log("MInium max price", minMaxPrice);
+    const prod = await getProductsWithFilter({
+      category,
+      subcategory,
+      minMaxPrice,
+    });
+    setProducts(prod);
+  }
+
+  async function handlePriceChange(indexValue: string) {
+    const minVal = finalPriceRange[Number(indexValue)];
+    const maxVal = finalPriceRange[Number(indexValue) + 1];
+    setMinMaxPrice({ minPrice: minVal, maxPrice: maxVal });
   }
   useEffect(() => {
     getData();
-  }, [category, subcategory]);
+  }, [minMaxPrice]);
+
+  useEffect(() => {
+    getProds();
+  }, [category, subcategory, minMaxPrice]);
 
   const notify = () => toast("Wow so easy");
   return (
@@ -150,18 +185,19 @@ const index: React.FC<ActivitySearchProps> = (props: any) => {
                 {/* Price Range */}
                 <div className="relative">
                   <select
-                    onChange={(e) => setSubCategory(e.target.value)}
+                    onChange={(e) => handlePriceChange(e.target.value)}
                     className="inline-flex items-center gap-3 px-3 py-1 border border-neutral-500 rounded-md text-sm md:text-base cursor-pointer"
                   >
                     <option defaultValue="Destination">Price Range</option>
-                    {finalPriceRange.map((cate: any, index: number) => (
-                      <option value={index}>
-                        {finalPriceRange[0] +
-                          finalPriceRange[0] * (index - 1) +
-                          "-" +
-                          (finalPriceRange[0] + finalPriceRange[0] * index)}
-                      </option>
-                    ))}
+                    {finalPriceRange.map((cate: any, index: number) =>
+                      index !== 4 ? (
+                        <option value={index}>
+                          {finalPriceRange[index] +
+                            "-" +
+                            finalPriceRange[index + 1]}
+                        </option>
+                      ) : null
+                    )}
                   </select>
                   {/* <button
                     type="button"
@@ -208,9 +244,9 @@ const index: React.FC<ActivitySearchProps> = (props: any) => {
               {/* Main Product Listing */}
               <div>
                 {productSwitch ? (
-                  <VerticalLayout data={props.response} />
+                  <VerticalLayout data={products} />
                 ) : (
-                  <HorizontalLayout data={props.response} />
+                  <HorizontalLayout data={products} />
                 )}
               </div>
             </div>

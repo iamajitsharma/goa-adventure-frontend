@@ -6,8 +6,8 @@ import { toast } from "react-toastify";
 
 const devServer = "http://localhost:4000/v1";
 const prodServer = "https://backend.goaadventure.in/v1";
-//const serverURL = prodServer;
-const serverURL = devServer;
+const serverURL = prodServer;
+//const serverURL = devServer;
 export const url = "http://localhost:1337";
 
 var myHeaders = new Headers();
@@ -194,9 +194,13 @@ export async function getPriceRange(options: any) {
   let url = `${serverURL}/products/price-range/filter?`;
   if (options.category) {
     url += `category_id=${options.category}&`;
-  } else if (options.subcategory) {
+  }
+  if (options.subcategory) {
     url += `subcategory_id=${options.subcategory}&`;
   }
+  // else if (options.minMaxPrice.minPrice && options.minMaxPrice.maxPrice) {
+  //   url += `min_price=${options.minMaxPrice.minPrice}&max_price=${options.minMaxPrice.maxPrice}&`;
+  // }
   const result: any = await fetch(url, requestOptions);
 
   const response = await result.json();
@@ -224,5 +228,25 @@ export async function createCustomerAndLogin(
   );
 
   const response = await result.json();
+  return response;
+}
+
+export async function getProductsWithFilter(options: any) {
+  console.log("OPTions option yaji hai", options);
+  let url = `${serverURL}/products/products-list/filter?`;
+  if (options.category) {
+    url += `category_id=${options.category}&`;
+  }
+  if (options.subcategory) {
+    url += `subcategory_id=${options.subcategory}&`;
+  }
+  if (options.minMaxPrice.minPrice && options.minMaxPrice.maxPrice) {
+    url += `min_price=${options.minMaxPrice.minPrice}&max_price=${options.minMaxPrice.maxPrice}&`;
+  }
+  console.log("URL USED", url);
+  const result: any = await fetch(url, requestOptions);
+
+  const response = await result.json();
+  console.log("RESPONE OF PRODUCTSS WITH FILTER", response);
   return response;
 }
