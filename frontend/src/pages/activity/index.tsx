@@ -107,7 +107,7 @@ const index: React.FC<ActivitySearchProps> = (props: any) => {
   }
   useEffect(() => {
     getData();
-  }, [minMaxPrice]);
+  }, [category, subcategory, minMaxPrice]);
 
   useEffect(() => {
     getProds();
