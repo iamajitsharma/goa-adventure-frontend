@@ -38,15 +38,15 @@ const ProductCardAlt: React.FC<ProductCardAltProps> = ({ item }) => {
 
   console.log("Product Card", item.gallery);
   return (
-    <div className="w-full h-full shadow-3xl bg-white flex flex-row items-start gap-0 overflow-hidden rounded-lg">
-      <div className="w-2/5 h-full">
+    <div className="w-full h-56 shadow-3xl bg-red-200 flex flex-row items-start gap-0 overflow-hidden rounded-lg">
+      <div className="relative w-1/2 h-56 overflow-hidden">
         <Slider {...settings}>
           {item.gallery?.map((img: any, index: any) => (
             <Image
               src={img}
               key={index}
               alt=""
-              className="object-cover"
+              className="object-fill w-full h-56"
               height={500}
               width={500}
             />
@@ -67,7 +67,7 @@ const ProductCardAlt: React.FC<ProductCardAltProps> = ({ item }) => {
         </h2>
 
         {/* Card Details */}
-        <div className="flex flex-wrap gap-2 md:gap-4 py-4">
+        <div className="flex flex-wrap gap-2 md:gap-4 py-2 md:py-4">
           <span className="flex items-center gap-2 text-xs md:text-sm">
             <FiMapPin className="text-primary text-xl" />
             {item.city} {item.state}
@@ -83,7 +83,7 @@ const ProductCardAlt: React.FC<ProductCardAltProps> = ({ item }) => {
         </div>
 
         {/* Card Features */}
-        <div className="flex flex-col gap-2 py-1">
+        <div className="flex flex-col md:flex-row gap-2 py-1">
           <span className="flex items-center gap-2 text-xs font-medium">
             <MdOutlineConfirmationNumber className="text-green-600/80 text-xl" />
             Instant Confirmation

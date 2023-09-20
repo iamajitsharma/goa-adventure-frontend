@@ -7,7 +7,7 @@ interface DataProps {
 const ProductList: React.FC<DataProps> = ({ data }) => {
   return (
     <>
-      {data?.map((item: any, index: any) => (
+      {data.map((item: any, index: any) => (
         <ProductCard item={item} key={index} />
       ))}
     </>

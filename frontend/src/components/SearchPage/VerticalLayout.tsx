@@ -4,7 +4,7 @@ import { products } from "../../data/ActivityData";
 
 const VerticalLayout = (props: any) => {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-2 my-2 -z-10">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 my-2 -z-10">
       <ProductList data={props.data} />
     </div>
   );
