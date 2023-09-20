@@ -264,5 +264,6 @@ export async function getStaticProps() {
 
   return {
     props: { response },
+    revalidate: 360,
   };
 }

@@ -110,6 +110,7 @@ export const getStaticProps = async () => {
     props: {
       privacyPolicies,
     },
+    revalidate: 360,
   };
 };
 

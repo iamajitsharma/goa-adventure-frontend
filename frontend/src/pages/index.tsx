@@ -113,6 +113,7 @@ export const getStaticProps = async () => {
       tourData,
       activityData,
     },
+    revalidate: 360,
   };
 };
 

@@ -60,6 +60,7 @@ export const getStaticProps = async () => {
     props: {
       termsConditions,
     },
+    revalidate: 360,
   };
 };
 

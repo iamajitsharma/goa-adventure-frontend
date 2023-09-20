@@ -107,6 +107,7 @@ export async function getStaticProps(context: any) {
   const data = await getSinglePageDetails(slug);
   return {
     props: { data },
+    revalidate: 360,
   };
 }
 
