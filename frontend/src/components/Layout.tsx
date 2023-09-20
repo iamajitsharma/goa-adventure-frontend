@@ -14,7 +14,7 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 
-export const revalidate = 10;
+export const revalidate = 360;
 export default function Layout({ children }: LayoutProps) {
   const router = useRouter();
 

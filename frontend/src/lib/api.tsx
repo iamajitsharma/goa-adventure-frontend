@@ -18,6 +18,7 @@ myHeaders.append(
 var requestOptions = {
   method: "GET",
   headers: myHeaders,
+  next: { revalidate: 360 },
 };
 
 const initialPrivacyPolicy: IPrivacy = {
@@ -221,6 +222,7 @@ export async function createCustomerAndLogin(
     method: "POST",
     headers: myHeaders,
     body: raw,
+    next: { revalidate: 360 },
   };
   const result: any = await fetch(
     `${serverURL}/customer/create-and-login-customer`,
