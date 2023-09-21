@@ -69,7 +69,7 @@ const Header = () => {
       
       `}
     >
-      <div className="max-w-[1260px] m-auto flex justify-between items-center py-2 text-white">
+      <div className="max-w-full m-auto flex justify-between items-center py-2 text-white md:px-2 lg:px-8">
         <div className="w-56 md:w-[250px] h-auto shrink-0 object-fill">
           <Link href="/">
             {router.pathname === "/" && !scrolled && isTablet ? (
@@ -103,7 +103,7 @@ const Header = () => {
                 key={link.name}
                 className={`${
                   isActive ? "text-primary" : "text-variant"
-                } md:p-2 lg:p-4 md:text-sm lg:text-[0.90rem] font-semibold tracking-wide`}
+                } md:p-2 lg:p-4 md:text-[11px] lg:text-[0.90rem] font-semibold tracking-wide`}
               >
                 <Link key={link.name} href={link.href}>
                   {link.name}

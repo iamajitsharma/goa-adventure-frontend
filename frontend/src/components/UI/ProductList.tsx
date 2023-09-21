@@ -5,11 +5,13 @@ interface DataProps {
   data?: any;
 }
 const ProductList: React.FC<DataProps> = ({ data }) => {
+  console.log(data.category, data.category_id);
   return (
     <>
-      {data.map((item: any, index: any) => (
-        <ProductCard item={item} key={index} />
-      ))}
+      {Array.isArray(data) &&
+        data.map((item: any, index: any) => (
+          <ProductCard item={item} key={index} />
+        ))}
     </>
   );
 };

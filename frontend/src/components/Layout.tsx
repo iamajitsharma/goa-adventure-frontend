@@ -18,19 +18,15 @@ export const revalidate = 360;
 export default function Layout({ children }: LayoutProps) {
   const router = useRouter();
 
-  if (router.pathname != "/register") {
-    return (
-      <>
-        <FAB />
+  return (
+    <>
+      {/* <FAB />
         <LoginModal />
         <RegisterModal />
-        <EmailLoginModal />
-        <Header />
-        {children}
-        <Footer />
-      </>
-    );
-  } else {
-    return <>{children}</>;
-  }
+        <EmailLoginModal /> */}
+      <Header />
+      {children}
+      <Footer />
+    </>
+  );
 }

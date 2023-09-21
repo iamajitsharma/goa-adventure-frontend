@@ -25,7 +25,7 @@ const index = (props: any) => {
   const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [subcategories, setSubCategories] = useState([]);
-  const [category, setCategory] = useState<string | null>(null);
+  const [category, setCategory] = useState<string | null | number>(28);
   const [subcategory, setSubCategory] = useState<string | null>(null);
   const [finalPriceRange, setFinalPriceRange] = useState<any>([]);
   const [minMaxPrice, setMinMaxPrice] = useState({

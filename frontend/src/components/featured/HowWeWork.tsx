@@ -13,22 +13,22 @@ const services: servicesProps[] = [
   {
     icon: <i className="ri-road-map-line"></i>,
     title: "Choose Destination",
-    description: "Lorem ipsum, dolor sit amet consectetur adipisicing",
+    description: "Chooose your destination and get best deals",
   },
   {
     icon: <i className="ri-coupon-line"></i>,
     title: "Book Ticket",
-    description: "Lorem ipsum, dolor sit amet consectetur adipisicing",
+    description: "Book your travel ticket now",
   },
   {
     icon: <i className="ri-shield-check-line"></i>,
     title: "Get Confirmation",
-    description: "Lorem ipsum, dolor sit amet consectetur adipisicing",
+    description: "Get instant confirmation ",
   },
   {
     icon: <i className="ri-camera-lens-line"></i>,
     title: "Ready To Explore",
-    description: "Lorem ipsum, dolor sit amet consectetur adipisicing",
+    description: "Explore the beauty of Goa",
   },
 ];
 

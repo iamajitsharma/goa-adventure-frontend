@@ -12,6 +12,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Layout from "@/components/Layout";
+import FAB from "@/components/FloatingActionButton/FAB";
+import EmailLoginModal from "@/components/modals/EmailLoginModal";
+import LoginModal from "@/components/modals/LoginModal";
+import RegisterModal from "@/components/modals/RegisterModal";
 // import UserLayout from "@/components/User/UserLayout";
 
 const poppins = Poppins({
@@ -38,6 +42,10 @@ export default function App({ Component, pageProps }: AppProps) {
         closeOnClick
         pauseOnHover={false}
       />
+      <FAB />
+      <LoginModal />
+      <RegisterModal />
+      <EmailLoginModal />
       <Layout>
         <main className={`${poppins.variable} ${merrifont.variable} font-sans`}>
           <Component {...pageProps} />
