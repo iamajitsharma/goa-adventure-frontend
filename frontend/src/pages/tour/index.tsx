@@ -45,7 +45,7 @@ const index = (props: any) => {
     for (let i = 1; i < 4; i++) {
       finalArray[i] = rangeValues.min_price + interval * i;
     }
-    console.log("FInal Array", finalArray);
+
     return finalArray;
   }
   async function getData() {

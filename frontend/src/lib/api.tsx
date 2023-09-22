@@ -47,7 +47,7 @@ export async function termsCondiitonsApi(): Promise<ITerms> {
   );
 
   const response = await result.json();
-  console.log("Result terms", response);
+
   // if (response.data) {
   //   const processedContent = await remark()
   //     .use(html)
@@ -66,9 +66,9 @@ export async function privacyPoliciesApi(): Promise<IPrivacy> {
     `${serverURL}/privacy-policies`,
     requestOptions
   );
-  console.log("Raw data", result);
+
   const response = await result.json();
-  console.log("Result privacy", response);
+
   // if (response.data) {
   //   const processedContent = await remark()
   //     .use(html)
@@ -127,7 +127,7 @@ export async function getDestination() {
     `${serverURL}/location/getMainHomePageDestination`,
     requestOptions
   );
-  console.log("Result", result);
+
   const response = await result.json();
   return response;
 }
@@ -191,7 +191,6 @@ export async function getSubCategories() {
   return response;
 }
 export async function getPriceRange(options: any) {
-  console.log("OPTions option yaji hai", options);
   let url = `${serverURL}/products/price-range/filter?`;
   if (options.category) {
     url += `category_id=${options.category}&`;
@@ -234,7 +233,6 @@ export async function createCustomerAndLogin(
 }
 
 export async function getProductsWithFilter(options: any) {
-  console.log("OPTions option yaji hai", options);
   let url = `${serverURL}/products/products-list/filter?`;
   if (options.category) {
     url += `category_id=${options.category}&`;
@@ -245,10 +243,10 @@ export async function getProductsWithFilter(options: any) {
   if (options.minMaxPrice.minPrice && options.minMaxPrice.maxPrice) {
     url += `min_price=${options.minMaxPrice.minPrice}&max_price=${options.minMaxPrice.maxPrice}&`;
   }
-  console.log("URL USED", url);
+
   const result: any = await fetch(url, requestOptions);
 
   const response = await result.json();
-  console.log("RESPONE OF PRODUCTSS WITH FILTER", response);
+
   return response;
 }

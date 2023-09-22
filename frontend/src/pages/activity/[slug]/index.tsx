@@ -114,10 +114,10 @@ export async function getStaticProps(context: any) {
 export async function getStaticPaths() {
   const allActivity = await getHomePageActivity();
   //Creating an array of objects
+
   const paths = allActivity.map((activity: any) => {
     return {
       params: { slug: activity.slug },
-      revalidate: 360,
     };
   });
 
