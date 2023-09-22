@@ -21,6 +21,7 @@ import { getHomePageTour } from "../../../lib/api";
 import ProductLayout from "@/components/SingleProductPage/ProductLayout";
 
 const index = (props: any) => {
+  console.log("Resp in tour", props);
   const salePrice = calculateSalePrice(
     props?.data[0]?.discount_percent,
     props?.data[0]?.price
