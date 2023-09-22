@@ -36,7 +36,7 @@ const ProductCardAlt: React.FC<ProductCardAltProps> = ({ item }) => {
   const discountPercent = parseFloat(item.discount_percent);
   const salePrice = originalPrice - (originalPrice * discountPercent) / 100;
 
-  console.log("Product Card", item.gallery);
+  //console.log("Product Card", item.gallery);
   return (
     <div className="w-full h-56 shadow-3xl bg-red-200 flex flex-row items-start gap-0 overflow-hidden rounded-lg">
       <div className="relative w-1/2 h-56 overflow-hidden">

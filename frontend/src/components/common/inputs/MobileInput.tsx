@@ -39,7 +39,6 @@ const MobileInput: React.FC<MobileInputProps> = ({
   // const [mobileNo, setMobileNo] = useState("");
   // const [error, setError] = useState({ status: false, message: "" });
 
-  console.log(CountryPhoneCode);
   const handleChange = (e: any) => {
     setMobileNo(e.target.value);
   };
@@ -57,7 +56,7 @@ const MobileInput: React.FC<MobileInputProps> = ({
       };
       setError(errorStatus);
     } else {
-      console.log("Captured Value", mobileNo);
+      //console.log("Captured Value", mobileNo);
     }
   };
 

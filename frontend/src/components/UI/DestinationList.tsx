@@ -49,9 +49,9 @@ import location04 from "../../../public/assets/Rectangle_23.png";
 
 const DestinationList = ({ locationData }: any) => {
   const router = useRouter();
-  console.log("Resceived locationData", locationData);
+  //console.log("Resceived locationData", locationData);
   const handleEdge = (edge: string) => {
-    console.log(`Edge reached: ${edge}`);
+    //console.log(`Edge reached: ${edge}`);
   };
   const settings = {
     dots: false,

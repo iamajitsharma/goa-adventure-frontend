@@ -27,7 +27,7 @@ const EmailLoginModal = () => {
         message: "",
       };
       setError(errorStatus);
-      console.log("Captured Value email", email);
+      //console.log("Captured Value email", email);
     }
   };
 

@@ -54,7 +54,7 @@ export async function termsCondiitonsApi(): Promise<ITerms> {
   //     .process(response.data.attributes.terms_conditions);
   //   const contentHtml = processedContent.toString();
   //   response.data.attributes.terms_conditions = contentHtml;
-  //   console.log("HTMl content terms", response.data);
+  //   //console.log("HTMl content terms", response.data);
   //   return response.data;
   // }
 
@@ -75,7 +75,7 @@ export async function privacyPoliciesApi(): Promise<IPrivacy> {
   //     .process(response.data.attributes.privacy_policies);
   //   const contentHtml = processedContent.toString();
   //   response.data.attributes.privacy_policies = contentHtml;
-  //   console.log("HTMl content privacy", response.data);
+  //   //console.log("HTMl content privacy", response.data);
   //   return response.data;
   // }
 

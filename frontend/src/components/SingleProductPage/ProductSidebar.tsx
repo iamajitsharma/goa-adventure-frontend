@@ -27,7 +27,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
   const [quantity, setQuantity] = useState(1);
   const [day, setDay] = useState<DayValue>(null);
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
-  console.log(day);
+  //console.log(day);
 
   const incrementHandler = () => {
     setQuantity(quantity + 1);

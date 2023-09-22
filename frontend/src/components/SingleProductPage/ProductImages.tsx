@@ -28,7 +28,7 @@ const ProductImages: React.FC<ProductImageProps> = ({
   featuredImage,
   galleryImage,
 }) => {
-  console.log(galleryImage);
+  //console.log(galleryImage);
   return (
     <div className="grid grid-cols-4 grid-rows-2 gap-1 w-full h-full overflow-hidden">
       <div className="hidden transition-all ease-in-out md:block overflow-hidden">

@@ -14,9 +14,9 @@ export default function Invoice() {
     // setLoaded(false);
     if (searchParams.get("order_id")) {
       let order_id: any = searchParams.get("order_id");
-      console.log("Order id", order_id);
+      //console.log("Order id", order_id);
       const bookingInfo = await getBookingInfo(order_id);
-      console.log("bookingInfo", bookingInfo);
+      //console.log("bookingInfo", bookingInfo);
       setInvoice(bookingInfo.invoice);
     }
     // setLoaded(true);

@@ -34,7 +34,6 @@ const index = (props: any) => {
   });
   const [products, setProducts] = useState([]);
 
-  console.log("Activity Page", props);
   async function calculateRange(rangeValues: any) {
     rangeValues.max_price = Number(rangeValues.max_price);
     rangeValues.min_price = Number(rangeValues.min_price);
@@ -60,7 +59,7 @@ const index = (props: any) => {
       subcategory,
     });
     const getBreakup = await calculateRange(priceRange[0]);
-    console.log("FINAL RANGE FETCHED", priceRange);
+    //console.log("FINAL RANGE FETCHED", priceRange);
 
     setFinalPriceRange(getBreakup);
     const prod = await getProductsWithFilter({
@@ -73,7 +72,6 @@ const index = (props: any) => {
   }
 
   async function getProds() {
-    console.log("MInium max price", minMaxPrice);
     const prod = await getProductsWithFilter({
       category,
       subcategory,

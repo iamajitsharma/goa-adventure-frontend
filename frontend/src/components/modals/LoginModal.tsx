@@ -34,7 +34,7 @@ const LoginModal = () => {
         message: "",
       };
       setError(errorStatus);
-      console.log("Captured Value", mobileNo);
+      //console.log("Captured Value", mobileNo);
     }
   };
 

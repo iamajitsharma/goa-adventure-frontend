@@ -21,10 +21,15 @@ import { getHomePageActivity } from "../../../lib/api";
 import ProductLayout from "@/components/SingleProductPage/ProductLayout";
 
 const index = (props: any) => {
+  const router = useRouter();
   const salePrice = calculateSalePrice(
     props?.data[0]?.discount_percent,
     props?.data[0]?.price
   );
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <section className="pt-0 bg-slate-50">

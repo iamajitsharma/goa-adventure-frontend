@@ -2,7 +2,6 @@ interface DOB {
   dateOfBooking: string;
 }
 export default function Date({ dateOfBooking }: DOB) {
-  console.log("Date received", dateOfBooking);
   let newDate = dateOfBooking.split("T")[0];
   let dateArray = newDate.split("-");
   const monthNames = [
@@ -21,7 +20,7 @@ export default function Date({ dateOfBooking }: DOB) {
   ];
 
   dateArray[1] = monthNames[Number(dateArray[1]) - 1];
-  console.log("Date final", dateArray);
+  //console.log("Date final", dateArray);
 
   return (
     <>

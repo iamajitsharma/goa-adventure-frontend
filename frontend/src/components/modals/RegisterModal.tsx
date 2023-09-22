@@ -53,7 +53,7 @@ const RegisterModal = () => {
   };
 
   const handleDataSubmit = async () => {
-    console.log("Email MObilenumber name", email, mobileNo, name);
+    //console.log("Email MObilenumber name", email, mobileNo, name);
     let errorVal = 0;
     if (name.length == 0) {
       const errorStatus = {
@@ -88,7 +88,7 @@ const RegisterModal = () => {
       setError(errorStatus);
       errorVal = 1;
     }
-    console.log("");
+    //console.log("");
 
     if (errorVal == 0) {
       setError({
@@ -97,7 +97,7 @@ const RegisterModal = () => {
       });
 
       const logInData = await createCustomerAndLogin(email, mobileNo, name);
-      console.log("LOGIN DATA", logInData);
+      //console.log("LOGIN DATA", logInData);
     }
   };
 

@@ -144,13 +144,7 @@ const index: React.FC<StateProps> = ({ min, max }) => {
                   </button>
                   {isOpen && (
                     <div className="absolute top-10 right-0 z-10">
-                      <MultiRangeSlider
-                        min={0}
-                        max={25000}
-                        onChange={({}) =>
-                          console.log(`min = ${min}, max = ${max}`)
-                        }
-                      />
+                      <MultiRangeSlider min={0} max={25000} />
                     </div>
                   )}
                 </div>

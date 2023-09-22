@@ -13,7 +13,7 @@ import { useParams } from "next/navigation";
 const index = () => {
   const router = useRouter();
   const params = useParams();
-  console.log(params);
+  //console.log(params);
   const { country } = router.query;
 
   return (

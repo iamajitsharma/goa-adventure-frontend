@@ -5,7 +5,7 @@ interface DataProps {
   data?: any;
 }
 const ProductList: React.FC<DataProps> = ({ data }) => {
-  console.log(data.category, data.category_id);
+  //console.log(data.category, data.category_id);
   return (
     <>
       {Array.isArray(data) &&

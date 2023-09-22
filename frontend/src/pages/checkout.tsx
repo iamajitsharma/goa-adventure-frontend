@@ -42,7 +42,7 @@ const Checkout = () => {
     const product_id = 13;
     const quantity = 2;
 
-    console.log("HEELLO");
+    //console.log("HEELLO");
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -71,8 +71,8 @@ const Checkout = () => {
 
     // fetch("http://localhost:4000/v1/payment/create-order", requestOptions)
     //   .then(response => response.text())
-    //   .then(result => console.log(result))
-    //   .catch(error => console.log('error', error));
+    //   .then(result => //console.log(result))
+    //   .catch(error => //console.log('error', error));
 
     // Make API call to the serverless API
     const data: any = await fetch(
@@ -84,11 +84,11 @@ const Checkout = () => {
         redirect: "follow",
       }
     ).then((t) => {
-      console.log("The response T", t);
+      //console.log("The response T", t);
       return t.json();
     });
 
-    console.log("Data consiting of order", data);
+    //console.log("Data consiting of order", data);
     const res = await initializeRazorpay();
     if (!res) {
       alert("Razorpay SDK Failed to load");

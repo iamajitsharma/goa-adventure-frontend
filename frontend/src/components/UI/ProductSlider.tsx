@@ -14,7 +14,7 @@ interface ProductSliderProps {
 
 const ProductSlider: React.FC<ProductSliderProps> = ({ data, isLoading }) => {
   const handleEdge = (edge: string) => {
-    console.log(`Edge reached: ${edge}`);
+    //console.log(`Edge reached: ${edge}`);
   };
   const settings = {
     dots: false,

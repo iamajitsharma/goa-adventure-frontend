@@ -45,7 +45,7 @@ const data = [
 
 const BookingHistory = () => {
   const router = useRouter();
-  console.log(router);
+  //console.log(router);
   return (
     <UserContent>
       <h3 className="text-xl font-poppins py-2 font-semibold tracking-wider uppercase">

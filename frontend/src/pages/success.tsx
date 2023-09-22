@@ -11,7 +11,6 @@ export default function PaymentSuccess() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    console.log("ROuter", router);
     const interval = setInterval(() => {
       setIsGrowing((prevIsGrowing) => !prevIsGrowing);
     }, 1000);
