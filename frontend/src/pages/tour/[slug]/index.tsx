@@ -114,8 +114,8 @@ export async function getStaticProps(context: any) {
 export async function getStaticPaths() {
   const allTour = await getHomePageTour();
   //Creating an array of objects
+  console.log("Tours teceived", allTour);
   const paths = allTour.map((tour: any) => {
-    console.log("Tours teceived", tour);
     return {
       params: { slug: tour.slug },
       revalidate: 360,
