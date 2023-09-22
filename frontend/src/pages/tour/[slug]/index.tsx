@@ -26,9 +26,6 @@ const index = (props: any) => {
     props?.data[0]?.discount_percent,
     props?.data[0]?.price
   );
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <section className="pt-0 bg-slate-50">
@@ -127,7 +124,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true,
+    fallback: "blocking",
   };
 }
 
