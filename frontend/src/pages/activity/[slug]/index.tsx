@@ -117,6 +117,7 @@ export async function getStaticPaths() {
   const paths = allActivity.map((activity: any) => {
     return {
       params: { slug: activity.slug },
+      revalidate: 360,
     };
   });
 

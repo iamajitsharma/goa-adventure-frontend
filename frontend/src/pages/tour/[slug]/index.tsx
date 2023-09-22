@@ -117,6 +117,7 @@ export async function getStaticPaths() {
   const paths = allTour.map((tour: any) => {
     return {
       params: { slug: tour.slug },
+      revalidate: 360,
     };
   });
 
