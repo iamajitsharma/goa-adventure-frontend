@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ITerms } from "../lib/interfaces";
 import { termsCondiitonsApi } from "../lib/api";
 import parse from "html-react-parser";
+import useCustomer from "@/hook/useCustomer";
 
 const intialTermsConditons: ITerms = {
   id: 0,
@@ -15,6 +16,11 @@ const intialTermsConditons: ITerms = {
 };
 
 const TermsConditions = (props: any) => {
+  const { customer, setCustomer } = useCustomer();
+  console.log("CUSTOEMR Data", customer);
+  useEffect(() => {
+    setCustomer("Ankit Gupta");
+  }, []);
   const parsedContent = parse(`${props?.termsConditions?.terms_conditions}`);
   return (
     <section className="font-poppins">

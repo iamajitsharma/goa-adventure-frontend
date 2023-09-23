@@ -6,6 +6,7 @@ import { AiOutlineMail } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { IPrivacy } from "../lib/interfaces";
 import { privacyPoliciesApi } from "../lib/api";
+import useCustomer from "@/hook/useCustomer";
 
 export const disclosure_navLink = [
   {
@@ -36,6 +37,11 @@ const initialPrivacyPolicy: IPrivacy = {
 };
 
 const PrivacyPolicy = (props: any) => {
+  const { customer, setCustomer } = useCustomer();
+  console.log("CUSTOEMR Privacy", customer);
+  useEffect(() => {
+    setCustomer("Ankit Gupta Privacy");
+  }, []);
   return (
     <section className="font-poppins">
       <Container>
