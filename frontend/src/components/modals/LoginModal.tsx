@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 const LoginModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [mobileNo, setMobileNo] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState({ status: false, message: "" });
   // function handleDataSubmit(mobileNo: string) {
   const handleDataSubmit = () => {
@@ -28,13 +29,19 @@ const LoginModal = () => {
         message: "Please enter mobile Number",
       };
       setError(errorStatus);
+    } else if (password.length == 0) {
+      const errorStatus = {
+        status: true,
+        message: "Please enter Password",
+      };
+      setError(errorStatus);
     } else {
       const errorStatus = {
         status: false,
         message: "",
       };
       setError(errorStatus);
-      //console.log("Captured Value", mobileNo);
+      console.log("Captured Value", mobileNo, password);
     }
   };
 
@@ -71,15 +78,18 @@ const LoginModal = () => {
         required
       />
 
-      {/* <Input
-        id="otp"
-        label="OTP"
-        type="text"
+      <Input
+        id="password"
+        label="Password"
+        type="password"
         register={register}
         disabled={isLoading}
-        errors={errors}
+        errors={error}
+        inputData={password}
+        setInputData={setPassword}
+        setError={setError}
         required
-      /> */}
+      />
 
       <div className="flex items-center justify-between text-sm text-neutral-600 pt-4">
         {/* <label className="inline-flex items-center gap-2">

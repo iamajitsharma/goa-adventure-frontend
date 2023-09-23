@@ -1,4 +1,4 @@
-const KEY = "redux";
+const KEY = "loginuser";
 export function loadState() {
   try {
     const serializedState = localStorage.getItem(KEY);

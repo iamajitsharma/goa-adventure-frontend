@@ -96,7 +96,7 @@ const RegisterModal = () => {
         message: "",
       });
 
-      const logInData = await createCustomerAndLogin(email, mobileNo, name);
+      // const logInData = await createCustomerAndLogin(email, mobileNo, name);
       //console.log("LOGIN DATA", logInData);
     }
   };
