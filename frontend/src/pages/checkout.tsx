@@ -9,6 +9,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Select from "@/components/common/inputs/CustomSelect";
 import CustomSelect from "@/components/common/inputs/CustomSelect";
+import useProduct from "@/hook/useProduct";
+import useCustomer from "@/hook/useCustomer";
 
 const Checkout = () => {
   const router = useRouter();
@@ -18,7 +20,8 @@ const Checkout = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FieldValues>({});
-
+  const { product } = useProduct();
+  const { customer }: any = useCustomer();
   const initializeRazorpay = () => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
@@ -36,11 +39,19 @@ const Checkout = () => {
   };
 
   async function callRazorPay() {
-    const amount = "5200";
+    const subTotal = Number(product.actualPrice) * Number(product.quantity);
+    const discount =
+      (Number(product.actualPrice) - Number(product.priceToBePaid)) *
+      Number(product.quantity);
+    const finalPayment =
+      Number(product.priceToBePaid) * Number(product.quantity);
+    const payNow = (finalPayment * Number(product.deposit_value)) / 100;
+    const futurePayment = finalPayment - payNow;
+    const amount = payNow;
     // const booking_id = 2;
-    const customer_id = 7;
-    const product_id = 13;
-    const quantity = 2;
+    const customer_id = customer?.user.id;
+    const product_id = product?.product_id;
+    const quantity = product.quantity;
 
     //console.log("HEELLO");
 
@@ -49,16 +60,16 @@ const Checkout = () => {
 
     var raw = JSON.stringify({
       customerPrice: {
-        totalAmount: "4160",
-        depositAmount: "4160",
-        payingFull: true,
+        totalAmount: subTotal.toString(),
+        depositAmount: payNow.toString(),
+        payingFull: false,
       },
       productDetails: {
-        productId: 14,
-        customerId: 7,
-        quantity: 2,
-        startDate: "2023-08-12",
-        endDate: "2023-08-13",
+        productId: product?.product_id,
+        customerId: customer?.user.id,
+        quantity: product?.quantity,
+        startDate: product?.fromDate,
+        endDate: product?.toDate,
       },
     });
 
@@ -95,7 +106,7 @@ const Checkout = () => {
       return;
     }
 
-    var options = {
+    var options: any = {
       key: "rzp_test_lcf9GSjJoWx5Gk", // Enter the Key ID generated from the Dashboard
       name: "Safar Travel Express",
       currency: data?.currency,
@@ -112,12 +123,18 @@ const Checkout = () => {
         router.push(`/success?order_id=${response.razorpay_payment_id}`);
       },
 
-      prefill: {
-        name: "Ajit Sharma",
-        email: "ajitsharma@gmail.com",
-        contact: "9999999999",
-      },
+      // prefill: {
+      //   name: "Ajit Sharma",
+      //   email: "ajitsharma@gmail.com",
+      //   contact: "9999999999",
+      // },
     };
+    if (customer.id) {
+      (options.prefill.name = customer.name),
+        (options.prefill.email = customer.email),
+        (options.prefill.contact = customer.mobile_number);
+    }
+
     let windowRazorPay = window as any;
     const paymentObject = new windowRazorPay.Razorpay(options);
     paymentObject.open();
