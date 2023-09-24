@@ -11,6 +11,7 @@ import DestinationListItems from "@/components/SearchPage/DestinationListItems";
 import HorizontalLayout from "@/components/SearchPage/HorizontalLayout";
 import VerticalLayout from "@/components/SearchPage/VerticalLayout";
 import { Button } from "@/components/common/Button";
+import { useRouter, useSearchParams } from "next/navigation";
 import Loader from "react-loader";
 import {
   fetchProducts,
@@ -22,17 +23,19 @@ import {
 import { getHomePageActivity } from "@/lib/api";
 
 const index = (props: any) => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [subcategories, setSubCategories] = useState([]);
   const [category, setCategory] = useState<string | null | number>(29);
-  const [subcategory, setSubCategory] = useState<string | null>(null);
+  const [subcategory, setSubCategory] = useState<string | null | number>(null);
   const [finalPriceRange, setFinalPriceRange] = useState<any>([]);
   const [minMaxPrice, setMinMaxPrice] = useState({
     minPrice: null,
     maxPrice: null,
   });
   const [products, setProducts] = useState([]);
+  const searchParams = new URLSearchParams(window.location.search);
 
   async function calculateRange(rangeValues: any) {
     rangeValues.max_price = Number(rangeValues.max_price);
@@ -70,6 +73,21 @@ const index = (props: any) => {
     setIsLoading(true);
   }
 
+  useEffect(() => {
+    console.log("Data", searchParams);
+    if (searchParams.get("filter_type") && searchParams.get("id")) {
+      console.log(
+        "ROUTER .query",
+        searchParams.get("filter_type"),
+        searchParams.get("id")
+      );
+      if (searchParams.get("filter_type") == "categories") {
+        setCategory(Number(searchParams.get("id")));
+      } else {
+        setSubCategory(Number(searchParams.get("id")));
+      }
+    }
+  }, []);
   async function getProds() {
     //console.log("MInium max price", minMaxPrice);
     const prod = await getProductsWithFilter({

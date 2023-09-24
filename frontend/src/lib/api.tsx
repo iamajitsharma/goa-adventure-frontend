@@ -132,6 +132,16 @@ export async function getDestination() {
   return response;
 }
 
+export async function getHomePageSearch(text: string) {
+  const result: any = await fetch(
+    `${serverURL}/products/home-page-search/${text}`,
+    requestOptions
+  );
+
+  const response = await result.json();
+  return response;
+}
+
 // Acitivity API
 
 export async function getHomePageActivity() {
