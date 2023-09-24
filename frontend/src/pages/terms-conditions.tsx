@@ -16,11 +16,6 @@ const intialTermsConditons: ITerms = {
 };
 
 const TermsConditions = (props: any) => {
-  const { customer, setCustomer } = useCustomer();
-  console.log("CUSTOEMR Data", customer);
-  useEffect(() => {
-    setCustomer("Ankit Gupta");
-  }, []);
   const parsedContent = parse(`${props?.termsConditions?.terms_conditions}`);
   return (
     <section className="font-poppins">

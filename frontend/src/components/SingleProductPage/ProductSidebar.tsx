@@ -30,10 +30,12 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
   //console.log(day);
 
   const incrementHandler = () => {
+    console.log("Quantituy hitted");
     setQuantity(quantity + 1);
   };
 
   const DecrementHandler = () => {
+    console.log("Quantituy hitted");
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
@@ -57,30 +59,28 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <motion.span
-                className="shadow-md p-1 text-3xl rounded-sm cursor-pointer text-white"
-                whileTap={{ scale: 1.2 }}
-              >
-                <FiMinus
-                  onClick={DecrementHandler}
-                  className="bg-slate-200 rounded-sm text-variant"
-                />
-              </motion.span>
+              <span onClick={() => DecrementHandler()}>
+                <motion.span
+                  className="shadow-md p-1 text-3xl rounded-sm cursor-pointer text-white"
+                  whileTap={{ scale: 1.2 }}
+                >
+                  <FiMinus className="bg-slate-200 rounded-sm text-variant" />
+                </motion.span>
+              </span>
               <input
                 type="number"
                 min={1}
                 value={quantity}
                 className="p-2 w-12 sm:w-16 h-10 rounded-md text-lg font-semibold text-center appearance-none"
               />
-              <motion.span
-                className="shadow-md p-1 text-3xl rounded-sm cursor-pointer text-white"
-                whileTap={{ scale: 1.2 }}
-              >
-                <FiPlus
-                  onClick={incrementHandler}
-                  className="bg-slate-200 rounded-sm text-variant"
-                />
-              </motion.span>
+              <span onClick={() => incrementHandler()}>
+                <motion.span
+                  className="shadow-md p-1 text-3xl rounded-sm cursor-pointer text-white"
+                  whileTap={{ scale: 1.2 }}
+                >
+                  <FiPlus className="bg-slate-200 rounded-sm text-variant" />
+                </motion.span>
+              </span>
             </div>
             <motion.button
               type="button"
@@ -126,17 +126,22 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
                 <motion.span
                   className="shadow-md p-1 text-3xl rounded-md cursor-pointer"
                   whileTap={{ scale: 1.1 }}
+                  onClick={() => DecrementHandler()}
                 >
                   <FiMinus />
                 </motion.span>
+
                 <input
                   type="text"
-                  min={0}
+                  min={1}
+                  value={quantity}
                   className="w-12 h-8 rounded-md text-base font-semibold"
                 />
+
                 <motion.span
                   className="shadow-md p-1 text-3xl rounded-md cursor-pointer"
                   whileTap={{ scale: 1.1 }}
+                  onClick={() => incrementHandler()}
                 >
                   <FiPlus />
                 </motion.span>

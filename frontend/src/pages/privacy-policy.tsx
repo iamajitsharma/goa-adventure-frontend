@@ -37,11 +37,6 @@ const initialPrivacyPolicy: IPrivacy = {
 };
 
 const PrivacyPolicy = (props: any) => {
-  const { customer, setCustomer } = useCustomer();
-  console.log("CUSTOEMR Privacy", customer);
-  useEffect(() => {
-    setCustomer("Ankit Gupta Privacy");
-  }, []);
   return (
     <section className="font-poppins">
       <Container>
