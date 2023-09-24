@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AiOutlineDelete,
   AiOutlineMinusSquare,
@@ -11,12 +11,13 @@ import { useMediaQuery } from "react-responsive";
 import { deviceSize } from "../Responsive";
 import { motion } from "framer-motion";
 import { FiMinusCircle, FiPlusCircle } from "react-icons/fi";
+import useProduct from "@/hook/useProduct";
 
 interface CartCardProps {
-  image: any;
-  title: string;
-  price: number;
-  quantity: number;
+  image: any | null;
+  title: string | null;
+  price: number | null;
+  quantity: number | null;
 }
 
 const CartCard: React.FC<CartCardProps> = ({
@@ -26,6 +27,12 @@ const CartCard: React.FC<CartCardProps> = ({
   quantity,
 }) => {
   const isMobile = useMediaQuery({ maxWidth: deviceSize.mobile });
+  const { product, setProduct, discardProduct } = useProduct();
+
+  useEffect(() => {
+    let ankit = product;
+    console.log("ANkit", ankit);
+  }, []);
   return (
     <>
       {isMobile ? (
@@ -41,17 +48,20 @@ const CartCard: React.FC<CartCardProps> = ({
                   <MdCurrencyRupee />
                   {price}
                 </span>
-                <span className="text-2xl text-rose-500">
+                <span
+                  className="text-2xl text-rose-500"
+                  onClick={() => discardProduct({})}
+                >
                   <AiOutlineDelete />
                 </span>
                 <div className="flex items-center gap-3 text-3xl">
-                  <motion.span whileTap={{ scale: 1.2 }}>
+                  {/* <motion.span whileTap={{ scale: 1.2 }}>
                     <FiMinusCircle />
-                  </motion.span>
-                  <span className="text-2xl">{quantity}</span>
-                  <motion.span>
+                  </motion.span> */}
+                  <span className="text-2xl">Quantity : {quantity}</span>
+                  {/* <motion.span>
                     <FiPlusCircle />
-                  </motion.span>
+                  </motion.span> */}
                 </div>
               </div>
             </div>
@@ -72,15 +82,18 @@ const CartCard: React.FC<CartCardProps> = ({
                 {price}
               </span>
               <div className="flex items-center gap-3 text-3xl">
-                <motion.span whileTap={{ scale: 1.2 }}>
+                {/* <motion.span whileTap={{ scale: 1.2 }}>
                   <FiMinusCircle />
-                </motion.span>
-                {quantity}
-                <motion.span>
+                </motion.span> */}
+                Quantity : {quantity}
+                {/* <motion.span>
                   <FiPlusCircle />
-                </motion.span>
+                </motion.span> */}
               </div>
-              <span className="text-2xl text-rose-500">
+              <span
+                className="text-2xl text-rose-500"
+                onClick={() => discardProduct({})}
+              >
                 <AiOutlineDelete />
               </span>
             </div>

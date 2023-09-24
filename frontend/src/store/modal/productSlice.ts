@@ -16,7 +16,8 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     addProduct: (state, action) => {
-      console.log("ACTION VALUE", action);
+      console.log("STATE VALUE", state);
+
       return {
         title: action.payload.title,
         product_id: action.payload.product_id,
