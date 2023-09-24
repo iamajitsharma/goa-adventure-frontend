@@ -18,6 +18,7 @@ import { GrContactInfo } from "react-icons/gr";
 import { TfiMapAlt } from "react-icons/tfi";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import useCustomer from "@/hook/useCustomer";
 
 const navigation = [
   { name: "Home", href: "/", icon: <AiOutlineHome /> },
@@ -57,6 +58,7 @@ const Header = () => {
 
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
   const isMobile = useMediaQuery({ maxWidth: deviceSize.mobile });
+  const { customer }: any = useCustomer();
 
   return (
     <div
@@ -131,7 +133,9 @@ const Header = () => {
             <AiOutlineShoppingCart />
           </motion.span> */}
 
-          {!scrolled && !isTablet && <Button onClick={openLogin}>Login</Button>}
+          {!scrolled && !isTablet && !customer?.user && (
+            <Button onClick={openLogin}>Login</Button>
+          )}
 
           {scrolled && !isTablet && (
             <Button onClick={openLogin} variant="primary">

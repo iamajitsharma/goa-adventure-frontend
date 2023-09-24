@@ -9,15 +9,20 @@ import { useSelector } from "react-redux";
 import MobileInput from "../common/inputs/MobileInput";
 import SocialLogin from "../login/SocialLogin";
 import { useRouter } from "next/router";
+import { customerMobileLogIn } from "@/lib/api";
+import useCustomer from "@/hook/useCustomer";
 
 const LoginModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [mobileNo, setMobileNo] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ status: false, message: "" });
+  const { customer, setCustomer } = useCustomer();
+  console.log("CUSTOEMR Login Modal", customer);
+
   // function handleDataSubmit(mobileNo: string) {
-  const handleDataSubmit = () => {
-    if (mobileNo.length < 10) {
+  const handleDataSubmit = async () => {
+    if (mobileNo.length < 10 || mobileNo.length > 10) {
       const errorStatus = {
         status: true,
         message: "MObile Number must be equal to 10 digits",
@@ -42,6 +47,10 @@ const LoginModal = () => {
       };
       setError(errorStatus);
       console.log("Captured Value", mobileNo, password);
+      const response = await customerMobileLogIn(mobileNo, password);
+      console.log("Response from login", response);
+      setCustomer(response);
+      closeLogin();
     }
   };
 

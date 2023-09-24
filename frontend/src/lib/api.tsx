@@ -6,8 +6,8 @@ import { toast } from "react-toastify";
 
 const devServer = "http://localhost:4000/v1";
 const prodServer = "https://backend.goaadventure.in/v1";
-const serverURL = prodServer;
-//const serverURL = devServer;
+//const serverURL = prodServer;
+const serverURL = devServer;
 export const url = "http://localhost:1337";
 
 var myHeaders = new Headers();
@@ -254,16 +254,17 @@ export async function customerMobileLogIn(
   mobile_number: string,
   password: string
 ) {
-  var raw = JSON.stringify({
-    mobile_number,
-    password,
-  });
-  var requestOptionsForPost = {
-    method: "POST",
-    headers: myHeaders,
-    body: raw,
+  var requestOptionsForPost: any = {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+
+    body: JSON.stringify({
+      mobile_number,
+      password,
+    }),
   };
   let url = `${serverURL}/customer/mobile-number-login`;
+  console.log("Resposne", requestOptionsForPost);
 
   const result: any = await fetch(url, requestOptionsForPost);
 
