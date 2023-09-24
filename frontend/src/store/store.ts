@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authModalReducer from "./modal/authModalSlice";
 import loginUserReducer from "./modal/loginUserSlice";
+import productReducer from "./modal/productSlice";
+
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
@@ -26,6 +28,7 @@ export const store = configureStore({
   reducer: {
     authModal: authModalReducer,
     loginUser: persistedReducer,
+    product: productReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
