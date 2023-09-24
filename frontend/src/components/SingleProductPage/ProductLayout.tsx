@@ -8,6 +8,8 @@ interface ProductLayoutProps {
   price: string | number;
   salePrice: string | number;
   discount: string | number;
+  title: string;
+  product_id: number;
 }
 
 const ProductLayout: React.FC<ProductLayoutProps> = ({
@@ -15,6 +17,8 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
   price,
   salePrice,
   discount,
+  title,
+  product_id,
 }) => {
   return (
     <Container>
@@ -27,6 +31,8 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
             price={price}
             salePrice={salePrice}
             discount={discount}
+            title={title}
+            product_id={product_id}
           />
         </div>
       </div>

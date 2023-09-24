@@ -1,10 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  productName: null,
+  title: null,
   prouduct_id: null,
-  prouductPrice: null,
+  actualPrice: null,
+  priceToBePaid: null,
   quantity: null,
+  toDate: null,
+  fromDate: null,
 };
 
 const productSlice = createSlice({
@@ -13,10 +16,13 @@ const productSlice = createSlice({
   reducers: {
     addProduct: (state, action) => {
       return {
-        productName: action.payload.title,
+        title: action.payload.title,
         prouduct_id: action.payload.id,
-        prouductPrice: action.payload.price,
+        actualPrice: action.payload.actualPrice,
+        priceToBePaid: action.payload.priceToBePaid,
         quantity: action.payload.quantity,
+        toDate: action.payload.toDate,
+        fromDate: action.payload.fromDate,
       };
     },
     removeProduct: (state, action) => initialState,

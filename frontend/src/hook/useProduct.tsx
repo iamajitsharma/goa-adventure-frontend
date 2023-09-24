@@ -4,17 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useAppSelector } from "@/store/store";
 
-const useCustomer = () => {
+const useProduct = () => {
   const dispatch = useDispatch();
 
   const product = useAppSelector((state) => state.product);
-  const setProduct = (customer: any) => {
-    return dispatch(addProduct(customer));
+  const setProduct = (product: any) => {
+    return dispatch(addProduct(product));
   };
-  const discardProduct = (customer: any) => {
-    return dispatch(removeProduct(customer));
+  const discardProduct = (product: any) => {
+    return dispatch(removeProduct(product));
   };
   return { product, setProduct, discardProduct };
 };
 
-export default useCustomer;
+export default useProduct;

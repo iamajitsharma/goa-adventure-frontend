@@ -39,6 +39,8 @@ const index = (props: any) => {
         price={props?.data[0]?.price}
         salePrice={salePrice}
         discount={props?.data[0]?.discount_percent}
+        title={props?.data[0]?.title}
+        product_id={props?.data[0]?.id}
       >
         {/* Product Title Section */}
         <Box className="bg-white">

@@ -10,12 +10,15 @@ import { useMediaQuery } from "react-responsive";
 import DatePicker, { DayValue } from "react-modern-calendar-datepicker";
 import Link from "next/link";
 import { ImWhatsapp } from "react-icons/im";
+import useProduct from "@/hook/useProduct";
 
 interface ProductSidebarProps {
   price: string | number;
   salePrice: string | number;
   discount: string | number;
   date?: Date;
+  product_id: number;
+  title: string;
 }
 
 const ProductSidebar: React.FC<ProductSidebarProps> = ({
@@ -23,10 +26,14 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
   salePrice,
   discount,
   date,
+  product_id,
+  title,
 }) => {
   const [quantity, setQuantity] = useState(1);
-  const [day, setDay] = useState<DayValue>(null);
+  const [toDate, setToDate] = useState<any>(null);
+  const [fromDate, setFromDate] = useState<any>(null);
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
+  const { product, setProduct, discardProduct } = useProduct();
   //console.log(day);
 
   const incrementHandler = () => {
@@ -40,6 +47,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
       setQuantity(quantity - 1);
     }
   };
+  console.log("TO Date", toDate);
   return (
     <>
       {isTablet ? (
@@ -59,33 +67,34 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <span onClick={() => DecrementHandler()}>
-                <motion.span
-                  className="shadow-md p-1 text-3xl rounded-sm cursor-pointer text-white"
-                  whileTap={{ scale: 1.2 }}
-                >
-                  <FiMinus className="bg-slate-200 rounded-sm text-variant" />
-                </motion.span>
-              </span>
+              <motion.span
+                className="shadow-md p-1 text-3xl rounded-sm cursor-pointer text-white"
+                whileTap={{ scale: 1.2 }}
+                onClick={() => DecrementHandler()}
+              >
+                <FiMinus className="bg-slate-200 rounded-sm text-variant" />
+              </motion.span>
+
               <input
                 type="number"
                 min={1}
                 value={quantity}
                 className="p-2 w-12 sm:w-16 h-10 rounded-md text-lg font-semibold text-center appearance-none"
               />
-              <span onClick={() => incrementHandler()}>
-                <motion.span
-                  className="shadow-md p-1 text-3xl rounded-sm cursor-pointer text-white"
-                  whileTap={{ scale: 1.2 }}
-                >
-                  <FiPlus className="bg-slate-200 rounded-sm text-variant" />
-                </motion.span>
-              </span>
+
+              <motion.span
+                className="shadow-md p-1 text-3xl rounded-sm cursor-pointer text-white"
+                whileTap={{ scale: 1.2 }}
+                onClick={() => incrementHandler()}
+              >
+                <FiPlus className="bg-slate-200 rounded-sm text-variant" />
+              </motion.span>
             </div>
             <motion.button
               type="button"
               className="text-sm sm:text-base  p-2 py-2 px-5 rounded-sm text-variant font-medium bg-white"
               whileTap={{ scale: 1.2 }}
+              onClick={() => setProduct({})}
             >
               Book Now
             </motion.button>
@@ -115,7 +124,16 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
                 <span className="text-primary self-end">/Person</span>
               </div>
               <div className="flex items-center gap-2">
-                <input type="date" className="rounded-md" />
+                <input
+                  type="date"
+                  className="rounded-md"
+                  onChange={(e) => setFromDate(e.target.value)}
+                />
+                <input
+                  type="date"
+                  className="rounded-md"
+                  onChange={(e) => setToDate(e.target.value)}
+                />
               </div>
             </div>
             <div className="flex justify-between items-center">
@@ -148,7 +166,22 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
               </div>
             </div>
 
-            <Button size="xl" variant="primary" href="/cart">
+            <Button
+              size="xl"
+              variant="primary"
+              href="/cart"
+              onClick={() =>
+                setProduct({
+                  quantity,
+                  actualPrice: price,
+                  pricePaid: salePrice,
+                  toDate,
+                  fromDate,
+                  product_id,
+                  title,
+                })
+              }
+            >
               Book Now
             </Button>
           </div>
