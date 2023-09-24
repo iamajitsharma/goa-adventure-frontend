@@ -7,6 +7,7 @@ import { Button } from "@/components/common/Button";
 import placeholderImg from "../../public/assets/placeholder.jpg";
 import Container from "@/components/common/Container";
 import { HiOutlineShoppingBag } from "react-icons/hi";
+import useProduct from "@/hook/useProduct";
 
 const cart = () => {
   const [cartItem, setCartItem] = useState([
@@ -17,7 +18,15 @@ const cart = () => {
       quantity: 1,
     },
   ]);
-
+  const { product, setProduct, discardProduct } = useProduct();
+  console.log("PRoduct", product);
+  const subTotal = Number(product.actualPrice) * Number(product.quantity);
+  const discount =
+    (Number(product.actualPrice) - Number(product.priceToBePaid)) *
+    Number(product.quantity);
+  const finalPayment = Number(product.priceToBePaid) * Number(product.quantity);
+  const payNow = (finalPayment * Number(product.deposit_value)) / 100;
+  const futurePayment = finalPayment - payNow;
   return (
     <>
       <Container className="h-full">
@@ -41,10 +50,10 @@ const cart = () => {
             <div className="w-full md:w-9/12 lg:w-8/12 h-full">
               {cartItem?.map((item, index) => (
                 <CartCard
-                  title="Scuba Diving Grand Island"
+                  title={product.title}
                   image={placeholderImg}
-                  price={1500}
-                  quantity={1}
+                  price={product.actualPrice}
+                  quantity={product.quantity}
                 />
               ))}
             </div>
@@ -60,19 +69,19 @@ const cart = () => {
               <div className="w-full h-full flex flex-col gap-4 px-1 py-4 font-semibold text-sm">
                 <div className="flex justify-between items-center">
                   <span>Subtotal</span>
-                  <span>2500</span>
+                  <span>{subTotal}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span>Discount</span>
-                  <span>200</span>
+                  <span> {discount}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span>Future Payment</span>
-                  <span>1675</span>
+                  <span> {futurePayment}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span>Pay Deposit</span>
-                  <span>625</span>
+                  <span>{payNow}</span>
                 </div>
               </div>
               <Button size="xl" variant="dark" href="/checkout">

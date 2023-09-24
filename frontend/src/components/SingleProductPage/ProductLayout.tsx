@@ -10,6 +10,7 @@ interface ProductLayoutProps {
   discount: string | number;
   title: string;
   product_id: number;
+  deposit_value: any;
 }
 
 const ProductLayout: React.FC<ProductLayoutProps> = ({
@@ -19,6 +20,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
   discount,
   title,
   product_id,
+  deposit_value,
 }) => {
   return (
     <Container>
@@ -33,6 +35,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
             discount={discount}
             title={title}
             product_id={product_id}
+            deposit_value={deposit_value}
           />
         </div>
       </div>

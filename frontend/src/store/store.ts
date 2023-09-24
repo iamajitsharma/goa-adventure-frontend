@@ -24,11 +24,13 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, loginUserReducer);
 
+const persistedProductReducer = persistReducer(persistConfig, productReducer);
+
 export const store = configureStore({
   reducer: {
     authModal: authModalReducer,
     loginUser: persistedReducer,
-    product: productReducer,
+    product: persistedProductReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

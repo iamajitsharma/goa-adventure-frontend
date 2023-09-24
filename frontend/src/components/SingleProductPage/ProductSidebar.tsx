@@ -11,6 +11,7 @@ import DatePicker, { DayValue } from "react-modern-calendar-datepicker";
 import Link from "next/link";
 import { ImWhatsapp } from "react-icons/im";
 import useProduct from "@/hook/useProduct";
+import { useRouter } from "next/router";
 
 interface ProductSidebarProps {
   price: string | number;
@@ -19,6 +20,7 @@ interface ProductSidebarProps {
   date?: Date;
   product_id: number;
   title: string;
+  deposit_value: any;
 }
 
 const ProductSidebar: React.FC<ProductSidebarProps> = ({
@@ -28,13 +30,14 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
   date,
   product_id,
   title,
+  deposit_value,
 }) => {
   const [quantity, setQuantity] = useState(1);
   const [toDate, setToDate] = useState<any>(null);
   const [fromDate, setFromDate] = useState<any>(null);
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
   const { product, setProduct, discardProduct } = useProduct();
-  //console.log(day);
+  console.log("Product", product);
 
   const incrementHandler = () => {
     console.log("Quantituy hitted");
@@ -47,6 +50,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
       setQuantity(quantity - 1);
     }
   };
+  const router = useRouter();
   console.log("TO Date", toDate);
   return (
     <>
@@ -94,7 +98,28 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
               type="button"
               className="text-sm sm:text-base  p-2 py-2 px-5 rounded-sm text-variant font-medium bg-white"
               whileTap={{ scale: 1.2 }}
-              onClick={() => setProduct({})}
+              onClick={() => {
+                discardProduct({
+                  quantity,
+                  actualPrice: price,
+                  priceToBePaid: salePrice,
+                  toDate,
+                  fromDate,
+                  product_id,
+                  title,
+                  deposit_value,
+                });
+                setProduct({
+                  quantity,
+                  actualPrice: price,
+                  pricePaid: salePrice,
+                  toDate,
+                  fromDate,
+                  product_id,
+                  title,
+                  deposit_value,
+                });
+              }}
             >
               Book Now
             </motion.button>
@@ -169,18 +194,40 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
             <Button
               size="xl"
               variant="primary"
-              href="/cart"
-              onClick={() =>
-                setProduct({
+              // href="/cart"
+              onClick={() => {
+                console.log(
+                  "Selected PRoduct",
+                  quantity,
+                  price,
+                  salePrice,
+                  toDate,
+                  fromDate,
+                  product_id,
+                  title
+                );
+                discardProduct({
                   quantity,
                   actualPrice: price,
-                  pricePaid: salePrice,
+                  priceToBePaid: salePrice,
                   toDate,
                   fromDate,
                   product_id,
                   title,
-                })
-              }
+                  deposit_value,
+                });
+                setProduct({
+                  quantity,
+                  actualPrice: price,
+                  priceToBePaid: salePrice,
+                  toDate,
+                  fromDate,
+                  product_id,
+                  title,
+                  deposit_value,
+                });
+                router.push(`/cart`);
+              }}
             >
               Book Now
             </Button>
