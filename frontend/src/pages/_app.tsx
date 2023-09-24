@@ -16,6 +16,8 @@ import FAB from "@/components/FloatingActionButton/FAB";
 import EmailLoginModal from "@/components/modals/EmailLoginModal";
 import LoginModal from "@/components/modals/LoginModal";
 import RegisterModal from "@/components/modals/RegisterModal";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistor } from "@/store/store";
 // import UserLayout from "@/components/User/UserLayout";
 
 const poppins = Poppins({
@@ -35,22 +37,26 @@ const merrifont = Merriweather({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <ToastContainer
-        theme="dark"
-        position="bottom-right"
-        autoClose={2000}
-        closeOnClick
-        pauseOnHover={false}
-      />
-      <FAB />
-      <LoginModal />
-      <RegisterModal />
-      <EmailLoginModal />
-      <Layout>
-        <main className={`${poppins.variable} ${merrifont.variable} font-sans`}>
-          <Component {...pageProps} />
-        </main>
-      </Layout>
+      <PersistGate loading={null} persistor={persistor}>
+        <ToastContainer
+          theme="dark"
+          position="bottom-right"
+          autoClose={2000}
+          closeOnClick
+          pauseOnHover={false}
+        />
+        <FAB />
+        <LoginModal />
+        <RegisterModal />
+        <EmailLoginModal />
+        <Layout>
+          <main
+            className={`${poppins.variable} ${merrifont.variable} font-sans`}
+          >
+            <Component {...pageProps} />
+          </main>
+        </Layout>
+      </PersistGate>
     </Provider>
   );
 }
