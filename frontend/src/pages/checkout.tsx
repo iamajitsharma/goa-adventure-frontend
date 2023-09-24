@@ -22,6 +22,8 @@ const Checkout = () => {
   } = useForm<FieldValues>({});
   const { product } = useProduct();
   const { customer }: any = useCustomer();
+  console.log("PRoudcts in redux", product);
+  console.log("Customer inr redux", customer);
   const initializeRazorpay = () => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
@@ -45,7 +47,7 @@ const Checkout = () => {
       Number(product.quantity);
     const finalPayment =
       Number(product.priceToBePaid) * Number(product.quantity);
-    const payNow = (finalPayment * Number(product.deposit_value)) / 100;
+    const payNow = (subTotal * Number(product.deposit_value)) / 100;
     const futurePayment = finalPayment - payNow;
     const amount = payNow;
     // const booking_id = 2;
@@ -57,7 +59,20 @@ const Checkout = () => {
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
+    console.log("REsponse", {
+      customerPrice: {
+        totalAmount: subTotal.toString(),
+        depositAmount: payNow.toString(),
+        payingFull: false,
+      },
+      productDetails: {
+        productId: product?.product_id,
+        customerId: customer?.user.id,
+        quantity: product?.quantity,
+        startDate: product?.fromDate,
+        endDate: product?.toDate,
+      },
+    });
     var raw = JSON.stringify({
       customerPrice: {
         totalAmount: subTotal.toString(),
@@ -87,7 +102,7 @@ const Checkout = () => {
 
     // Make API call to the serverless API
     const data: any = await fetch(
-      "https://backend.goaadventure.in/v1/payment/create-order",
+      "http://localhost:4000/v1/payment/create-order",
       {
         method: "POST",
         headers: myHeaders,
