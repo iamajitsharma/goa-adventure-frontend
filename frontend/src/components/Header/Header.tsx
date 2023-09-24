@@ -115,7 +115,7 @@ const Header = () => {
           })}
         </ul>
         <div className="flex items-center gap-2">
-          {isLogin && <UserNavigation />}
+          {customer?.user && <UserNavigation />}
           {/* <motion.span
             className={`
             ${!scrolled && isTablet ? "text-white" : "text-primary"}
@@ -137,7 +137,7 @@ const Header = () => {
             <Button onClick={openLogin}>Login</Button>
           )}
 
-          {scrolled && !isTablet && (
+          {scrolled && !isTablet && !customer?.user && (
             <Button onClick={openLogin} variant="primary">
               Login
             </Button>

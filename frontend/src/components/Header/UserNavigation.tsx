@@ -3,12 +3,13 @@ import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
 import profileImage from "../../../public/assets/user-profile.jpg";
 import Link from "next/link";
+import useCustomer from "@/hook/useCustomer";
 
 const userNavigation = [
   { name: "My Booking", href: "booking-history" },
   { name: "Wishlist", href: "wishlist" },
   { name: "Your Profile", href: "my-profile" },
-  { name: "Sign out", href: "logout" },
+  // { name: "Sign out", href: "" },
 ];
 
 const user = {
@@ -21,6 +22,7 @@ function classNames(...classes: any) {
 }
 
 const UserNavigation = () => {
+  const { customer, setCustomer, logoutCustomer }: any = useCustomer();
   return (
     <div className="block">
       <div className="flex items-center">
@@ -28,7 +30,15 @@ const UserNavigation = () => {
           <div className="w-10 h-10">
             <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
               <span className="sr-only">Open user menu</span>
-              <Image src={profileImage} alt="" className="rounded-full" />
+              <Image
+                src={
+                  customer?.user?.profile_image
+                    ? customer.user.profile_image
+                    : profileImage
+                }
+                alt=""
+                className="rounded-full"
+              />
             </Menu.Button>
           </div>
           <Transition
@@ -56,6 +66,27 @@ const UserNavigation = () => {
                   )}
                 </Menu.Item>
               ))}
+              <Menu.Item key={"Sign out"}>
+                {({ active }) => (
+                  <Link
+                    href={`/`}
+                    className={classNames(
+                      active ? "bg-gray-100" : "",
+                      "block px-4 py-2 text-sm text-gray-700"
+                    )}
+                  >
+                    <button
+                      onClick={() => logoutCustomer(customer)}
+                      className={classNames(
+                        active ? "bg-gray-100" : "",
+                        "block px-4 py-2 text-sm text-gray-700"
+                      )}
+                    >
+                      Sign out
+                    </button>
+                  </Link>
+                )}
+              </Menu.Item>
             </Menu.Items>
           </Transition>
         </Menu>
