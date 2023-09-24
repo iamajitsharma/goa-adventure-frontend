@@ -11,7 +11,10 @@ const useCustomer = () => {
   const setCustomer = (customer: any) => {
     return dispatch(login(customer));
   };
-  return { customer, setCustomer };
+  const logoutCustomer = (customer: any) => {
+    return dispatch(logout(customer));
+  };
+  return { customer, setCustomer, logoutCustomer };
 };
 
 export default useCustomer;

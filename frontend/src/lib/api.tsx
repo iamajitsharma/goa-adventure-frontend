@@ -221,7 +221,6 @@ export async function createCustomerAndLogin(
     method: "POST",
     headers: myHeaders,
     body: raw,
-    next: { revalidate: 360 },
   };
   const result: any = await fetch(
     `${serverURL}/customer/create-and-login-customer`,
@@ -245,6 +244,28 @@ export async function getProductsWithFilter(options: any) {
   }
 
   const result: any = await fetch(url, requestOptions);
+
+  const response = await result.json();
+
+  return response;
+}
+
+export async function customerMobileLogIn(
+  mobile_number: string,
+  password: string
+) {
+  var raw = JSON.stringify({
+    mobile_number,
+    password,
+  });
+  var requestOptionsForPost = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+  };
+  let url = `${serverURL}/customer/mobile-number-login`;
+
+  const result: any = await fetch(url, requestOptionsForPost);
 
   const response = await result.json();
 
