@@ -102,7 +102,7 @@ const Checkout = () => {
 
     // Make API call to the serverless API
     const data: any = await fetch(
-      "http://localhost:4000/v1/payment/create-order",
+      "https://backend.goaadventure.in/v1/payment/create-order",
       {
         method: "POST",
         headers: myHeaders,
