@@ -101,11 +101,15 @@ const Checkout = () => {
     //   .catch(error => //console.log('error', error));
 
     // Make API call to the serverless API
+
     const data: any = await fetch(
       "https://backend.goaadventure.in/v1/payment/create-order",
       {
         method: "POST",
-        headers: myHeaders,
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: raw,
         redirect: "follow",
       }
