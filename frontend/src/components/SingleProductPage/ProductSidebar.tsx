@@ -154,11 +154,11 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
                   className="rounded-md"
                   onChange={(e) => setFromDate(e.target.value)}
                 />
-                <input
+                {/* <input
                   type="date"
                   className="rounded-md"
                   onChange={(e) => setToDate(e.target.value)}
-                />
+                /> */}
               </div>
             </div>
             <div className="flex justify-between items-center">
