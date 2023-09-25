@@ -99,6 +99,16 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
               className="text-sm sm:text-base  p-2 py-2 px-5 rounded-sm text-variant font-medium bg-white"
               whileTap={{ scale: 1.2 }}
               onClick={() => {
+                console.log(
+                  "Selected PRoduct",
+                  quantity,
+                  price,
+                  salePrice,
+                  toDate,
+                  fromDate,
+                  product_id,
+                  title
+                );
                 discardProduct({
                   quantity,
                   actualPrice: price,
@@ -112,13 +122,14 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
                 setProduct({
                   quantity,
                   actualPrice: price,
-                  pricePaid: salePrice,
+                  priceToBePaid: salePrice,
                   toDate,
                   fromDate,
                   product_id,
                   title,
                   deposit_value,
                 });
+                router.push(`/cart`);
               }}
             >
               Book Now
