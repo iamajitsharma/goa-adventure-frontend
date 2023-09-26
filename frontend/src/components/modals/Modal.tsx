@@ -19,13 +19,13 @@ interface ModalProps {
   isOpen?: boolean;
   onClose: () => void;
 
-  onSubmit: any;
+  onSubmit?: any;
   title?: string;
   body?: React.ReactElement;
   footer?: React.ReactElement;
-  actionLabel: string;
+  actionLabel?: string;
   disabled?: boolean;
-  error: any;
+  error?: any;
 }
 
 const Modal: React.FC<ModalProps> = ({

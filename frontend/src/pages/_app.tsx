@@ -18,6 +18,7 @@ import LoginModal from "@/components/modals/LoginModal";
 import RegisterModal from "@/components/modals/RegisterModal";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor } from "@/store/store";
+import ImageGallery from "@/components/SingleProductPage/ImageGallery";
 // import UserLayout from "@/components/User/UserLayout";
 
 const poppins = Poppins({
@@ -46,6 +47,7 @@ export default function App({ Component, pageProps }: AppProps) {
           pauseOnHover={false}
         />
         <FAB />
+
         <LoginModal />
         <RegisterModal />
         <EmailLoginModal />

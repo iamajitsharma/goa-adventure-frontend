@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authModalReducer from "./modal/authModalSlice";
 import loginUserReducer from "./modal/loginUserSlice";
 import productReducer from "./modal/productSlice";
+import galleryReducer from "./modal/gallerySlice";
 
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
@@ -31,6 +32,7 @@ export const store = configureStore({
     authModal: authModalReducer,
     loginUser: persistedReducer,
     product: persistedProductReducer,
+    gallery: galleryReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

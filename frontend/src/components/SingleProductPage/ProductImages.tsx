@@ -5,6 +5,10 @@ import FallbackImage from "../../../public/assets/fallback_Artboard 1.svg";
 import RightArrowAlt from "../UI/RightArrowAlt";
 import LeftArrowAlt from "../UI/LeftArrowAlt";
 import fallback from "../../../public/fallback-image.jpg";
+import useGalleryModal from "@/hook/useGalleryModal";
+import ImageGallery from "./ImageGallery";
+import { ImImages } from "react-icons/im";
+import { useSelector } from "react-redux";
 
 const settings = {
   dots: false,
@@ -32,102 +36,99 @@ const ProductImages: React.FC<ProductImageProps> = ({
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [imageLoadError, setImageLoadError] = useState(false);
+  const isOpenGallery = useSelector((state: any) => state.gallery);
+  const { openGallery } = useGalleryModal();
 
   const handleImageError = () => {
     setImageLoadError(true);
   };
 
   return (
-    <div className="grid grid-cols-4 grid-rows-2 gap-1 w-full max-h-[450px] h-auto overflow-hidden">
-      <div className="hidden transition-all ease-in-out md:block overflow-hidden">
-        <Image
-          src={featuredImage || "/assets/fallback.png"}
-          alt="2"
-          className={`object-fill w-full h-full duration-700 ease-in-out group-hover:opacity-75 
-          ${
-            isLoading
-              ? "scale-110 blur-lg backdrop-blur-sm"
-              : "scale-100 blur-0 backdrop-blur-none"
-          }`}
-          onLoadingComplete={() => setIsLoading(false)}
-          width={975}
-          height={600}
-        />
-      </div>
-      <div className="hidden transition-all ease-in-out md:block col-start-1 row-start-2 overflow-hidden h-full">
-        <Image
-          src={galleryImage[0] || "/assets/fallback.png"}
-          alt="2"
-          className={`object-fill w-full h-full duration-700 ease-in-out group-hover:opacity-75 
-          ${
-            isLoading
-              ? "scale-110 blur-lg backdrop-blur-sm"
-              : "scale-100 blur-0 backdrop-blur-none"
-          }`}
-          onLoadingComplete={() => setIsLoading(false)}
-          width={975}
-          height={600}
-        />
-      </div>
-      <div className="col-span-3 row-span-2 col-start-1 row-start-1 md:col-start-2 md:col-span-2 relative h-full">
-        <Slider {...settings}>
-          {galleryImage?.map((item: any, index: any) => (
+    <>
+      <div className="relative">
+        <div className="flex justify-center gap-0 h-80 md:h-[468px] overflow-hidden flex-nowrap">
+          <div className="w-full h-full lg:w-3/5">
             <Image
-              key={index}
-              src={item || "/assets/fallback.png"}
-              alt="Dudhsagar Waterfall"
-              className={`object-fill w-full h-full duration-700 ease-in-out group-hover:opacity-75 
-          ${
-            isLoading
-              ? "scale-110 blur-lg grayscale"
-              : "scale-100 blur-0 grayscale-0"
-          }`}
-              onLoadingComplete={() => setIsLoading(false)}
+              src={featuredImage}
+              alt=""
               width={975}
               height={600}
+              className={`object-cover w-full h-full duration-700 ease-in-out bg-white/30
+          ${
+            isLoading
+              ? "scale-110 blur-sm backdrop-blur-2xl "
+              : "scale-100 blur-0 backdrop-blur-0"
+          }
+          `}
+              onLoadingComplete={() => setIsLoading(false)}
+              onClick={() => openGallery()}
             />
-          ))}
-        </Slider>
-        <style>
-          {`
-         .slick-track {display: flex;}
-         .slick-track .slick-slide {display: flex;height: auto;}
-         .slick-slide img {height: 100%;object-fit: cover;object-position: center;}
-        `}
-        </style>
+          </div>
+          <div className="hidden lg:grid grid-cols-2 w-2/5 gap-2 h-[468px] ml-2">
+            <div className="relative">
+              <Image
+                src={featuredImage}
+                alt=""
+                className={`absolute top-0 left-0 object-cover w-full h-full  duration-700 ease-in-out group-hover:opacity-75  ${
+                  isLoading
+                    ? "scale-110 blur-sm backdrop-blur-2xl "
+                    : "scale-100 blur-0 backdrop-blur-0"
+                }`}
+                width={975}
+                height={600}
+              />
+            </div>
+            <div className="relative">
+              <Image
+                src={featuredImage}
+                alt=""
+                className={`absolute top-0 left-0 object-cover w-full h-full  duration-700 ease-in-out group-hover:opacity-75  ${
+                  isLoading
+                    ? "scale-110 blur-sm backdrop-blur-2xl "
+                    : "scale-100 blur-0 backdrop-blur-0"
+                }`}
+                width={975}
+                height={600}
+              />
+            </div>
+            <div className="relative">
+              <Image
+                src={featuredImage}
+                alt=""
+                className={`absolute top-0 left-0 object-cover w-full h-full  duration-700 ease-in-out group-hover:opacity-75  ${
+                  isLoading
+                    ? "scale-110 blur-sm backdrop-blur-2xl "
+                    : "scale-100 blur-0 backdrop-blur-0"
+                }`}
+                width={975}
+                height={600}
+              />
+            </div>
+            <div className="relative">
+              <Image
+                src={featuredImage}
+                alt=""
+                className={`absolute top-0 left-0 object-cover w-full h-full  duration-700 ease-in-out group-hover:opacity-75  ${
+                  isLoading
+                    ? "scale-110 blur-sm backdrop-blur-2xl "
+                    : "scale-100 blur-0 backdrop-blur-0"
+                }`}
+                width={975}
+                height={600}
+              />
+            </div>
+          </div>
+        </div>
+        <span
+          className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-neutral-800/60 text-white p-2 flex items-center justify-center gap-2 rounded-r-full px-4 text-lg cursor-pointer"
+          onClick={() => openGallery()}
+        >
+          Gallery
+          <ImImages />
+        </span>
       </div>
-      <div className="col-start-4 row-start-1">
-        <Image
-          src={galleryImage[1] || "/assets/fallback.png"}
-          alt="2"
-          className={`object-fill w-full h-full duration-700 ease-in-out group-hover:opacity-75 
-          ${
-            isLoading
-              ? "scale-110 blur-lg backdrop-blur-sm"
-              : "scale-100 blur-0 backdrop-blur-none"
-          }`}
-          onLoadingComplete={() => setIsLoading(false)}
-          width={975}
-          height={600}
-        />
-      </div>
-      <div className="col-start-4 row-start-2">
-        <Image
-          src={galleryImage[2] || "/assets/fallback.png"}
-          alt="2"
-          className={`object-fill w-full h-full duration-700 ease-in-out group-hover:opacity-75 
-          ${
-            isLoading
-              ? "scale-110 blur-lg backdrop-blur-sm"
-              : "scale-100 blur-0 backdrop-blur-none"
-          }`}
-          onLoadingComplete={() => setIsLoading(false)}
-          width={975}
-          height={600}
-          onError={handleImageError}
-        />
-      </div>
-    </div>
+      {isOpenGallery && <ImageGallery galleryImg={galleryImage} />}
+    </>
   );
 };
 

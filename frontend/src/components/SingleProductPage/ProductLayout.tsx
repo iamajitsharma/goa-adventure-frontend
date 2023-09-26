@@ -24,7 +24,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
 }) => {
   return (
     <Container>
-      <div className="flex flex-col gap-4 w-full  md:flex-row">
+      <div className="flex flex-col gap-4 w-full  md:flex-row mt-40">
         <div className="w-full md:w-8/12 overflow-hidden break-words">
           {children}
         </div>
