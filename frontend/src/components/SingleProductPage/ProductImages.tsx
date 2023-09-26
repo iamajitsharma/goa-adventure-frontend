@@ -36,8 +36,7 @@ const ProductImages: React.FC<ProductImageProps> = ({
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [imageLoadError, setImageLoadError] = useState(false);
-  const isOpenGallery = useSelector((state: any) => state.gallery);
-  const { openGallery } = useGalleryModal();
+  const { openGallery, closeGallery, isOpenGallery } = useGalleryModal();
 
   const handleImageError = () => {
     setImageLoadError(true);
@@ -61,13 +60,13 @@ const ProductImages: React.FC<ProductImageProps> = ({
           }
           `}
               onLoadingComplete={() => setIsLoading(false)}
-              onClick={() => openGallery()}
+              onClick={openGallery}
             />
           </div>
           <div className="hidden lg:grid grid-cols-2 w-2/5 gap-2 h-[468px] ml-2">
             <div className="relative">
               <Image
-                src={featuredImage}
+                src={galleryImage[0]}
                 alt=""
                 className={`absolute top-0 left-0 object-cover w-full h-full  duration-700 ease-in-out group-hover:opacity-75  ${
                   isLoading
@@ -76,11 +75,12 @@ const ProductImages: React.FC<ProductImageProps> = ({
                 }`}
                 width={975}
                 height={600}
+                onClick={openGallery}
               />
             </div>
             <div className="relative">
               <Image
-                src={featuredImage}
+                src={galleryImage[1]}
                 alt=""
                 className={`absolute top-0 left-0 object-cover w-full h-full  duration-700 ease-in-out group-hover:opacity-75  ${
                   isLoading
@@ -89,11 +89,12 @@ const ProductImages: React.FC<ProductImageProps> = ({
                 }`}
                 width={975}
                 height={600}
+                onClick={openGallery}
               />
             </div>
             <div className="relative">
               <Image
-                src={featuredImage}
+                src={galleryImage[2]}
                 alt=""
                 className={`absolute top-0 left-0 object-cover w-full h-full  duration-700 ease-in-out group-hover:opacity-75  ${
                   isLoading
@@ -102,11 +103,12 @@ const ProductImages: React.FC<ProductImageProps> = ({
                 }`}
                 width={975}
                 height={600}
+                onClick={openGallery}
               />
             </div>
             <div className="relative">
               <Image
-                src={featuredImage}
+                src={galleryImage[3]}
                 alt=""
                 className={`absolute top-0 left-0 object-cover w-full h-full  duration-700 ease-in-out group-hover:opacity-75  ${
                   isLoading
@@ -115,19 +117,24 @@ const ProductImages: React.FC<ProductImageProps> = ({
                 }`}
                 width={975}
                 height={600}
+                onClick={openGallery}
               />
             </div>
           </div>
         </div>
         <span
           className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-neutral-800/60 text-white p-2 flex items-center justify-center gap-2 rounded-r-full px-4 text-lg cursor-pointer"
-          onClick={() => openGallery()}
+          onClick={openGallery}
         >
           Gallery
           <ImImages />
         </span>
       </div>
-      {isOpenGallery && <ImageGallery galleryImg={galleryImage} />}
+      <ImageGallery
+        isOpen={isOpenGallery}
+        onClose={closeGallery}
+        galleryImg={galleryImage}
+      />
     </>
   );
 };
