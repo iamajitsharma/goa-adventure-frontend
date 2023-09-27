@@ -35,6 +35,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
   const [quantity, setQuantity] = useState(1);
   const [toDate, setToDate] = useState<any>(null);
   const [fromDate, setFromDate] = useState<any>(null);
+
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
   const { product, setProduct, discardProduct } = useProduct();
   console.log("Product", product);
@@ -55,22 +56,22 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
   return (
     <>
       {isTablet ? (
-        <Box className="fixed bottom-0 right-0 w-full z-50 bg-variant p-1 shadow-neutral-600">
+        <Box className="rounded-none fixed bottom-0 right-0 w-full z-50 bg-variant p-1 shadow-neutral-600">
           <span className="inline-flex items-baseline text-xs sm:text-sm text-white">
             Starting from
           </span>
-          <div className="flex w-full items-center justify-between gap-2">
-            <div className="flex items-center gap-0">
-              <span className="flex items-center justify-center text-2xl font-semibold tracking-wider text-white">
-                <BsCurrencyRupee className="text-2xl" />
+          <div className="flex w-full items-center justify-between gap-2 flex-wrap">
+            <div className="flex flex-col items-center gap-0">
+              <span className="flex items-center justify-center text-xl font-semibold tracking-wider text-white">
+                <BsCurrencyRupee className="text-xl" />
                 {salePrice}
               </span>
-              <span className="flex items-center line-through text-slate-400 decoration-slate-400 decoration-2">
+              <span className="flex items-center  text-sm line-through text-slate-400 decoration-slate-400 decoration-2">
                 <BsCurrencyRupee />
                 {price}
               </span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <motion.span
                 className="shadow-md p-1 text-3xl rounded-sm cursor-pointer text-white"
                 whileTap={{ scale: 1.2 }}
@@ -93,6 +94,13 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
               >
                 <FiPlus className="bg-slate-200 rounded-sm text-variant" />
               </motion.span>
+            </div>
+            <div>
+              <input
+                type="date"
+                className="rounded-md cursor-pointer"
+                onChange={(e) => setFromDate(e.target.value)}
+              />
             </div>
             <motion.button
               type="button"
@@ -151,7 +159,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
                 {discount}% Off
               </button>
             </div>
-            <div className="flex items-center justify-between gap-0">
+            <div className="flex items-center justify-between gap-0 md:flex-col md:gap-4 lg:flex-row ">
               <div className="flex items-center">
                 <span className="flex items-center justify-center text-2xl font-semibold text-variant">
                   <BsCurrencyRupee />
@@ -162,9 +170,10 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
               <div className="flex items-center gap-2">
                 <input
                   type="date"
-                  className="rounded-md"
+                  className="rounded-md cursor-pointer"
                   onChange={(e) => setFromDate(e.target.value)}
                 />
+
                 {/* <input
                   type="date"
                   className="rounded-md"
@@ -172,8 +181,8 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
                 /> */}
               </div>
             </div>
-            <div className="flex justify-between items-center">
-              <p className="text-xs text-textBlack">
+            <div className="flex justify-between items-center md:flex-col lg:flex-row">
+              <p className="md:hidden lg:block text-xs text-textBlack">
                 Just pay 25% now to book your seat
               </p>
               <div className="flex items-center gap-2">
@@ -263,7 +272,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
             whileHover={{ scale: 1.1 }}
           >
             <BsTelephone className="text-primary text-xl" />
-            <Link href={"tel:+917387960861"}>+91 7387960861</Link>
+            <Link href={"tel:+918237060861"}>+91 8237060861</Link>
           </motion.span>
         </div>
         <motion.button

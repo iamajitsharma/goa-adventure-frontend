@@ -19,7 +19,7 @@ const actions = [
   {
     label: "Email",
     icon: <MdOutlineEmail />,
-    href: "mailto:choiceyourtrip@gmail.com",
+    href: "mailto:info@goaadventure.in",
   },
 ];
 
@@ -47,8 +47,8 @@ const FAB = () => {
       className="fixed flex  items-center gap-3 flex-col-reverse m-0 p-0 right-2 bottom-6 md:bottom-28 z-50"
       onClick={toggleHandler}
     >
-      <li className="rounded-full shadow-2xl cursor-pointer p-3 relative grid place-content-center bg-variant text-2xl md:text-3xl text-white">
-        <FiHelpCircle />
+      <li className="rounded-full shadow-2xl cursor-pointer p-3 relative grid place-content-center bg-[#25d366] text-2xl md:text-3xl text-white">
+        <BsWhatsapp />
       </li>
       {isOpen &&
         actions.map((action, index) => (
@@ -60,7 +60,9 @@ const FAB = () => {
               initial="hidden"
               animate="show"
             >
-              <Link href={action.href}>{action.icon}</Link>
+              <Link href={action.href} target="_blank">
+                {action.icon}
+              </Link>
             </motion.li>
           </AnimatePresence>
         ))}

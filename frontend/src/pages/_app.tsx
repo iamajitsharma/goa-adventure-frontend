@@ -10,7 +10,6 @@ import { Provider } from "react-redux";
 import { store } from "@/store/store";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import Layout from "@/components/Layout";
 import FAB from "@/components/FloatingActionButton/FAB";
 import EmailLoginModal from "@/components/modals/EmailLoginModal";

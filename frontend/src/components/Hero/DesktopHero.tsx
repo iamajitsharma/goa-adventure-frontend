@@ -5,6 +5,7 @@ import Image from "next/image";
 import travelImage from "../../../public/assets/images/flight.png";
 import { FaFacebookF } from "react-icons/fa";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import {
   AiOutlineInstagram,
   AiOutlineTwitter,
@@ -33,28 +34,42 @@ const DesktopHero = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 1.2 }}
               >
-                <FaFacebookF />
+                <Link
+                  href={"https://www.facebook.com/safargoa"}
+                  target="_blank"
+                >
+                  <FaFacebookF />
+                </Link>
               </motion.span>
               <motion.span
                 className="text-2xl text-slate-700 bg-white p-2 shadow-xl rounded-lg cursor-pointer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 1.2 }}
               >
-                <AiOutlineInstagram />
+                <Link href="www.goaadventure.in">
+                  <AiOutlineInstagram />
+                </Link>
               </motion.span>
               <motion.span
                 className="text-2xl text-slate-700 bg-white p-2 shadow-xl rounded-lg cursor-pointer "
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 1.2 }}
               >
-                <AiOutlineTwitter />
+                <Link href="www.goaadventure.in">
+                  <AiOutlineTwitter />
+                </Link>
               </motion.span>
               <motion.span
                 className="text-2xl text-slate-700 bg-white p-2 shadow-xl rounded-lg cursor-pointer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 1.2 }}
               >
-                <AiOutlineYoutube />
+                <Link
+                  href="https://www.youtube.com/@safartravelgoa"
+                  target="_blank"
+                >
+                  <AiOutlineYoutube />
+                </Link>
               </motion.span>
             </div>
           </div>
