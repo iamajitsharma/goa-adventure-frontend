@@ -18,8 +18,8 @@ import { FaFacebookF } from "react-icons/fa";
 
 const FooterSubscribe = () => {
   return (
-    <div className="pt-2 mx-auto">
-      <div>
+    <div className="mx-auto">
+      {/* <div>
         <h4 className="text-slate-700 font-semibold text-sm tracking-wide">
           Subscribe our newsletter to get discount upto 50%
         </h4>
@@ -49,8 +49,8 @@ const FooterSubscribe = () => {
         >
           Subscribe
         </button>
-      </div>
-      <div className="py-4">
+      </div> */}
+      <div className="">
         <FooterTitle title="Follow Us" />
         <div className="flex items-center gap-4">
           <motion.span
@@ -67,7 +67,7 @@ const FooterSubscribe = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.2 }}
           >
-            <Link href="www.goaadventure.in">
+            <Link href="https://www.instagram.com/safarkvlogs/">
               <AiOutlineInstagram />
             </Link>
           </motion.span>
@@ -76,7 +76,7 @@ const FooterSubscribe = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 1.2 }}
           >
-            <Link href="www.goaadventure.in">
+            <Link href="https://x.com/goa_adventure?s=21&t=_NU2Ix56hVPI8DAj0_b2uw">
               <AiOutlineTwitter />
             </Link>
           </motion.span>

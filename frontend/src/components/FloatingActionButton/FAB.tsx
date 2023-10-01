@@ -9,7 +9,7 @@ const actions = [
   {
     label: "Whatsapp",
     icon: <BsWhatsapp />,
-    href: "https://web.whatsapp.com/send?phone=917387960861&text=Hello!",
+    href: "https://wa.me/message/LSGFXPPLHTAYF1",
   },
   {
     label: "Profile",

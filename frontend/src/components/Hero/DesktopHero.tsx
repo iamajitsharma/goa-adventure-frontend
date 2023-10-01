@@ -46,7 +46,7 @@ const DesktopHero = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 1.2 }}
               >
-                <Link href="www.goaadventure.in">
+                <Link href="https://www.instagram.com/safarkvlogs/">
                   <AiOutlineInstagram />
                 </Link>
               </motion.span>
@@ -55,7 +55,7 @@ const DesktopHero = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 1.2 }}
               >
-                <Link href="www.goaadventure.in">
+                <Link href="https://x.com/goa_adventure?s=21&t=_NU2Ix56hVPI8DAj0_b2uw">
                   <AiOutlineTwitter />
                 </Link>
               </motion.span>
