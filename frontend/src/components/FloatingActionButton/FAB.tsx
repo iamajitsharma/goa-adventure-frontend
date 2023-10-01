@@ -4,6 +4,8 @@ import { FiHelpCircle } from "react-icons/fi";
 import { MdOutlineEmail } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { RiChat3Line } from "react-icons/ri";
+import { useZohoChat } from "zoho-chat";
 
 const actions = [
   {
@@ -50,6 +52,7 @@ const FAB = () => {
       <li className="rounded-full shadow-2xl cursor-pointer p-3 relative grid place-content-center bg-[#25d366] text-2xl md:text-3xl text-white">
         <BsWhatsapp />
       </li>
+
       {isOpen &&
         actions.map((action, index) => (
           <AnimatePresence>

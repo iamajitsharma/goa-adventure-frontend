@@ -2690,6 +2690,11 @@ yaml@^1.10.0, yaml@^1.10.2:
   resolved "https://registry.npmjs.org/yaml/-/yaml-1.10.2.tgz"
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
 
+zoho-chat@^1.0.32:
+  version "1.0.32"
+  resolved "https://registry.npmjs.org/zoho-chat/-/zoho-chat-1.0.32.tgz"
+  integrity sha512-1RJW9EWnWT0Rp8cTbXNuY5g8KXD8Uzgu3VpCx2eZrctVU2BLe+EuYbFI4t7I9Hhy1iq2GFRJ3K5QVsBk6/hMqQ==
+
 zwitch@^2.0.0, zwitch@^2.0.4:
   version "2.0.4"
   resolved "https://registry.npmjs.org/zwitch/-/zwitch-2.0.4.tgz"
