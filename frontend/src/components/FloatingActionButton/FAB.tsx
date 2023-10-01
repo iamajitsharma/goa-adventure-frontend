@@ -46,10 +46,10 @@ const FAB = () => {
 
   return (
     <ul
-      className="fixed flex  items-center gap-3 flex-col-reverse m-0 p-0 right-2 bottom-6 md:bottom-28 z-50"
+      className="fixed flex  items-center gap-3 flex-col-reverse m-0 p-0 right-3 bottom-24 md:bottom-28 z-50"
       onClick={toggleHandler}
     >
-      <li className="rounded-full shadow-2xl cursor-pointer p-3 relative grid place-content-center bg-[#25d366] text-2xl md:text-3xl text-white">
+      <li className="rounded-full shadow-2xl cursor-pointer p-2 sm:p-3 relative grid place-content-center bg-[#25d366] text-3xl md:text-3xl text-white">
         <BsWhatsapp />
       </li>
 
