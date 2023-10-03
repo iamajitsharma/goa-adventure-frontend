@@ -173,78 +173,58 @@ const Checkout = () => {
         <div className="w-full md:w-8/12 h-full">
           <div className="py-4 shadow-3xl p-2">
             <h4 className="font-semibold text-base">Billing Information</h4>
-            {/* <div className="grid grid-cols-1 sm:grid-cols-2 w-full h-full gap-4">
-              <Input
-                id="fullname"
-                label="Full Name"
-                icon={<AiOutlineUser />}
-                type="text"
-                register={register}
-                disabled={isLoading}
-                errors={errors}
-                required
-                className="col-span-2"
-              />
-              <Input
-                id="mobilenumber"
-                label="Mobile Number"
-                icon={<FiSmartphone />}
-                type="text"
-                register={register}
-                disabled={isLoading}
-                errors={errors}
-                required
-              />
-              <Input
-                id="email"
-                label="Email ID"
-                icon={<AiOutlineMail />}
-                type="text"
-                register={register}
-                disabled={isLoading}
-                errors={errors}
-                required
-              />
-              <Input
-                id="country"
-                label="Country"
-                icon={<AiOutlineUser />}
-                type="text"
-                register={register}
-                disabled={isLoading}
-                errors={errors}
-                required
-              />
-              <Input
-                id="state"
-                label="State"
-                icon={<AiOutlineUser />}
-                type="text"
-                register={register}
-                disabled={isLoading}
-                errors={errors}
-                required
-              />
-              <Input
-                id="city"
-                label="City"
-                icon={<AiOutlineUser />}
-                type="text"
-                register={register}
-                disabled={isLoading}
-                errors={errors}
-                required
-              />
-              <CustomSelect
-                id="meetingPoint"
-                options={options}
-                isSearchable={false}
-                placeholder="Meeting Points"
-              />
-            </div> */}
-            <div className="pt-6 text-right">
-              <Button>Add Details</Button>
-            </div>
+            <form>
+              <div className="grid grid-cols-1 sm:grid-cols-2 w-full h-full gap-4 pt-4">
+                <div className="w-full border-none outline-none bg-white">
+                  <input
+                    type="text"
+                    placeholder="FullName"
+                    className="w-full border-none focus:ring-0 outline-none bg-gray-100 placeholder:text-sm placeholder:text-gray-800"
+                    required
+                  />
+                </div>
+                <div className="w-full border-none outline-none bg-white ">
+                  <input
+                    type="text"
+                    placeholder="Mobile No."
+                    className="w-full border-none focus:ring-0 outline-none bg-gray-100 placeholder:text-gray-800 placeholder:text-sm"
+                    required
+                  />
+                </div>
+                <div className="w-full border-none outline-none bg-white ">
+                  <input
+                    type="text"
+                    placeholder="Email Id"
+                    className="w-full border-none focus:ring-0 outline-none bg-gray-100 placeholder:text-gray-800 placeholder:text-sm"
+                    required
+                  />
+                </div>
+                <div className="w-full border-none outline-none bg-white">
+                  <select
+                    className="w-full border-0 text-gray-800 ring-0 bg-gray-100 focus:ring-0  sm:text-sm sm:leading-6"
+                    required
+                  >
+                    <option disabled selected hidden>
+                      Meeting Points
+                    </option>
+                    <option>Calangute</option>
+
+                    <option>Baga</option>
+                    <option>Arpora</option>
+                  </select>
+                </div>
+                <div className="w-full border-none outline-none bg-white col-span-full">
+                  <textarea
+                    rows={5}
+                    placeholder="Special request"
+                    className="w-full border-none focus:ring-0 outline-none bg-gray-100 placeholder:text-sm placeholder:text-gray-800"
+                  ></textarea>
+                </div>
+              </div>
+              <div className="pt-6 text-right">
+                <Button>Add Details</Button>
+              </div>
+            </form>
           </div>
         </div>
         <div className="w-full md:w-4/12  h-full shadow-3xl p-2">
@@ -276,8 +256,8 @@ const Checkout = () => {
             </div>
             <div className="flex items-center justify-between text-sm text-neutral-600 pt-4">
               <label className="inline-flex items-center gap-2">
-                <input type="checkbox" className="p-2 rounded-sm" />I agree with
-                the{" "}
+                <input type="checkbox" className="p-2 rounded-sm" required />I
+                agree with the{" "}
                 <Link href="/terms-conditions" className="text-blue-400">
                   terms & condition
                 </Link>
