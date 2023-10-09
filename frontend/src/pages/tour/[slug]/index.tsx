@@ -69,7 +69,7 @@ const index = (props: any) => {
 
         <Box className="bg-white">
           <ProductTitle
-            variant="h2"
+            level={2}
             title={`Overview: ${props?.data[0]?.title}`}
           />
           <Overviews description={props?.data[0]?.overview} />
