@@ -23,6 +23,7 @@ module.exports = {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         merri: ["Merriweather", "serif"],
+        roboto: ["Roboto", "sans-serif"],
       },
 
       backgroundImage: {

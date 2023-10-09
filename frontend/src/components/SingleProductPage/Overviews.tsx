@@ -36,7 +36,7 @@ const Overviews: React.FC<OverviewsProps> = ({ description, className }) => {
     setReadMore(!readMore);
   };
 
-  const truncatedText = description?.substring(0, 6000);
+  const truncatedText = description?.substring(0, 1500);
 
   const renderText = () => {
     if (readMore && description) {
@@ -52,7 +52,7 @@ const Overviews: React.FC<OverviewsProps> = ({ description, className }) => {
 
   return (
     <div
-      className={`bg-transparent text-sm text-textBlack leading-loose transition ease-in-out duration-1000 delay-1000 ${className}`}
+      className={`font-roboto bg-transparent text-base text-justify text-textBlack leading-loose transition ease-in-out duration-1000 delay-1000 py-3 overflow-hidden ${className}`}
     >
       {renderText()}
       <span

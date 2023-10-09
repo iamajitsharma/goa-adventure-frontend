@@ -1,36 +1,38 @@
 import React from "react";
 
 interface ProductTitleProps {
-  h1?: boolean;
-  h2?: boolean;
-  h3?: boolean;
-  h4?: boolean;
-  title: string;
-  variant?: string;
+  level: 1 | 2 | 3 | 4 | 5 | 6;
+  title: React.ReactNode;
 }
 
-const ProductTitle: React.FC<ProductTitleProps> = ({
-  h1,
-  h2,
-  h3,
-  h4,
-  title,
-  variant,
-}) => {
+const ProductTitle: React.FC<ProductTitleProps> = ({ level, title }) => {
+  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
   return (
-    <>
-      {variant == "h1" && (
-        <h1 className="text-2xl font-bold text-textBlack py-2">{title}</h1>
-      )}
-      {variant == "h2" && (
-        <h2 className="text-xl font-semibold text-textBlack py-4">{title}</h2>
-      )}
-      {variant == "h3" && <h3>{title}</h3>}
-      {variant == "h4" && (
-        <h4 className="text-base font-semibold text-textBlack py-4">{title}</h4>
-      )}
-    </>
+    <Tag
+      className={`font-bold font-roboto text-neutral-700 ${getHeadingClass(
+        level
+      )}`}
+    >
+      {title}
+    </Tag>
   );
+};
+
+const getHeadingClass = (level: number) => {
+  switch (level) {
+    case 1:
+      return "text-2xl";
+    case 2:
+      return "text-lg";
+    case 3:
+      return "text-lg";
+    case 4:
+      return "text-base";
+    case 5:
+      return "text-base";
+    default:
+      return "text-sm";
+  }
 };
 
 export default ProductTitle;

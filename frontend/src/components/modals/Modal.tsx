@@ -98,9 +98,9 @@ const Modal: React.FC<ModalProps> = ({
           </div>
           {/* Body */}
           <div className="relative max-h-[2/5]">{body}</div>
-          {error.status ? (
+          {/* {error.status ? (
             <span className="text-red-500">{error.message}</span>
-          ) : null}
+          ) : null} */}
           {/* Modal Action */}
           <div className="relative py-4">
             <Button onClick={onSubmit} size={"xl"} variant={"dark"}>

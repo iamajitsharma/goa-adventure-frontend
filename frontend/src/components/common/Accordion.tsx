@@ -40,7 +40,7 @@ const Accordion: React.FC<AccordionProps> = ({ title, isOpen, children }) => {
           )}
         </span>
         <h4
-          className={`text-base font-semibold tracking-wider ${
+          className={`text-base font-semibold font-roboto tracking-wider ${
             isActive ? "text-white" : "text-neutral-600"
           }`}
         >

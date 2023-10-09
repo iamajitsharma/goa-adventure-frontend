@@ -146,11 +146,11 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
         </Box>
       ) : (
         <Box className="bg-white mt-0">
-          <div className="flex flex-col md:gap-3">
+          <div className="flex flex-col md:gap-3 font-roboto">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1 text-sm text-gray-500">
+              <div className="flex items-center gap-1 text-base text-gray-500">
                 <p>Starting from</p>
-                <span className="flex items-center line-through ">
+                <span className="flex items-center line-through">
                   <BsCurrencyRupee />
                   {price}
                 </span>
@@ -161,11 +161,14 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
             </div>
             <div className="flex items-center justify-between gap-0 md:flex-col md:gap-4 lg:flex-row ">
               <div className="flex items-center">
-                <span className="flex items-center justify-center text-2xl font-semibold text-variant">
+                <span className="flex items-center justify-center text-3xl font-semibold text-variant">
                   <BsCurrencyRupee />
                   {salePrice}
                 </span>
-                <span className="text-primary self-end">/Person</span>
+                <span className="text-primary self-end text-base">
+                  {" "}
+                  /Person
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <input

@@ -5,7 +5,7 @@ import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import type { AppProps } from "next/app";
-import { Poppins, Merriweather } from "next/font/google";
+import { Poppins, Merriweather, Roboto } from "next/font/google";
 import { Provider } from "react-redux";
 import { store } from "@/store/store";
 import { ToastContainer, toast } from "react-toastify";
@@ -27,6 +27,13 @@ const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
   variable: "--font-poppins",
+});
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "500", "700", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-roboto",
 });
 
 const merrifont = Merriweather({
@@ -60,7 +67,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <EmailLoginModal />
         <Layout>
           <main
-            className={`${poppins.variable} ${merrifont.variable} font-sans`}
+            className={`${poppins.variable} ${merrifont.variable} ${roboto.variable} font-sans`}
           >
             <Component {...pageProps} />
           </main>

@@ -11,7 +11,8 @@ import { RiAlbumLine } from "react-icons/ri";
 import Box from "@/components/common/Box";
 import { BsCheck2Circle, BsTelephone } from "react-icons/bs";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import { FiMapPin, FiMinus, FiPlus } from "react-icons/fi";
+import { IoCheckmarkDoneOutline } from "react-icons/io5";
+import { FiMapPin, FiClock } from "react-icons/fi";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ImWhatsapp } from "react-icons/im";
@@ -27,7 +28,7 @@ const index = (props: any) => {
     props?.data[0]?.price
   );
 
-  console.log(props.data[0]);
+  console.log("Single Product", props.data[0]);
 
   return (
     <section className="pt-0 bg-slate-50">
@@ -47,13 +48,19 @@ const index = (props: any) => {
       >
         {/* Product Title Section */}
         <Box className="bg-white">
-          <h1 className="text-lg font-semibold md:text-xl">
+          <ProductTitle level={1} title={props?.data[0]?.title} />
+          {/* <h1 className="text-lg font-semibold md:text-xl">
             {props?.data[0]?.title}
-          </h1>
-          <div className="flex flex-row items-center w-full gap-4 py-4">
+          </h1> */}
+          <div className="flex flex-row items-center w-full gap-4 py-4 font-roboto">
             <span className="flex flex-row items-center gap-2 text-neutral-600 text-sm font-medium sm:text-base">
               <FiMapPin className="text-primary text-xl" />
-              {props?.data[0]?.city} {props?.data[0]?.state}
+              {props?.data[0]?.city}
+            </span>
+
+            <span className="flex flex-row items-center gap-2 text-neutral-600 text-sm font-medium sm:text-base">
+              <FiClock className="text-primary text-xl" />
+              {props?.data[0]?.duration}
             </span>
             <div className="flex items-center gap-1">
               <span className="flex flex-row items-center gap-2 text-neutral-600 text-sm font-medium sm:text-base">
@@ -69,11 +76,27 @@ const index = (props: any) => {
           {/* Product Title Section End */}
         </Box>
 
+        {/* Highlights */}
         <Box className="bg-white">
           <ProductTitle
-            variant="h2"
-            title={`Overview: ${props?.data[0]?.title}`}
+            level={2}
+            title={`${props?.data[0]?.title} Highlights`}
           />
+          <ul className="py-4">
+            {props?.data[0]?.highlight.map((item: any) => (
+              <li
+                className="flex items-center gap-3 py-1 font-roboto text-base text-neutral-700"
+                key={item}
+              >
+                <IoCheckmarkDoneOutline className="text-primary text-xl" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Box>
+        {/* Overview */}
+        <Box className="bg-white">
+          <ProductTitle level={2} title={`${props?.data[0]?.title} Overview`} />
           <Overviews description={props?.data[0]?.overview} />
         </Box>
 
@@ -82,7 +105,10 @@ const index = (props: any) => {
             <ul>
               {props?.data[0]?.activity_inclusion?.map(
                 (item: any, index: any) => (
-                  <li key={index} className="flex items-center gap-6">
+                  <li
+                    key={index}
+                    className="flex items-center gap-3 py-1 font-roboto text-base text-neutral-700"
+                  >
                     <BsCheck2Circle className="text-green-600 text-xl" />
                     {item}
                   </li>
@@ -93,7 +119,10 @@ const index = (props: any) => {
           <Accordion title="Exclusion">
             <ul>
               {props?.data[0]?.activity_exclusion?.map((item: any) => (
-                <li key={item} className="flex items-center gap-6">
+                <li
+                  key={item}
+                  className="flex items-center gap-3 py-1 font-roboto text-base text-neutral-700"
+                >
                   <IoIosCloseCircleOutline className="text-red-500 text-xl" />
                   {item}
                 </li>
