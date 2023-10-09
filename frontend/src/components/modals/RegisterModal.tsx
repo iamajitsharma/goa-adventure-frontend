@@ -11,10 +11,8 @@ import {
   AiOutlineEye,
   AiOutlineEyeInvisible,
 } from "react-icons/ai";
-import MobileInput from "../common/inputs/MobileInput";
 import { createCustomerAndLogin } from "../../lib/api";
 import { RiMapPin5Line } from "react-icons/ri";
-import { FcGoogle } from "react-icons/FC";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa";
 
@@ -31,7 +29,7 @@ const RegisterModal = () => {
   const isRegisterModalOpen = useSelector(
     (state: any) => state.authModal.isRegisterModalOpen
   );
-  const { closeLogin, openRegister, closeRegister, openLogin } = useAuthModal();
+  const { closeRegister, openLogin } = useAuthModal();
 
   const {
     register,
