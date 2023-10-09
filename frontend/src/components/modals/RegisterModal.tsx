@@ -12,7 +12,6 @@ import {
   AiOutlineEyeInvisible,
 } from "react-icons/ai";
 import MobileInput from "../common/inputs/MobileInput";
-import SocialLogin from "../login/SocialLogin";
 import { createCustomerAndLogin } from "../../lib/api";
 import { RiMapPin5Line } from "react-icons/ri";
 import { FcGoogle } from "react-icons/FC";

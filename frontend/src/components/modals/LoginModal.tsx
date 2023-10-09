@@ -7,7 +7,6 @@ import { FiSmartphone } from "react-icons/fi";
 import useAuthModal from "@/hook/useAuthModal";
 import { useSelector } from "react-redux";
 import MobileInput from "../common/inputs/MobileInput";
-import SocialLogin from "../login/SocialLogin";
 import { useRouter } from "next/router";
 import { customerMobileLogIn } from "@/lib/api";
 import useCustomer from "@/hook/useCustomer";

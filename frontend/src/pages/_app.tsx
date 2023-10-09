@@ -12,7 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "@/components/Layout";
 import FAB from "@/components/FloatingActionButton/FAB";
-import EmailLoginModal from "@/components/modals/EmailLoginModal";
+
 import LoginModal from "@/components/modals/LoginModal";
 import RegisterModal from "@/components/modals/RegisterModal";
 import { PersistGate } from "redux-persist/integration/react";
@@ -64,7 +64,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <LoginModal />
         <RegisterModal />
-        <EmailLoginModal />
+
         <Layout>
           <main
             className={`${poppins.variable} ${merrifont.variable} ${roboto.variable} font-sans`}

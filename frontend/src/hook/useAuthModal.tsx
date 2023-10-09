@@ -3,8 +3,6 @@ import {
   closeRegisterModal,
   openLoginModal,
   openRegisterModal,
-  openEmailLoginModal,
-  closeEmailLoginModal,
 } from "@/store/modal/authModalSlice";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 const useAuthModal = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-  const [isEmailLoginModalOpen, setIsEmailLoginModalOpen] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -34,16 +31,6 @@ const useAuthModal = () => {
     dispatch(closeRegisterModal());
   };
 
-  const openEmailLogin = () => {
-    setIsEmailLoginModalOpen(true);
-    dispatch(openEmailLoginModal());
-  };
-
-  const closeEmailLogin = () => {
-    setIsEmailLoginModalOpen(false);
-    dispatch(closeEmailLoginModal());
-  };
-
   return {
     isLoginModalOpen,
     isRegisterModalOpen,
@@ -51,8 +38,6 @@ const useAuthModal = () => {
     closeLogin,
     openRegister,
     closeRegister,
-    openEmailLogin,
-    closeEmailLogin,
   };
 };
 
