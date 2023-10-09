@@ -24,54 +24,28 @@ const LoginModal = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState({ status: false, message: "" });
   const { customer, setCustomer } = useCustomer();
-  console.log("CUSTOEMR Login Modal", customer);
 
-  // function handleDataSubmit(mobileNo: string) {
-  const handleDataSubmit = async () => {
-    if (mobileNo.length < 10 || mobileNo.length > 10) {
-      const errorStatus = {
-        status: true,
-        message: "MObile Number must be equal to 10 digits",
-      };
-      setError(errorStatus);
-    } else if (mobileNo.length == 0) {
-      const errorStatus = {
-        status: true,
-        message: "Please enter mobile Number",
-      };
-      setError(errorStatus);
-    } else if (password.length == 0) {
-      const errorStatus = {
-        status: true,
-        message: "Please enter Password",
-      };
-      setError(errorStatus);
-    } else {
-      const errorStatus = {
-        status: false,
-        message: "",
-      };
-      setError(errorStatus);
-      console.log("Captured Value", mobileNo, password);
-      const response = await customerMobileLogIn(mobileNo, password);
-      console.log("Response from login", response);
-      setCustomer(response);
-      closeLogin();
-    }
-  };
-
+  // Subscribing Login Modal From Redux
   const isLoginModalOpen = useSelector(
     (state: any) => state.authModal.isLoginModalOpen
   );
-  const { closeLogin, openRegister, openLogin } = useAuthModal();
+  const { closeLogin, openRegister } = useAuthModal();
+  console.log("CUSTOEMR Login Modal", customer);
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FieldValues>({});
 
-  const SubmitHandler = (e: any) => e.preventDefault();
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    console.log("Email ID", data.email);
+    console.log("Password", data.password);
+    setCustomer(data);
+    reset();
+    closeLogin();
+  };
 
   const onToggle = useCallback(() => {
     closeLogin();
@@ -164,7 +138,7 @@ const LoginModal = () => {
       onClose={closeLogin}
       title="Login"
       actionLabel="Log In"
-      onSubmit={handleDataSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
       footer={footerContent}
       error={error}
