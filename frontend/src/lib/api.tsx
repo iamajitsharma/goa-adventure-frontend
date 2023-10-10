@@ -6,8 +6,8 @@ import { toast } from "react-toastify";
 
 const devServer = "http://localhost:4000/v1";
 const prodServer = "https://backend.goaadventure.in/v1";
-const serverURL = prodServer;
-//const serverURL = devServer;
+//const serverURL = prodServer;
+const serverURL = devServer;
 export const url = "http://localhost:1337";
 //test commit
 var myHeaders = new Headers();
@@ -294,6 +294,23 @@ export async function customerEmailLogIn(email: string, password: string) {
     }),
   };
   let url = `${serverURL}/customer/email-login`;
+  console.log("Resposne", requestOptionsForPost);
+
+  const result: any = await fetch(url, requestOptionsForPost);
+
+  const response = await result.json();
+
+  return response;
+}
+
+export async function customerRegistration(requestBody: any) {
+  var requestOptionsForPost: any = {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+
+    body: JSON.stringify(requestBody),
+  };
+  let url = `${serverURL}/customer/create-and-login-customer`;
   console.log("Resposne", requestOptionsForPost);
 
   const result: any = await fetch(url, requestOptionsForPost);

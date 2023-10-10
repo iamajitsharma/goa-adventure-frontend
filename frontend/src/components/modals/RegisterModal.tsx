@@ -49,10 +49,9 @@ const RegisterModal = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-    console.log(data);
+    console.log("Register data", data);
     reset();
     closeRegister();
-    openLogin();
   };
 
   // const handleDataSubmit = (data: any) => {
