@@ -282,3 +282,26 @@ export async function customerMobileLogIn(
 
   return response;
 }
+
+export async function customerEmailLogIn(
+  mobile_number: string,
+  password: string
+) {
+  var requestOptionsForPost: any = {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+
+    body: JSON.stringify({
+      mobile_number,
+      password,
+    }),
+  };
+  let url = `${serverURL}/customer/email-login`;
+  console.log("Resposne", requestOptionsForPost);
+
+  const result: any = await fetch(url, requestOptionsForPost);
+
+  const response = await result.json();
+
+  return response;
+}
