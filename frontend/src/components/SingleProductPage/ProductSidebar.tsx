@@ -218,6 +218,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
               size="xl"
               variant="primary"
               // href="/cart"
+              disabled={fromDate ? false : true}
               onClick={() => {
                 console.log(
                   "Selected PRoduct",
