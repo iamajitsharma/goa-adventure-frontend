@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CartCard from "@/components/UI/CartCard";
 import Link from "next/link";
 import { BsCartPlusFill } from "react-icons/bs";
@@ -8,6 +8,8 @@ import placeholderImg from "../../public/assets/placeholder.jpg";
 import Container from "@/components/common/Container";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import useProduct from "@/hook/useProduct";
+import useCustomer from "@/hook/useCustomer";
+import useAuthModal from "@/hook/useAuthModal";
 
 const cart = () => {
   const [cartItem, setCartItem] = useState([
@@ -19,6 +21,7 @@ const cart = () => {
     },
   ]);
   const { product, setProduct, discardProduct } = useProduct();
+  const { customer, setCustomer }: any = useCustomer();
   console.log("PRoduct", product);
   const subTotal = Number(product.actualPrice) * Number(product.quantity);
   const discount =
@@ -29,6 +32,13 @@ const cart = () => {
     (finalPayment * Number(product.deposit_value) * Number(product.quantity)) /
     100;
   const futurePayment = subTotal - discount - payNow;
+  const { openLogin, closeLogin } = useAuthModal();
+
+  useEffect(() => {
+    if (!customer?.user?.id) {
+      openLogin();
+    }
+  });
   return (
     <>
       <Container className="h-full">
@@ -86,7 +96,12 @@ const cart = () => {
                   <span>{payNow}</span>
                 </div>
               </div>
-              <Button size="xl" variant="dark" href="/checkout">
+              <Button
+                size="xl"
+                variant="dark"
+                href={customer?.user?.id ? "/checkout" : undefined}
+                disabled={customer?.user?.id ? false : true}
+              >
                 Proceed to checkout
               </Button>
             </div>

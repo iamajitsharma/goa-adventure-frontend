@@ -42,12 +42,17 @@ const LoginModal = () => {
     console.log("Email ID", data.email);
     console.log("Password", data.password);
 
-    const response = await customerEmailLogIn(data.email, data.password);
-    console.log("Response from login", response);
+    try {
+      const response = await customerEmailLogIn(data.email, data.password);
+      console.log("Response from login", response);
 
-    setCustomer(response);
-    reset();
-    closeLogin();
+      setCustomer(response);
+
+      reset();
+      closeLogin();
+    } catch (err) {
+      console.log("Error while loggin in ", err);
+    }
   };
 
   const onToggle = useCallback(() => {
