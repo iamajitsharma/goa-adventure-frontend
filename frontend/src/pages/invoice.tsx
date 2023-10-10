@@ -9,6 +9,7 @@ export default function Invoice() {
   const [invoice, setInvoice] = useState("");
   const router = useRouter();
   const searchParams = useSearchParams();
+  console.log("INVOICE", invoice);
 
   async function getBookingData() {
     // setLoaded(false);
