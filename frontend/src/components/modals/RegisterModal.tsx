@@ -5,13 +5,14 @@ import { FiSmartphone } from "react-icons/fi";
 import useAuthModal from "@/hook/useAuthModal";
 import { useSelector } from "react-redux";
 import Input from "../common/inputs/Input";
+import { customerRegistration } from "@/lib/api";
 import {
   AiOutlineUser,
   AiOutlineMail,
   AiOutlineEye,
   AiOutlineEyeInvisible,
 } from "react-icons/ai";
-import { createCustomerAndLogin } from "../../lib/api";
+import useCustomer from "@/hook/useCustomer";
 import { RiMapPin5Line } from "react-icons/ri";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa";
@@ -19,6 +20,7 @@ import { FaEnvelope, FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa";
 const RegisterModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasFilled, setHasFilled] = useState(false);
+  const { customer, setCustomer } = useCustomer();
   const [showPassword, setShowPassword] = useState(false);
 
   const [error, setError] = useState({
@@ -47,11 +49,21 @@ const RegisterModal = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);
     console.log("Register data", data);
-    reset();
-    closeRegister();
+
+    try {
+      const response = await customerRegistration(data);
+      console.log("Response from register", response);
+
+      setCustomer(response);
+
+      reset();
+      closeRegister();
+    } catch (err) {
+      console.log("Error while registering in ", err);
+    }
   };
 
   // const handleDataSubmit = (data: any) => {
@@ -152,7 +164,7 @@ const RegisterModal = () => {
       </div>
       <div>
         <Input
-          id="mobileNo"
+          id="mobile_number"
           label="Mobile No"
           icon={<FiSmartphone />}
           disabled={isLoading}
@@ -164,7 +176,7 @@ const RegisterModal = () => {
             min: 3,
           }}
         />
-        {errors.mobileNo && (
+        {errors.mobile_number && (
           <p className="text-xs text-neutral-500">
             Please enter 10 digit mobile number
           </p>

@@ -27,7 +27,7 @@ const cart = () => {
   const discount =
     (Number(product.actualPrice) - Number(product.priceToBePaid)) *
     Number(product.quantity);
-  const finalPayment = Number(product.priceToBePaid) * Number(product.quantity);
+  const finalPayment = subTotal - discount;
   const payNow =
     (finalPayment * Number(product.deposit_value) * Number(product.quantity)) /
     100;
