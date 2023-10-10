@@ -45,7 +45,7 @@ const LoginModal = () => {
     const response = await customerEmailLogIn(data.email, data.password);
     console.log("Response from login", response);
 
-    setCustomer(data);
+    setCustomer(response);
     reset();
     closeLogin();
   };

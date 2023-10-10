@@ -283,16 +283,13 @@ export async function customerMobileLogIn(
   return response;
 }
 
-export async function customerEmailLogIn(
-  mobile_number: string,
-  password: string
-) {
+export async function customerEmailLogIn(email: string, password: string) {
   var requestOptionsForPost: any = {
     method: "post",
     headers: { "Content-Type": "application/json" },
 
     body: JSON.stringify({
-      mobile_number,
+      email,
       password,
     }),
   };
