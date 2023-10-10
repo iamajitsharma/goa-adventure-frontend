@@ -41,15 +41,26 @@ const Checkout = () => {
     });
   };
 
+  console.log("PRoduct", product);
+  const subTotal = Number(product.actualPrice) * Number(product.quantity);
+  const discount =
+    (Number(product.actualPrice) - Number(product.priceToBePaid)) *
+    Number(product.quantity);
+  const finalPayment = Number(product.priceToBePaid) * Number(product.quantity);
+  const payNow =
+    (finalPayment * Number(product.deposit_value) * Number(product.quantity)) /
+    100;
+  const futurePayment = subTotal - discount - payNow;
+
   async function callRazorPay() {
     if (checkedInfo) {
-      const subTotal = Number(product.actualPrice) * Number(product.quantity);
-      const discount =
-        (Number(product.actualPrice) - Number(product.priceToBePaid)) *
-        Number(product.quantity);
-      const finalPayment =
-        Number(product.priceToBePaid) * Number(product.quantity);
-      const payNow = (subTotal * Number(product.deposit_value)) / 100;
+      // const subTotal = Number(product.actualPrice) * Number(product.quantity);
+      // const discount =
+      //   (Number(product.actualPrice) - Number(product.priceToBePaid)) *
+      //   Number(product.quantity);
+      // const finalPayment =
+      //   Number(product.priceToBePaid) * Number(product.quantity);
+      // const payNow = (subTotal * Number(product.deposit_value)) / 100;
       const futurePayment = finalPayment - payNow;
       const amount = payNow;
       // const booking_id = 2;
@@ -251,20 +262,21 @@ const Checkout = () => {
           <div className="w-full h-full flex flex-col gap-4 px-1 py-4 font-semibold text-sm">
             <div className="flex justify-between items-center">
               <span>Subtotal</span>
-              <span>2500</span>
+              <span>{subTotal}</span>
             </div>
             <div className="flex justify-between items-center">
               <span>Discount</span>
-              <span>200</span>
+              <span> {discount}</span>
             </div>
             <div className="flex justify-between items-center">
               <span>Future Payment</span>
-              <span>1675</span>
+              <span> {futurePayment}</span>
             </div>
             <div className="flex justify-between items-center">
               <span>Pay Deposit</span>
-              <span>625</span>
+              <span>{payNow}</span>
             </div>
+
             <div className="flex items-center justify-between text-sm text-neutral-600 pt-4">
               <label className="inline-flex items-center gap-2">
                 <input
