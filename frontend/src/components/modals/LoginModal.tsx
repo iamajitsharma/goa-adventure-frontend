@@ -8,7 +8,7 @@ import useAuthModal from "@/hook/useAuthModal";
 import { useSelector } from "react-redux";
 import MobileInput from "../common/inputs/MobileInput";
 import { useRouter } from "next/router";
-import { customerMobileLogIn } from "@/lib/api";
+import { customerEmailLogIn } from "@/lib/api";
 import useCustomer from "@/hook/useCustomer";
 import {
   AiOutlineEye,
@@ -41,6 +41,10 @@ const LoginModal = () => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     console.log("Email ID", data.email);
     console.log("Password", data.password);
+
+    const response = await customerEmailLogIn(data.email, data.password);
+    console.log("Response from login", response);
+
     setCustomer(data);
     reset();
     closeLogin();
