@@ -303,7 +303,7 @@ export async function customerEmailLogIn(email: string, password: string) {
   return response;
 }
 
-export async function customerRegistration(requestBody: any) {
+export async function customerRegistration(requestBody: any, setError: any) {
   var requestOptionsForPost: any = {
     method: "post",
     headers: { "Content-Type": "application/json" },
@@ -312,10 +312,24 @@ export async function customerRegistration(requestBody: any) {
   };
   let url = `${serverURL}/customer/create-and-login-customer`;
   console.log("Resposne", requestOptionsForPost);
-
+  let response: any = {};
+  // try {
   const result: any = await fetch(url, requestOptionsForPost);
 
-  const response = await result.json();
+  response = await result.json();
+  if (response.message) {
+    setError({
+      message: "An account with same email already exist",
+      status: true,
+    });
+  }
+  // } catch (err) {
+  //   console.log(err);
+  //   setError({
+  //     message: "An account with same email already exist",
+  //     status: true,
+  //   });
+  //}
 
   return response;
 }

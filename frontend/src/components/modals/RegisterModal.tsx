@@ -53,16 +53,13 @@ const RegisterModal = () => {
     setIsLoading(true);
     console.log("Register data", data);
 
-    try {
-      const response = await customerRegistration(data);
-      console.log("Response from register", response);
-
+    const response = await customerRegistration(data, setError);
+    console.log("Response from register", response);
+    if (!response.message) {
       setCustomer(response);
 
       reset();
       closeRegister();
-    } catch (err) {
-      console.log("Error while registering in ", err);
     }
   };
 
@@ -257,6 +254,11 @@ const RegisterModal = () => {
           <p className="text-xs text-neutral-500">
             password must be at least 8 characters
           </p>
+        )}
+        {error.status ? (
+          <div className="text-red-500 font-semibold">{error.message}</div>
+        ) : (
+          ""
         )}
       </div>
     </div>
