@@ -6,8 +6,8 @@ import { toast } from "react-toastify";
 
 const devServer = "http://localhost:4000/v1";
 const prodServer = "https://backend.goaadventure.in/v1";
-const serverURL = prodServer;
-//const serverURL = devServer;
+//const serverURL = prodServer;
+const serverURL = devServer;
 export const url = "http://localhost:1337";
 //test commit
 var myHeaders = new Headers();
@@ -135,6 +135,16 @@ export async function getDestination() {
 export async function getHomePageSearch(text: string) {
   const result: any = await fetch(
     `${serverURL}/products/home-page-search/${text}`,
+    requestOptions
+  );
+
+  const response = await result.json();
+  return response;
+}
+
+export async function getUserBookings(id: number) {
+  const result: any = await fetch(
+    `${serverURL}/customer/bookings/${id}`,
     requestOptions
   );
 
