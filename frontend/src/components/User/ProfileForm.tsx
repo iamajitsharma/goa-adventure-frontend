@@ -9,9 +9,10 @@ import axios, * as others from "axios";
 import { useForm, Controller } from "react-hook-form";
 import { AiOutlineCamera } from "react-icons/ai";
 import useCustomer from "@/hook/useCustomer";
+const FormData = require("form-data");
 
 const ProfileForm = () => {
-  const { customer }: any = useCustomer();
+  const { customer, setCustomer }: any = useCustomer();
   // return (
   //   <>
   //     <div className="flex items-center gap-2 my-6">
@@ -84,8 +85,8 @@ const ProfileForm = () => {
   const [passengerInfo, setPassengerInfo] = useState({});
 
   let valueAssignment;
-  if (customer?.loginData?.customer) {
-    valueAssignment = customer.loginData.customer;
+  if (customer?.user?.id) {
+    valueAssignment = customer.user;
   }
   console.log("VALUE ASSIGNMENT", valueAssignment);
   const {
@@ -117,44 +118,51 @@ const ProfileForm = () => {
   // }
 
   useEffect(() => {
-    if (customer?.loginData?.customer?.profilePicUrl) {
-      setProfileImage(customer?.loginData?.customer?.profilePicUrl);
+    if (customer?.user?.profile_image) {
+      setProfileImage(customer?.user?.profile_image);
     }
   }, []);
   console.log("Client", customer);
 
   const onSubmit = async (data: any) => {
-    if (data.corporateEmail) {
-      data.corporateEmail = [data.corporateEmail];
-    }
     console.log("Data 123", data);
     var formData = new FormData();
-
+    data.status = true;
     if (data.profile_image[0]?.size) {
       console.log("Update profile pic", data.profile_image[0]);
       // formData.append("profilePic", data.profile_image[0]);
-      formData.append("profilePic", data.profile_image[0]);
-
-      let headers = {};
-
-      var formdata = new FormData();
-
-      var requestOptions = {
-        method: "POST",
-        headers: headers,
-        body: formdata,
-        redirect: "follow",
-        url: `http://34.228.196.145:3000/v1/passenger/upload/${customer?.loginData?.id}`,
-      };
-
-      axios(requestOptions)
-        .then((response) => {
-          console.log("Response after uploading image", response);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      formData.append("profile_image", data.profile_image[0]);
     }
+    formData.append("name", data.name.trim());
+    formData.append("mobile_number", data.mobile_number.trim());
+    formData.append("email", data.email.trim());
+    formData.append("state", data.state.trim());
+    formData.append("city", data.city.trim());
+    formData.append("country", data.country.trim());
+    formData.append("status", data.status);
+
+    let headers = { "content-type": "multipart/form-data" };
+    console.log("Form data", formData);
+    var requestOptions: any = {
+      method: "PUT",
+      url: `http://localhost:4000/v1/customer/${customer?.user?.id}`,
+      headers: {
+        headers: { "content-type": "multipart/form-data" },
+      },
+      data: formData,
+    };
+
+    axios(requestOptions)
+      .then(async (response) => {
+        console.log("Response after uploading image", response);
+        const fetchUser = await fetchUserInfo(id);
+        let custInfo = customer;
+        custInfo.user = fetchUser;
+        setCustomer(custInfo);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -228,6 +236,7 @@ const ProfileForm = () => {
                         placeholder="Email"
                         value={value}
                         onChange={onChange}
+                        disabled={true}
                       />
                     )}
                   />
@@ -245,6 +254,7 @@ const ProfileForm = () => {
                         placeholder="Mobile Number"
                         value={value}
                         onChange={onChange}
+                        disabled={true}
                       />
                     )}
                   />
@@ -268,7 +278,7 @@ const ProfileForm = () => {
               <div className="grid grid-cols-2 gap-8 gap-y-4 mb-8">
                 <div className="mr-2 ml-2 ">
                   <Controller
-                    name="citt"
+                    name="city"
                     control={control}
                     render={({ field: { value, onChange } }) => (
                       <input
@@ -310,7 +320,7 @@ const ProfileForm = () => {
                 {/* <button data-dismiss="modal" type="submit" /> */}
                 <button
                   type="submit"
-                  className="w-auto m-auto  text-white rounded px-4 py-2"
+                  className="w-auto m-auto bg-red-400 text-white rounded px-4 py-2"
                   data-bs-dismiss="modal"
                 >
                   Save

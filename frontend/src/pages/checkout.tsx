@@ -165,9 +165,9 @@ const Checkout = () => {
       };
       if (customer.user.id) {
         options.prefill = {
-          name: customer.name,
-          email: customer.email,
-          contact: customer.mobile_number,
+          name: customer.user.name,
+          email: customer.user.email,
+          contact: customer.user.mobile_number,
         };
         // options.prefill.email = customer.email;
         // options.prefill.contact = customer.mobile_number;

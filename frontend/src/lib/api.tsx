@@ -204,6 +204,16 @@ export async function getCategories() {
   return response;
 }
 
+export async function fetchUserInfo(customerId: number) {
+  const result: any = await fetch(
+    `${serverURL}/customer/${customerId}`,
+    requestOptions
+  );
+
+  const response = await result.json();
+  return response;
+}
+
 export async function getSubCategories() {
   const result: any = await fetch(`${serverURL}/subcategories`, requestOptions);
 

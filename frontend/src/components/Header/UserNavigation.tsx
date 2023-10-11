@@ -37,7 +37,9 @@ const UserNavigation = () => {
                     : profileImage
                 }
                 alt=""
-                className="rounded-full"
+                className="rounded-full "
+                width={"100"}
+                height={"100"}
               />
             </Menu.Button>
           </div>
