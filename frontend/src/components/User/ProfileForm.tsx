@@ -147,7 +147,7 @@ const ProfileForm = () => {
     console.log("Form data", formData);
     var requestOptions: any = {
       method: "PUT",
-      url: `http://localhost:4000/v1/customer/${customer?.user?.id}`,
+      url: `https://backend.goaadventure.in/v1/customer/${customer?.user?.id}`,
       headers: {
         headers: { "content-type": "multipart/form-data" },
       },
