@@ -9,6 +9,7 @@ import axios, * as others from "axios";
 import { useForm, Controller } from "react-hook-form";
 import { AiOutlineCamera } from "react-icons/ai";
 import useCustomer from "@/hook/useCustomer";
+import { fetchUserInfo } from "@/lib/api";
 const FormData = require("form-data");
 
 const ProfileForm = () => {
@@ -103,6 +104,7 @@ const ProfileForm = () => {
   });
 
   const onError = (errors: any) => console.log(errors);
+  console.log("FEtch user", customer);
 
   // async function updateClient() {
   //   let passInfo = await PassengerInfo(customer?.loginData?.id);
@@ -155,7 +157,8 @@ const ProfileForm = () => {
     axios(requestOptions)
       .then(async (response) => {
         console.log("Response after uploading image", response);
-        const fetchUser = await fetchUserInfo(id);
+        const fetchUser = await fetchUserInfo(customer?.user.id);
+        console.log("USer fetched ", fetchUser);
         let custInfo = customer;
         custInfo.user = fetchUser;
         setCustomer(custInfo);
