@@ -7,44 +7,6 @@ import BookingList from "@/components/User/BookingList";
 import { getUserBookings } from "@/lib/api";
 import useCustomer from "@/hook/useCustomer";
 
-const data = [
-  {
-    title: "Scuba Diving Grand Island",
-    state: "Goa",
-    country: "India",
-    bookingDate: "25th Dec 2023",
-    status: "Complete",
-  },
-  {
-    title: "Goa Watersports",
-    state: "Calangute",
-    country: "India",
-    bookingDate: "25th Dec 2023",
-    status: "Refunded",
-  },
-  {
-    title: "Adventure Boat Party",
-    state: "Goa",
-    country: "India",
-    bookingDate: "25th Dec 2023",
-    status: "Canceled",
-  },
-  {
-    title: "Scuba Diving Grand Island",
-    state: "Goa",
-    country: "India",
-    bookingDate: "25th Dec 2023",
-    status: "Pending",
-  },
-  {
-    title: "Scuba Diving Grand Island",
-    state: "Goa",
-    country: "India",
-    bookingDate: "25th Dec 2023",
-    status: "Complete",
-  },
-];
-
 const BookingHistory = () => {
   const [bookings, setBookings] = useState([]);
   const { customer, setCustomer }: any = useCustomer();
@@ -62,7 +24,7 @@ const BookingHistory = () => {
       fetchUserBookings(customer?.user?.id);
     }
   }, []);
-  console.log("BOokings", bookings);
+  console.log("Booking History", bookings);
   //console.log(router);
   return (
     <UserContent>

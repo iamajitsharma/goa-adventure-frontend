@@ -2,20 +2,15 @@ import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { IoGridOutline, IoLogOutOutline } from "react-icons/io5";
-import { BsHeart, BsGear } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 
 const userMenu = [
   {
     name: "Booking",
-    href: "/user/booking-history",
+    href: "/user/bookings",
     icon: <IoGridOutline className="text-xl" />,
   },
-  {
-    name: "WishList",
-    href: "/user/wishlist",
-    icon: <BsHeart className="text-xl" />,
-  },
+
   {
     name: "Profile",
     href: "/user/my-profile",

@@ -6,8 +6,7 @@ import Link from "next/link";
 import useCustomer from "@/hook/useCustomer";
 
 const userNavigation = [
-  { name: "My Booking", href: "booking-history" },
-  { name: "Wishlist", href: "wishlist" },
+  { name: "My Booking", href: "bookings" },
   { name: "Your Profile", href: "my-profile" },
   // { name: "Sign out", href: "" },
 ];
