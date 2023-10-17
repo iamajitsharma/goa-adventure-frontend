@@ -16,7 +16,7 @@ export default function PaymentSuccess() {
     }, 1000);
 
     setTimeout(() => {
-      router.push(`/invoice?order_id=${searchParams.get("order_id")}`);
+      router.push("/user/bookings");
     }, 5000);
     // setTimeout(()=>setUpdateTime((prev:any)=>prev-1),1000)
     countDown();
@@ -48,7 +48,7 @@ export default function PaymentSuccess() {
           You will be redirected in {updateTime} seconds
         </p>
       </div>
-      <Button variant="primary" className="my-8" href="/user/booking-history">
+      <Button variant="primary" className="my-8" href="/user/bookings">
         Dashboard
       </Button>
     </div>

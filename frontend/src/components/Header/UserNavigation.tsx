@@ -69,19 +69,13 @@ const UserNavigation = () => {
               ))}
               <Menu.Item key={"Sign out"}>
                 {({ active }) => (
-                  <Link
-                    href={`/`}
-                    className={classNames(
-                      active ? "bg-gray-100" : "",
-                      "block px-4 py-2 text-sm text-gray-700"
-                    )}
-                  >
+                  <Link href={`/`}>
                     <button
-                      onClick={() => logoutCustomer(customer)}
                       className={classNames(
                         active ? "bg-gray-100" : "",
                         "block px-4 py-2 text-sm text-gray-700"
                       )}
+                      onClick={() => logoutCustomer(customer)}
                     >
                       Sign out
                     </button>

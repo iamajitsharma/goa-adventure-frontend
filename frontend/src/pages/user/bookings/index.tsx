@@ -28,9 +28,11 @@ const BookingHistory = () => {
   //console.log(router);
   return (
     <UserContent>
-      <h3 className="text-xl font-poppins py-2 font-semibold tracking-wider uppercase">
-        Bookings
-      </h3>
+      {bookings && (
+        <h3 className="text-xl font-poppins py-2 font-semibold tracking-wider uppercase">
+          Bookings
+        </h3>
+      )}
       <BookingList data={bookings} />
     </UserContent>
   );

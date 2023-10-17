@@ -12,13 +12,13 @@ const BookingList = ({ data }: any) => {
         ))
       ) : (
         <div className="w-full flex flex-col items-center justify-center gap-4 font-poppins">
-          <h2 className="text-2xl text-neutral-700 font-semibold ">
+          <h2 className="text-xl text-neutral-700 font-semibold ">
             No Bookings
           </h2>
-          <p className="text-lg text-neutral-800">
+          <p className="text-sm sm:text-base text-center text-neutral-800">
             Unlock your next adventure with a simple click!
           </p>
-          <Button variant="primary" href="/">
+          <Button variant="primary" href="/" className="animate-bounce">
             Book Now
           </Button>
         </div>

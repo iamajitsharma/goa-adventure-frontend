@@ -19,6 +19,8 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistor } from "@/store/store";
 import ImageGallery from "@/components/SingleProductPage/ImageGallery";
 import ZohoLiveChat from "@/components/ZohoLiveChat";
+import ForgetPWDModal from "@/components/modals/ForgetPWDModal";
+import EmailOTPModal from "@/components/modals/EmailOTPModal";
 
 // import UserLayout from "@/components/User/UserLayout";
 
@@ -64,6 +66,8 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <LoginModal />
         <RegisterModal />
+        <ForgetPWDModal />
+        <EmailOTPModal />
 
         <Layout>
           <main

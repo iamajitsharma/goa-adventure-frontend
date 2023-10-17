@@ -28,7 +28,7 @@ const LoginModal = () => {
   const isLoginModalOpen = useSelector(
     (state: any) => state.authModal.isLoginModalOpen
   );
-  const { closeLogin, openRegister } = useAuthModal();
+  const { closeLogin, openRegister, openForget } = useAuthModal();
   console.log("CUSTOEMR Login Modal", customer);
 
   const {
@@ -59,6 +59,11 @@ const LoginModal = () => {
     closeLogin();
     openRegister();
   }, [closeLogin, openRegister]);
+
+  const onFogetToggle = useCallback(() => {
+    closeLogin();
+    openForget();
+  }, [closeLogin, openForget]);
 
   const togglePasswordVisiblity = () => setShowPassword(!showPassword);
 
@@ -121,10 +126,12 @@ const LoginModal = () => {
       </div>
 
       <div className="flex items-center justify-between text-sm text-neutral-600 pt-4">
-        {/* <label className="inline-flex items-center gap-2">
-          <input type="checkbox" className="p-2 rounded-sm" />
-          Remember me
-        </label> */}
+        <span
+          className="text-xs text-primary cursor-pointer"
+          onClick={onFogetToggle}
+        >
+          Forget Password?
+        </span>
       </div>
     </div>
   );

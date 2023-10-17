@@ -71,22 +71,6 @@ const BookingCard = ({ item }: any) => {
 
   console.log("Booking Card", item);
 
-  // useEffect(() => {
-  //   async function getBookingData() {
-  //     // Extract the product_id from the item object
-  //     const { product_id } = item;
-  //     const bookingInfo = await getProductById(product_id);
-  //     console.log(bookingInfo);
-
-  //     // Add the productTitle to the item object
-  //     const updatedItem = { ...item, productTitle: bookingInfo.title };
-  //     setProduct(updatedItem);
-  //     console.log(updatedItem);
-  //   }
-
-  //   getBookingData();
-  // }, []);
-
   //Date Format
   const dateInfo = dateFormatChange(item.start_date);
 
@@ -97,13 +81,15 @@ const BookingCard = ({ item }: any) => {
           {/* DateSection */}
           <div className="flex flex-row gap-2">
             <div className="flex flex-col items-center justify-center  shadow-4xl p-1 w-20 h-20 rounded-md font-semibold">
-              <span className="text-base">{dateInfo.month}</span>
-              <span className="text-2xl text-primary">{dateInfo.day}</span>
-              <span>{dateInfo.year}</span>
+              <span className="text-sm md:text-base">{dateInfo.month}</span>
+              <span className="text-xl md:text-2xl text-primary">
+                {dateInfo.day}
+              </span>
+              <span className="text-sm md:text-base">{dateInfo.year}</span>
             </div>
 
             <div className="flex flex-col justify-between  w-full">
-              <h3 className="text-base sm:text-lg font-semibold text-neutral-700">
+              <h3 className="text-sm sm:text-lg font-semibold text-neutral-700">
                 {item.title}
               </h3>
               <div className="flex flex-row items-center w-full justify-between gap-3 text-sm text-gray-500 font-semibold md:font-medium py-2">
