@@ -69,28 +69,30 @@ const BookingCard = ({ item }: any) => {
     }
   };
 
-  useEffect(() => {
-    async function getBookingData() {
-      // Extract the product_id from the item object
-      const { product_id } = item;
-      const bookingInfo = await getProductById(product_id);
-      console.log(bookingInfo);
+  console.log("Booking Card", item);
 
-      // Add the productTitle to the item object
-      const updatedItem = { ...item, productTitle: bookingInfo.title };
-      setProduct(updatedItem);
-      console.log(updatedItem);
-    }
+  // useEffect(() => {
+  //   async function getBookingData() {
+  //     // Extract the product_id from the item object
+  //     const { product_id } = item;
+  //     const bookingInfo = await getProductById(product_id);
+  //     console.log(bookingInfo);
 
-    getBookingData();
-  }, []);
+  //     // Add the productTitle to the item object
+  //     const updatedItem = { ...item, productTitle: bookingInfo.title };
+  //     setProduct(updatedItem);
+  //     console.log(updatedItem);
+  //   }
+
+  //   getBookingData();
+  // }, []);
 
   //Date Format
-  const dateInfo = dateFormatChange(product?.start_date);
+  const dateInfo = dateFormatChange(item.start_date);
 
   return (
     <>
-      {product ? (
+      {item ? (
         <div className="w-full my-4 p-2 relative bg-white shadow-3xl rounded-md font-poppins">
           {/* DateSection */}
           <div className="flex flex-row gap-2">
@@ -102,24 +104,22 @@ const BookingCard = ({ item }: any) => {
 
             <div className="flex flex-col justify-between  w-full">
               <h3 className="text-base sm:text-lg font-semibold text-neutral-700">
-                {product?.productTitle}
+                {item.title}
               </h3>
               <div className="flex flex-row items-center w-full justify-between gap-3 text-sm text-gray-500 font-semibold md:font-medium py-2">
                 <div className="flex items-center w-full gap-4 ">
-                  {product?.createdAt && (
-                    <span className="hidden sm:block text-sm text-gray-500 font-medium transition ease-in duration-200">
-                      Booked On:{" "}
-                      {dateFormatChange(product?.createdAt).formattedDate}
-                    </span>
-                  )}
+                  <span className="hidden sm:block text-sm text-gray-500 font-medium transition ease-in duration-200">
+                    Booked On:{" "}
+                    {dateFormatChange(item.booking_date).formattedDate}
+                  </span>
 
                   <span className="inline-flex items-center gap-2 text-sm text-neutral-700">
                     <FiUsers className="text-primary text-lg" />{" "}
-                    {product?.total_seat}
+                    {item.total_seat}
                   </span>
                   <span className="inline-flex items-center gap-2 text-sm text-neutral-700">
                     {/* Display Status  */}
-                    {statusHandler(product?.booking_status)}
+                    {statusHandler(item.booking_status)}
                   </span>
                 </div>
                 <motion.span
@@ -163,7 +163,7 @@ const BookingCard = ({ item }: any) => {
                       Destination
                     </span>
                     <p className="text-sm sm:text-base font-semibold text-neutral-800">
-                      Goa
+                      {item.destination_location}
                     </p>
                   </div>
                   <div className="flex flex-col justify-center items-center">
@@ -172,7 +172,7 @@ const BookingCard = ({ item }: any) => {
                       Meeting Point
                     </span>
                     <p className="text-sm sm:text-base font-semibold text-neutral-800">
-                      Calangute
+                      {item.meeting_point}
                     </p>
                   </div>
                   <div className="flex flex-col justify-center items-center">
@@ -181,7 +181,7 @@ const BookingCard = ({ item }: any) => {
                       Reporting
                     </span>
                     <p className="text-sm sm:text-base font-semibold text-neutral-800">
-                      8:00 AM
+                      {item.reporting_time}
                     </p>
                   </div>
                   <div className="flex flex-col justify-center items-center">
@@ -190,7 +190,7 @@ const BookingCard = ({ item }: any) => {
                       Total Amount
                     </span>
                     <p className="text-sm sm:text-base font-semibold text-neutral-800">
-                      700
+                      {item.total_amount}
                     </p>
                   </div>
                   <div className="flex flex-col justify-center items-center">
@@ -199,7 +199,7 @@ const BookingCard = ({ item }: any) => {
                       Deposit
                     </span>
                     <p className="text-sm sm:text-base font-semibold text-neutral-800">
-                      375
+                      {item.deposit_amount}
                     </p>
                   </div>
                   <div className="flex flex-col justify-center items-center">
@@ -208,7 +208,7 @@ const BookingCard = ({ item }: any) => {
                       Pending
                     </span>
                     <p className="text-sm sm:text-base font-semibold text-neutral-800">
-                      325
+                      {item.pending_amount}
                     </p>
                   </div>
                 </div>
@@ -218,25 +218,17 @@ const BookingCard = ({ item }: any) => {
                   variants={{ collapsed: { scale: 1 }, open: { scale: 1 } }}
                   transition={{ duration: 0.8 }}
                 >
-                  {product?.invoice && (
-                    <Button
-                      variant="outline"
-                      href={product.invoice}
-                      target="_blank"
-                    >
-                      Download Invoice
-                    </Button>
-                  )}
+                  <Button variant="outline" href={item.invoice} target="_blank">
+                    Download Invoice
+                  </Button>
 
                   <Button variant="outline">Cancel</Button>
                 </motion.div>
                 <div className="pt-2 text-end sm:hidden ">
-                  {product?.createdAt && (
-                    <span className="text-sm text-gray-500 font-medium transition ease-in duration-200">
-                      Booked On:{" "}
-                      {dateFormatChange(product?.createdAt).formattedDate}
-                    </span>
-                  )}
+                  <span className="text-sm text-gray-500 font-medium transition ease-in duration-200">
+                    Booked On:{" "}
+                    {dateFormatChange(item.booking_date).formattedDate}
+                  </span>
                 </div>
               </motion.div>
             )}

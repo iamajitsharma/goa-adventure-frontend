@@ -58,7 +58,7 @@ const Header = () => {
 
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
   const isMobile = useMediaQuery({ maxWidth: deviceSize.mobile });
-  const { customer }: any = useCustomer();
+  const { customer, logoutCustomer }: any = useCustomer();
 
   return (
     <div
@@ -185,7 +185,7 @@ const Header = () => {
               className="p-2 text-base text-neutral-700 hover:bg-gray-300"
               onClick={handleNav}
             >
-              <Link href={"#"}>
+              <Link href={item.href}>
                 <div className="flex items-center gap-2">
                   <span className="text-xl">{item.icon}</span>
                   <span>{item.name}</span>
@@ -193,9 +193,14 @@ const Header = () => {
               </Link>
             </li>
           ))}
-
-          <Button onClick={onToggle}>Login</Button>
-          <Button onClick={onToggle}>Register</Button>
+          {customer?.user ? (
+            <Button onClick={() => logoutCustomer(customer)}>Log Out</Button>
+          ) : (
+            <>
+              <Button onClick={onToggle}>Login</Button>
+              <Button onClick={onToggle}>Register</Button>
+            </>
+          )}
         </ul>
       </div>
     </div>
