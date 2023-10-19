@@ -21,6 +21,8 @@ interface ProductSidebarProps {
   product_id: number;
   title: string;
   deposit_value: any;
+  product_img?: any;
+  meeting_point: string[];
 }
 
 const ProductSidebar: React.FC<ProductSidebarProps> = ({
@@ -31,6 +33,8 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
   product_id,
   title,
   deposit_value,
+  product_img,
+  meeting_point,
 }) => {
   const [quantity, setQuantity] = useState(1);
   const [toDate, setToDate] = useState<any>(null);
@@ -115,7 +119,9 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
                   toDate,
                   fromDate,
                   product_id,
-                  title
+                  title,
+                  product_img,
+                  meeting_point
                 );
                 discardProduct({
                   quantity,
@@ -126,6 +132,8 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
                   product_id,
                   title,
                   deposit_value,
+                  product_img,
+                  meeting_point,
                 });
                 setProduct({
                   quantity,
@@ -136,6 +144,8 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
                   product_id,
                   title,
                   deposit_value,
+                  product_img,
+                  meeting_point,
                 });
                 router.push(`/cart`);
               }}
@@ -239,6 +249,8 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
                   product_id,
                   title,
                   deposit_value,
+                  product_img,
+                  meeting_point,
                 });
                 setProduct({
                   quantity,
@@ -249,6 +261,8 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
                   product_id,
                   title,
                   deposit_value,
+                  product_img,
+                  meeting_point,
                 });
                 router.push(`/cart`);
               }}

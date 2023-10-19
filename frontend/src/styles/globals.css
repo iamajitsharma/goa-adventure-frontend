@@ -367,3 +367,9 @@ section {
   pointer-events: all;
   position: relative;
 }
+
+/* ZOHO CRM Mobile CSS */
+@media only screen and (max-width: 767px) {
+  #zsiq_float {
+  }
+}

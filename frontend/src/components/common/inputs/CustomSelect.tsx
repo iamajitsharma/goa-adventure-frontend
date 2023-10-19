@@ -46,10 +46,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
           value={value}
           options={options}
           formatOptionLabel={(option: any) => (
-            <div
-              className="
-          flex flex-row items-center gap-2"
-            >
+            <div className="flex flex-row items-center gap-2 border-none">
               <div>{option.flag}</div>
               <div>
                 {option.label},

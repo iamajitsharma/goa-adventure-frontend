@@ -12,7 +12,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "@/components/Layout";
 import FAB from "@/components/FloatingActionButton/FAB";
-
+import { useMediaQuery } from "react-responsive";
+import { deviceSize } from "@/components/Responsive";
 import LoginModal from "@/components/modals/LoginModal";
 import RegisterModal from "@/components/modals/RegisterModal";
 import { PersistGate } from "redux-persist/integration/react";
@@ -46,6 +47,8 @@ const merrifont = Merriweather({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  const isMobile = useMediaQuery({ maxWidth: deviceSize.tablet });
+
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -61,7 +64,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <ZohoLiveChat
           url="https://salesiq.zohopublic.in/widget"
           widgetCode="siq9075fbd094059a202172b5057bbb7fc2aaf1dba0a90af0e9f4aa284f6140d94d"
-          position="bottomright"
+          position={isMobile ? "right" : "bottomright"}
           visible={"show"}
         />
         <LoginModal />

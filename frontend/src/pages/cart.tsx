@@ -12,17 +12,9 @@ import useCustomer from "@/hook/useCustomer";
 import useAuthModal from "@/hook/useAuthModal";
 
 const cart = () => {
-  const [cartItem, setCartItem] = useState([
-    {
-      title: "Scuba Diving Malvan",
-      image: placeholderImg,
-      price: 2500,
-      quantity: 1,
-    },
-  ]);
   const { product, setProduct, discardProduct } = useProduct();
   const { customer, setCustomer }: any = useCustomer();
-  console.log("PRoduct", product);
+
   const subTotal = Number(product.actualPrice) * Number(product.quantity);
   const discount =
     (Number(product.actualPrice) - Number(product.priceToBePaid)) *
@@ -39,12 +31,13 @@ const cart = () => {
       openLogin();
     }
   });
+
+  console.log(product, "From Cart");
+
   return (
-    <>
-      <Container className="h-full">
-        {cartItem?.length === 0 ? (
-          ""
-        ) : (
+    <Container>
+      <div className="flex items-start justify-between h-full">
+        <div className="w-full h-full p-2 font-poppins md:w-9/12 lg:w-8/12">
           <div className="w-full h-full font-poppins py-4 px-4 text-neutral-800">
             <div className="flex items-center justify-start w-full gap-2 text-xl font-semibold">
               <HiOutlineShoppingBag />
@@ -52,63 +45,60 @@ const cart = () => {
             </div>
             <p className="text-sm">Let's dive into the world of Adventure!</p>
           </div>
-        )}
-        {cartItem?.length === 0 ? (
-          <div className="w-full h-full px-4 py-2 flex flex-col items-center justify-center font-poppins">
-            <h1 className="text-2xl font-bold mb-4 ">No Items in Cart</h1>
-          </div>
-        ) : (
-          <div className="w-full h-full flex flex-col gap-3 px-0 py-2 md:flex-row lg:px-4">
-            <div className="w-full md:w-9/12 lg:w-8/12 h-full">
-              {cartItem?.map((item, index) => (
-                <CartCard
-                  title={product.title}
-                  image={placeholderImg}
-                  price={product.actualPrice}
-                  quantity={product.quantity}
-                />
-              ))}
-            </div>
-            <div className="w-full h-full shadow-3xl p-2 font-poppins md:w-3/12 lg:w-4/12">
-              <div className="flex items-center w-full shadow-3xl p-0 rounded-sm">
-                <input
-                  type="text"
-                  placeholder="Have coupon code?"
-                  className="w-full border-none focus:ring-0 outline-none bg-gray-100 placeholder:text-sm"
-                />
-                <Button>Apply</Button>
-              </div>
-              <div className="w-full h-full flex flex-col gap-4 px-1 py-4 font-semibold text-sm">
-                <div className="flex justify-between items-center">
-                  <span>Subtotal</span>
-                  <span>{subTotal}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>Discount</span>
-                  <span> {discount}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>Future Payment</span>
-                  <span> {futurePayment}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>Pay Deposit</span>
-                  <span>{payNow}</span>
-                </div>
-              </div>
-              <Button
-                size="xl"
-                variant="dark"
-                href={customer?.user?.id ? "/checkout" : undefined}
-                disabled={customer?.user?.id ? false : true}
-              >
-                Proceed to checkout
+          {product ? (
+            <CartCard
+              title={product.title}
+              image={product.product_img}
+              price={product.actualPrice}
+              quantity={product.quantity}
+            />
+          ) : (
+            <div className="w-full h-full">
+              <h3>Your cart is empty</h3>
+              <Button href="/" size={"lg"}>
+                Book Now
               </Button>
             </div>
+          )}
+        </div>
+        <div className="w-full h-full shadow-3xl p-2 font-poppins md:w-3/12 lg:w-4/12">
+          <div className="flex items-center w-full shadow-3xl p-0 rounded-sm">
+            <input
+              type="text"
+              placeholder="Have coupon code?"
+              className="w-full border-none focus:ring-0 outline-none bg-gray-100 placeholder:text-sm"
+            />
+            <Button>Apply</Button>
           </div>
-        )}
-      </Container>
-    </>
+          <div className="w-full h-full flex flex-col gap-4 px-1 py-4 font-semibold text-sm">
+            <div className="flex justify-between items-center">
+              <span>Subtotal</span>
+              <span>{subTotal}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span>Discount</span>
+              <span> {discount}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span>Future Payment</span>
+              <span> {futurePayment}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span>Pay Deposit</span>
+              <span>{payNow}</span>
+            </div>
+          </div>
+          <Button
+            size="xl"
+            variant="dark"
+            href={customer?.user?.id ? "/checkout" : undefined}
+            disabled={customer?.user?.id ? false : true}
+          >
+            Proceed to checkout
+          </Button>
+        </div>
+      </div>
+    </Container>
   );
 };
 

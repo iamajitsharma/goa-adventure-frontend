@@ -23,6 +23,11 @@ const Checkout = () => {
   } = useForm<FieldValues>({});
   const { product } = useProduct();
   const { customer }: any = useCustomer();
+
+  //Meeting Points
+  const meeting_point: any = product?.meeting_point;
+  console.log(meeting_point);
+
   console.log("PRoudcts in redux", product);
   console.log("Customer inr redux", customer);
   const initializeRazorpay = () => {
@@ -179,11 +184,6 @@ const Checkout = () => {
     }
   }
 
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
   return (
     <Container>
       <div className="w-full h-full py-4">
@@ -222,20 +222,19 @@ const Checkout = () => {
                     value={customer?.user?.email}
                   />
                 </div>
-                {/* <div className="w-full border-none outline-none bg-white">
+                <div className="w-full border-none outline-none bg-white">
                   <select
                     className="w-full border-0 text-gray-800 ring-0 bg-gray-100 focus:ring-0  sm:text-sm sm:leading-6"
                     required
                   >
-                    <option disabled selected hidden>
-                      Meeting Points
+                    <option disabled selected>
+                      Select Meeting Point
                     </option>
-                    <option>Calangute</option>
-
-                    <option>Baga</option>
-                    <option>Arpora</option>
+                    {meeting_point.map((point: any) => (
+                      <option>{point}</option>
+                    ))}
                   </select>
-                </div> */}
+                </div>
                 <div className="w-full border-none outline-none bg-white col-span-full">
                   <textarea
                     rows={5}

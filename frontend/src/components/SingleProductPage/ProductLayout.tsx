@@ -11,6 +11,8 @@ interface ProductLayoutProps {
   title: string;
   product_id: number;
   deposit_value: any;
+  product_img: any;
+  meeting_point: string[];
 }
 
 const ProductLayout: React.FC<ProductLayoutProps> = ({
@@ -21,6 +23,8 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
   title,
   product_id,
   deposit_value,
+  product_img,
+  meeting_point,
 }) => {
   return (
     <Container>
@@ -36,6 +40,8 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
             title={title}
             product_id={product_id}
             deposit_value={deposit_value}
+            product_img={product_img}
+            meeting_point={meeting_point}
           />
         </div>
       </div>

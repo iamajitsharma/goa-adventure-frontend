@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AiOutlineDelete,
   AiOutlineMinusSquare,
@@ -33,12 +33,19 @@ const CartCard: React.FC<CartCardProps> = ({
     let ankit = product;
     console.log("ANkit", ankit);
   }, []);
+
   return (
     <>
       {isMobile ? (
         <div className="shadow-3xl flex flex-row gap-2 justify-start w-full h-24 rounded-md overflow-hidden font-poppins">
           <div className="shrink-0 max-w-24">
-            <Image src={image} alt="" className="w-24 h-24" />
+            <Image
+              src={image}
+              alt=""
+              className="w-24 h-24"
+              width={100}
+              height={100}
+            />
           </div>
           <div className="w-full p-1">
             <div className="flex flex-col justify-between w-full h-full">
@@ -70,7 +77,13 @@ const CartCard: React.FC<CartCardProps> = ({
       ) : (
         <div className="shadow-3xl flex flex-row gap-0 justify-start w-full h-24 rounded-md overflow-hidden font-poppins">
           <div className="shrink-0 max-w-32">
-            <Image src={image} alt="" className="w-32 h-24 object-cover" />
+            <Image
+              src={image}
+              alt=""
+              className="w-32 h-24 object-cover"
+              width={100}
+              height={100}
+            />
           </div>
           <div className="w-full">
             <div className="flex justify-between items-center gap-3 w-full h-full px-2">
@@ -81,15 +94,7 @@ const CartCard: React.FC<CartCardProps> = ({
                 <MdCurrencyRupee />
                 {price}
               </span>
-              <div className="flex items-center gap-3 text-3xl">
-                {/* <motion.span whileTap={{ scale: 1.2 }}>
-                  <FiMinusCircle />
-                </motion.span> */}
-                Quantity : {quantity}
-                {/* <motion.span>
-                  <FiPlusCircle />
-                </motion.span> */}
-              </div>
+              <div className="flex items-center gap-3 text-2xl">{quantity}</div>
               <span
                 className="text-2xl text-rose-500"
                 onClick={() => discardProduct({})}

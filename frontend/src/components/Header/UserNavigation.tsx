@@ -26,8 +26,8 @@ const UserNavigation = () => {
     <div className="block">
       <div className="flex items-center">
         <Menu as="div" className="relative ml-3">
-          <div className="w-10 h-10">
-            <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+          <div className="w-10 h-10 bg-red-200 rounded-full overflow-hidden">
+            <Menu.Button className="flex w-10 h-10 object-cover items-center rounded-full bg-red-200 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
               <span className="sr-only">Open user menu</span>
               <Image
                 src={
@@ -36,7 +36,7 @@ const UserNavigation = () => {
                     : profileImage
                 }
                 alt=""
-                className="rounded-full "
+                className="w-full h-full rounded-full object-cover"
                 width={"100"}
                 height={"100"}
               />

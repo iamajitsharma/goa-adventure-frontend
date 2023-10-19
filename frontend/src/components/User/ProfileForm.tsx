@@ -169,171 +169,147 @@ const ProfileForm = () => {
   };
 
   return (
-    <>
-      <div className="p-8 lg:col-span-5">
-        <div className="col-md-12">
-          <div className="table-responsive">
-            <div className="p-4 grid grid-cols-2 pb-8 mb-3"></div>
+    <form onSubmit={handleSubmit(onSubmit, onError)}>
+      <div className="max-w-3xl w-full h-full shadow-3xl relative p-2">
+        {/* Profile Image */}
+        <div className="w-32 h-32 absolute -top-16 left-1/2 -translate-x-1/2">
+          <img
+            className="rounded-full h-32 w-32 object-fill shadow-3xl relative"
+            src={
+              profileImage
+                ? profileImage
+                : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
+            }
+          />
+          <div className="absolute top-0  rounded-full h-10 w-10 flex justify-center items-center bg-cyan-400">
+            <label
+              htmlFor="fileInput"
+              className="rounded-full h-10 w-10  bg-primary  pb-0.5 flex justify-center items-center cursor-pointer"
+            >
+              <input
+                type="file"
+                id="fileInput"
+                placeholder=""
+                className="hidden"
+                {...register("profile_image", {
+                  onChange: (e) => {
+                    setProfileImage(URL.createObjectURL(e.target.files[0]));
+                    console.log("Ankit");
+                  },
+                })}
+                // onChange={handleFileChange}
+              />
 
-            {/* <div className="flex flex-col justify-center items-center"> */}
-            <form onSubmit={handleSubmit(onSubmit, onError)} className="">
-              <div className="ml-4 mt-4 mb-8">
-                <img
-                  className="rounded-full h-32 w-32"
-                  src={
-                    profileImage
-                      ? profileImage
-                      : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
-                  }
-                />
-
-                <span className=" rounded-full h-10 w-10 absolute flex justify-center items-center translate-x-24 -translate-y-10">
-                  <label
-                    htmlFor="fileInput"
-                    className="rounded-full h-10 w-10  bg-[#404298]  pb-0.5 flex justify-center items-center cursor-pointer"
-                  >
-                    <input
-                      type="file"
-                      id="fileInput"
-                      placeholder=""
-                      className="hidden"
-                      {...register("profile_image", {
-                        onChange: (e) => {
-                          setProfileImage(
-                            URL.createObjectURL(e.target.files[0])
-                          );
-                          console.log("Ankit");
-                        },
-                      })}
-                      // onChange={handleFileChange}
-                    />
-                    <AiOutlineCamera className="text-white  scale-110" />
-                  </label>
-                </span>
-              </div>
-
-              <div className="grid grid-cols-2 gap-8 gap-y-4 mb-8">
-                <div className="mr-2 ml-2 ">
-                  <Controller
-                    name="name"
-                    control={control}
-                    render={({ field: { value, onChange } }) => (
-                      <input
-                        type="text"
-                        className="rounded-lg w-11/12"
-                        placeholder="Full Name"
-                        value={value}
-                        onChange={onChange}
-                      />
-                    )}
-                  />
-                </div>
-                <div className="">
-                  <Controller
-                    name="email"
-                    control={control}
-                    render={({ field: { value, onChange } }) => (
-                      <input
-                        type="email"
-                        className="rounded-lg w-11/12"
-                        placeholder="Email"
-                        value={value}
-                        onChange={onChange}
-                        disabled={true}
-                      />
-                    )}
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-8 gap-y-4 mb-8">
-                <div className="mr-2 ml-2 ">
-                  <Controller
-                    name="mobile_number"
-                    control={control}
-                    render={({ field: { value, onChange } }) => (
-                      <input
-                        type="number"
-                        className="rounded-lg w-11/12"
-                        placeholder="Mobile Number"
-                        value={value}
-                        onChange={onChange}
-                        disabled={true}
-                      />
-                    )}
-                  />
-                </div>
-                <div className="">
-                  <Controller
-                    name="state"
-                    control={control}
-                    render={({ field: { value, onChange } }) => (
-                      <input
-                        type="text"
-                        className="rounded-lg w-11/12"
-                        placeholder="State"
-                        value={value}
-                        onChange={onChange}
-                      />
-                    )}
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-8 gap-y-4 mb-8">
-                <div className="mr-2 ml-2 ">
-                  <Controller
-                    name="city"
-                    control={control}
-                    render={({ field: { value, onChange } }) => (
-                      <input
-                        type="text"
-                        className="rounded-lg w-11/12"
-                        placeholder="City"
-                        value={value}
-                        onChange={onChange}
-                      />
-                    )}
-                  />
-                </div>
-                <div className="mr-2 ml-2 ">
-                  <Controller
-                    name="country"
-                    control={control}
-                    render={({ field: { value, onChange } }) => (
-                      <input
-                        type="text"
-                        className="rounded-lg w-11/12"
-                        placeholder="Country"
-                        value={value}
-                        onChange={onChange}
-                      />
-                    )}
-                  />
-                </div>
-              </div>
-              {/* <div className="flex justify-center">
-              <button
-                onClick={() => console.log("Handle submit")}
-                type="submit"
-              >
-                Edit
-              </button>
-            </div> */}
-
-              <div className="pb-4 text-center mt-2">
-                {/* <button data-dismiss="modal" type="submit" /> */}
-                <button
-                  type="submit"
-                  className="w-auto m-auto bg-red-400 text-white rounded px-4 py-2"
-                  data-bs-dismiss="modal"
-                >
-                  Save
-                </button>
-              </div>
-            </form>
+              <AiOutlineCamera className="text-white  scale-110" />
+            </label>
           </div>
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 relative h-full pt-20">
+          <div className="border-2 border-neutral-500 rounded-md">
+            <Controller
+              name="name"
+              control={control}
+              render={({ field: { value, onChange } }) => (
+                <input
+                  type="text"
+                  className="w-full border-none bg-transparent"
+                  placeholder="Full Name"
+                  value={value}
+                  onChange={onChange}
+                />
+              )}
+            />
+          </div>
+          <div className="border-2 border-neutral-500 rounded-md">
+            <Controller
+              name="email"
+              control={control}
+              render={({ field: { value, onChange } }) => (
+                <input
+                  type="email"
+                  className="w-full border-none bg-transparent"
+                  placeholder="Email"
+                  value={value}
+                  onChange={onChange}
+                  disabled={true}
+                />
+              )}
+            />
+          </div>
+          <div className="border-2 border-neutral-500 rounded-md">
+            <Controller
+              name="mobile_number"
+              control={control}
+              render={({ field: { value, onChange } }) => (
+                <input
+                  type="number"
+                  className="w-full border-none bg-transparent"
+                  placeholder="Mobile Number"
+                  value={value}
+                  onChange={onChange}
+                  disabled={true}
+                />
+              )}
+            />
+          </div>
+          <div className="border-2 border-neutral-500 rounded-md">
+            <Controller
+              name="state"
+              control={control}
+              render={({ field: { value, onChange } }) => (
+                <input
+                  type="text"
+                  className="w-full border-none bg-transparent"
+                  placeholder="State"
+                  value={value}
+                  onChange={onChange}
+                />
+              )}
+            />
+          </div>
+          <div className="border-2 border-neutral-500 rounded-md">
+            <Controller
+              name="city"
+              control={control}
+              render={({ field: { value, onChange } }) => (
+                <input
+                  type="text"
+                  className="w-full border-none bg-transparent"
+                  placeholder="City"
+                  value={value}
+                  onChange={onChange}
+                />
+              )}
+            />
+          </div>
+          <div className="border-2 border-neutral-500 rounded-md">
+            <Controller
+              name="country"
+              control={control}
+              render={({ field: { value, onChange } }) => (
+                <input
+                  type="text"
+                  className="w-full border-none bg-transparent"
+                  placeholder="Country"
+                  value={value}
+                  onChange={onChange}
+                />
+              )}
+            />
+          </div>
+        </div>
+        <div className="text-right py-4">
+          <button
+            type="submit"
+            className="w-auto m-auto bg-red-400 text-white rounded px-4 py-2"
+            data-bs-dismiss="modal"
+          >
+            Save
+          </button>
+        </div>
       </div>
-    </>
+    </form>
   );
 };
 

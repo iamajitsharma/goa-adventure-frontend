@@ -13,11 +13,7 @@ import MobileHero from "@/components/Hero/MobileHero";
 import DesktopHero from "@/components/Hero/DesktopHero";
 import PartnerLogo from "@/components/featured/PartnerLogo";
 import CardSkelton from "@/components/Animation/CardSkelton";
-import {
-  getDestination,
-  getHomePageActivity,
-  getHomePageTour,
-} from "../lib/api";
+import { getHomePageActivity, getHomePageTour } from "../lib/api";
 
 const Index = (props: any) => {
   const [activities, setActivities] = useState([]);
@@ -102,13 +98,11 @@ const Index = (props: any) => {
 };
 
 export const getStaticProps = async () => {
-  const destination = await getDestination();
   const activityData = await getHomePageActivity();
   const tourData = await getHomePageTour();
 
   return {
     props: {
-      destination,
       tourData,
       activityData,
     },

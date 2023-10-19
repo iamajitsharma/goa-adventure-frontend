@@ -33,6 +33,7 @@ const Input: React.FC<InputProps> = ({
   className,
   icon,
 }) => {
+  const isOpen = false;
   return (
     <div
       className={`flex items-center justify-between border-b-2 border-neutral-600 ${className}`}

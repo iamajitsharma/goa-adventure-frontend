@@ -45,6 +45,8 @@ const index = (props: any) => {
         title={props?.data[0]?.title}
         product_id={props?.data[0]?.id}
         deposit_value={props?.data[0].deposit_value}
+        product_img={props?.data[0]?.featured_image}
+        meeting_point={props.data[0]?.meeting_point}
       >
         {/* Product Title Section */}
         <Box className="bg-white">

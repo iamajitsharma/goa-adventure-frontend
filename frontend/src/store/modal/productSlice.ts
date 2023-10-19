@@ -9,6 +9,8 @@ const initialState = {
   toDate: null,
   fromDate: null,
   deposit_value: null,
+  product_img: null,
+  meeting_point: null,
 };
 
 const productSlice = createSlice({
@@ -27,6 +29,8 @@ const productSlice = createSlice({
         toDate: action.payload.toDate,
         fromDate: action.payload.fromDate,
         deposit_value: action.payload.deposit_value,
+        product_img: action.payload.product_img,
+        meeting_point: action.payload.meeting_point,
       };
     },
     removeProduct: (state, action) => initialState,
