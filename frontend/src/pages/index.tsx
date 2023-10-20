@@ -72,16 +72,21 @@ const Index = (props: any) => {
         <HowWeWork />
       </section>
 
-      <section>
-        <Container>
-          <Heading
-            heading="Recommended Tour Package"
-            subheading="Top Rated Experience"
-            textAlign="center"
-          />
-          <ProductSlider data={props?.tourData} isLoading={isLoading} />
-        </Container>
-      </section>
+      {props?.tourData.length > 3 ? (
+        <section>
+          <Container>
+            <Heading
+              heading="Recommended Tour Package"
+              subheading="Top Rated Experience"
+              textAlign="center"
+            />
+
+            <ProductSlider data={props?.tourData} isLoading={isLoading} />
+          </Container>
+        </section>
+      ) : (
+        ""
+      )}
 
       <section>
         <Container>

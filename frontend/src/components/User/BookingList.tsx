@@ -1,28 +1,79 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import BookingCard from "./BookingCard";
 import { Button } from "../common/Button";
+import { dateFormate } from "@/lib/operations";
 
 const BookingList = ({ data }: any) => {
-  console.log("data", data);
+  const [bookingHistory, setBookingHistory] = useState([]);
+  const [upcomingBooking, setUpcomingBooking] = useState([]);
+  const [isActive, setIsActive] = useState(true);
+
+  useEffect(() => {
+    const currentDate = dateFormate(new Date());
+
+    const histroyBooking = data?.filter(
+      (booking: any) => booking.start_date < currentDate
+    );
+
+    setBookingHistory(histroyBooking);
+
+    const futureBooking = data?.filter(
+      (booking: any) => booking.start_date >= currentDate
+    );
+
+    setUpcomingBooking(futureBooking);
+
+    console.log(currentDate);
+  }, []);
+
+  console.log(bookingHistory);
+  console.log(upcomingBooking);
+
+  //Toggle Handler
+  const toggleHandler = () => {
+    setIsActive(!isActive);
+  };
+
   return (
     <>
-      {data.length > 0 ? (
-        data?.map((item: any, index: any) => (
-          <BookingCard item={item} key={index} />
-        ))
-      ) : (
-        <div className="w-full flex flex-col items-center justify-center gap-4 font-poppins">
-          <h2 className="text-xl text-neutral-700 font-semibold ">
-            No Bookings
-          </h2>
-          <p className="text-sm sm:text-base text-center text-neutral-800">
-            Unlock your next adventure with a simple click!
-          </p>
-          <Button variant="primary" href="/" className="animate-bounce">
-            Book Now
-          </Button>
+      <div>
+        <div className="flex items-center justify-around w-full cursor-pointer">
+          <div
+            className={`w-1/2 h-full shadow-3xl py-2 text-center font-medium ${
+              isActive ? "bg-primary text-white" : ""
+            }`}
+            onClick={() => setIsActive(true)}
+          >
+            Upcoming
+          </div>
+          <div
+            className={`w-1/2 h-full shadow-3xl py-2 text-center font-medium ${
+              !isActive ? "bg-primary text-white" : ""
+            }`}
+            onClick={() => setIsActive(false)}
+          >
+            Booking History
+          </div>
         </div>
-      )}
+
+        <div>
+          {isActive ? (
+            <div className="py-2">
+              {upcomingBooking &&
+                upcomingBooking.map((item: any, index) => (
+                  <BookingCard item={item} key={index} />
+                ))}
+            </div>
+          ) : (
+            <div className="py-2">
+              {bookingHistory &&
+                bookingHistory.map((item: any, index) => (
+                  <BookingCard item={item} key={index} />
+                ))}
+            </div>
+          )}
+        </div>
+      </div>
     </>
   );
 };

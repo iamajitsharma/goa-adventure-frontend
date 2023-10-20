@@ -1,27 +1,19 @@
 import { useRouter } from "next/router";
-import Image from "next/image";
-import Container from "@/components/common/Container";
 import ProductTitle from "@/components/SingleProductPage/ProductTitle";
 import Overviews from "@/components/SingleProductPage/Overviews";
 import Accordion from "@/components/common/Accordion";
 import { AiFillStar } from "react-icons/ai";
 import ProductImages from "@/components/SingleProductPage/ProductImages";
-import Pricing from "@/components/SingleProductPage/Pricing";
-import { RiAlbumLine } from "react-icons/ri";
 import Box from "@/components/common/Box";
-import { BsCheck2Circle, BsTelephone } from "react-icons/bs";
+import { BsCheck2Circle } from "react-icons/bs";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import { FiMapPin, FiMinus, FiPlus } from "react-icons/fi";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { ImWhatsapp } from "react-icons/im";
+import { FiMapPin } from "react-icons/fi";
 import { getSinglePageDetails } from "../../../lib/api";
 import { calculateSalePrice } from "@/lib/operations";
 import { getHomePageTour } from "../../../lib/api";
 import ProductLayout from "@/components/SingleProductPage/ProductLayout";
 
 const index = (props: any) => {
-  const router = useRouter();
   const salePrice = calculateSalePrice(
     props?.data[0]?.discount_percent,
     props?.data[0]?.price
@@ -42,6 +34,8 @@ const index = (props: any) => {
         title={props?.data[0]?.title}
         product_id={props?.data[0]?.id}
         deposit_value={props?.data[0].deposit_value}
+        product_img={props?.data[0]?.featured_image}
+        meeting_point={props?.data[0]?.meeting_point}
       >
         {/* Product Title Section */}
         <Box className="bg-white">

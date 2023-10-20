@@ -163,11 +163,11 @@ const BookingCard = ({ item }: any) => {
                   </div>
                   <div className="flex flex-col justify-center items-center">
                     <span className="inline-flex items-center gap-1 text-xs sm:text-sm text-slate-500">
-                      <BsClock />
-                      Reporting
+                      <FiUsers />
+                      Total Seat
                     </span>
                     <p className="text-sm sm:text-base font-semibold text-neutral-800">
-                      {item.reporting_time}
+                      {item.total_seat}
                     </p>
                   </div>
                   <div className="flex flex-col justify-center items-center">

@@ -109,7 +109,7 @@ const ProductImages: React.FC<ProductImageProps> = ({
             <div className="relative">
               <Image
                 src={galleryImage[3]}
-                alt=""
+                alt="Imagess"
                 className={`absolute top-0 left-0 object-cover w-full h-full  duration-700 ease-in-out group-hover:opacity-75  ${
                   isLoading
                     ? "scale-110 blur-sm backdrop-blur-2xl "

@@ -60,6 +60,9 @@ const Header = () => {
   const isMobile = useMediaQuery({ maxWidth: deviceSize.mobile });
   const { customer, logoutCustomer }: any = useCustomer();
 
+  const companyLogo =
+    router.pathname === "/" && !scrolled && isTablet ? whiteLogo : logo;
+
   return (
     <div
       className={`sticky left-0 top-0 w-full z-[100] ease-in duration-300 text-variant 
@@ -74,25 +77,14 @@ const Header = () => {
       <div className="max-w-full m-auto flex justify-between items-center py-2 text-white md:px-2 lg:px-8">
         <div className="w-56 md:w-[250px] h-auto shrink-0 object-fill">
           <Link href="/">
-            {router.pathname === "/" && !scrolled && isTablet ? (
-              <Image
-                src={whiteLogo}
-                alt="Your Company"
-                width="0"
-                height="0"
-                sizes="100vw"
-                className="w-full h-full"
-              />
-            ) : (
-              <Image
-                src={logo}
-                alt="Your Company"
-                width="0"
-                height="0"
-                sizes="100vw"
-                className="w-full h-full"
-              />
-            )}
+            <Image
+              src={companyLogo}
+              alt="Your Company"
+              width="0"
+              height="0"
+              sizes="100vw"
+              className="w-full h-full"
+            />
           </Link>
         </div>
 

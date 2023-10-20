@@ -147,7 +147,9 @@ const index = (props: any) => {
                     >
                       <option defaultValue="Category">Category</option>
                       {categories.map((cate: any) => (
-                        <option value={cate.id}>{cate.category}</option>
+                        <option key={cate.id} value={cate.id}>
+                          {cate.category}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -159,7 +161,9 @@ const index = (props: any) => {
                     >
                       <option defaultValue="Destination">Type</option>
                       {subcategories.map((cate: any) => (
-                        <option value={cate.id}>{cate.subcategory}</option>
+                        <option key={cate.id} value={cate.id}>
+                          {cate.subcategory}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -174,7 +178,7 @@ const index = (props: any) => {
                     <option defaultValue="Destination">Price Range</option>
                     {finalPriceRange.map((cate: any, index: number) =>
                       index !== 4 ? (
-                        <option value={index}>
+                        <option value={index} key={index}>
                           {finalPriceRange[index] +
                             "-" +
                             finalPriceRange[index + 1]}

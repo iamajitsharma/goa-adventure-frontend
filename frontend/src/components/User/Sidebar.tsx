@@ -21,8 +21,8 @@ const userMenu = [
 const Sidebar = () => {
   const router = useRouter();
   return (
-    <div className="w-full md:w-3/12 h-auto bg-transparent md:bg-white p-2">
-      <ul className="font-poppins overflow-x-scroll no-scrollbar leading-loose w-full flex flex-row gap-2 items-center justify-start md:flex-col md:items-start ">
+    <div className="w-full hidden md:block md:w-3/12 h-auto bg-transparent md:bg-white p-2">
+      <ul className="font-poppins overflow-x-scroll no-scrollbar leading-loose w-full flex flex-col gap-2 items-center justify-start md:items-start ">
         {userMenu.map((item) => (
           <li
             key={item.name}

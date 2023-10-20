@@ -36,7 +36,7 @@ const cart = () => {
 
   return (
     <Container>
-      <div className="flex items-start justify-between h-full">
+      <div className="flex flex-col md:flex-row items-start justify-between h-full">
         <div className="w-full h-full p-2 font-poppins md:w-9/12 lg:w-8/12">
           <div className="w-full h-full font-poppins py-4 px-4 text-neutral-800">
             <div className="flex items-center justify-start w-full gap-2 text-xl font-semibold">
