@@ -10,15 +10,17 @@ const BookingList = ({ data }: any) => {
 
   useEffect(() => {
     const currentDate = dateFormate(new Date());
-
+    const todaysDate = Number(new Date());
+    console.log("Current date", todaysDate);
+    console.log("Date ", data);
     const histroyBooking = data?.filter(
-      (booking: any) => booking.start_date < currentDate
+      (booking: any) => Number(new Date(booking.start_date)) < todaysDate
     );
 
     setBookingHistory(histroyBooking);
 
     const futureBooking = data?.filter(
-      (booking: any) => booking.start_date >= currentDate
+      (booking: any) => Number(new Date(booking.start_date)) >= todaysDate
     );
 
     setUpcomingBooking(futureBooking);
