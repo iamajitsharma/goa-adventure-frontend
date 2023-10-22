@@ -102,6 +102,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
             <div>
               <input
                 type="date"
+                min={new Date().toISOString().split("T")[0]}
                 className="rounded-md cursor-pointer"
                 onChange={(e) => setFromDate(e.target.value)}
               />
@@ -183,6 +184,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
               <div className="flex items-center gap-2">
                 <input
                   type="date"
+                  min={new Date().toISOString().split("T")[0]}
                   className="rounded-md cursor-pointer"
                   onChange={(e) => setFromDate(e.target.value)}
                 />

@@ -25,7 +25,7 @@ const BookingList = ({ data }: any) => {
 
     setUpcomingBooking(futureBooking);
 
-    console.log(currentDate);
+    console.log("History booking", histroyBooking);
   }, []);
 
   console.log(bookingHistory);
