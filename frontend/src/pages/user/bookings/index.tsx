@@ -33,7 +33,7 @@ const BookingHistory = () => {
           Bookings
         </h3>
       )}
-      <BookingList data={bookings} />
+      {bookings.length > 0 ? <BookingList data={bookings} /> : null}
     </UserContent>
   );
 };

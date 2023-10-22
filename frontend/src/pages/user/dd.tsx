@@ -31,7 +31,7 @@ const BookingHistory = () => {
       <h3 className="text-xl font-poppins py-2 font-semibold tracking-wider uppercase">
         Bookings
       </h3>
-      <BookingList data={bookings} />
+      {/* {bookings.length > 0 ? <BookingList data={bookings} /> : null} */}
     </UserContent>
   );
 };

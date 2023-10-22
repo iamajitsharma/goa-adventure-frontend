@@ -61,15 +61,15 @@ const BookingList = ({ data }: any) => {
         <div>
           {isActive ? (
             <div className="py-2">
-              {upcomingBooking &&
-                upcomingBooking.map((item: any, index) => (
+              {upcomingBooking.length > 0 &&
+                upcomingBooking?.map((item: any, index) => (
                   <BookingCard item={item} key={index} />
                 ))}
             </div>
           ) : (
             <div className="py-2">
-              {bookingHistory &&
-                bookingHistory.map((item: any, index) => (
+              {bookingHistory.length > 0 &&
+                bookingHistory?.map((item: any, index) => (
                   <BookingCard item={item} key={index} />
                 ))}
             </div>
