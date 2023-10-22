@@ -16,6 +16,8 @@ const Checkout = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [checkedInfo, setCheckedInfo] = useState(false);
+  const [custMeetingPoint, setMeetingPoint] = useState("");
+  const [custNote, setCustomerNote] = useState("");
   const {
     register,
     handleSubmit,
@@ -27,7 +29,8 @@ const Checkout = () => {
   //Meeting Points
   const meeting_point: any = product?.meeting_point;
   console.log(meeting_point);
-
+  console.log("Custyomer meeting pount", custMeetingPoint);
+  console.log("Customer note", custNote);
   console.log("PRoudcts in redux", product);
   console.log("Customer inr redux", customer);
   const initializeRazorpay = () => {
@@ -90,6 +93,8 @@ const Checkout = () => {
           quantity: product?.quantity,
           startDate: product?.fromDate,
           endDate: product?.toDate,
+          meeting_point: custMeetingPoint,
+          note: custNote,
         },
       });
       var raw = JSON.stringify({
@@ -225,18 +230,20 @@ const Checkout = () => {
                 <div className="w-full border-none outline-none bg-white">
                   <select
                     className="w-full border-0 text-gray-800 ring-0 bg-gray-100 focus:ring-0  sm:text-sm sm:leading-6"
+                    onChange={(e) => setMeetingPoint(e.target.value)}
                     required
                   >
                     <option disabled selected>
                       Select Meeting Point
                     </option>
                     {meeting_point.map((point: any) => (
-                      <option>{point}</option>
+                      <option value={point}>{point}</option>
                     ))}
                   </select>
                 </div>
                 <div className="w-full border-none outline-none bg-white col-span-full">
                   <textarea
+                    onChange={(e) => setCustomerNote(e.target.value)}
                     rows={5}
                     placeholder="Special request"
                     className="w-full border-none focus:ring-0 outline-none bg-gray-100 placeholder:text-sm placeholder:text-gray-800"
