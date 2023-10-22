@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "@/components/common/inputs/Input";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { AiOutlineUser, AiOutlineMail } from "react-icons/ai";
@@ -11,6 +11,7 @@ import Select from "@/components/common/inputs/CustomSelect";
 import CustomSelect from "@/components/common/inputs/CustomSelect";
 import useProduct from "@/hook/useProduct";
 import useCustomer from "@/hook/useCustomer";
+import useAuthModal from "@/hook/useAuthModal";
 
 const Checkout = () => {
   const router = useRouter();
@@ -60,6 +61,16 @@ const Checkout = () => {
     (finalPayment * Number(product.deposit_value) * Number(product.quantity)) /
     100;
   const futurePayment = subTotal - discount - payNow;
+  const { openLogin, closeLogin } = useAuthModal();
+  useEffect(() => {
+    if (!customer?.user?.id) {
+      openLogin();
+    }
+    if (!product?.product_id) {
+      console.log("Hitted");
+      router.push("/");
+    }
+  });
 
   async function callRazorPay() {
     if (checkedInfo) {
@@ -109,6 +120,8 @@ const Checkout = () => {
           quantity: product?.quantity,
           startDate: product?.fromDate,
           endDate: product?.toDate,
+          meeting_point: custMeetingPoint,
+          note: custNote,
         },
       });
 
@@ -236,7 +249,7 @@ const Checkout = () => {
                     <option disabled selected>
                       Select Meeting Point
                     </option>
-                    {meeting_point.map((point: any) => (
+                    {meeting_point?.map((point: any) => (
                       <option value={point}>{point}</option>
                     ))}
                   </select>
