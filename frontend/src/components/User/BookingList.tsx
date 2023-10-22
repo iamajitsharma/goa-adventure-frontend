@@ -8,7 +8,26 @@ const BookingList = ({ data }: any) => {
   const [upcomingBooking, setUpcomingBooking] = useState([]);
   const [isActive, setIsActive] = useState(true);
 
-  useEffect(() => {
+  async function selectionSort(bookInfo: any) {
+    for (let i = 0; i < bookInfo.length; i++) {
+      let lowest = i;
+      for (let j = i + 1; j < bookInfo.length; j++) {
+        if (
+          Number(new Date(bookInfo[j]?.start_date)) <
+          Number(new Date(bookInfo[lowest]?.start_date))
+        ) {
+          lowest = j;
+        }
+      }
+      if (lowest !== i) {
+        // Swap
+        [bookInfo[i], bookInfo[lowest]] = [bookInfo[lowest], bookInfo[i]];
+      }
+    }
+    return bookInfo;
+  }
+  // console.log(selectionSort([3, 5, 1, 2])); // [1, 2, 3, 5]
+  async function setData() {
     const currentDate = dateFormate(new Date());
     const todaysDate = Number(new Date());
     console.log("Current date", todaysDate);
@@ -17,15 +36,14 @@ const BookingList = ({ data }: any) => {
       (booking: any) => Number(new Date(booking.start_date)) < todaysDate
     );
 
-    setBookingHistory(histroyBooking);
-
     const futureBooking = data?.filter(
       (booking: any) => Number(new Date(booking.start_date)) >= todaysDate
     );
-
-    setUpcomingBooking(futureBooking);
-
-    console.log("History booking", histroyBooking);
+    setBookingHistory(await selectionSort(histroyBooking));
+    setUpcomingBooking(await selectionSort(futureBooking));
+  }
+  useEffect(() => {
+    setData();
   }, []);
 
   console.log(bookingHistory);
