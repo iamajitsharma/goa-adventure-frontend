@@ -96,7 +96,7 @@ const BookingCard = ({ item }: any) => {
                 <div className="flex items-center w-full gap-4 ">
                   <span className="hidden sm:block text-sm text-gray-500 font-medium transition ease-in duration-200">
                     Booked On:{" "}
-                    {dateFormatChange(item.booking_date).formattedDate}
+                    {new Date(item.booking_date).toISOString().slice(0, 10)}
                   </span>
 
                   <span className="inline-flex items-center gap-2 text-sm text-neutral-700">
