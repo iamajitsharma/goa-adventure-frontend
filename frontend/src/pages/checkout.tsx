@@ -164,7 +164,7 @@ const Checkout = () => {
       }
 
       var options: any = {
-        key: "rzp_test_lcf9GSjJoWx5Gk", // Enter the Key ID generated from the Dashboard
+        key: "rzp_live_4McSVg85pQ5tAa", // Enter the Key ID generated from the Dashboard
         name: "Safar Travel Express",
         currency: data?.currency,
         amount: data.amount,
