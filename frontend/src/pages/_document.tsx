@@ -4,6 +4,10 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <meta
+          name="facebook-domain-verification"
+          content="atjc006dlspaj6clm3tertrk0eb48p"
+        />
         <link
           rel="stylesheet"
           type="text/css"
