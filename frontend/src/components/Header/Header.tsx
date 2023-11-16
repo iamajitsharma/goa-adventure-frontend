@@ -3,6 +3,8 @@ import { CiLogin } from "react-icons/ci";
 import Link from "next/link";
 import logo from "../../../public/assets/goaadventure_color_logo.svg";
 import whiteLogo from "../../../public/assets/Mobile_Whitelogo-01.svg";
+import safarWhite from "../../../public/safartravelexpress-.svg";
+import safarColor from "../../../public/safartravelexpress_color.svg";
 import Image from "next/image";
 import UserNavigation from "./UserNavigation";
 import { useRouter } from "next/router";
@@ -61,7 +63,7 @@ const Header = () => {
   const { customer, logoutCustomer }: any = useCustomer();
 
   const companyLogo =
-    router.pathname === "/" && !scrolled && isTablet ? whiteLogo : logo;
+    router.pathname === "/" && !scrolled && isTablet ? safarWhite : safarColor;
 
   return (
     <div
