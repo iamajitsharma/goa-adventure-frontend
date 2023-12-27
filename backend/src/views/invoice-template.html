@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice | Goa Adventure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body style="font-family: 'Poppins', sans-serif">
+    <table style="width: 100%">
+      <tbody style="overflow: hidden">
+        <tr style="width: 100%; border-bottom: 2px solid #d4d4d4">
+          <td style="padding: 0.5rem" colspan="3">
+            <div
+              style="
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+                align-items: center;
+                width: 100%;
+              "
+            >
+              <img
+                src="/image/safarlogo.png"
+                alt=""
+                width="150px"
+                height="150px"
+              />
+              <div>
+                <h4 style="font-size: 1.5rem; color: #063158">
+                  Safar Travel Express
+                </h4>
+                <address
+                  style="font-size: 0.8rem; font-weight: 500; color: #010101"
+                >
+                  Calangute Beach, Car Parking<br />
+                  Goa 403516, India <br />Contact: +91 7387960861<br />Email:
+                  info@goaadventure.in<br />Website: www.goaadventure.in
+                </address>
+              </div>
+            </div>
+          </td>
+          <td colspan="3">
+            <span style="font-size: 1.5rem; font-weight: 600; color: #ed7d31"
+              >Invoice</span
+            >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span
+                  style="font-size: 13px; font-family: Poppins; color: black"
+                  >Invoice No: <%=id%></span
+                ></strong
+              >
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span
+                  style="font-size: 13px; font-family: Poppins; color: black"
+                  >Date: <%=booking_date%></span
+                ></strong
+              >
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td
+            colspan="5"
+            style="
+              width: 6in;
+              border-right: 1pt solid windowtext;
+              border-bottom: 1pt solid windowtext;
+              border-left: 1pt solid windowtext;
+              border-image: initial;
+              border-top: none;
+              padding: 0in 5.4pt;
+              height: 46.75pt;
+              vertical-align: top;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins"
+                  >To</span
+                ></strong
+              >
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span
+                  style="
+                    font-size: 16px;
+                    line-height: 115%;
+                    font-family: Poppins;
+                  "
+                >
+                  <%=name%></span
+                ></strong
+              >
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: 115%;
+              "
+            >
+              <span
+                style="font-size: 13px; line-height: 115%; font-family: Poppins"
+                ><%=city %>, <%=country%></span
+              >
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: 115%;
+              "
+            >
+              <span
+                style="font-size: 13px; line-height: 115%; font-family: Poppins"
+                >+91<%=mobile_number%></span
+              >
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td
+            style="
+              width: 3in;
+              border: solid windowtext 1pt;
+              border-top: none;
+              background: #f4b083;
+              padding: 0in 5.4pt 0in 5.4pt;
+              height: 28.65pt;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-family: Poppins; color: white"
+                  >Item Description</span
+                ></strong
+              >
+            </p>
+          </td>
+          <td
+            colspan="2"
+            style="
+              width: 67.5pt;
+              border-top: none;
+              border-left: none;
+              border-bottom: solid windowtext 1pt;
+              border-right: solid windowtext 1pt;
+              background: #f4b083;
+              padding: 0in 5.4pt 0in 5.4pt;
+              height: 28.65pt;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                text-align: center;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-family: Poppins; color: white"
+                  >Pax</span
+                ></strong
+              >
+            </p>
+          </td>
+          <td
+            style="
+              width: 76.5pt;
+              border-top: none;
+              border-left: none;
+              border-bottom: solid windowtext 1pt;
+              border-right: solid windowtext 1pt;
+              background: #f4b083;
+              padding: 0in 5.4pt 0in 5.4pt;
+              height: 28.65pt;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                text-align: center;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-family: Poppins; color: white"
+                  >Per Person</span
+                ></strong
+              >
+            </p>
+          </td>
+          <td
+            style="
+              width: 1in;
+              border-top: none;
+              border-left: none;
+              border-bottom: solid windowtext 1pt;
+              border-right: solid windowtext 1pt;
+              background: #f4b083;
+              padding: 0in 5.4pt 0in 5.4pt;
+              height: 28.65pt;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                text-align: center;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-family: Poppins; color: white"
+                  >Total</span
+                ></strong
+              >
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td
+            style="
+              width: 3in;
+              border: solid windowtext 1pt;
+              border-top: none;
+              padding: 0in 5.4pt 0in 5.4pt;
+              height: 26.5pt;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins">
+                  <%=title%></span
+                ></strong
+              >
+            </p>
+          </td>
+          <td
+            colspan="2"
+            style="
+              width: 67.5pt;
+              border-top: none;
+              border-left: none;
+              border-bottom: solid windowtext 1pt;
+              border-right: solid windowtext 1pt;
+              padding: 0in 5.4pt 0in 5.4pt;
+              height: 26.5pt;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                text-align: center;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins">
+                  <%=quantity%></span
+                ></strong
+              >
+            </p>
+          </td>
+          <td
+            style="
+              width: 76.5pt;
+              border-top: none;
+              border-left: none;
+              border-bottom: solid windowtext 1pt;
+              border-right: solid windowtext 1pt;
+              padding: 0in 5.4pt 0in 5.4pt;
+              height: 26.5pt;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                text-align: center;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins">
+                  <%=total_amount%></span
+                ></strong
+              >
+            </p>
+          </td>
+          <td
+            style="
+              width: 1in;
+              border-top: none;
+              border-left: none;
+              border-bottom: solid windowtext 1pt;
+              border-right: solid windowtext 1pt;
+              padding: 0in 5.4pt 0in 5.4pt;
+              height: 26.5pt;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                text-align: center;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins">
+                  <%=total_amount%></span
+                ></strong
+              >
+            </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td
+            rowspan="3"
+            style="
+              width: 3in;
+              border-right: 1pt solid windowtext;
+              border-bottom: 1pt solid windowtext;
+              border-left: 1pt solid windowtext;
+              border-image: initial;
+              border-top: none;
+              padding: 0in 5.4pt;
+              height: 26.5pt;
+              vertical-align: top;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><u
+                  ><span style="font-size: 13px; font-family: Poppins"
+                    >Additional Info:</span
+                  ></u
+                ></strong
+              >
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <span style="font-size: 13px; font-family: Poppins"
+                >Meeting Point:<%=meeting_point%>
+              </span>
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <span style="font-size: 13px; font-family: Poppins"
+                >Note:<%=note%>
+              </span>
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <span style="font-size: 13px; font-family: Poppins"
+                >Activity Date: <%=start_date%></span
+              >
+            </p>
+          </td>
+          <td
+            colspan="3"
+            style="
+              width: 2in;
+              border-top: none;
+              border-left: none;
+              border-bottom: solid windowtext 1pt;
+              border-right: solid windowtext 1pt;
+              padding: 0in 5.4pt 0in 5.4pt;
+              height: 26.5pt;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins"
+                  >Subtotal</span
+                ></strong
+              >
+            </p>
+          </td>
+          <td
+            style="
+              width: 1in;
+              border-top: none;
+              border-left: none;
+              border-bottom: solid windowtext 1pt;
+              border-right: solid windowtext 1pt;
+              padding: 0in 5.4pt 0in 5.4pt;
+              height: 26.5pt;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                text-align: center;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins">
+                  <%=total_amount%></span
+                ></strong
+              >
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td
+            colspan="3"
+            style="
+              width: 2in;
+              border-top: none;
+              border-left: none;
+              border-bottom: solid windowtext 1pt;
+              border-right: solid windowtext 1pt;
+              padding: 0in 5.4pt 0in 5.4pt;
+              height: 26.5pt;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins"
+                  >Advance Payment</span
+                ></strong
+              >
+            </p>
+          </td>
+          <td
+            style="
+              width: 1in;
+              border-top: none;
+              border-left: none;
+              border-bottom: solid windowtext 1pt;
+              border-right: solid windowtext 1pt;
+              padding: 0in 5.4pt 0in 5.4pt;
+              height: 26.5pt;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                text-align: center;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins">
+                  <%=deposit_amount%></span
+                ></strong
+              >
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td
+            colspan="3"
+            style="
+              width: 2in;
+              border-top: none;
+              border-left: none;
+              border-bottom: solid windowtext 1pt;
+              border-right: solid windowtext 1pt;
+              padding: 0in 5.4pt 0in 5.4pt;
+              height: 26.5pt;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins"
+                  >Balance Payment</span
+                ></strong
+              >
+            </p>
+          </td>
+          <td
+            style="
+              width: 1in;
+              border-top: none;
+              border-left: none;
+              border-bottom: solid windowtext 1pt;
+              border-right: solid windowtext 1pt;
+              padding: 0in 5.4pt 0in 5.4pt;
+              height: 26.5pt;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                text-align: center;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins">
+                  <%=pending_amount%></span
+                ></strong
+              >
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td
+            colspan="5"
+            style="
+              width: 6in;
+              border-right: 1pt solid windowtext;
+              border-bottom: 1pt solid windowtext;
+              border-left: 1pt solid windowtext;
+              border-image: initial;
+              border-top: none;
+              padding: 0in 5.4pt;
+              height: 183pt;
+              vertical-align: top;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><u
+                  ><span style="font-size: 13px; font-family: Poppins"
+                    >Cancellation &amp; Refund Policy</span
+                  ></u
+                ></strong
+              >
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong><span style="font-family: Poppins">&nbsp;</span></strong
+              ><strong
+                ><span style="font-size: 13px; font-family: Poppins"
+                  >Change of plan?</span
+                ></strong
+              >
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <span style="font-size: 13px; font-family: Poppins"
+                >Traveler can change trip date anytime, but he/she has to inform
+                before 3 days through email or call.&nbsp;</span
+              >
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins"
+                  >If cancellations are made before 1 day of the trip?</span
+                ></strong
+              >
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <span style="font-size: 13px; font-family: Poppins"
+                >If the traveler cancels the trip 1 day after the trip then
+                he/she will 100% refund within 3 working days.&nbsp;</span
+              >
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins"
+                  >Cancellation made on the trip day?</span
+                ></strong
+              >
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <span style="font-size: 13px; font-family: Poppins"
+                >Traveler is not eligible, if cancellation is made on trip
+                day.</span
+              >
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins"
+                  >Was cancellation</span
+                ></strong
+              ><strong
+                ><span style="font-size: 13px; font-family: Poppins"
+                  >&nbsp;made due to adverse weather or any act of god?</span
+                ></strong
+              >
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <span style="font-size: 13px; font-family: Poppins"
+                >Travel will get a 100% refund within 3 working days. NOTE
+                FOLLOW THE CANCELLATION POLICY / HOTEL POLICY</span
+              >
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td
+            colspan="5"
+            style="
+              width: 6in;
+              border-right: 1pt solid windowtext;
+              border-bottom: 1pt solid windowtext;
+              border-left: 1pt solid windowtext;
+              border-image: initial;
+              border-top: none;
+              padding: 0in 5.4pt;
+              height: 89.5pt;
+              vertical-align: top;
+            "
+          >
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins"
+                  >Office Address</span
+                ></strong
+              >
+            </p>
+            <p
+              style="
+                margin: 0in 0in 0.0001pt;
+                font-size: 11pt;
+                font-family: Poppins, sans-serif;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins"
+                  >Address: Calangute Umta Vadoo Car Parking</span
+                ></strong
+              >
+            </p>
+            <p
+              style="
+                margin: 0in 0in 0.0001pt;
+                font-size: 11pt;
+                font-family: Poppins, sans-serif;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins"
+                  >Goa 403516</span
+                ></strong
+              >
+            </p>
+            <p
+              style="
+                margin: 0in 0in 0.0001pt;
+                font-size: 11pt;
+                font-family: Poppins, sans-serif;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins"
+                  >Website</span
+                ></strong
+              ><strong
+                ><span style="font-family: Poppins"
+                  >: www.goaadventure.in</span
+                ></strong
+              >
+            </p>
+            <p
+              style="
+                margin: 0in 0in 0.0001pt;
+                font-size: 11pt;
+                font-family: Poppins, sans-serif;
+              "
+            >
+              <strong
+                ><span style="font-size: 13px; font-family: Poppins"
+                  >Contact: (+91) 738 796 0861</span
+                ></strong
+              >
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <span style="font-size: 13px; font-family: Poppins">&nbsp;</span>
+            </p>
+            <p
+              style="
+                margin-top: 0in;
+                margin-right: 0in;
+                margin-bottom: 0.0001pt;
+                margin-left: 0in;
+                font-size: 11pt;
+                font-family: 'Poppins', sans-serif;
+                line-height: normal;
+              "
+            >
+              <em
+                ><span style="font-size: 13px; font-family: Poppins"
+                  >This is computer generated invoice</span
+                ></em
+              >
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
