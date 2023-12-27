@@ -26,18 +26,32 @@ interface ProductDetails {
 
 export const getAllInfo = async (
   productDetails: ProductDetails,
-  customerPrice: PriceFromCustomer
+  customerPrice: PriceFromCustomer,
+  isGuest: Boolean
 ) => {
   const result = "ankit";
   // let product_id = 14,
   //   customer_id = 7;
-  let response: any = await db.sequelize.query(
-    `SELECT * FROM customers JOIN products ON products.id = ${productDetails.productId} AND customers.id = ${productDetails.customerId};`,
-    {
-      // replacements: { status: "active" },
-      type: QueryTypes.SELECT,
-    }
-  );
+  let response:any;
+  if(!isGuest){
+    response = await db.sequelize.query(
+      `SELECT * FROM customers JOIN products ON products.id = ${productDetails.productId} AND customers.id = ${productDetails.customerId};`,
+      {
+        // replacements: { status: "active" },
+        type: QueryTypes.SELECT,
+      }
+    );
+  }else{
+    response = await db.sequelize.query(
+      `SELECT * FROM products WHERE products.id = ${productDetails.productId};`,
+      {
+        // replacements: { status: "active" },
+        type: QueryTypes.SELECT,
+      }
+    );
+    response[0].discount_percent = 0;
+  }
+  
   if (response.length <= 0) {
     //throw error
     console.log("Product not found");

@@ -42,10 +42,25 @@ export const createOrder = async (req: any, res: Response): Promise<void> => {
   ) {
     const allInfo = await helperService.getAllInfo(
       productDetails,
-      customerPrice
+      customerPrice,
+      false
     );
     res.send(allInfo);
-  } else {
+  }
+  else if (
+    typeof productDetails.productId === "number" &&
+    typeof productDetails.quantity === "number" &&
+    (productDetails.customerId == undefined || productDetails.customerId == "")
+  ) {
+    productDetails.customerId = new Date().valueOf();
+    const allInfo = await helperService.getAllInfo(
+      productDetails,
+      customerPrice,
+      true
+    );
+    res.send(allInfo);
+  }
+  else {
     console.log(
       typeof productDetails.productId === "number",
       typeof productDetails.customerId === "number",
