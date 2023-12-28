@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Input from "@/components/common/inputs/Input";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { AiOutlineUser, AiOutlineMail } from "react-icons/ai";
@@ -19,6 +19,8 @@ const Checkout = () => {
   const [checkedInfo, setCheckedInfo] = useState(false);
   const [custMeetingPoint, setMeetingPoint] = useState("");
   const [custNote, setCustomerNote] = useState("");
+  const [bookingInfo, setBookingInfo] = useState({"name": "", "email": "", "mobileNumber": "", "isGuest": false});
+  const bookingForm = useRef(null);
   const {
     register,
     handleSubmit,
@@ -88,7 +90,10 @@ const Checkout = () => {
       const customer_id = customer?.user.id;
       const product_id = product?.product_id;
       const quantity = product.quantity;
-
+      bookingInfo.isGuest = customer != undefined ? false: true;
+      if(bookingInfo.isGuest && (bookingInfo.name == "" || bookingInfo.mobileNumber == "")){
+        alert("Please complete the billing information form");
+      }
       //console.log("HEELLO");
 
       var myHeaders = new Headers();
@@ -124,6 +129,7 @@ const Checkout = () => {
           meeting_point: custMeetingPoint,
           note: custNote,
         },
+        bookingInfo
       });
 
       var requestOptions = {
@@ -211,7 +217,7 @@ const Checkout = () => {
         <div className="w-full md:w-8/12 h-full">
           <div className="py-4 shadow-3xl p-2">
             <h4 className="font-semibold text-base">Billing Information</h4>
-            <form>
+            <form ref={bookingForm}>
               <div className="grid grid-cols-1 sm:grid-cols-2 w-full h-full gap-4 pt-4">
                 <div className="w-full border-none outline-none bg-white">
                   <input
@@ -219,6 +225,7 @@ const Checkout = () => {
                     placeholder="FullName"
                     className="w-full border-none focus:ring-0 outline-none bg-gray-100 placeholder:text-sm placeholder:text-gray-800"
                     value={customer?.user?.name}
+                    onChange={(e) => setBookingInfo({name: e.target.value, email: bookingInfo.email, mobileNumber:bookingInfo.mobileNumber, isGuest: false})}
                     required
                   />
                 </div>
@@ -227,6 +234,7 @@ const Checkout = () => {
                     type="text"
                     placeholder="Mobile No."
                     value={customer?.user?.mobile_number}
+                    onChange={(e) => setBookingInfo({name: bookingInfo.name, email: bookingInfo.email, mobileNumber:e.target.value, isGuest: false})}
                     className="w-full border-none focus:ring-0 outline-none bg-gray-100 placeholder:text-gray-800 placeholder:text-sm"
                     required
                   />
@@ -238,6 +246,7 @@ const Checkout = () => {
                     className="w-full border-none focus:ring-0 outline-none bg-gray-100 placeholder:text-gray-800 placeholder:text-sm"
                     required
                     value={customer?.user?.email}
+                    onChange={(e) => setBookingInfo({name: bookingInfo.name, email: e.target.value, mobileNumber:bookingInfo.mobileNumber, isGuest: false})}
                   />
                 </div>
                 <div className="w-full border-none outline-none bg-white">

@@ -31,10 +31,11 @@ const Booking = db.booking;
 export const createOrder = async (req: any, res: Response): Promise<void> => {
   // try {
   //   // Validate request
-  const { customerPrice, productDetails } = req.body;
+  const { customerPrice, productDetails, customerInfo } = req.body;
   console.log("Request customerPrice", customerPrice);
   console.log("Request productDetails", productDetails);
-
+  console.log("Request customerInfo", customerInfo);
+  
   if (
     typeof productDetails.productId === "number" &&
     typeof productDetails.customerId === "number" &&
@@ -56,7 +57,8 @@ export const createOrder = async (req: any, res: Response): Promise<void> => {
     const allInfo = await helperService.getAllInfo(
       productDetails,
       customerPrice,
-      true
+      true,
+      customerInfo
     );
     res.send(allInfo);
   }
