@@ -62,15 +62,16 @@ const Checkout = () => {
     100;
   const futurePayment = subTotal - discount - payNow;
   const { openLogin, closeLogin } = useAuthModal();
-  useEffect(() => {
-    if (!customer?.user?.id) {
-      openLogin();
-    }
-    if (!product?.product_id) {
-      console.log("Hitted");
-      router.push("/");
-    }
-  });
+
+  // useEffect(() => {
+  //   if (!customer?.user?.id) {
+  //     openLogin();
+  //   }
+  //   if (!product?.product_id) {
+  //     console.log("Hitted");
+  //     router.push("/");
+  //   }
+  // });
 
   async function callRazorPay() {
     if (checkedInfo) {
@@ -141,7 +142,7 @@ const Checkout = () => {
 
       const data: any = await fetch(
         "https://backend.goaadventure.in/v1/payment/create-order",
-        // "http://localhost:4000/v1/payment/create-order",
+        // "http://localhost:8000/v1/payment/create-order",
         {
           method: "POST",
           mode: "cors",

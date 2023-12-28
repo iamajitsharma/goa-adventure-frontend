@@ -29,15 +29,15 @@ const cart = () => {
   const futurePayment = subTotal - discount - payNow;
   const { openLogin, closeLogin } = useAuthModal();
 
-  useEffect(() => {
-    if (!customer?.user?.id) {
-      openLogin();
-    }
-    if (!product?.product_id) {
-      console.log("Hitted");
-      router.push("/");
-    }
-  });
+  // useEffect(() => {
+  //   if (!customer?.user?.id) {
+  //     openLogin();
+  //   }
+  //   if (!product?.product_id) {
+  //     console.log("Hitted");
+  //     router.push("/");
+  //   }
+  // });
 
   console.log(product, "From Cart");
 
@@ -99,8 +99,9 @@ const cart = () => {
             <Button
               size="xl"
               variant="dark"
-              href={customer?.user?.id ? "/checkout" : undefined}
-              disabled={customer?.user?.id ? false : true}
+              href="/checkout"
+              // href={customer?.user?.id ? "/checkout" : undefined}
+              // disabled={customer?.user?.id ? false : true}
             >
               Proceed to checkout
             </Button>
