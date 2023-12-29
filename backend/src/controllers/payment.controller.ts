@@ -31,10 +31,11 @@ const Booking = db.booking;
 export const createOrder = async (req: any, res: Response): Promise<void> => {
   // try {
   //   // Validate request
-  const { customerPrice, productDetails } = req.body;
+  const { customerPrice, productDetails, customerInfo } = req.body;
   console.log("Request customerPrice", customerPrice);
   console.log("Request productDetails", productDetails);
-
+  console.log("Request customerInfo", customerInfo);
+  
   if (
     typeof productDetails.productId === "number" &&
     typeof productDetails.customerId === "number" &&
@@ -42,10 +43,26 @@ export const createOrder = async (req: any, res: Response): Promise<void> => {
   ) {
     const allInfo = await helperService.getAllInfo(
       productDetails,
-      customerPrice
+      customerPrice,
+      false
     );
     res.send(allInfo);
-  } else {
+  }
+  else if (
+    typeof productDetails.productId === "number" &&
+    typeof productDetails.quantity === "number" &&
+    (productDetails.customerId == undefined || productDetails.customerId == "")
+  ) {
+    productDetails.customerId = new Date().valueOf();
+    const allInfo = await helperService.getAllInfo(
+      productDetails,
+      customerPrice,
+      true,
+      customerInfo
+    );
+    res.send(allInfo);
+  }
+  else {
     console.log(
       typeof productDetails.productId === "number",
       typeof productDetails.customerId === "number",

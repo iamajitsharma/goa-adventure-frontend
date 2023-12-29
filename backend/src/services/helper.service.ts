@@ -14,6 +14,12 @@ interface PriceFromCustomer {
   payingFull: Boolean;
 }
 
+interface CustomerInfo {
+  name: string;
+  email: string;
+  mobile_number: string;
+}
+
 interface ProductDetails {
   productId: number;
   customerId: number;
@@ -26,18 +32,33 @@ interface ProductDetails {
 
 export const getAllInfo = async (
   productDetails: ProductDetails,
-  customerPrice: PriceFromCustomer
+  customerPrice: PriceFromCustomer,
+  isGuest: Boolean,
+  customerInfo?: CustomerInfo
 ) => {
   const result = "ankit";
   // let product_id = 14,
   //   customer_id = 7;
-  let response: any = await db.sequelize.query(
-    `SELECT * FROM customers JOIN products ON products.id = ${productDetails.productId} AND customers.id = ${productDetails.customerId};`,
-    {
-      // replacements: { status: "active" },
-      type: QueryTypes.SELECT,
-    }
-  );
+  let response:any;
+  if(!isGuest){
+    response = await db.sequelize.query(
+      `SELECT * FROM customers JOIN products ON products.id = ${productDetails.productId} AND customers.id = ${productDetails.customerId};`,
+      {
+        // replacements: { status: "active" },
+        type: QueryTypes.SELECT,
+      }
+    );
+  }else{
+    response = await db.sequelize.query(
+      `SELECT * FROM products WHERE products.id = ${productDetails.productId};`,
+      {
+        // replacements: { status: "active" },
+        type: QueryTypes.SELECT,
+      }
+    );
+    response[0].discount_percent = 0;
+  }
+  
   if (response.length <= 0) {
     //throw error
     console.log("Product not found");
@@ -99,6 +120,10 @@ export const getAllInfo = async (
   }
 
   console.log("Response from postgres for test", response);
+  let customer_mobile_number = response[0].mobile_number;
+  if(customerInfo != undefined){
+    customer_mobile_number = customerInfo.mobile_number;
+  }
 
   let finalAllInfo = {
     product_id: productDetails.productId,
@@ -113,8 +138,8 @@ export const getAllInfo = async (
     end_date: productDetails.endDate,
     customer_id: productDetails.customerId,
     payment_mode: PAYMENT_TYPES.ONLINE, //0:online 1:offline
-    customer_mobile_number: response[0].mobile_number,
-    destination_location: response[0].city,
+    customer_mobile_number: customer_mobile_number ,
+    destination_location: response[0].city ?? "",
     booked_by: BOOKED_BY.SELF,
     paying_full: customerPrice.payingFull,
     pending_amount: pendingAmount.toString(),
