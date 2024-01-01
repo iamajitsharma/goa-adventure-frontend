@@ -7,6 +7,7 @@ interface CustomerAttributes {
   city: string;
   isEmailVerified: Boolean;
   isMobileVerified: Boolean;
+  isGuest: Boolean;
   state: string;
   country: string;
   status: Boolean;
@@ -34,6 +35,7 @@ module.exports = (sequelize: Sequelize, DataTypes: any) => {
     public profile_image!: string;
     public createdAt!: Date;
     public updatedAt!: Date;
+    public isGuest!: Boolean;
 
     static associate(models: any) {
       // Define associations with other models
@@ -72,7 +74,9 @@ module.exports = (sequelize: Sequelize, DataTypes: any) => {
       isMobileVerified: {
         type: DataTypes.BOOLEAN,
       },
-
+      isGuest: {
+        type: DataTypes.BOOLEAN,
+      },
       profile_image: {
         type: DataTypes.TEXT("long"),
       },
