@@ -98,6 +98,8 @@ const Checkout = () => {
 
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Access-Control-Allow-Origin", "*");
+      myHeaders.append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
       console.log("REsponse", {
         customerPrice: {
           totalAmount: subTotal.toString(),
@@ -192,7 +194,14 @@ const Checkout = () => {
         //   contact: "9999999999",
         // },
       };
-      if (customer.user.id) {
+      if(bookingInfo.isGuest){
+        options.prefill = {
+          name: bookingInfo.name,
+          email: bookingInfo.email,
+          contact: bookingInfo.mobileNumber,
+        };
+      }
+      if (customer != null && customer.user.id) {
         options.prefill = {
           name: customer.user.name,
           email: customer.user.email,

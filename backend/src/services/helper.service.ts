@@ -2,8 +2,9 @@ import db from "../models";
 import { BOOKED_BY, BOOKING_STATUS, PAYMENT_TYPES } from "../utils/constants";
 const ApiError = require("../utils/ApiError");
 import bcrypt from "bcryptjs";
-import { bookingService, paymentService } from ".";
+import { bookingService, paymentService, customerService, productService } from ".";
 import httpStatus from "http-status";
+import { exit } from "process";
 const { QueryTypes } = require("sequelize");
 const Customer = db.customer;
 const Product = db.product;
@@ -17,7 +18,7 @@ interface PriceFromCustomer {
 interface CustomerInfo {
   name: string;
   email: string;
-  mobile_number: string;
+  mobileNumber: string;
 }
 
 interface ProductDetails {
@@ -57,6 +58,20 @@ export const getAllInfo = async (
       }
     );
     response[0].discount_percent = 0;
+    try{
+      let guest = await customerService.getCustomerByEmail(customerInfo!.email);
+      if(guest == undefined || guest == null){
+        guest = await customerService.createCustomer({'name': customerInfo?.name, 
+                              email: customerInfo?.email,
+                              mobile_number: customerInfo?.mobileNumber,
+                              isGuest: true, isMobileVerified: false, isEmailVerified: false});
+        
+      }
+      productDetails.customerId = guest.id;
+    }catch(error){
+      console.log(error);
+      //exit();
+    }
   }
   
   if (response.length <= 0) {
@@ -122,7 +137,7 @@ export const getAllInfo = async (
   console.log("Response from postgres for test", response);
   let customer_mobile_number = response[0].mobile_number;
   if(customerInfo != undefined){
-    customer_mobile_number = customerInfo.mobile_number;
+    customer_mobile_number = customerInfo.mobileNumber;
   }
 
   let finalAllInfo = {
@@ -148,7 +163,13 @@ export const getAllInfo = async (
     note: productDetails.note,
   };
   console.log("Before db ", finalAllInfo);
-  const bookingData = await bookingService.createBooking(finalAllInfo);
+  let bookingData;
+  try{
+  bookingData = await bookingService.createBooking(finalAllInfo);
+  }catch(error){
+    console.log(error);
+    exit();
+  }
   console.log("Response from bookignData", bookingData);
   const paymentOrderInfo = {
     booking_id: bookingData.id,

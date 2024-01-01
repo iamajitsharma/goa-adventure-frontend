@@ -31,10 +31,10 @@ const Booking = db.booking;
 export const createOrder = async (req: any, res: Response): Promise<void> => {
   // try {
   //   // Validate request
-  const { customerPrice, productDetails, customerInfo } = req.body;
+  const { customerPrice, productDetails, bookingInfo } = req.body;
   console.log("Request customerPrice", customerPrice);
   console.log("Request productDetails", productDetails);
-  console.log("Request customerInfo", customerInfo);
+  console.log("Request customerInfo", bookingInfo);
   
   if (
     typeof productDetails.productId === "number" &&
@@ -58,7 +58,7 @@ export const createOrder = async (req: any, res: Response): Promise<void> => {
       productDetails,
       customerPrice,
       true,
-      customerInfo
+      bookingInfo
     );
     res.send(allInfo);
   }
