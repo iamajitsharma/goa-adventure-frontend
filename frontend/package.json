@@ -30,9 +30,10 @@
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-countup": "^6.4.2",
-    "react-date-picker": "^10.5.0",
+    "react-datepicker": "^4.25.0",
     "react-dom": "18.2.0",
     "react-dropdown": "^1.11.0",
+    "react-google-flight-datepicker": "^0.1.20",
     "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
     "react-loader": "^2.4.7",
@@ -58,6 +59,7 @@
     "zoho-chat": "^1.0.32"
   },
   "devDependencies": {
+    "@types/react-datepicker": "^4.19.5",
     "@types/react-loader": "^2.4.5"
   }
 }

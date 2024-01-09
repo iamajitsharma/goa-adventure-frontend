@@ -51,9 +51,7 @@ const index = (props: any) => {
         {/* Product Title Section */}
         <Box className="bg-white">
           <ProductTitle level={1} title={props?.data[0]?.title} />
-          {/* <h1 className="text-lg font-semibold md:text-xl">
-            {props?.data[0]?.title}
-          </h1> */}
+
           <div className="flex flex-row items-center w-full gap-4 py-4 font-roboto">
             <span className="flex flex-row items-center gap-2 text-neutral-600 text-sm font-medium sm:text-base">
               <FiMapPin className="text-primary text-xl" />

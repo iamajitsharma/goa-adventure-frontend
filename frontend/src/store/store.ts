@@ -3,6 +3,7 @@ import authModalReducer from "./modal/authModalSlice";
 import loginUserReducer from "./modal/loginUserSlice";
 import productReducer from "./modal/productSlice";
 import galleryReducer from "./modal/gallerySlice";
+import bookingModalReducer from "./modal/bookingModalSlice";
 
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
@@ -33,6 +34,7 @@ export const store = configureStore({
     loginUser: persistedReducer,
     product: persistedProductReducer,
     gallery: galleryReducer,
+    bookingModal: bookingModalReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

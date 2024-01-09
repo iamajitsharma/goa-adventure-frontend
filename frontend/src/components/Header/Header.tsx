@@ -63,7 +63,7 @@ const Header = () => {
   const { customer, logoutCustomer }: any = useCustomer();
 
   const companyLogo =
-    router.pathname === "/" && !scrolled && isTablet ? safarWhite : safarColor;
+    router.pathname === "/" && !scrolled && isTablet ? whiteLogo : logo;
 
   return (
     <div
@@ -127,7 +127,7 @@ const Header = () => {
             <AiOutlineShoppingCart />
           </motion.span> */}
 
-          {!scrolled && !isTablet && !customer?.user && (
+          {/* {!scrolled && !isTablet && !customer?.user && (
             <Button onClick={openLogin}>Login</Button>
           )}
 
@@ -135,7 +135,7 @@ const Header = () => {
             <Button onClick={openLogin} variant="primary">
               Login
             </Button>
-          )}
+          )} */}
 
           {/* Mobile Button */}
           <div onClick={handleNav} className="block md:hidden z-10">
@@ -187,14 +187,14 @@ const Header = () => {
               </Link>
             </li>
           ))}
-          {customer?.user ? (
+          {/* {customer?.user ? (
             <Button onClick={() => logoutCustomer(customer)}>Log Out</Button>
           ) : (
             <>
               <Button onClick={onToggle}>Login</Button>
               <Button onClick={onToggle}>Register</Button>
             </>
-          )}
+          )} */}
         </ul>
       </div>
     </div>

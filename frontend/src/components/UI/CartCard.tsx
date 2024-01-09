@@ -55,21 +55,16 @@ const CartCard: React.FC<CartCardProps> = ({
                   <MdCurrencyRupee />
                   {price}
                 </span>
+
+                <span className="text-base font-semibold">
+                  Quantity : {quantity}
+                </span>
                 <span
                   className="text-2xl text-rose-500"
                   onClick={() => discardProduct({})}
                 >
                   <AiOutlineDelete />
                 </span>
-                <div className="flex items-center gap-3 text-3xl">
-                  {/* <motion.span whileTap={{ scale: 1.2 }}>
-                    <FiMinusCircle />
-                  </motion.span> */}
-                  <span className="text-2xl">Quantity : {quantity}</span>
-                  {/* <motion.span>
-                    <FiPlusCircle />
-                  </motion.span> */}
-                </div>
               </div>
             </div>
           </div>
@@ -94,7 +89,9 @@ const CartCard: React.FC<CartCardProps> = ({
                 <MdCurrencyRupee />
                 {price}
               </span>
-              <div className="flex items-center gap-3 text-2xl">{quantity}</div>
+              <span className="text-base font-semibold">
+                Quantity : {quantity}
+              </span>
               <span
                 className="text-2xl text-rose-500"
                 onClick={() => discardProduct({})}

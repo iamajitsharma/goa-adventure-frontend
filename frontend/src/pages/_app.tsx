@@ -1,9 +1,7 @@
 import "@/styles/globals.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import "remixicon/fonts/remixicon.css";
-import "react-date-picker/dist/DatePicker.css";
-import "react-calendar/dist/Calendar.css";
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import "react-datepicker/dist/react-datepicker.css";
 import type { AppProps } from "next/app";
 import { Poppins, Merriweather, Roboto } from "next/font/google";
 import { Provider } from "react-redux";
@@ -63,7 +61,7 @@ export default function App({ Component, pageProps }: AppProps) {
           url="https://salesiq.zohopublic.in/widget"
           widgetCode="siq9075fbd094059a202172b5057bbb7fc2aaf1dba0a90af0e9f4aa284f6140d94d"
           position={isMobile ? "right" : "bottomright"}
-          visible={"show"}
+          visible={"hide"}
         />
         <FAB />
 

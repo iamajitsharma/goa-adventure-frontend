@@ -42,7 +42,7 @@ const cart = () => {
   console.log(product, "From Cart");
 
   return (
-    <Container>
+    <Container className="py-6">
       {product?.product_id ? (
         <div className="flex flex-col md:flex-row items-start justify-between h-full">
           <div className="w-full h-full p-2 font-poppins md:w-9/12 lg:w-8/12">
@@ -70,14 +70,6 @@ const cart = () => {
             )}
           </div>
           <div className="w-full h-full shadow-3xl p-2 font-poppins md:w-3/12 lg:w-4/12">
-            <div className="flex items-center w-full shadow-3xl p-0 rounded-sm">
-              <input
-                type="text"
-                placeholder="Have coupon code?"
-                className="w-full border-none focus:ring-0 outline-none bg-gray-100 placeholder:text-sm"
-              />
-              <Button>Apply</Button>
-            </div>
             <div className="w-full h-full flex flex-col gap-4 px-1 py-4 font-semibold text-sm">
               <div className="flex justify-between items-center">
                 <span>Subtotal</span>
