@@ -12,6 +12,10 @@ import { ImWhatsapp } from "react-icons/im";
 import useProduct from "@/hook/useProduct";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  openBookingModal,
+  closeBookingModal,
+} from "@/store/modal/bookingModalSlice";
 
 interface ProductSidebarProps {
   price: string | number;
@@ -41,6 +45,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
   const [fromDate, setFromDate] = useState<any>(null);
   const [showModal, setShowModal] = useState(false);
 
+  const dispatch = useDispatch();
   const isOpen = useSelector(
     (state: any) => state.bookingModal.isBookingModalOpen
   );
@@ -50,12 +55,12 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
 
   useEffect(() => {
     setShowModal(true);
-    if (showModal) {
+    if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
-  }, []);
+  }, [isOpen]);
 
   const incrementHandler = () => {
     setQuantity(quantity + 1);
@@ -92,32 +97,8 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
 
   return (
     <>
-      <Box
-        className="
-      block
-      md:hidden  
-      rounded-none 
-      fixed 
-      bottom-0 
-      right-0 
-      w-full 
-      z-50 
-      bg-white 
-      p-1 
-      shadow-neutral-600"
-      >
-        <Button
-          size="lg"
-          variant="primary"
-          className="w-full"
-          onClick={() => setShowModal(true)}
-        >
-          Book Now
-        </Button>
-      </Box>
-
       {/* Pricing Section for small device */}
-      {showModal && (
+      {isOpen && (
         <div
           className="
         fixed 
@@ -130,24 +111,25 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
         h-screen
         flex
         items-end
+        justify-center
         "
         >
           <div
             className={` relative 
           bg-white 
           backdrop-blur-lg 
-          rounded-t-[2.5rem] 
+          rounded-t-3xl 
           p-6 
           overflow-hidden 
           shadow-xl 
           transition-all 
           ease-in-out 
           w-full
-          h-[60vh] 
+          min-h-fit
           pb-14
           duration-300
-          ${showModal ? "translate-y-0" : "translate-y-full"}
-         ${showModal ? "opacity-100" : "opacity-0"}
+          ${isOpen ? "translate-y-0" : "translate-y-full"}
+         ${isOpen ? "opacity-100" : "opacity-0"}
          `}
           >
             <div className="flex items-center justify-between">
@@ -192,7 +174,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
                   size="lg"
                   variant="outline"
                   className="w-full"
-                  onClick={() => setShowModal(false)}
+                  onClick={() => dispatch(closeBookingModal())}
                 >
                   Cancel
                 </Button>
@@ -209,6 +191,32 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
           </div>
         </div>
       )}
+
+      {/* Mobile Booking Button */}
+      <Box
+        className="
+      
+       rounded-none 
+      fixed 
+      bottom-0 
+      right-0 
+      w-full 
+      z-50 
+      bg-white 
+      p-1 
+      shadow-neutral-600
+      md:hidden
+      "
+      >
+        <Button
+          size="lg"
+          variant="primary"
+          className="w-full"
+          onClick={() => dispatch(openBookingModal())}
+        >
+          Book Now
+        </Button>
+      </Box>
 
       {/* Pricing Section For Medium Device */}
       <Box className=" hidden md:block bg-white mt-0">

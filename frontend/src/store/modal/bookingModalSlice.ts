@@ -9,7 +9,7 @@ const bookingModalSlice = createSlice({
   initialState,
   reducers: {
     openBookingModal: (state) => {
-      state.isBookingModalOpen = false;
+      state.isBookingModalOpen = true;
     },
     closeBookingModal: (state) => {
       state.isBookingModalOpen = false;
