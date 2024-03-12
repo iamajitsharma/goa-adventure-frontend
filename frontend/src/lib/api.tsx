@@ -187,15 +187,15 @@ export async function getSinglePageDetails(slug: any) {
   return product;
 }
 
-export async function getHomePageTour() {
-  const result: any = await fetch(
-    `${serverURL}/products/tours/getHomePageTours`,
-    requestOptions
-  );
+// export async function getHomePageTour() {
+//   const result: any = await fetch(
+//     `${serverURL}/products/tours/getHomePageTours`,
+//     requestOptions
+//   );
 
-  const response = await result.json();
-  return response;
-}
+//   const response = await result.json();
+//   return response;
+// }
 
 export async function getCategories() {
   const result: any = await fetch(`${serverURL}/categories`, requestOptions);

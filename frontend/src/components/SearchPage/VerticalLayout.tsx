@@ -1,6 +1,5 @@
 import React from "react";
 import ProductList from "../UI/ProductList";
-import { products } from "../../data/ActivityData";
 
 const VerticalLayout = (props: any) => {
   return (

@@ -7,7 +7,7 @@ import { useAppSelector } from "@/store/store";
 const useProduct = () => {
   const dispatch = useDispatch();
 
-  const product = useAppSelector((state) => state.product);
+  const product = useAppSelector((state: any) => state.product);
   const setProduct = (product: any) => {
     return dispatch(addProduct(product));
   };

@@ -1,40 +1,29 @@
-import React, { useState, useEffect } from "react";
+//import node module libraries
 import Head from "next/head";
-import Container from "@/components/common/Container";
-import DestinationList from "@/components/UI/DestinationList";
-import Heading from "@/components/common/Heading";
-import HowWeWork from "../components/featured/HowWeWork";
-import { products } from "../data/ActivityData";
-import ProductSlider from "@/components/UI/ProductSlider";
-import BannerSlider from "../components/featured/BannerSlider";
+import React, { useState } from "react";
+import Slider from "react-slick";
 import { useMediaQuery } from "react-responsive";
 import { deviceSize } from "@/components/Responsive";
+
+//import utility helper function
+import { client } from "../lib/client";
+
+//import custom components
+import Container from "@/components/common/Container";
+import Heading from "@/components/common/Heading";
+import ProductCard from "@/components/UI/ProductCard";
+import HowWeWork from "../components/featured/HowWeWork";
 import MobileHero from "@/components/Hero/MobileHero";
 import DesktopHero from "@/components/Hero/DesktopHero";
 import PartnerLogo from "@/components/featured/PartnerLogo";
-import CardSkelton from "@/components/Animation/CardSkelton";
-import { getHomePageActivity, getHomePageTour } from "../lib/api";
+
+//import required data file
+import { productSliderSettings } from "../data/ProductSliderSettings";
 
 const Index = (props: any) => {
-  const [activities, setActivities] = useState([]);
-  const [tourData, setTourData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
-
-  useEffect(() => {
-    setIsLoading(true);
-    const filterActivityData: any = products.filter(
-      (item) => item.category === "activity"
-    );
-    const filterTourData: any = products.filter(
-      (item) => item.category === "tour"
-    );
-
-    setActivities(filterActivityData);
-    setTourData(filterTourData);
-    setIsLoading(false);
-  }, []);
 
   return (
     <>
@@ -46,17 +35,7 @@ const Index = (props: any) => {
       </div>
       {isTablet ? <MobileHero /> : <DesktopHero />}
 
-      {/* <section className="">
-        <Container>
-          <Heading
-            textAlign="center"
-            heading="Explore Top Destination"
-            subheading="Top Destination"
-          />
-          <DestinationList locationData={props?.destination} />
-        </Container>
-      </section> */}
-
+      {/* Activity Slider */}
       <section className="pt-0">
         <Container>
           <Heading
@@ -64,7 +43,11 @@ const Index = (props: any) => {
             heading="Top Adventure Activity"
             subheading="TOP ADVENTURE"
           />
-          <ProductSlider data={props?.activityData} isLoading={isLoading} />
+          <Slider {...productSliderSettings} className="pt-8">
+            {props.allActivity.map((item: any, index: number) => (
+              <ProductCard item={item} isLoading={isLoading} key={index} />
+            ))}
+          </Slider>
         </Container>
       </section>
 
@@ -72,7 +55,7 @@ const Index = (props: any) => {
         <HowWeWork />
       </section>
 
-      {props?.tourData.length > 3 ? (
+      {/* {props?.tourData.length > 3 ? (
         <section>
           <Container>
             <Heading
@@ -81,12 +64,12 @@ const Index = (props: any) => {
               textAlign="center"
             />
 
-            <ProductSlider data={props?.tourData} isLoading={isLoading} />
+            <ProductSlider />
           </Container>
         </section>
       ) : (
         ""
-      )}
+      )} */}
 
       <section>
         <Container>
@@ -102,17 +85,26 @@ const Index = (props: any) => {
   );
 };
 
-export const getStaticProps = async () => {
-  const activityData = await getHomePageActivity();
-  const tourData = await getHomePageTour();
+export default Index;
+
+export const getServerSideProps = async () => {
+  const activityQuery = `*[_type == "product" && category._ref in *[_type == "category" && category_name == "Activity"]._id] {
+_id,
+product_title,
+  "slug":slug.current,
+  "category":category->category_name,
+  "category_slug":category->slug.current,
+  "images":images[0].asset->url,
+price,
+discount,
+state,
+location,
+duration
+}`;
+
+  const allActivity = await client.fetch(activityQuery);
 
   return {
-    props: {
-      tourData,
-      activityData,
-    },
-    revalidate: 360,
+    props: { allActivity },
   };
 };
-
-export default Index;

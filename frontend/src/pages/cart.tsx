@@ -18,14 +18,13 @@ const cart = () => {
   const router = useRouter();
   const { customer, setCustomer }: any = useCustomer();
 
-  const subTotal = Number(product.actualPrice) * Number(product.quantity);
+  const subTotal = Number(product.price) * Number(product.quantity);
   const discount =
-    (Number(product.actualPrice) - Number(product.priceToBePaid)) *
+    (Number(product.price) - Number(product.salePrice)) *
     Number(product.quantity);
   const finalPayment = subTotal - discount;
   const payNow =
-    (finalPayment * Number(product.deposit_value) * Number(product.quantity)) /
-    100;
+    (finalPayment * Number(product.deposit) * Number(product.quantity)) / 100;
   const futurePayment = subTotal - discount - payNow;
   const { openLogin, closeLogin } = useAuthModal();
 
@@ -43,7 +42,7 @@ const cart = () => {
 
   return (
     <Container className="py-6">
-      {product?.product_id ? (
+      {product?.id ? (
         <div className="flex flex-col md:flex-row items-start justify-between h-full">
           <div className="w-full h-full p-2 font-poppins md:w-9/12 lg:w-8/12">
             <div className="w-full h-full font-poppins py-4 px-4 text-neutral-800">
@@ -55,9 +54,9 @@ const cart = () => {
             </div>
             {product ? (
               <CartCard
-                title={product.title}
-                image={product.product_img}
-                price={product.actualPrice}
+                title={product.product_title}
+                image={product.image}
+                price={product.price}
                 quantity={product.quantity}
               />
             ) : (

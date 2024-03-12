@@ -1,6 +1,5 @@
 import React from "react";
 import ProductCardAlt from "../UI/ProductCardAlt";
-import { products } from "../../data/ActivityData";
 
 const HorizontalLayout = (props: any) => {
   return (

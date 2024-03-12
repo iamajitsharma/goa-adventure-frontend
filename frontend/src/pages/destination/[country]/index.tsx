@@ -6,7 +6,6 @@ import Container from "@/components/common/Container";
 import Overviews from "@/components/SingleProductPage/Overviews";
 import Box from "@/components/common/Box";
 import ProductSlider from "@/components/UI/ProductSlider";
-import { products } from "@/data/ActivityData";
 import DestinationList from "@/components/UI/DestinationList";
 import { useParams } from "next/navigation";
 

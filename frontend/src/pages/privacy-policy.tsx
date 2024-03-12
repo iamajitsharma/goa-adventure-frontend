@@ -49,12 +49,7 @@ const PrivacyPolicy = (props: any) => {
               </span>
             </div>
 
-            <div
-              className="disclosure"
-              dangerouslySetInnerHTML={{
-                __html: props?.privacyPolicies?.privacy_policies,
-              }}
-            >
+            <div className="disclosure">
               {/* <h4>Introduction</h4> */}
               {/* <p>{}</p> */}
             </div>
@@ -105,14 +100,14 @@ const PrivacyPolicy = (props: any) => {
   );
 };
 
-export const getStaticProps = async () => {
-  const privacyPolicies = await privacyPoliciesApi();
-  return {
-    props: {
-      privacyPolicies,
-    },
-    revalidate: 360,
-  };
-};
+// export const getStaticProps = async () => {
+//   const privacyPolicies = await privacyPoliciesApi();
+//   return {
+//     props: {
+//       privacyPolicies,
+//     },
+//     revalidate: 360,
+//   };
+// };
 
 export default PrivacyPolicy;

@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import Container from "@/components/common/Container";
 import Box from "@/components/common/Box";
 import Overviews from "@/components/SingleProductPage/Overviews";
-import { products } from "@/data/ActivityData";
 import ProductSlider from "@/components/UI/ProductSlider";
 import MultiRangeSlider from "@/components/MultiRangeSlider/MultiRangeSlider";
 import DestinationListItems from "@/components/SearchPage/DestinationListItems";
@@ -29,14 +28,14 @@ const index: React.FC<StateProps> = ({ min, max }) => {
   const router = useRouter();
   const { state } = router.query;
 
-  useEffect(() => {
-    setIsLoading(true);
-    const filterActivityData: any = products.filter(
-      (item) => item.category === "activity"
-    );
-    setActivity(filterActivityData);
-    setIsLoading(false);
-  }, []);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   const filterActivityData: any = products.filter(
+  //     (item) => item.category === "activity"
+  //   );
+  //   setActivity(filterActivityData);
+  //   setIsLoading(false);
+  // }, []);
 
   return (
     <>

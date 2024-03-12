@@ -27,7 +27,6 @@ const TermsConditions = (props: any) => {
               Effective from 1st Jan 2021
             </span>
           </div>
-          {parsedContent}
         </div>
       </Container>
       {/* <Loader
@@ -55,14 +54,14 @@ const TermsConditions = (props: any) => {
   );
 };
 
-export const getStaticProps = async () => {
-  const termsConditions = await termsCondiitonsApi();
-  return {
-    props: {
-      termsConditions,
-    },
-    revalidate: 360,
-  };
-};
+// export const getStaticProps = async () => {
+//   const termsConditions = await termsCondiitonsApi();
+//   return {
+//     props: {
+//       termsConditions,
+//     },
+//     revalidate: 360,
+//   };
+// };
 
 export default TermsConditions;

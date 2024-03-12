@@ -9,6 +9,7 @@ import useGalleryModal from "@/hook/useGalleryModal";
 import ImageGallery from "./ImageGallery";
 import { ImImages } from "react-icons/im";
 import { useSelector } from "react-redux";
+import { urlForImage } from "@/lib/client";
 
 const settings = {
   dots: false,
@@ -26,14 +27,10 @@ const settings = {
 };
 
 interface ProductImageProps {
-  featuredImage?: string | any;
-  galleryImage: string[];
+  images: string | any;
 }
 
-const ProductImages: React.FC<ProductImageProps> = ({
-  featuredImage,
-  galleryImage,
-}) => {
+const ProductImages: React.FC<ProductImageProps> = ({ images }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [imageLoadError, setImageLoadError] = useState(false);
   const { openGallery, closeGallery, isOpenGallery } = useGalleryModal();
@@ -48,7 +45,7 @@ const ProductImages: React.FC<ProductImageProps> = ({
         <div className="flex justify-center gap-0 h-80 md:h-[468px] overflow-hidden flex-nowrap">
           <div className="w-full h-full lg:w-3/5">
             <Image
-              src={featuredImage}
+              src={urlForImage(images && images[0])}
               alt=""
               width={975}
               height={600}
@@ -64,62 +61,23 @@ const ProductImages: React.FC<ProductImageProps> = ({
             />
           </div>
           <div className="hidden lg:grid grid-cols-2 w-2/5 gap-2 h-[468px] ml-2">
-            <div className="relative">
-              <Image
-                src={galleryImage[0]}
-                alt=""
-                className={`absolute top-0 left-0 object-cover w-full h-full  duration-700 ease-in-out group-hover:opacity-75  ${
-                  isLoading
-                    ? "scale-110 blur-sm backdrop-blur-2xl "
-                    : "scale-100 blur-0 backdrop-blur-0"
-                }`}
-                width={975}
-                height={600}
-                onClick={openGallery}
-              />
-            </div>
-            <div className="relative">
-              <Image
-                src={galleryImage[1]}
-                alt=""
-                className={`absolute top-0 left-0 object-cover w-full h-full  duration-700 ease-in-out group-hover:opacity-75  ${
-                  isLoading
-                    ? "scale-110 blur-sm backdrop-blur-2xl "
-                    : "scale-100 blur-0 backdrop-blur-0"
-                }`}
-                width={975}
-                height={600}
-                onClick={openGallery}
-              />
-            </div>
-            <div className="relative">
-              <Image
-                src={galleryImage[2]}
-                alt=""
-                className={`absolute top-0 left-0 object-cover w-full h-full  duration-700 ease-in-out group-hover:opacity-75  ${
-                  isLoading
-                    ? "scale-110 blur-sm backdrop-blur-2xl "
-                    : "scale-100 blur-0 backdrop-blur-0"
-                }`}
-                width={975}
-                height={600}
-                onClick={openGallery}
-              />
-            </div>
-            <div className="relative">
-              <Image
-                src={galleryImage[3]}
-                alt="Imagess"
-                className={`absolute top-0 left-0 object-cover w-full h-full  duration-700 ease-in-out group-hover:opacity-75  ${
-                  isLoading
-                    ? "scale-110 blur-sm backdrop-blur-2xl "
-                    : "scale-100 blur-0 backdrop-blur-0"
-                }`}
-                width={975}
-                height={600}
-                onClick={openGallery}
-              />
-            </div>
+            {images &&
+              images.map((item: any, index: number) => (
+                <div className="relative" key={index}>
+                  <Image
+                    src={urlForImage(item)}
+                    alt=""
+                    className={`absolute top-0 left-0 object-cover w-full h-full  duration-700 ease-in-out group-hover:opacity-75  ${
+                      isLoading
+                        ? "scale-110 blur-sm backdrop-blur-2xl "
+                        : "scale-100 blur-0 backdrop-blur-0"
+                    }`}
+                    width={975}
+                    height={600}
+                    onClick={openGallery}
+                  />
+                </div>
+              ))}
           </div>
         </div>
         <span
@@ -133,7 +91,7 @@ const ProductImages: React.FC<ProductImageProps> = ({
       <ImageGallery
         isOpen={isOpenGallery}
         onClose={closeGallery}
-        galleryImg={galleryImage}
+        galleryImg={images}
       />
     </>
   );

@@ -1,15 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  title: null,
-  product_id: null,
-  actualPrice: null,
-  priceToBePaid: null,
+  id: null,
+  product_title: null,
+  price: null,
+  salePrice: null,
   quantity: null,
-  toDate: null,
-  fromDate: null,
-  deposit_value: null,
-  product_img: null,
+  activityDate: null,
+  deposit: null,
+  image: null,
   meeting_point: null,
 };
 
@@ -21,15 +20,14 @@ const productSlice = createSlice({
       console.log("STATE VALUE", state);
 
       return {
-        title: action.payload.title,
-        product_id: action.payload.product_id,
-        actualPrice: action.payload.actualPrice,
-        priceToBePaid: action.payload.priceToBePaid,
+        id: action.payload._id,
+        product_title: action.payload.product_title,
+        price: action.payload.price,
+        salePrice: action.payload.salePrice,
         quantity: action.payload.quantity,
-        toDate: action.payload.toDate,
-        fromDate: action.payload.fromDate,
-        deposit_value: action.payload.deposit_value,
-        product_img: action.payload.product_img,
+        activityDate: action.payload.activityDate,
+        deposit: action.payload.deposit,
+        image: action.payload.image,
         meeting_point: action.payload.meeting_point,
       };
     },

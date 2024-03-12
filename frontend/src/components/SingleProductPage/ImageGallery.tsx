@@ -8,6 +8,7 @@ import RightArrowAlt from "../UI/RightArrowAlt";
 import LeftArrowAlt from "../UI/LeftArrowAlt";
 import { TfiClose } from "react-icons/tfi";
 import { motion } from "framer-motion";
+import { urlForImage } from "@/lib/client";
 
 interface imageGalleryProps {
   galleryImg?: any;
@@ -58,7 +59,13 @@ const ImageGallery: React.FC<imageGalleryProps> = ({
       >
         <Slider {...settings}>
           {galleryImg?.map((img: any) => (
-            <img src={img} alt="" />
+            <Image
+              src={urlForImage(img)}
+              alt=""
+              width={500}
+              height={500}
+              className="w-full h-full object-cover object-center"
+            />
           ))}
         </Slider>
         <motion.span

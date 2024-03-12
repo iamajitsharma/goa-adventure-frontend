@@ -16,6 +16,8 @@ import {
   openBookingModal,
   closeBookingModal,
 } from "@/store/modal/bookingModalSlice";
+import { calculateSalePrice } from "@/lib/operations";
+import { urlForImage } from "@/lib/client";
 
 interface ProductSidebarProps {
   price: string | number;
@@ -29,21 +31,27 @@ interface ProductSidebarProps {
   meeting_point: string[];
 }
 
-const ProductSidebar: React.FC<ProductSidebarProps> = ({
-  price,
-  salePrice,
-  discount,
-  date,
-  product_id,
-  title,
-  deposit_value,
-  product_img,
-  meeting_point,
-}) => {
+const ProductSidebar = ({ data }: any) => {
+  const {
+    _id,
+    product_title,
+    price,
+    discount,
+    date,
+    deposit,
+    images,
+    meeting_point,
+  } = data;
+
+  console.log(_id);
+
+  const salePrice = calculateSalePrice(discount, price);
+
   const [quantity, setQuantity] = useState(1);
-  const [toDate, setToDate] = useState<any>(null);
-  const [fromDate, setFromDate] = useState<any>(null);
+  const [activityDate, setActivityDate] = useState<any>(null);
   const [showModal, setShowModal] = useState(false);
+
+  const productImg = urlForImage(images[0]);
 
   const dispatch = useDispatch();
   const isOpen = useSelector(
@@ -72,21 +80,19 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
     }
   };
   const router = useRouter();
-  console.log("TO Date", toDate);
 
   //Handle Add to card
   const handleAddToCart = () => {
     const cartItem = {
-      quantity,
-      actualPrice: price,
-      priceToBePaid: salePrice,
-      toDate,
-      fromDate,
-      product_id,
-      title,
-      deposit_value,
-      product_img,
-      meeting_point,
+      id: _id,
+      product_title: product_title,
+      price: price,
+      salePrice: salePrice,
+      quantity: quantity,
+      activityDate: activityDate,
+      deposit: deposit,
+      image: productImg,
+      meeting_point: meeting_point,
     };
 
     discardProduct(cartItem);
@@ -133,7 +139,9 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
          `}
           >
             <div className="flex items-center justify-between">
-              <h3 className="text-lg text-gray-700 font-semibold">{title}</h3>
+              <h3 className="text-lg text-gray-700 font-semibold">
+                {product_title}
+              </h3>
               <h5 className="text-2xl text-primary font-semibold">
                 {`₹${salePrice}`}
               </h5>
@@ -144,8 +152,8 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
                 <label className="text-base font-medium">Select Date</label>
                 <input
                   type="date"
-                  value={fromDate}
-                  onChange={(e) => setFromDate(e.target.value)}
+                  value={activityDate}
+                  onChange={(e) => setActivityDate(e.target.value)}
                   min={new Date().toISOString().split("T")[0]}
                   className="w-full rounded-md border-2 border-gray-600"
                 />
@@ -246,7 +254,7 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
                 type="date"
                 min={new Date().toISOString().split("T")[0]}
                 className="rounded-md cursor-pointer"
-                onChange={(e) => setFromDate(e.target.value)}
+                onChange={(e) => setActivityDate(e.target.value)}
               />
 
               {/* <input
@@ -290,40 +298,40 @@ const ProductSidebar: React.FC<ProductSidebarProps> = ({
             size="xl"
             variant="primary"
             // href="/cart"
-            disabled={fromDate ? false : true}
+            disabled={activityDate ? false : true}
             onClick={() => {
               console.log(
                 "Selected PRoduct",
                 quantity,
                 price,
                 salePrice,
-                toDate,
-                fromDate,
-                product_id,
-                title
+
+                activityDate,
+                _id,
+                product_title
               );
               discardProduct({
                 quantity,
-                actualPrice: price,
-                priceToBePaid: salePrice,
-                toDate,
-                fromDate,
-                product_id,
-                title,
-                deposit_value,
-                product_img,
+                price: price,
+                salePrice: salePrice,
+
+                activityDate,
+                _id,
+                product_title,
+                deposit,
+                image: productImg,
                 meeting_point,
               });
               setProduct({
                 quantity,
-                actualPrice: price,
-                priceToBePaid: salePrice,
-                toDate,
-                fromDate,
-                product_id,
-                title,
-                deposit_value,
-                product_img,
+                price: price,
+                salePrice: salePrice,
+
+                activityDate,
+                _id,
+                product_title,
+                deposit,
+                image: productImg,
                 meeting_point,
               });
               router.push(`/cart`);

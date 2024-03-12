@@ -4,7 +4,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "goa-adventures-bucket.s3.ap-south-1.amazonaws.com",
+        hostname: "cdn.sanity.io",
       },
     ],
   },
