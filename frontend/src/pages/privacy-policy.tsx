@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { IPrivacy } from "../lib/interfaces";
 import { privacyPoliciesApi } from "../lib/api";
 import useCustomer from "@/hook/useCustomer";
+import { client } from "@/lib/client";
+import PortableText from "react-portable-text";
 
 export const disclosure_navLink = [
   {
@@ -18,11 +20,6 @@ export const disclosure_navLink = [
     id: "02",
     path: "terms-conditions",
     display: "Terms & Conditions",
-  },
-  {
-    id: "03",
-    path: "cancellation-policy",
-    display: "Cancellation Policy",
   },
 ];
 
@@ -43,15 +40,14 @@ const PrivacyPolicy = (props: any) => {
         <div className="flex md:flex-row h-full relative">
           <div className="w-full lg:w-9/12 p-4">
             <div className="">
-              <h2 className="text-2xl font-bold">Privacy Policy</h2>
+              <h2 className="text-2xl font-bold">{props.data[0].title}</h2>
               <span className="text-base text-neutral-600">
-                Effective from 1st Jan 2021
+                Effective from {props.data[0].wef}
               </span>
             </div>
 
-            <div className="disclosure">
-              {/* <h4>Introduction</h4> */}
-              {/* <p>{}</p> */}
+            <div className="text-sm py-6 leading-6">
+              <PortableText content={props.data[0].content} />
             </div>
           </div>
           <div className="hidden lg:block w-full md:w-3/12 bg-white shadow-lg p-4 rounded-lg">
@@ -71,7 +67,7 @@ const PrivacyPolicy = (props: any) => {
                   <SlEarphonesAlt className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-base font-semibold text-neutral-700">
-                  +91 9038764817
+                  +91 7387960861
                 </div>
               </div>
               <div className="bg-white shadow-md rounded-full flex flex-row items-center justify-start gap-4 hover:scale-105 transition duration-500">
@@ -100,14 +96,16 @@ const PrivacyPolicy = (props: any) => {
   );
 };
 
-// export const getStaticProps = async () => {
-//   const privacyPolicies = await privacyPoliciesApi();
-//   return {
-//     props: {
-//       privacyPolicies,
-//     },
-//     revalidate: 360,
-//   };
-// };
+export const getStaticProps = async () => {
+  const query = `*[_type == "websitepolicies" && title == "Privacy Policy"]`;
+
+  const data = await client.fetch(query);
+  return {
+    props: {
+      data,
+    },
+    revalidate: 360,
+  };
+};
 
 export default PrivacyPolicy;

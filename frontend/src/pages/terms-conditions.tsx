@@ -4,6 +4,8 @@ import { ITerms } from "../lib/interfaces";
 import { termsCondiitonsApi } from "../lib/api";
 import parse from "html-react-parser";
 import useCustomer from "@/hook/useCustomer";
+import { client } from "@/lib/client";
+import PortableText from "react-portable-text";
 
 const intialTermsConditons: ITerms = {
   id: 0,
@@ -16,52 +18,36 @@ const intialTermsConditons: ITerms = {
 };
 
 const TermsConditions = (props: any) => {
-  const parsedContent = parse(`${props?.termsConditions?.terms_conditions}`);
+  console.log(props.data);
   return (
     <section className="font-poppins">
       <Container>
         <div className="p-4">
-          <div className="">
-            <h2 className="text-2xl font-bold">Terms & Conditions</h2>
+          <div className="text-center">
+            <h2 className="text-2xl font-bold ">{props.data[0]?.title}</h2>
             <span className="text-base text-neutral-600">
-              Effective from 1st Jan 2021
+              Effective from {props.data[0]?.wef}
             </span>
+          </div>
+          <div className="py-6 text-sm leading-6">
+            <PortableText content={props.data[0].content} />
           </div>
         </div>
       </Container>
-      {/* <Loader
-        loaded={loaded}
-        lines={13}
-        length={20}
-        width={10}
-        radius={30}
-        corners={1}
-        rotate={0}
-        direction={1}
-        color="#000"
-        speed={1}
-        trail={60}
-        shadow={false}
-        hwaccel={false}
-        className="spinner"
-        zIndex={2e9}
-        top="50%"
-        left="50%"
-        scale={1.0}
-        loadedClassName="loadedContent"
-      /> */}
     </section>
   );
 };
 
-// export const getStaticProps = async () => {
-//   const termsConditions = await termsCondiitonsApi();
-//   return {
-//     props: {
-//       termsConditions,
-//     },
-//     revalidate: 360,
-//   };
-// };
+export const getStaticProps = async () => {
+  const query = `*[_type == "websitepolicies" && title == "Terms & Conditions"]`;
+  const data = await client.fetch(query);
+
+  return {
+    props: {
+      data,
+    },
+    revalidate: 360,
+  };
+};
 
 export default TermsConditions;
