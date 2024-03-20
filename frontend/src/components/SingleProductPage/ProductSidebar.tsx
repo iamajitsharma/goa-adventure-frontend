@@ -29,9 +29,11 @@ interface ProductSidebarProps {
   deposit_value: any;
   product_img?: any;
   meeting_point: string[];
+  location: string;
 }
 
 const ProductSidebar = ({ data }: any) => {
+  // Destructure Data Props
   const {
     _id,
     product_title,
@@ -41,9 +43,10 @@ const ProductSidebar = ({ data }: any) => {
     deposit,
     images,
     meeting_point,
+    location,
   } = data;
 
-  console.log(_id);
+  console.log(data);
 
   const salePrice = calculateSalePrice(discount, price);
 
@@ -88,11 +91,13 @@ const ProductSidebar = ({ data }: any) => {
       product_title: product_title,
       price: price,
       salePrice: salePrice,
+      discount: discount,
       quantity: quantity,
       activityDate: activityDate,
       deposit: deposit,
       image: productImg,
       meeting_point: meeting_point,
+      location: location,
     };
 
     discardProduct(cartItem);
@@ -266,7 +271,7 @@ const ProductSidebar = ({ data }: any) => {
           </div>
           <div className="flex justify-between items-center md:flex-col lg:flex-row">
             <p className="md:hidden lg:block text-xs text-textBlack">
-              Just pay 25% now to book your seat
+              Just pay {deposit}% now to book your seat
             </p>
             <div className="flex items-center gap-2">
               <motion.span
@@ -305,7 +310,7 @@ const ProductSidebar = ({ data }: any) => {
                 quantity,
                 price,
                 salePrice,
-
+                discount,
                 activityDate,
                 _id,
                 product_title
@@ -314,25 +319,27 @@ const ProductSidebar = ({ data }: any) => {
                 quantity,
                 price: price,
                 salePrice: salePrice,
-
+                discount,
                 activityDate,
                 _id,
                 product_title,
                 deposit,
                 image: productImg,
                 meeting_point,
+                location,
               });
               setProduct({
                 quantity,
                 price: price,
                 salePrice: salePrice,
-
+                discount,
                 activityDate,
                 _id,
                 product_title,
                 deposit,
                 image: productImg,
                 meeting_point,
+                location,
               });
               router.push(`/cart`);
             }}

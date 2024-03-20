@@ -16,17 +16,39 @@ import { useRouter } from "next/router";
 const cart = () => {
   const { product, setProduct, discardProduct } = useProduct();
   const router = useRouter();
-  const { customer, setCustomer }: any = useCustomer();
+  const {
+    id,
+    image,
+    product_title,
+    meeting_point,
+    price,
+    salePrice,
+    quantity,
+    discount,
+    deposit,
+    activityDate,
+    location,
+  } = product;
 
-  const subTotal = Number(product.price) * Number(product.quantity);
-  const discount =
-    (Number(product.price) - Number(product.salePrice)) *
-    Number(product.quantity);
-  const finalPayment = subTotal - discount;
-  const payNow =
-    (finalPayment * Number(product.deposit) * Number(product.quantity)) / 100;
-  const futurePayment = subTotal - discount - payNow;
-  const { openLogin, closeLogin } = useAuthModal();
+  // Convert necessary properties to numbers
+  const numericPrice = Number(price);
+  const numericSalePrice = Number(salePrice);
+  const numericQuantity = Number(quantity);
+  const numericDeposit = Number(deposit);
+
+  // Calculate productTotal
+  const productTotal = numericSalePrice * numericQuantity;
+
+  // Calculate discountAmt if salePrice is provided
+  const discountAmt = salePrice
+    ? (numericPrice - numericSalePrice) * numericQuantity
+    : 0;
+
+  // Calculate depositAmount
+  const depositAmount = (productTotal * numericDeposit) / 100;
+
+  // Calculate balanceAmount
+  const balanceAmount = productTotal - depositAmount;
 
   // useEffect(() => {
   //   if (!customer?.user?.id) {
@@ -37,8 +59,6 @@ const cart = () => {
   //     router.push("/");
   //   }
   // });
-
-  console.log(product, "From Cart");
 
   return (
     <Container className="py-6">
@@ -54,10 +74,10 @@ const cart = () => {
             </div>
             {product ? (
               <CartCard
-                title={product.product_title}
-                image={product.image}
-                price={product.price}
-                quantity={product.quantity}
+                title={product_title}
+                image={image}
+                price={price}
+                quantity={quantity}
               />
             ) : (
               <div className="w-full h-full">
@@ -71,20 +91,31 @@ const cart = () => {
           <div className="w-full h-full shadow-3xl p-2 font-poppins md:w-3/12 lg:w-4/12">
             <div className="w-full h-full flex flex-col gap-4 px-1 py-4 font-semibold text-sm">
               <div className="flex justify-between items-center">
-                <span>Subtotal</span>
-                <span>{subTotal}</span>
+                <div>
+                  <h4>{product_title}</h4>
+                  <span className="text-xs font-light">
+                    Total person : {quantity} x {product.price}
+                  </span>
+                </div>
+                <span>{quantity * price}</span>
+              </div>
+              <div className="flex justify-between items-center text-xs text-green-500 font-light">
+                <h5>Discount {discount}% applied</h5>
+                <span>{`-${discountAmt}`}</span>
+              </div>
+              <hr />
+              <div className="flex justify-between items-center">
+                <h5>Sub Total</h5>
+                <span>{productTotal}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span>Discount</span>
-                <span> {discount}</span>
+                <h5>{product.deposit}% Deposit Amount</h5>
+                <span>{depositAmount}</span>
               </div>
-              <div className="flex justify-between items-center">
-                <span>Future Payment</span>
-                <span> {futurePayment}</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span>Pay Deposit</span>
-                <span>{payNow}</span>
+              <hr />
+              <div className="flex justify-between items-center text-rose-500">
+                <h5>Balance Amount</h5>
+                <span>{balanceAmount}</span>
               </div>
             </div>
             <Button

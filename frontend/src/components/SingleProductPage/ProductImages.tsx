@@ -62,7 +62,7 @@ const ProductImages: React.FC<ProductImageProps> = ({ images }) => {
           </div>
           <div className="hidden lg:grid grid-cols-2 w-2/5 gap-2 h-[468px] ml-2">
             {images &&
-              images.map((item: any, index: number) => (
+              images.slice(0, 4).map((item: any, index: number) => (
                 <div className="relative" key={index}>
                   <Image
                     src={urlForImage(item)}

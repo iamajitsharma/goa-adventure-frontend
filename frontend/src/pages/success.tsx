@@ -16,7 +16,7 @@ export default function PaymentSuccess() {
     }, 1000);
 
     setTimeout(() => {
-      router.push("/user/bookings");
+      router.push("/");
     }, 5000);
     // setTimeout(()=>setUpdateTime((prev:any)=>prev-1),1000)
     countDown();

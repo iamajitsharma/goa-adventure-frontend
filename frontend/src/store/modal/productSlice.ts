@@ -5,11 +5,13 @@ const initialState = {
   product_title: null,
   price: null,
   salePrice: null,
+  discount: null,
   quantity: null,
   activityDate: null,
   deposit: null,
   image: null,
   meeting_point: null,
+  location: null,
 };
 
 const productSlice = createSlice({
@@ -24,11 +26,13 @@ const productSlice = createSlice({
         product_title: action.payload.product_title,
         price: action.payload.price,
         salePrice: action.payload.salePrice,
+        discount: action.payload.discount,
         quantity: action.payload.quantity,
         activityDate: action.payload.activityDate,
         deposit: action.payload.deposit,
         image: action.payload.image,
         meeting_point: action.payload.meeting_point,
+        location: action.payload.location,
       };
     },
     removeProduct: (state, action) => initialState,

@@ -30,6 +30,7 @@ import AccordionList from "@/components/SingleProductPage/AccordionList";
 import { FcCheckmark } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
 import ProductSidebar from "@/components/SingleProductPage/ProductSidebar";
+import { getProductByCategoryAndSlug } from "@/lib/utils";
 
 const index = (props: any) => {
   const router = useRouter();
@@ -37,8 +38,6 @@ const index = (props: any) => {
     props?.data?.discount,
     props.data?.price
   );
-
-  const text = props?.data?.overview.map((item: any) => console.log(item.text));
 
   return (
     <section className="pt-0 bg-slate-50">
@@ -64,7 +63,7 @@ const index = (props: any) => {
             />
             <Box className={"bg-white"}>
               <ProductTitle level={2} title={props?.data?.product_title} />
-              <ProductDescription content={props?.data?.overview} />
+              <ProductDescription content={props.data.overview} />
             </Box>
 
             <Box className="bg-white">
@@ -90,46 +89,60 @@ const index = (props: any) => {
   );
 };
 
-export async function getStaticPaths() {
-  // Fetch all category slugs
-  const categories = await client.fetch(
-    `*[_type == "category"] {
-      "params": { "slug": slug.current }
-    }`
-  );
+// export async function getStaticPaths() {
+//   // Fetch all category slugs
+//   const categories = await client.fetch(
+//     `*[_type == "category"] {
+//       "params": { "slug": slug.current }
+//     }`
+//   );
 
-  // Fetch product slugs for each category
-  const paths = await Promise.all(
-    categories.map(async ({ params }: any) => {
-      const productSlugs = await client.fetch(
-        `*[_type == "product" && category->slug.current == $category] {
-          "params": { "category": category->slug.current, "slug": slug.current }
-        }`,
-        { category: params.slug }
-      );
-      return productSlugs.map(({ params }: any) => ({
-        params: {
-          category: params.category,
-          slug: params.slug,
-        },
-      }));
-    })
-  );
+//   console.log(categories, "Categories List");
 
-  // Flatten the array of paths
-  return { paths: paths.flat(), fallback: false };
-}
+//   // Fetch product slugs for each category
+//   const paths = await Promise.all(
+//     categories.map(async ({ params }: any) => {
+//       const productSlugs = await client.fetch(
+//         `*[_type == "product" && category->slug.current == $category] {
+//           "params": { "category": category->slug.current, "slug": slug.current }
+//         }`,
+//         { category: params.slug }
+//       );
+//       return productSlugs.map(({ params }: any) => ({
+//         params: {
+//           category: params.category,
+//           slug: params.slug,
+//         },
+//       }));
+//     })
+//   );
 
-export async function getStaticProps({ params }: any) {
-  const { category, slug } = params;
-  const productQuery = `*[_type == "product" && slug.current == $slug && category->slug.current == $category] | order(_updatedAt desc) [0]`;
-  const data = await client.fetch(productQuery, {
-    category,
-    slug,
-  });
+//   // Flatten the array of paths
+//   return { paths: paths.flat(), fallback: false };
+// }
+
+// export async function getStaticProps({ params }: any) {
+//   const { category, slug } = params;
+//   const productQuery = `*[_type == "product" && slug.current == $slug && category->slug.current == $category] | order(_updatedAt desc) [0]`;
+//   const data = await client.fetch(productQuery, {
+//     category,
+//     slug,
+//   });
+
+//   return {
+//     props: { data },
+//   };
+// }
+
+export async function getServerSideProps(context: any) {
+  const { category, slug } = context.params;
+
+  const data: any = await getProductByCategoryAndSlug(category, slug);
 
   return {
-    props: { data },
+    props: {
+      data,
+    },
   };
 }
 

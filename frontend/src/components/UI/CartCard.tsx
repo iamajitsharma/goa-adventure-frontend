@@ -31,7 +31,6 @@ const CartCard: React.FC<CartCardProps> = ({
 
   useEffect(() => {
     let ankit = product;
-    console.log("ANkit", ankit);
   }, []);
 
   return (
@@ -89,9 +88,7 @@ const CartCard: React.FC<CartCardProps> = ({
                 <MdCurrencyRupee />
                 {price}
               </span>
-              <span className="text-base font-semibold">
-                Quantity : {quantity}
-              </span>
+              <span className="text-sm font-semibold">Qty : {quantity}</span>
               <span
                 className="text-2xl text-rose-500"
                 onClick={() => discardProduct({})}

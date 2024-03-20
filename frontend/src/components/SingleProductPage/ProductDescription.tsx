@@ -27,8 +27,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ content }) => {
       py-3 
       overflow-hidden`}
     >
-      <PortableText content={content.slice(0, 1)} />
-
+      {content && <PortableText content={content} />}
       <span
         onClick={handleTextExpand}
         className="
