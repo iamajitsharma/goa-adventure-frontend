@@ -81,7 +81,7 @@ const Checkout = () => {
   const handlePayment = async (status: any, orderDetails: any = {}) => {
     const customerInfo = {
       customer_name: bookingInfo.name,
-      customer_number: bookingInfo.mobileNumber,
+      customer_number: bookingInfo.mobileNumber.toString(),
       customer_email: bookingInfo.email,
       product_title: product_title,
       quantity: quantity.toString(),
