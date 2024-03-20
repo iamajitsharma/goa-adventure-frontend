@@ -125,12 +125,12 @@ const Checkout = () => {
       }
 
       var options = {
-        key: "rzp_test_aL13HDonU0BODH", // Enter the Key ID generated from the Dashboard
+        key: process.env.RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
         name: "Safar Travel Express",
         currency: data?.currency,
         amount: data.amount,
         order_id: data.id,
-        description: "Thank you for your test donation",
+        description: "Thank you for the payment",
 
         handler: async function (response: any) {
           // Validate payment at server - using webhooks is a better idea.
