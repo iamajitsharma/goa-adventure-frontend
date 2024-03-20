@@ -20,6 +20,7 @@ import ImageGallery from "@/components/SingleProductPage/ImageGallery";
 import ZohoLiveChat from "@/components/ZohoLiveChat";
 import ForgetPWDModal from "@/components/modals/ForgetPWDModal";
 import EmailOTPModal from "@/components/modals/EmailOTPModal";
+import { Toaster } from "react-hot-toast";
 
 // import UserLayout from "@/components/User/UserLayout";
 
@@ -76,6 +77,7 @@ export default function App({ Component, pageProps }: AppProps) {
           >
             <Component {...pageProps} />
           </main>
+          <Toaster />
         </Layout>
       </PersistGate>
     </Provider>

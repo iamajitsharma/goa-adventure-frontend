@@ -317,14 +317,7 @@ const Checkout = () => {
           <h4 className="py-2 font-semibold text-sm md:text-base">
             Order Summary
           </h4>
-          {/* <div className="flex items-center w-full shadow-3xl p-0 rounded-sm">
-            <input
-              type="text"
-              placeholder="Have coupon code?"
-              className="w-full border-none focus:ring-0 outline-none bg-gray-100 placeholder:text-sm"
-            />
-            <Button>Apply</Button>
-          </div> */}
+
           <div
             className="
           w-full

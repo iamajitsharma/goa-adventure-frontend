@@ -3,6 +3,7 @@ import html from "remark-html";
 import { IPrivacy, ITerms } from "./interfaces";
 import { calculateSalePrice } from "./operations";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const devServer = "http://localhost:8000/v1";
 const prodServer = "https://backend.goaadventure.in/v1";
@@ -363,3 +364,17 @@ export async function getProductById(productId: any) {
   const product = await result.json();
   return product;
 }
+
+export const sendContactForm = async (data: any) => {
+  fetch("/api/contact", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  }).then((res) => {
+    if (!res.ok) throw new Error("Failed to send message");
+    return res.json();
+  });
+};

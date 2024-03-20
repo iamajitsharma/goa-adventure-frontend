@@ -19,6 +19,9 @@ import {
 import { calculateSalePrice } from "@/lib/operations";
 import { urlForImage } from "@/lib/client";
 
+//import custom components
+import EnquiryForm from "../Form/EnquiryForm";
+
 interface ProductSidebarProps {
   price: string | number;
   salePrice: string | number;
@@ -103,7 +106,7 @@ const ProductSidebar = ({ data }: any) => {
     discardProduct(cartItem);
     setProduct(cartItem);
 
-    router.push(`/cart`);
+    router.push(`/checkout`);
   };
 
   return (
@@ -341,13 +344,16 @@ const ProductSidebar = ({ data }: any) => {
                 meeting_point,
                 location,
               });
-              router.push(`/cart`);
+              router.push(`/checkout`);
             }}
           >
             Book Now
           </Button>
         </div>
       </Box>
+
+      {/* Enquiry Form */}
+      <EnquiryForm />
 
       {/* Contact Information */}
       <Box className="hidden md:block bg-white">
