@@ -73,7 +73,7 @@ const EnquiryForm = () => {
              
               
               "
-                {...register("fullName")}
+                {...register("fullName", { required: true })}
               />
             </div>
 
@@ -92,7 +92,7 @@ const EnquiryForm = () => {
               focus:ring-0
                     
               "
-                  {...register("email")}
+                  {...register("email", { required: true })}
                 />
               </div>
 
@@ -111,7 +111,7 @@ const EnquiryForm = () => {
               font-poppins
             
               "
-                  {...register("mobile")}
+                  {...register("mobile", { required: true })}
                 />
               </div>
             </div>
@@ -133,7 +133,7 @@ const EnquiryForm = () => {
               focus:ring-0
               font-poppins
               "
-                  {...register("date")}
+                  {...register("date", { required: true })}
                 />
               </div>
 
@@ -151,7 +151,7 @@ const EnquiryForm = () => {
               font-poppins
               
               "
-                  {...register("person")}
+                  {...register("person", { required: true })}
                 />
               </div>
             </div>
@@ -165,7 +165,7 @@ const EnquiryForm = () => {
               outline-none 
               focus:ring-0
               font-poppins"
-              {...register("message")}
+              {...register("message", { required: true })}
             ></textarea>
           </div>
 
