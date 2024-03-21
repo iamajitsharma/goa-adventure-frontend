@@ -20,8 +20,6 @@ export default async function handler(
         currency: currency,
       };
 
-      console.log(options.amount);
-
       // Initiate Order
       const order = await razorpay.orders.create(options);
       res.status(200).json(order);

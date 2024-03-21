@@ -30,7 +30,7 @@ const ZohoLiveChat: React.FC<ZohoLiveProps> = ({
   visible,
 }) => {
   const { click, ready } = useZohoChat();
-  console.log("Zoho Chat", ready);
+
   return (
     <>
       <div className="z-50">

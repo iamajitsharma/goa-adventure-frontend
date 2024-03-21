@@ -42,3 +42,29 @@ export async function getProductByCategoryAndSlug(
     return null;
   }
 }
+
+export async function getProductByCategoryName(categoryName: string) {
+  const searchQuery = `*[_type == "product" && category._ref in *[_type == "category" && category_name == $categoryName]._id]{
+    _id,
+product_title,
+  "slug":slug.current,
+  "category":category->category_name,
+  "category_slug":category->slug.current,
+  "images":images[0].asset->url,
+price,
+discount,
+state,
+location,
+duration
+  }`;
+
+  const params = {
+    categoryName,
+  };
+  try {
+    const products = await client.fetch(searchQuery, params);
+    return products;
+  } catch (error: any) {
+    console.log(error.message);
+  }
+}

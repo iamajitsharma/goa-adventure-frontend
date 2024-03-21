@@ -29,7 +29,6 @@ const LoginModal = () => {
     (state: any) => state.authModal.isLoginModalOpen
   );
   const { closeLogin, openRegister, openForget } = useAuthModal();
-  console.log("CUSTOEMR Login Modal", customer);
 
   const {
     register,

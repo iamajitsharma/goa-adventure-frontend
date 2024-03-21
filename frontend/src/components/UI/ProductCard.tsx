@@ -30,8 +30,6 @@ const ProductCard: React.FC<CardProps> = ({ item, isLoading }) => {
   //   item.category_id === 29 ? `/activity/${item.slug}` : `/tour/${item.slug}`
   // }`;
 
-  console.log(item.category_slug);
-
   return (
     <motion.div className="card" whileHover={{ scale: 1.02 }}>
       <div className="shrink-0 w-full h-44 overflow-hidden">
