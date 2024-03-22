@@ -3,8 +3,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 // Initialize Razorpay
 const razorpay = new Razorpay({
-  key_id: "rzp_test_aL13HDonU0BODH",
-  key_secret: "F2xTcKTqLVfCHOrc2piHOLor",
+  key_id: process.env.razorPayKey as string,
+  key_secret: process.env.razorPaySecret,
 });
 
 export default async function handler(
@@ -18,6 +18,7 @@ export default async function handler(
       const options = {
         amount: amount * 100, // Amount in paisa (1 Rupee = 100 Paisa)
         currency: currency,
+        payment_capture: 1,
       };
 
       // Initiate Order

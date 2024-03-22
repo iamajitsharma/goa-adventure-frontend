@@ -8,4 +8,8 @@ module.exports = {
       },
     ],
   },
+  env: {
+    razorPayKey: "rzp_live_NWrWwtSkfRgG8q",
+    razorPaySecret: "O8SpgHnsaG4UzYd766qI8Xqk",
+  },
 };

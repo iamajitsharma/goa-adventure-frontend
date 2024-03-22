@@ -67,14 +67,14 @@ const ProductSidebar = ({ data }: any) => {
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
   const { product, setProduct, discardProduct } = useProduct();
 
-  useEffect(() => {
-    setShowModal(true);
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [isOpen]);
+  // useEffect(() => {
+  //   setShowModal(true);
+  //   if (isOpen) {
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "unset";
+  //   }
+  // }, [isOpen]);
 
   const incrementHandler = () => {
     setQuantity(quantity + 1);

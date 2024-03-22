@@ -125,22 +125,28 @@ const Checkout = () => {
       }
 
       var options = {
-        key: process.env.RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
+        key: process.env.razorPayKey, // Enter the Key ID generated from the Dashboard
         name: "Safar Travel Express",
         currency: data?.currency,
         amount: data.amount,
         order_id: data.id,
         description: "Thank you for the payment",
-
         handler: async function (response: any) {
           // Validate payment at server - using webhooks is a better idea.
           console.log("Payment succeeded");
           console.log(response);
           const orderId = response.razorpay_order_id;
           const paymentId = response.razorpay_payment_id;
+          const secretKey = process.env.razorPaySecret;
+
+          if (!secretKey) {
+            throw new Error(
+              "Razorpay credential is not set in the environment."
+            );
+          }
           const succeeded =
             crypto
-              .HmacSHA256(`${orderId}|${paymentId}`, "F2xTcKTqLVfCHOrc2piHOLor")
+              .HmacSHA256(`${orderId}|${paymentId}`, secretKey)
               .toString() === response.razorpay_signature;
 
           // If successfully authorized. Then we can consider the payment as successful.

@@ -43,14 +43,14 @@ const Modal: React.FC<ModalProps> = ({
 
   const { closeLogin } = useAuthModal();
 
-  useEffect(() => {
-    setShowModal(isOpen);
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [isOpen]);
+  // useEffect(() => {
+  //   setShowModal(isOpen);
+  //   if (isOpen) {
+  //     document.body.style.overflow = "scroll";
+  //   } else {
+  //     document.body.style.overflow = "unset";
+  //   }
+  // }, [isOpen]);
 
   const handleClose = useCallback(() => {
     if (disabled) {
