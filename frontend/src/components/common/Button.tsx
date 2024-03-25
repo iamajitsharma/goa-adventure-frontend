@@ -19,9 +19,11 @@ const buttonVariants = cva(
         ghost:
           "bg-transparent dark:bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-transparent dark:data-[state=open]:bg-transparent",
         link: "bg-transparent dark:bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-300 hover:bg-transparent dark:hover:bg-transparent",
+        gradient: "bg-gradient-to-r from-red-500 to-orange-500 text-white",
       },
       size: {
         default: "h-10 py-2 px-4",
+        xs: "h-8 px-2 rounded-md",
         sm: "h-9 px-2 rounded-md",
         lg: "h-11 px-8 rounded-md",
         xl: "w-full h-12 text-base md:text-sm lg:text-base font-medium",

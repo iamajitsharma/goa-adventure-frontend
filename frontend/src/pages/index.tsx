@@ -19,6 +19,9 @@ import PartnerLogo from "@/components/featured/PartnerLogo";
 
 //import required data file
 import { productSliderSettings } from "../data/ProductSliderSettings";
+import ProductList from "@/components/DisplayProducts/ProductList";
+import ProductSlider from "@/components/DisplayProducts/ProductSlider";
+import Modal from "@/components/common/Modal";
 
 const Index = (props: any) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -36,40 +39,16 @@ const Index = (props: any) => {
       {isTablet ? <MobileHero /> : <DesktopHero />}
 
       {/* Activity Slider */}
-      <section className="pt-0">
-        <Container>
-          <Heading
-            textAlign="center"
-            heading="Top Adventure Activity"
-            subheading="TOP ADVENTURE"
-          />
-          <Slider {...productSliderSettings} className="pt-8">
-            {props.allActivity.map((item: any, index: number) => (
-              <ProductCard item={item} isLoading={isLoading} key={index} />
-            ))}
-          </Slider>
-        </Container>
-      </section>
-
+      <ProductSlider
+        heading="Top Adventure Activity"
+        subheading="Top Adventure"
+        textAlign="center"
+        data={props.allActivity}
+      />
+      <Modal />
       <section className="bg-lightBg">
         <HowWeWork />
       </section>
-
-      {/* {props?.tourData.length > 3 ? (
-        <section>
-          <Container>
-            <Heading
-              heading="Recommended Tour Package"
-              subheading="Top Rated Experience"
-              textAlign="center"
-            />
-
-            <ProductSlider />
-          </Container>
-        </section>
-      ) : (
-        ""
-      )} */}
 
       <section>
         <Container>
@@ -99,7 +78,8 @@ price,
 discount,
 state,
 location,
-duration
+duration,
+deposit
 }`;
 
   const allActivity = await client.fetch(activityQuery);

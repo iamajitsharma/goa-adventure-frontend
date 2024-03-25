@@ -4,6 +4,8 @@ import loginUserReducer from "./modal/loginUserSlice";
 import productReducer from "./modal/productSlice";
 import galleryReducer from "./modal/gallerySlice";
 import bookingModalReducer from "./modal/bookingModalSlice";
+import enquiryModalReducer from "./modal/enquiryModalSlice";
+import modalReducer from "./modal/modalSlice";
 
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
@@ -35,6 +37,8 @@ export const store = configureStore({
     product: persistedProductReducer,
     gallery: galleryReducer,
     bookingModal: bookingModalReducer,
+    enquiryModal: enquiryModalReducer,
+    modal: modalReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

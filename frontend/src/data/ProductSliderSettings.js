@@ -23,7 +23,7 @@ export const productSliderSettings = {
       },
     },
     {
-      breakpoint: 600,
+      breakpoint: 767,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
@@ -31,7 +31,7 @@ export const productSliderSettings = {
       },
     },
     {
-      breakpoint: 480,
+      breakpoint: 600,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,

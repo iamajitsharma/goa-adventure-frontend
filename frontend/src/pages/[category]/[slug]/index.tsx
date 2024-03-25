@@ -39,6 +39,8 @@ const index = (props: any) => {
     props.data?.price
   );
 
+  console.log(props.data);
+
   return (
     <section className="pt-0 bg-slate-50">
       {/* Product Slider Start */}

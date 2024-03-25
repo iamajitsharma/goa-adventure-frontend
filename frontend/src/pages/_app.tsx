@@ -66,11 +66,6 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <FAB />
 
-        <LoginModal />
-        <RegisterModal />
-        <ForgetPWDModal />
-        <EmailOTPModal />
-
         <Layout>
           <main
             className={`${poppins.variable} ${merrifont.variable} ${roboto.variable} font-sans`}

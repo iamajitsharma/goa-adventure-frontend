@@ -68,3 +68,11 @@ duration
     console.log(error.message);
   }
 }
+
+export function thousandSeparator(number: number | null) {
+  if (number === null) {
+    return ""; // Or handle null case as appropriate
+  }
+  console.log(number);
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

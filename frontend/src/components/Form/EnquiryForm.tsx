@@ -8,9 +8,13 @@ import Input from "../common/inputs/Input";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { sendContactForm } from "@/lib/api";
 import toast from "react-hot-toast";
+import { closeModal } from "@/store/modal/modalSlice";
+import { useDispatch } from "react-redux";
 
 const EnquiryForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -36,23 +40,26 @@ const EnquiryForm = () => {
       toast.success("Form submitted successfully", {
         position: "bottom-right",
       });
+
+      dispatch(closeModal());
     } catch (error) {
       setIsSubmitting(false);
       console.error(error);
       toast.error("Form submission failed", {
         position: "bottom-right",
       });
+      dispatch(closeModal());
     }
   };
 
   return (
-    <Box className="bg-white my-6 sm:py-2">
+    <Box className="bg-white ">
       <div>
         <div>
-          <h4 className="text-xl font-semibold text-red-500 font-poppins">
+          <h4 className="text-base sm:text-xl font-semibold text-red-500 font-poppins">
             Looking for a best price?
           </h4>
-          <p className="text-slate-700 font-medium font-poppins text-base">
+          <p className="text-slate-700 font-medium font-poppins text-xs sm:text-base">
             Fill out our enquiry form
           </p>
         </div>
@@ -63,7 +70,8 @@ const EnquiryForm = () => {
                 type="text"
                 placeholder="Your Name"
                 className="
-              p-2
+              p-1
+              sm:p-2
               w-full 
               rounded-md 
               border-slate-300 
@@ -83,7 +91,8 @@ const EnquiryForm = () => {
                   type="email"
                   placeholder="Your Email"
                   className="
-              p-2  
+              p-1
+                  sm:p-2  
               w-full 
               rounded-md 
               border-slate-300 
@@ -101,7 +110,8 @@ const EnquiryForm = () => {
                   type="text"
                   placeholder="Your Mobile No"
                   className="
-                p-2
+                p-1
+                  sm:p-2
               w-full 
               rounded-md 
               border-slate-300 
@@ -116,8 +126,8 @@ const EnquiryForm = () => {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row w-full items-center gap-1 py-5 relative">
-              <div className="py-2 w-full sm:w-1/2">
+            <div className="flex flex-row w-full items-center gap-1 py-5 relative">
+              <div className="py-2 w-3/5">
                 <label className="absolute top-1 text-sm font-medium">
                   Choose Date
                 </label>
@@ -125,7 +135,9 @@ const EnquiryForm = () => {
                   type="date"
                   defaultValue={currentDate}
                   className="
-              w-full 
+              p-1
+                  sm:p-2
+                  w-full 
               rounded-md 
               border-slate-300 
               border-2
@@ -137,12 +149,14 @@ const EnquiryForm = () => {
                 />
               </div>
 
-              <div className="py-2 w-full sm:w-1/2">
+              <div className="py-2 w-2/5">
                 <input
                   type="number"
                   placeholder="Total Traveller"
                   className="
-              w-full 
+                p-1
+                  sm:p-2
+                  w-full 
               rounded-md 
               border-slate-300 
               border-2
@@ -156,7 +170,7 @@ const EnquiryForm = () => {
               </div>
             </div>
             <textarea
-              rows={4}
+              rows={2}
               placeholder="Message"
               className=" w-full 
               rounded-md 
