@@ -147,15 +147,22 @@ const ProductCard: React.FC<CardProps> = ({ item, isLoading }) => {
 
               <div className=" w-full px-2 py-2">
                 <div className="flex justify-between items-center">
-                  <Button
+                  {/* <Button
                     variant={"outline"}
                     size={"xs"}
                     href="tel:+917387960861"
                   >
                     <FaPhoneAlt className="mr-1" /> Call Now
-                  </Button>
+                  </Button> */}
                   <Button variant="dark" size={"xs"} onClick={handleOpenModal}>
                     Enquiry Now
+                  </Button>
+                  <Button
+                    size={"xs"}
+                    variant="primary"
+                    href={`/${category_slug}/${slug}`}
+                  >
+                    Book Now
                   </Button>
                 </div>
               </div>

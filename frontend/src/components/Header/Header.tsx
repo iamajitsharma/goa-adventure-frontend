@@ -110,34 +110,7 @@ const Header = () => {
         </ul>
         <div className="flex items-center gap-2">
           {customer?.user && <UserNavigation />}
-          {/* <motion.span
-            className={`
-            ${!scrolled && isTablet ? "text-white" : "text-primary"}
-            ${
-              !scrolled && !isTablet && router.pathname === "/"
-                ? "text-white"
-                : "text-primary"
-            }
-         
-            
-            text-3xl px-3 cursor-pointer`}
-            whileTap={{ scale: 1.1 }}
-            onClick={() => router.push("/cart")}
-          >
-            <AiOutlineShoppingCart />
-          </motion.span> */}
 
-          {/* {!scrolled && !isTablet && !customer?.user && (
-            <Button onClick={openLogin}>Login</Button>
-          )}
-
-          {scrolled && !isTablet && !customer?.user && (
-            <Button onClick={openLogin} variant="primary">
-              Login
-            </Button>
-          )} */}
-
-          {/* Mobile Button */}
           <div onClick={handleNav} className="block md:hidden z-10">
             {nav ? (
               <AiOutlineClose size={36} className="text-neutral-600 mr-4" />
