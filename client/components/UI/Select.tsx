@@ -1,3 +1,4 @@
+import React from "react";
 import {
   FieldErrors,
   FieldValues,
@@ -11,13 +12,15 @@ interface SelectProps {
   type?: string;
   disabled?: boolean;
   required?: boolean;
-  register: UseFormRegister<FieldValues>;
+  register?: UseFormRegister<FieldValues>;
   errors?: FieldErrors;
   rules?: RegisterOptions;
-  placeholder?: string;
   className?: string;
   icon?: React.ReactNode;
   items: string[];
+  defaultItem: string;
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  value: string; // Change value type to string
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -29,22 +32,33 @@ const Select: React.FC<SelectProps> = ({
   register,
   errors,
   rules,
-  placeholder,
   className,
   icon,
   items,
+  defaultItem,
+  onChange,
+  value,
 }) => {
   return (
     <div className="py-2">
       {label && <label>{label}</label>}
       <select
-        {...register(id, { required: required || false, ...rules })}
+        {...(register
+          ? register(id, { required: required || false, ...rules })
+          : {})}
         className="border py-2.5 px-2 w-full outline-none border-gray-300 rounded"
+        onChange={onChange}
+        value={value} // Bind the value here
+        disabled={disabled} // Bind the disabled property if passed
       >
-        {/* {items?.map((menu)=> (
-        <option key={menu._id} value={menu.title}>{menu.title}</option>
-     ))}   
-         */}
+        <option value="" className="text-gray-400">
+          {defaultItem}
+        </option>
+        {items?.map((menu: string) => (
+          <option key={menu} value={menu}>
+            {menu}
+          </option>
+        ))}
       </select>
     </div>
   );

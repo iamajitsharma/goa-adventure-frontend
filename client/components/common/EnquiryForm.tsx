@@ -17,7 +17,7 @@ const EnquiryForm = () => {
     reset,
     setValue,
     control,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<FieldValues>({});
 
   const submitHandler = async (data: any) => {
@@ -117,7 +117,7 @@ const EnquiryForm = () => {
         required
       />
       <Button size={"xl"} variant={"primary"} type="submit">
-        Submit
+        {isSubmitting ? "Submitting..." : "Submit"}
       </Button>
     </form>
   );

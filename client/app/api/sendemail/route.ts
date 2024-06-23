@@ -1,29 +1,29 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { transporter, mailOptions } from "nodeMailerConfig";
+import { NextRequest, NextResponse } from "next/server";
 
-const POST = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === "POST") {
-    const data = req.body;
+export const POST = async (request: NextRequest, response: NextResponse) => {
+  const data = await request.json();
 
-    const {
-      fullname,
-      email,
-      mobile_number,
-      travel_date,
-      traveller_count,
-      message,
-      url,
-    } = data;
+  const {
+    fullname,
+    email,
+    mobile_number,
+    travel_date,
+    traveller_count,
+    message,
+    url,
+  } = data;
 
-    if (!fullname || !email || !mobile_number) {
-      return res.status(400).json({ message: "Bad Request" });
-    }
+  if (!fullname || !email || !mobile_number) {
+    return NextResponse.json("Bad request");
+  }
 
-    try {
-      await transporter.sendMail({
-        ...mailOptions,
-        subject: "New Enquiry Received",
-        html: `
+  try {
+    await transporter.sendMail({
+      ...mailOptions,
+      subject: "New Enquiry Received",
+      html: `
       <p>FullName:${fullname}</p>
       <p>Mobile Number:${mobile_number}</p>
       <p>Email:${email}</p>
@@ -32,18 +32,10 @@ const POST = async (req: NextApiRequest, res: NextApiResponse) => {
       <p>Request From:${url}</p>
       <p>Message:${message}</p>
       `,
-      });
+    });
 
-      return res.status(200).json({ success: true });
-    } catch (error: any) {
-      console.log(error);
-      return res.status(400).json({ message: error.message });
-    }
+    return NextResponse.json("Success");
+  } catch (error: any) {
+    return NextResponse.json("Failed");
   }
-
-  console.log(req.body);
-
-  return res.status(400).json({ message: "Bad Request" });
 };
-
-export default POST;

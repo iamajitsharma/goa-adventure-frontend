@@ -70,7 +70,11 @@ export async function getProductDetails(slug: string) {
   }
   `;
 
-  const product = await client.fetch(query);
+  const product = await client.fetch(
+    query,
+    {},
+    { cache: "no-cache", next: { revalidate: 10 } }
+  );
   return product;
 }
 

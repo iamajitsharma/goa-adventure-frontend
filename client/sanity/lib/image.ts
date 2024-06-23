@@ -1,11 +1,10 @@
 import createImageUrlBuilder from "@sanity/image-url";
 import type { Image } from "sanity";
-
-import { apiVersion, dataset, projectId, useCdn } from "../env";
+import { projectId, dataset } from "sanity/env";
 
 const imageBuilder = createImageUrlBuilder({
-  projectId: "5c3bceyl",
-  dataset: "production",
+  projectId: projectId,
+  dataset: dataset,
 });
 
 export const urlForImage = (source: Image) => {

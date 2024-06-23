@@ -15,29 +15,31 @@ const Header = () => {
   const pathname = usePathname();
 
   const companyLogo =
-    pathname === "/" && !isScrolled ? "/logo_white.svg" : "/logo_color.svg";
+    pathname === "/" && !isScrolled ? "/logo_white.png" : "/logo_color.png";
 
   return (
-    <section
-      className={`sticky top-0 w-full z-[100] ease-in duration-300 text-variant py-1 ${isScrolled ? "shadow bg-white" : ""}`}
+    <header
+      className={`overflow-hidden sticky top-0 w-full z-[100] ease-in duration-300 text-variant py-1 ${isScrolled ? "shadow bg-white" : ""}
+      ${pathname !== "/" ? "border-b" : "border-0"}
+      `}
     >
       <Container>
-        <div className="flex items-center justify-between w-full py-2">
+        <div className="flex items-center justify-between w-full py-1 px-3 md:py-2 md:px-4">
           <div>
             <Link href={"/"}>
               <Image
                 src={companyLogo}
                 alt=""
-                width={220}
+                width={250}
                 height={50}
-                className="w-3/4 h-auto"
+                className="w-full h-auto"
               />
             </Link>
           </div>
           <Navigation />
         </div>
       </Container>
-    </section>
+    </header>
   );
 };
 

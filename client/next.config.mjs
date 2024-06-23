@@ -15,6 +15,8 @@ const nextConfig = {
   env: {
     razorPayKey: "rzp_live_NWrWwtSkfRgG8q",
     razorPaySecret: "O8SpgHnsaG4UzYd766qI8Xqk",
+    razorPayTestKey: "rzp_test_u8LRGgtlScCOgs",
+    razorPayTestSecret: "D0BjF7qoSQc7zoPwmbolEG2d",
   },
 };
 

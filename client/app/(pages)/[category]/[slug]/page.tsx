@@ -1,5 +1,5 @@
 import ProductImageCollage from "components/product/ProductImageCollage";
-import ProductImageSlider from "components/product/ProductImageSlider";
+
 import { Fragment } from "react";
 import { getProductDetails } from "sanity/query/productQuery";
 import Container from "components/UI/Container";

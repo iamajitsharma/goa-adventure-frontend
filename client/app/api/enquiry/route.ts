@@ -1,12 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { transporter, mailOptions } from "nodeMailerConfig";
 import { client } from "sanity/lib/client";
 import axios from "axios";
 import { sendContactForm } from "helper/utils";
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
-  const data = req.body;
+type POSTResponse = Promise<Response>;
+
+export async function POST(req: NextRequest, res: NextResponse) {
+  const data = await req.json();
 
   const {
     fullname,
@@ -19,9 +21,9 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
   } = data;
 
   if (!fullname || !email || !mobile_number) {
-    return res.status(400).json({
-      message: "Bad Request, FullName, Email and Mobile No. is compulsory",
-    });
+    return NextResponse.json(
+      "Bad Request, FullName, Email and Mobile No. is compulsory"
+    );
   }
 
   try {
@@ -36,10 +38,8 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
       url: url,
     });
 
-    console.log(result);
-
-    return result;
+    return NextResponse.json(result);
   } catch (error: any) {
-    res.status(401).json({ message: error.message });
+    return NextResponse.json({ message: error.message });
   }
 }

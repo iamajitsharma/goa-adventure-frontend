@@ -12,11 +12,17 @@ import Modal from "components/modal/Modal";
 import { useToggle } from "hooks/useToggle";
 import EnquiryForm from "components/common/EnquiryForm";
 import useEnquiryModal from "hooks/useEnquiryModal";
+import { MessageCircleQuestion, ShoppingCart } from "lucide-react";
+import CustomBadge from "components/common/CustomBadge";
+import { useProduct } from "hooks/useProduct";
+import { useRouter } from "next/navigation";
 
 const Navigation = () => {
   const { isScrolled } = useScrolled();
   const pathname = usePathname();
+  const router = useRouter();
   const isTablet = useMediaQuery({ maxWidth: deviceSize.tablet });
+  const { products } = useProduct();
 
   const { isEnquiryOpen, handleOpenEnquiry, handleCloseEnquiry } =
     useEnquiryModal();
@@ -25,7 +31,7 @@ const Navigation = () => {
     <Fragment>
       <div className="flex items-center z-0">
         <ul
-          className={`hidden md:flex md:ml-auto md:mr-2 lg:mr-8 ${pathname === "/" && !isScrolled ? "text-white" : "text-black"}`}
+          className={`hidden md:flex md:ml-auto ${pathname === "/" && !isScrolled ? "text-white" : "text-black"}`}
         >
           {headerLinks.map((item) => (
             <li
@@ -36,19 +42,43 @@ const Navigation = () => {
             </li>
           ))}
         </ul>
-        <Button
-          size={isTablet ? "xs" : "default"}
-          onClick={() => handleOpenEnquiry()}
-        >
-          Send Enquiry
-        </Button>
+        <div className="flex items-center gap-3">
+          <Button
+            size={"xs"}
+            onClick={() => handleOpenEnquiry()}
+            className="hidden md:block"
+          >
+            Enquiry
+          </Button>
+          <div
+            className="flex items-center gap-4 relative cursor-pointer"
+            onClick={() => router.push("/cart")}
+          >
+            <MessageCircleQuestion
+              size={28}
+              className={`md:hidden ${pathname === "/" && !isScrolled ? "text-white" : "text-gray-600"}`}
+              onClick={() => handleOpenEnquiry()}
+            />
+            <ShoppingCart
+              size={28}
+              className={`${pathname === "/" && !isScrolled ? "text-white" : "text-gray-600"}`}
+            />
+            <CustomBadge
+              content={products.length}
+              pill
+              className="text-sm absolute -top-4 -right-4"
+              bg="bg-orange-500"
+            />
+          </div>
+        </div>
       </div>
       <Modal
         isModalOpen={isEnquiryOpen}
         closeModal={handleCloseEnquiry}
-        children={<EnquiryForm />}
         title="Send Enquiry"
-      />
+      >
+        <EnquiryForm />
+      </Modal>
     </Fragment>
   );
 };

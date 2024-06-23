@@ -70,3 +70,48 @@ export async function createEnquiry(data: any) {
     });
   }
 }
+
+export const initializeRazorpay = () => {
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+
+    script.onload = () => {
+      resolve(true);
+    };
+    script.onerror = () => {
+      resolve(false);
+    };
+
+    document.body.appendChild(script);
+  });
+};
+
+export async function saveOrder(data: any) {
+  try {
+    const response = await axios.post(
+      `https://${projectId}.api.sanity.io/v1/data/mutate/${dataset}`,
+      {
+        mutations: [
+          {
+            create: {
+              _type: "onlinebooking",
+              createdAt: new Date().toISOString(),
+              ...data,
+            },
+          },
+        ],
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${sanityToken}`,
+        },
+      }
+    );
+
+    return response;
+  } catch (error) {
+    return error;
+  }
+}

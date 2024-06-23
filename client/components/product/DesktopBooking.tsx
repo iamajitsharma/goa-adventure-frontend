@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Box from "components/UI/Box";
 import { Minus, Plus } from "lucide-react";
 import Flatpickr, { DateTimePickerProps } from "react-flatpickr";
@@ -11,6 +11,7 @@ import moment from "moment";
 import { useRouter } from "next/navigation";
 import { Button } from "components/UI/Button";
 import useEnquiryModal from "hooks/useEnquiryModal";
+import Select from "components/UI/Select";
 
 interface DesktopBookingProps {
   product: ProductCardProps;
@@ -19,6 +20,9 @@ interface DesktopBookingProps {
 const DesktopBooking: React.FC<DesktopBookingProps> = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
   const [date, setDate] = useState<Date | null>(null);
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [meetingPoint, setMeetingPoint] = useState("");
+
   const router = useRouter();
   const { setProduct } = useProduct();
   const {
@@ -32,6 +36,14 @@ const DesktopBooking: React.FC<DesktopBookingProps> = ({ product }) => {
     images,
     category,
   } = product;
+
+  useEffect(() => {
+    if (meetingPoint.length > 0) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }, [meetingPoint]);
 
   const { handleOpenEnquiry } = useEnquiryModal();
   const salePrice = calculateSalePrice(price, discount);
@@ -53,16 +65,16 @@ const DesktopBooking: React.FC<DesktopBookingProps> = ({ product }) => {
       price,
       salePrice: Number(salePrice),
       quantity: quantity,
-      activityDate: moment(date).format("DD-MM-YYYY"),
+      activityDate: date?.toISOString().slice(0, 10),
       deposit,
       discount,
       image: urlForImage(images[0]),
-      meeting_point,
+      meeting_point: meetingPoint,
       location,
     };
 
     setProduct(item);
-    router.push("/checkout");
+    router.push("/cart");
   };
   return (
     <Box className={"hidden md:block"}>
@@ -118,12 +130,28 @@ const DesktopBooking: React.FC<DesktopBookingProps> = ({ product }) => {
                 placeholder="Choose Date"
                 className="w-full py-2 px-2 rounded mt-3 bg-gray-200"
                 options={{ dateFormat: "d-M-Y" }}
-                onChange={(selectedDates: Date[]) => setDate(selectedDates[0])}
+                onChange={(selectedDates: Date[]) => {
+                  setDate(selectedDates[0]);
+                }}
+                required={true}
               />
               <p className="text-sm font-medium text-gray-500 py-1">
                 Just pay 25% now to book your seat
               </p>
             </>
+          )}
+
+          {category !== "Tour" && (
+            <Select
+              items={product?.meeting_point}
+              id="meeting_point"
+              defaultItem="Meeting Point"
+              onChange={(e) => {
+                setMeetingPoint(e.target.value);
+              }}
+              value={meetingPoint}
+              required
+            />
           )}
 
           {category !== "Tour" ? (
@@ -132,6 +160,7 @@ const DesktopBooking: React.FC<DesktopBookingProps> = ({ product }) => {
               size={"xl"}
               variant={"primary"}
               className="mt-4"
+              disabled={isDisabled}
             >
               Book Now
             </Button>

@@ -2,13 +2,41 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import productReducer from "./features/productSlice";
 import enquiryModalSlice from "./features/enquiryModalSlice";
 import storage from "redux-persist/lib/storage";
-import { persistReducer } from "redux-persist";
+import {
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 import { useDispatch, TypedUseSelectorHook, useSelector } from "react-redux";
+import createWebStorage from "redux-persist/lib/storage/createWebStorage";
+
+const createNoopStorage = () => {
+  return {
+    getItem() {
+      return Promise.resolve(null);
+    },
+    setItem(_key: string, value: any) {
+      return Promise.resolve(value);
+    },
+    removeItem(_key: string) {
+      return Promise.resolve();
+    },
+  };
+};
+
+const Localstorage =
+  typeof window !== "undefined"
+    ? createWebStorage("local")
+    : createNoopStorage();
 
 const persistConfig = {
   key: "root",
   version: 1,
-  storage,
+  storage: Localstorage,
 };
 
 const rootReducer = combineReducers({
@@ -21,7 +49,11 @@ export const store = configureStore({
     enquiryModal: enquiryModalSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

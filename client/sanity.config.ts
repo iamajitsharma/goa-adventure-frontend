@@ -9,8 +9,9 @@ import { schema } from "./sanity/schema";
 
 export default defineConfig({
   basePath: "/",
-  projectId: process.env.SANITY_STUDIO_SANITY_PROJECT_ID as string,
-  dataset: process.env.SANITY_STUDIO_DATASET as string,
+  projectId:
+    (process.env.SANITY_STUDIO_SANITY_PROJECT_ID as string) || "5c3bceyl",
+  dataset: (process.env.SANITY_STUDIO_DATASET as string) || "production",
   schema,
   plugins: [
     structureTool(),

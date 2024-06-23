@@ -5,6 +5,7 @@ interface CustomBadgeProps {
   bg?: string;
   text?: string;
   className?: string;
+  pill?: boolean;
 }
 
 const CustomBadge: React.FC<CustomBadgeProps> = ({
@@ -12,12 +13,14 @@ const CustomBadge: React.FC<CustomBadgeProps> = ({
   bg,
   text,
   className,
+  pill,
 }) => {
   return (
     <span
-      className={`rounded-full  px-2 text-center text-sm font-medium text-white
-      ${bg || "bg-black"}
-      ${text || "text-white"}
+      className={`px-2 text-center text-sm font-medium text-white
+      ${bg ? bg : "bg-black"}
+      ${text ? text : "text-white"}
+      ${pill ? "rounded-full" : "rounded"}
       ${className}`}
     >
       {content}

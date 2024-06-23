@@ -20,9 +20,9 @@ const config: Config = {
         roboto: ["Roboto", "sans-serif"],
       },
       boxShadow: {
-        "shadow-1": "box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;",
-        "shadow-2": "box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;",
-        "shadown-3": "box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;",
+        shadow1: "box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;",
+        shadow2: "box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;",
+        shadow3: "box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;",
       },
     },
   },
