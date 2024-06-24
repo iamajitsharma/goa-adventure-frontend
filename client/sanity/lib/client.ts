@@ -1,8 +1,9 @@
 import { createClient } from "next-sanity";
+import { projectId, apiVersion, dataset } from "sanity/env";
 
 export const client = createClient({
-  apiVersion: process.env.SANITY_STUDIO_API_VERSION,
-  dataset: process.env.SANITY_STUDIO_DATASET,
-  projectId: process.env.SANITY_STUDIO_SANITY_PROJECT_ID,
+  apiVersion: apiVersion,
+  dataset: dataset,
+  projectId: projectId,
   useCdn: true,
 });

@@ -18,6 +18,7 @@ const nextConfig = {
     razorPayTestKey: "rzp_test_u8LRGgtlScCOgs",
     razorPayTestSecret: "D0BjF7qoSQc7zoPwmbolEG2d",
   },
+  transpilePackages: ["lucide-react"],
 };
 
 export default nextConfig;
