@@ -1,6 +1,6 @@
 import { FiClock, FiMapPin } from "react-icons/fi";
 import { GoZap } from "react-icons/go";
-import { MdOutlineCurrencyRupee } from "react-icons/md";
+import { LuIndianRupee } from "react-icons/lu";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -59,12 +59,12 @@ const ProductCard = ({ product }: ProductProps) => {
 
         <div className="my-3 flex items-center justify-between">
           <div className="flex items-center gap-1">
-            <span className="text-2xl font-bold text-slate-900 flex items-center">
-              <MdOutlineCurrencyRupee size={20} strokeWidth={2.5} />
+            <span className="text-2xl font-bold text-slate-900 flex items-center h-full">
+              <LuIndianRupee size={20} />
               {salePrice}
             </span>
             <span className="text-base text-slate-900 line-through flex items-center gap-0">
-              <MdOutlineCurrencyRupee size={16} />
+              <LuIndianRupee size={16} />
               {price}
             </span>
           </div>
