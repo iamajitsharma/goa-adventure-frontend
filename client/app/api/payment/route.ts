@@ -1,4 +1,3 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
 import Razorpay from "razorpay";
 
@@ -28,6 +27,6 @@ export async function POST(request: NextRequest) {
     const order = await razorpay.orders.create(options);
     return NextResponse.json(order);
   } catch (error) {
-    NextResponse.json({ error: "Failed to initiate the payment" });
+    return NextResponse.json({ error: "Failed to initiate the payment" });
   }
 }

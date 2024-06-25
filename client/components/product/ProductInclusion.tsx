@@ -1,5 +1,5 @@
 import Accordion from "components/UI/Accordion";
-import { BadgeCheck } from "lucide-react";
+import { LuBadgeCheck } from "react-icons/lu";
 
 interface AccordionListProps {
   inclusion: string[];
@@ -23,7 +23,7 @@ const ProductInclusion: React.FC<AccordionListProps> = ({ inclusion }) => {
               text-neutral-700"
             >
               <span className="text-green-500">
-                <BadgeCheck size={16} />
+                <LuBadgeCheck size={16} />
               </span>
               {item}
             </li>

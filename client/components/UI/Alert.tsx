@@ -1,5 +1,7 @@
+"use client";
 import React, { useState, useEffect } from "react";
-import { X } from "lucide-react";
+import { RxCross2 } from "react-icons/rx";
+
 import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "helper/utils";
 
@@ -78,7 +80,7 @@ const Alert: React.ForwardRefRenderFunction<HTMLDivElement, AlertProps> = (
         onClick={handleCloseAlert}
       >
         <span className="sr-only">Dismiss</span>
-        <X size={18} />
+        <RxCross2 size={18} />
       </button>
     </div>
   );

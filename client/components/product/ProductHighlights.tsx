@@ -1,8 +1,6 @@
-//import node module libraries
 import { Fragment } from "react";
-//import custom components
 import Box from "components/UI/Box";
-import { ChevronRight } from "lucide-react";
+import { FiChevronRight } from "react-icons/fi";
 
 interface ProductHighlightProps {
   title?: string;
@@ -29,7 +27,7 @@ const ProductHighlight: React.FC<ProductHighlightProps> = ({
                 key={item}
               >
                 <span className="text-orange-500">
-                  <ChevronRight size={16} />
+                  <FiChevronRight size={16} />
                 </span>
                 {item}
               </li>

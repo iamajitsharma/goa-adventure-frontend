@@ -1,6 +1,6 @@
 import { Button } from "components/UI/Button";
 import Container from "components/UI/Container";
-import { BadgeCheck } from "lucide-react";
+import { LuBadgeCheck } from "react-icons/lu";
 import React from "react";
 import { redirect } from "next/navigation";
 
@@ -15,7 +15,7 @@ const page = ({ searchParams }: any) => {
     <section>
       <Container>
         <div className="flex flex-col gap-4 items-center justify-center w-full h-96">
-          <BadgeCheck size={64} className="text-green-500 animate-bounce" />
+          <LuBadgeCheck size={64} className="text-green-500 animate-bounce" />
           <h3 className="animate-pulse text-3xl font-semibold text-green-500">
             Congratulation
           </h3>

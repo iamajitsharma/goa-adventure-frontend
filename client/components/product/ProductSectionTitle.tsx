@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CircleChevronRight } from "lucide-react";
+import { CgChevronRightO } from "react-icons/cg";
 
 const ProductSectionTitle = ({
   title,
@@ -16,7 +16,7 @@ const ProductSectionTitle = ({
       {link && (
         <span className="text-orange-500 font-medium">
           <Link href={link || "#"} className="inline-flex items-center gap-2">
-            See All <CircleChevronRight size={20} />
+            See All <CgChevronRightO size={20} />
           </Link>
         </span>
       )}

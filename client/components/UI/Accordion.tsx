@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { HiOutlineChevronDown, HiOutlineChevronUp } from "react-icons/hi2";
 
 interface AccordionProps {
   title?: string;
@@ -31,14 +31,14 @@ const Accordion: React.FC<AccordionProps> = ({ title, isOpen, children }) => {
           onClick={toggleHandler}
         >
           {!isActive ? (
-            <ChevronDown
+            <HiOutlineChevronDown
               size={28}
               className={`${
                 isActive ? "rotate-180" : "rotate-0"
               } transition duration-500`}
             />
           ) : (
-            <ChevronUp size={28} className="transition duration-500" />
+            <HiOutlineChevronUp size={28} className="transition duration-500" />
           )}
         </span>
         <h4

@@ -1,5 +1,8 @@
+"use client";
 import { useEffect } from "react";
-import { IndianRupee, Minus, Plus } from "lucide-react";
+import { FiMinus, FiPlus } from "react-icons/fi";
+import { MdCurrencyRupee } from "react-icons/md";
+
 import Image from "next/image";
 import { updateCartItem } from "store/features/productSlice";
 import { useDispatch } from "react-redux";
@@ -64,7 +67,7 @@ const CartItem = ({ product }: { product: CartItemProps }) => {
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-4 md:gap-12">
             <span className="flex items-center text-sm font-semibold">
-              <IndianRupee size={14} />
+              <MdCurrencyRupee size={14} />
               {`${product.salePrice} x ${product.quantity}`}
             </span>
           </div>
@@ -73,7 +76,7 @@ const CartItem = ({ product }: { product: CartItemProps }) => {
               onClick={handleDecrease}
               className="bg-white w-7 h-7 flex items-center justify-center shadow rounded cursor-pointer"
             >
-              <Minus size={16} />
+              <FiMinus size={16} />
             </button>
 
             <input
@@ -88,7 +91,7 @@ const CartItem = ({ product }: { product: CartItemProps }) => {
               onClick={handleIncrease}
               className="bg-white w-7 h-7 flex items-center justify-center shadow rounded cursor-pointer"
             >
-              <Plus size={16} />
+              <FiPlus size={16} />
             </button>
           </div>
         </div>

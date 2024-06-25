@@ -6,7 +6,8 @@ import {
   Transition,
   TransitionChild,
 } from "@headlessui/react";
-import { CircleX } from "lucide-react";
+import { RxCrossCircled } from "react-icons/rx";
+
 import { truncateString } from "sanity";
 
 interface ModalProps {
@@ -51,7 +52,7 @@ const Modal: React.FC<ModalProps> = ({
                     onClick={closeModal}
                     className="cursor-pointer absolute top-0 right-0 bg-white p-1 rounded-full flex items-center justify-center hover:rotate-90 hover:ease-in-out hover:duration-150"
                   >
-                    <CircleX className="text-orange-500" size={28} />
+                    <RxCrossCircled className="text-orange-500" size={28} />
                   </div>
                   <div>{children}</div>
                 </DialogPanel>

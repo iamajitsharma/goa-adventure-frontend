@@ -1,5 +1,5 @@
 import Accordion from "components/UI/Accordion";
-import { BadgeX } from "lucide-react";
+import { LuBadgeX } from "react-icons/lu";
 
 interface AccordionListProps {
   exclusion: string[];
@@ -23,7 +23,7 @@ const ProductExclusion: React.FC<AccordionListProps> = ({ exclusion }) => {
               text-neutral-700"
             >
               <span className="text-rose-600">
-                <BadgeX size={16} />
+                <LuBadgeX size={16} />
               </span>
               {item}
             </li>

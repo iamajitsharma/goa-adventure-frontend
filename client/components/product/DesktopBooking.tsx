@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Box from "components/UI/Box";
-import { Minus, Plus } from "lucide-react";
+import { FiMinus, FiPlus } from "react-icons/fi";
 import Flatpickr, { DateTimePickerProps } from "react-flatpickr";
 import { ProductCardProps } from "helper/interface";
 import { calculateSalePrice } from "helper/utils";
@@ -105,7 +105,7 @@ const DesktopBooking: React.FC<DesktopBookingProps> = ({ product }) => {
                   className="bg-white w-9 h-9 flex items-center justify-center shadow rounded cursor-pointer"
                   onClick={() => handleDecrement()}
                 >
-                  <Minus />
+                  <FiMinus />
                 </span>
 
                 <input
@@ -119,7 +119,7 @@ const DesktopBooking: React.FC<DesktopBookingProps> = ({ product }) => {
                   className="bg-white w-9 h-9 flex items-center justify-center shadow rounded cursor-pointer"
                   onClick={() => handleIncrement()}
                 >
-                  <Plus />
+                  <FiPlus />
                 </span>
               </div>
             )}

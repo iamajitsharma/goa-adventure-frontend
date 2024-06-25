@@ -3,7 +3,6 @@ import { useState } from "react";
 //import custom components
 import Container from "components/UI/Container";
 import ProductCard from "components/UI/ProductCard";
-import { CircleChevronRight } from "lucide-react";
 import { ProductCardProps } from "helper/interface";
 import ProductSectionTitle from "./ProductSectionTitle";
 import { Button } from "components/UI/Button";

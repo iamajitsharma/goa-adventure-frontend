@@ -1,6 +1,6 @@
 import { Button } from "components/UI/Button";
 import Container from "components/UI/Container";
-import { BadgeX } from "lucide-react";
+import { LuBadgeX } from "react-icons/lu";
 import { redirect } from "next/navigation";
 
 const OrderFailed = ({ searchParams }: any) => {
@@ -13,7 +13,8 @@ const OrderFailed = ({ searchParams }: any) => {
     <section>
       <Container>
         <div className="flex flex-col gap-4 items-center justify-center w-full h-96">
-          <BadgeX size={64} className="text-rose-500 animate-bounce" />
+          <LuBadgeX size={64} className="text-rose-500 animate-bounce" />
+
           <h3 className="animate-pulse text-3xl font-semibold text-rose-500">
             Order Failed
           </h3>

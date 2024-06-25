@@ -12,7 +12,8 @@ import Modal from "components/modal/Modal";
 import { useToggle } from "hooks/useToggle";
 import EnquiryForm from "components/common/EnquiryForm";
 import useEnquiryModal from "hooks/useEnquiryModal";
-import { MessageCircleQuestion, ShoppingCart } from "lucide-react";
+import { BsPatchQuestion } from "react-icons/bs";
+import { IoCartOutline } from "react-icons/io5";
 import CustomBadge from "components/common/CustomBadge";
 import { useProduct } from "hooks/useProduct";
 import { useRouter } from "next/navigation";
@@ -54,12 +55,12 @@ const Navigation = () => {
             className="flex items-center gap-4 relative cursor-pointer"
             onClick={() => router.push("/cart")}
           >
-            <MessageCircleQuestion
+            <BsPatchQuestion
               size={28}
               className={`md:hidden ${pathname === "/" && !isScrolled ? "text-white" : "text-gray-600"}`}
               onClick={() => handleOpenEnquiry()}
             />
-            <ShoppingCart
+            <IoCartOutline
               size={28}
               className={`${pathname === "/" && !isScrolled ? "text-white" : "text-gray-600"}`}
             />

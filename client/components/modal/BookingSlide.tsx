@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Button } from "components/UI/Button";
-import { Minus, Plus } from "lucide-react";
+import { FiMinus, FiPlus } from "react-icons/fi";
 import Flatpickr from "react-flatpickr";
 import { ProductCardProps } from "helper/interface";
 import { useProduct } from "hooks/useProduct";
@@ -164,7 +164,7 @@ const BookingSlide: React.FC<BookingSlideProps> = ({
                 className="bg-white w-9 h-9 flex items-center justify-center shadow rounded cursor-pointer"
                 onClick={() => handleDecrement()}
               >
-                <Minus />
+                <FiMinus />
               </span>
 
               <input
@@ -178,7 +178,7 @@ const BookingSlide: React.FC<BookingSlideProps> = ({
                 className="bg-white w-9 h-9 flex items-center justify-center shadow rounded cursor-pointer"
                 onClick={() => handleIncrement()}
               >
-                <Plus />
+                <FiPlus />
               </span>
             </div>
           </div>

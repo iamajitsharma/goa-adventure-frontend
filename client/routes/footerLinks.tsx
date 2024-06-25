@@ -1,4 +1,5 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { FiMapPin, FiMail, FiPhone } from "react-icons/fi";
+
 import { v4 as uuid } from "uuid";
 
 export const contactLinks = [
@@ -6,25 +7,25 @@ export const contactLinks = [
     id: uuid(),
     title: "+91 8237060861",
     link: "tel:+918237060861",
-    icon: <Phone size={20} />,
+    icon: <FiPhone size={20} />,
   },
   {
     id: uuid(),
     title: "+91 7387960861",
     link: "tel:+917387960861",
-    icon: <Phone size={20} />,
+    icon: <FiPhone size={20} />,
   },
   {
     id: uuid(),
     title: "info@goaadventure.in",
     link: "mailto:info@goaadventure.in",
-    icon: <Mail size={20} />,
+    icon: <FiMail size={20} />,
   },
   {
     id: uuid(),
     title: "Car Parking Calngute Beach Goa 403516",
     link: "https://maps.app.goo.gl/javrPWZt5Mx5Xw6M7",
-    icon: <MapPin size={20} />,
+    icon: <FiMapPin size={20} />,
   },
 ];
 

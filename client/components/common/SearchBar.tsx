@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { FiSearch } from "react-icons/fi";
 
 type SearchBarProps = {
   className?: string;
@@ -16,7 +16,7 @@ const SearchBar = ({ className }: SearchBarProps) => {
         className="w-full p-2 outline-none text-lg font-medium text-neutral-700"
       />
       <button className="bg-orange-500 text-white px-4 py-2 rounded-full flex items-center gap-2 text-sm">
-        <Search size={18} /> Find
+        <FiSearch size={18} /> Find
       </button>
     </div>
   );

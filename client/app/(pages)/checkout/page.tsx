@@ -12,7 +12,6 @@ import Select from "components/UI/Select";
 import TextArea from "components/UI/TextArea";
 import { initializeRazorpay } from "helper/utils";
 import { useProduct } from "hooks/useProduct";
-import { Minus, Plus, Trash } from "lucide-react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
