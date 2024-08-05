@@ -7,6 +7,7 @@ import Header from "components/header/Header";
 import Footer from "components/footer/Footer";
 import Modal from "components/modal/Modal";
 import EnquiryForm from "components/common/EnquiryForm";
+import { Metadata } from "next";
 
 import { Toaster } from "react-hot-toast";
 
@@ -22,6 +23,14 @@ const roboto = Roboto({
   style: ["normal", "italic"],
   variable: "--font-roboto",
 });
+
+export const metadata: Metadata = {
+  title: {
+    default: "Goa Adventure",
+    template: "%s - Goa Adventure",
+  },
+  description: "Book Goa Tour Package, Activity, Hotel",
+};
 
 export default function RootLayout({
   children,

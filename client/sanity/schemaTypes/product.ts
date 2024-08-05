@@ -138,6 +138,37 @@ const product: SchemaTypeDefinition = {
       type: "string",
       title: "Video Url",
     },
+    // SEO SECTION
+    {
+      name: "seo",
+      type: "object",
+      title: "SEO",
+      fields: [
+        {
+          name: "meta_title",
+          type: "string",
+          title: "Meta Title",
+          description: "SEO title for the product page",
+        },
+        {
+          name: "meta_description",
+          type: "text",
+          title: "Meta Description",
+          description: "SEO description for the product page",
+          validation: (Rule) =>
+            Rule.max(160).warning(
+              "Meta description must be under 160 character"
+            ),
+        },
+        {
+          name: "meta_keywords",
+          type: "array",
+          title: "Meta Keywords",
+          of: [{ type: "string" }],
+          description: "SEO keywords for the product page",
+        },
+      ],
+    },
   ],
   preview: {
     select: {

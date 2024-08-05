@@ -10,6 +10,31 @@ import ProductInclusion from "components/product/ProductInclusion";
 import ProductExclusion from "components/product/ProductExclusion";
 import DesktopBooking from "components/product/DesktopBooking";
 import MobileBooking from "components/product/MobileBooking";
+import { urlForImage } from "sanity/lib/image";
+import { Metadata } from "next";
+import { getAllProductParams } from "sanity/query/productQuery";
+
+export async function generateStaticParams() {
+  const products = await getAllProductParams();
+
+  return products.map(({ slug }: any) => slug);
+}
+
+export async function generateMetadata({
+  params: { slug },
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const product = await getProductDetails(slug);
+
+  return {
+    title: product.product_title,
+    description: product.meta_description,
+    openGraph: {
+      images: [{ url: urlForImage(product?.images[0]) }],
+    },
+  };
+}
 
 const SinglePage = async ({ params }: any) => {
   const { slug } = params;

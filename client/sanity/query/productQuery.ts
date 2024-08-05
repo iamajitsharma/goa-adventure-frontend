@@ -95,3 +95,14 @@ export async function getProductByCategory(category: string) {
 
   return product;
 }
+
+export async function getAllProductParams() {
+  const query = `*[_type == "product"]{
+  "category_slug":category->slug.current,
+  "slug":slug.current,
+  "lastUpdated":_updatedAt
+  }`;
+
+  const response = await client.fetch(query);
+  return response;
+}

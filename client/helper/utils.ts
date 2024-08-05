@@ -8,6 +8,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export const BASE_URL = "https://goaadventure.in";
+
 export const calculateSalePrice = (price: number, discount: number) => {
   const salePrice = price - (price * discount) / 100;
   return salePrice.toFixed(0);
