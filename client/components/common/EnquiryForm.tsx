@@ -7,6 +7,8 @@ import { usePathname } from "next/navigation";
 import { useForm, FieldValues, Controller } from "react-hook-form";
 import { createEnquiry, sendContactForm } from "helper/utils";
 import useEnquiryModal from "hooks/useEnquiryModal";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const EnquiryForm = () => {
   const pathname = usePathname();
@@ -31,18 +33,22 @@ const EnquiryForm = () => {
       url: pathname,
     };
 
-    const response = await createEnquiry(enquiryData);
+    try {
+      const response = await createEnquiry(enquiryData);
+      const mailResponse = await sendContactForm(enquiryData);
 
-    setValue("fullname", "");
-    setValue("mobilenumber", "");
-    setValue("email", "");
-    setValue("traveldate", "");
-    setValue("travellers", "");
-    setValue("message", "");
-
-    handleCloseEnquiry();
-
-    return response;
+      // Reset the form
+      setValue("fullname", "");
+      setValue("mobilenumber", "");
+      setValue("email", "");
+      setValue("traveldate", "");
+      setValue("travellers", "");
+      setValue("message", "");
+    } catch (error) {
+      toast.dismiss("Failed to sent email");
+    } finally {
+      handleCloseEnquiry();
+    }
   };
 
   return (

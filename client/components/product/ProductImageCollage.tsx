@@ -13,6 +13,7 @@ const ProductImageCollage = ({ images }: any) => {
             width={975}
             height={600}
             className="px-0 object-cover w-full h-full duration-700 ease-in-out bg-white/30"
+            priority
           />
         </div>
         <div className="hidden lg:grid grid-cols-2 w-2/5 gap-2 h-[468px] ml-2">
@@ -25,6 +26,7 @@ const ProductImageCollage = ({ images }: any) => {
                   className="absolute top-0 left-0 object-cover w-full h-full  duration-700 ease-in-out group-hover:opacity-75"
                   width={975}
                   height={600}
+                  priority
                 />
               </div>
             ))}

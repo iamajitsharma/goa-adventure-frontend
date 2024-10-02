@@ -22,7 +22,7 @@ const page = ({ searchParams }: any) => {
           <p className="text-xl font-medium text-black">
             Your order has been successfully placed
           </p>
-          {/* <Button>Download Invoice</Button> */}
+          <Button href="/">Visit homepage</Button>
         </div>
       </Container>
     </section>

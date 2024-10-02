@@ -17,6 +17,9 @@ const nextConfig = {
     razorPaySecret: "O8SpgHnsaG4UzYd766qI8Xqk",
     razorPayTestKey: "rzp_test_u8LRGgtlScCOgs",
     razorPayTestSecret: "D0BjF7qoSQc7zoPwmbolEG2d",
+    emailId: "info@goaadventure.in",
+    emailPass: "qepcgznrjshxovhh",
+    webhookSecret: "fswef654564sdfsndcv",
   },
   transpilePackages: ["lucide-react"],
 };

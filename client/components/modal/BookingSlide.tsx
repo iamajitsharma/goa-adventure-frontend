@@ -172,6 +172,7 @@ const BookingSlide: React.FC<BookingSlideProps> = ({
                 min={1}
                 value={quantity}
                 className="text-center text-xl bg-gray-100 rounded font-semibold py-1 max-w-14 "
+                readOnly
               />
 
               <span

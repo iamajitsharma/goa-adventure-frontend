@@ -1,17 +1,17 @@
 import nodemailer from "nodemailer";
 
-const email = process.env.EMAIL;
-const pass = process.env.EMAIL_PASS;
+const email = process.env.emailId;
+const pass = process.env.emailPass;
 
 export const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: email,
-    pass: pass || "goa@786*",
+    pass: pass,
   },
 });
 
 export const mailOptions = {
-  from: email,
-  to: email,
+  from: `"Goa Adventure Website" <${email}>`,
+  to: "choiceyourtrip@gmail.com, info@goaadventure.in", // Add multiple recipients
 };
