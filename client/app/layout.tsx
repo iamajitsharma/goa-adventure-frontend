@@ -11,6 +11,7 @@ import { Metadata } from "next";
 
 import { Toaster } from "react-hot-toast";
 import ZohoLiveChat from "components/common/ZohoLiveChat";
+import WhatsAppButton from "components/common/WhatsAppButton";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -48,6 +49,7 @@ export default function RootLayout({
           <Toaster />
           <ZohoLiveChat />
         </StoreProvider>
+        <WhatsAppButton />
       </body>
     </html>
   );
