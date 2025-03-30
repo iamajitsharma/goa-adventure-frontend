@@ -74,12 +74,12 @@ const onlineBooking: SchemaTypeDefinition = {
     },
     {
       name: "deposit_amount",
-      type: "number", // Changed to number for better data handling
+      type: "number",
       title: "Deposit Amount",
     },
     {
       name: "pending_amount",
-      type: "number", // Changed to number for better data handling
+      type: "number",
       title: "Pending Amount",
     },
     {
@@ -114,7 +114,7 @@ const onlineBooking: SchemaTypeDefinition = {
     },
     {
       name: "createdAt",
-      type: "datetime", // Changed to datetime for better data handling
+      type: "datetime",
       title: "Booking Date",
     },
   ],
